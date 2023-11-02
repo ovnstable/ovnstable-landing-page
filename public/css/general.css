@@ -1,0 +1,86 @@
+:root {
+    --ov-bg: #E3F2FD;
+    --ov-bg-secondary: #0497EC;
+
+    /* theme */
+    --ov-primary: #0F172A;
+    /*--ov-primary-hover: #0F172A;*/
+    --ov-light-primary: #687386;
+    --ov-placeholder: #d9d5d5;
+    --ov-secondary: #848D9C;
+    --ov-white: #ffffff;
+    --ov-black: #000000;
+
+    /* end theme */
+
+}
+
+body {
+    font-family: Red Hat Display, serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: var(--ov-bg);
+    color: var(--ov-primary);
+}
+
+.main-container {
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: var(--ov-bg);
+}
+
+.main-container-blue {
+    background-color: var(--ov-bg-secondary);
+}
+
+
+.card {
+    background: #FFFFFF;
+    border: 1px solid #0F172A;
+    border-bottom-width: 2px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+.card-round {
+    border-radius: 30px!important;
+}
+
+.main-title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 40px;
+    text-transform: uppercase;
+}
+
+.main-sub-title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 29px;
+    text-transform: uppercase;
+}
+
+.title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 37px;
+}
+
+.sub-title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 29px;
+}
+
+.button {
+    position: absolute;
+    height: 26px;
+    background: var(--ov-primary);
+    border-radius: 12px;
+    color: var(--ov-white);
+}

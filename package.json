@@ -11,7 +11,12 @@
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/vue-fontawesome": "^3.0.3",
+    "accounting-js": "^1.1.1",
+    "axios": "^1.6.0",
+    "bn.js": "^5.2.1",
     "core-js": "^3.6.5",
+    "dotenv": "^8.6.0",
+    "moment": "^2.29.4",
     "vue": "^3.0.0",
     "vuex": "^4.1.0"
   },

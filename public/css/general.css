@@ -36,11 +36,22 @@ body {
 
 
 .card {
-    background: #FFFFFF;
-    border: 1px solid #0F172A;
+    background: var(--ov-white);
+    border: 1px solid var(--ov-primary);
     border-bottom-width: 2px;
     border-radius: 5px;
     margin-bottom: 8px;
+}
+
+.card-tab {
+    background: var(--ov-white);
+    border: 0 solid var(--ov-primary);
+    border-bottom-width: 1px;
+
+    border-radius: 30px 30px 12px 12px;
+
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 .card-round {
@@ -84,3 +95,5 @@ body {
     border-radius: 12px;
     color: var(--ov-white);
 }
+
+

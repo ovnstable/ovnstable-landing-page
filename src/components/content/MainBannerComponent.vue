@@ -4,7 +4,7 @@
              Content Title
          </div>
 
-        <div class="">
+        <div>
             <StatisticWidget></StatisticWidget>
         </div>
     </div>
@@ -14,7 +14,7 @@
 import StatisticWidget from "@/components/tools/StatisticWidget.vue";
 
 export default {
-    name: "ContentComponent",
+    name: "MainBannerComponent",
     components: {
         StatisticWidget
     }

@@ -534,4 +534,21 @@
     padding: 4em;
 }
 
+.center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-vertical-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-margin {
+    margin: auto;
+    width: 50%;
+    height: 50%;
+}
 /*# sourceMappingURL=helpers.css.map */

@@ -80,7 +80,7 @@ export default {
 
 <style scoped>
 /* mobile */
-@media only screen and (max-width:   1400px) {
+@media only screen and (max-width:   1024px) {
     .hero-text-container-mobile {
         display: flex;
         flex-direction: column;
@@ -131,7 +131,7 @@ export default {
 }
 
 /* desktop */
-@media only screen and (min-width: 1400px) {
+@media only screen and (min-width: 1024px) {
 
     .hero-text-container {
         display: flex;

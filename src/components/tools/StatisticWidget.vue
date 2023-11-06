@@ -183,7 +183,7 @@ export default {
 <style scoped>
 
 /* mobile */
-@media only screen and (max-width:   1400px) {
+@media only screen and (max-width:   1024px) {
     .statistic-widget {
         width: 300px;
     }
@@ -322,7 +322,7 @@ export default {
 }
 
 /* desktop */
-@media only screen and (min-width: 1400px) {
+@media only screen and (min-width: 1024px) {
     .statistic-widget {
         min-height: 170px;
         max-width: 568px;

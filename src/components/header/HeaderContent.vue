@@ -146,7 +146,7 @@ export default {
 
 <style scoped>
 /* mobile */
-@media only screen and (max-width:   1400px) {
+@media only screen and (max-width:   1024px) {
     .header-main-container-mobile {
         width: 100vw;
 
@@ -231,10 +231,15 @@ export default {
         text-decoration: none;
         cursor: pointer;
     }
+
+    .logo-container{
+        margin-right: 250px;
+        cursor: pointer;
+    }
 }
 
 /* desktop */
-@media only screen and (min-width: 1400px) {
+@media only screen and (min-width: 1024px) {
     .header-wrapper {
         display: flex;
         justify-content: center;
@@ -247,6 +252,11 @@ export default {
 
     .button {
         padding-top: 3px !important;
+    }
+
+    .logo-container{
+        margin-right: 450px;
+        cursor: pointer;
     }
 }
 
@@ -262,11 +272,11 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
         display: flex;
         gap: 30px;
     }
-}
 
-.logo-container{
-    margin-right: 450px;
-    cursor: pointer;
+    .logo-container{
+        margin-right: 450px;
+        cursor: pointer;
+    }
 }
 
 .logos {

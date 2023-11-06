@@ -198,10 +198,10 @@ export default {
 
 
     .dropdown-menu {
-        width: 120px;
+        width: 100px;
         position: absolute;
         top: 32px;
-        right: 0;
+        right: 9px;
         z-index: 2 !important;
 
         border-radius: 0 0 5px 5px;

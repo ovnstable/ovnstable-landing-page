@@ -12,62 +12,74 @@
                    </div>
                 </div>
 
-                <div v-else>
-                   <div>
-                       <div class="card-tab">
-                         <div class="row">
-                             <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                 <div class="statistic-title">
-                                     {{ formattedTotalValueLocked }}
-                                 </div>
-                             </div>
-
-                             <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                 <div>
-                                     TOTAL VALUE LOCKED
-                                 </div>
-                             </div>
-                         </div>
+                <div class="widget-container" v-else>
+                   <div v-if="!isClicked" class="card-tab"  @click="handleClick">
+                      <div class="statistic-title">
+                         {{ formattedTotalValueLocked }}
+                      </div>
+                      <div class="tvl-text-container">
+                          <div class="lock-icon-container">
+                              <img class="lock-icon" :src="require('@/assets/widget/lock.svg')" alt="lock icon">
+                          </div>
+                          <div class="tvl-label">
+                              TOTAL VALUE LOCKED
+                          </div>
+                          <div class="arrow-icon-container">
+                              <img class="arrow-icon" :src="require('@/assets/widget/arrow_right.svg')" alt="arrow right icon">
+                          </div>
+                      </div>
+                   </div>
+                   <div v-else class="card-tab"  @click="handleClick">
+                       <div class="arrow-icon-container">
+                           <img class="arrow-icon" :src="require('@/assets/widget/arrow_left.svg')" alt="arrow left icon">
+                       </div>
+                       <div class="statistic-title">
+                           {{ formattedTotalProfit }}
+                       </div>
+                       <div class="tvl-text-container">
+                           <div class="tvl-label-investors">
+                               TOTAL PAYMENT TO INVESTORS
+                           </div>
                        </div>
                    </div>
 
-                    <div>
-                        <div class="row">
-                            <div class="col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                              <div class="center-margin">
-                                  <div class="statistic-title">
-                                      {{ formatNumberToFixed(data.usdPlusProduct.value) }}
-                                  </div>
-                                  <div class="statistic-subtitle">
-                                      USD+ APY
-                                  </div>
-                              </div>
-                            </div>
-                            <div class="col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                               <div class="center-margin">
-                                   <div class="statistic-title">
-                                       {{ formatNumberToFixed(data.ethPlusProduct.value) }}
-                                   </div>
-                                   <div class="statistic-subtitle">
-                                       ETH+ APY
-                                   </div>
+                   <div class="apy-container">
+                       <div class="value-container" @click="openBestChainApy()">
+                           <div class="statistic-title">
+                               {{ formatNumberToFixed(data.usdPlusProduct.value) }}
+                           </div>
+                           <div class="statistic-subtitle">
+                               USD+ APY
+                           </div>
+                       </div>
+
+                       <div class="value-container" @click="openLinkBlank('https://app.overnight.fi/stats/eth?tabName=arbitrum')">
+                           <div class="statistic-title">
+                               {{ formatNumberToFixed(data.ethPlusProduct.value) }}
+                           </div>
+                           <div class="statistic-subtitle">
+                               ETH+ APY
+                           </div>
+                       </div>
+
+                       <div class="payout-container" >
+                           <div class="statistic-subtitle">
+                               LAST PAYOUT
+                           </div>
+                           <div class="clock-container">
+                               <div class="clock-icon-container">
+                                   <img class="clock-icon" :src="require('@/assets/widget/sandclock.svg')" alt="sand clock icon">
                                </div>
-                            </div>
-                            <div class="col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                <div class="center-margin">
-                                    <div class="statistic-subtitle">
-                                        LAST PAYOUT
-                                    </div>
-                                    <div class="statistic-title">
-                                        {{ timeFromPayout }}
-                                    </div>
-                                    <div class="statistic-subtitle">
-                                        hours ago
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                               <div class="statistic-title">
+                                   {{ timeFromPayout }}
+                               </div>
+                           </div>
+                           <div class="statistic-subtitle-last">
+                               HOURS AGO
+                           </div>
+                       </div>
+
+                   </div>
                 </div>
             </div>
         </div>
@@ -86,7 +98,9 @@ export default {
         return {
             data: null,
             loading: true,
-            ...utils
+            isClicked: false,
+            bestChainApy: null,
+            ...utils,
         }
     },
     mounted() {
@@ -99,6 +113,17 @@ export default {
             }
 
             return this.data.tvl.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            });
+        },
+
+        formattedTotalProfit() {
+            if (!this.data) {
+                return null;
+            }
+
+            return this.data.totalProfit.toLocaleString('en-US', {
                 style: 'currency',
                 currency: 'USD',
             });
@@ -122,12 +147,34 @@ export default {
             statisticApiService.getMainWidgetData()
                 .then(data => {
                     this.data = data;
+                    console.log("DATA:", data)
+
+                    this.bestChainApy = data.usdPlusProduct.chain;
+                    console.log("BEst chain APY:", this.bestChainApy)
                     this.loading = false;
                 }).catch(error => {
                 console.log(error);
                 this.loading = false;
             })
-        }
+        },
+
+        openBestChainApy() {
+            if(this.bestChainApy) {
+                this.openLinkBlank('https://app.overnight.fi/stats?tabName=' + this.bestChainApy.toLowerCase() + "&chart=month");
+            }
+        },
+
+        openLinkBlank(url) {
+            window.open(url, '_blank').focus();
+        },
+
+        openLinkSelf(url) {
+            window.open(url, '_self').focus();
+        },
+
+        handleClick() {
+            this.isClicked = !this.isClicked;
+        },
     },
 }
 </script>
@@ -135,28 +182,416 @@ export default {
 
 <style scoped>
 
-.statistic-widget {
-    min-height: 150px;
-    max-width: 600px;
-    width: 100%;
+/* mobile */
+@media only screen and (max-width:   1400px) {
+    .statistic-widget {
+        width: 300px;
+    }
+
+    .statistic-title {
+        font-family: "Red Hat Display", sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 14px;
+
+        color: var(--ov-primary);
+    }
+
+    .statistic-subtitle {
+        font-family: "Red Hat Display", sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 8px;
+
+        color: #687386;
+    }
+
+    .tvl-label {
+        font-family: "Red Hat Display", sans-serif;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 14px;
+        color: #687386;
+        cursor: pointer;
+    }
+
+    .tvl-label-investors {
+        font-family: "Red Hat Display", sans-serif;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 14px;
+        color: #687386;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .statistic-subtitle-last {
+        font-family: "Red Hat Display", sans-serif;
+        font-weight: 400;
+        font-size: 8px;
+        color: #687386;
+    }
+
+    .card-round {
+        border-radius: 15px!important;
+    }
+
+    .card {
+        background: var(--ov-white);
+        border: 1px solid var(--ov-primary);
+        border-bottom-width: 2px;
+        border-radius: 5px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+
+    .card-tab {
+        background: var(--ov-white);
+        border: 0 solid var(--ov-primary);
+        border-bottom-width: 1px;
+
+        border-radius: 15px 15px 4px 4px;
+
+        padding-bottom: 10px;
+        padding-top: 10px;
+        height: 33px;
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        cursor: pointer;
+    }
+
+    .apy-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .value-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .payout-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .clock-icon-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .clock-icon {
+        width: 10px;
+        height: 10px;
+    }
+
+    .clock-container {
+        display: flex;
+        gap: 5px;
+    }
+
+    .arrow-icon-container {
+        display: flex;
+        cursor: pointer;
+    }
+
+    .arrow-icon {
+        width: 8px;
+        height: 13px;
+    }
+
+    .lock-icon-container {
+        display: flex;
+    }
+
+    .lock-icon {
+        width: 12px;
+        height: 12px;
+    }
 }
 
-.statistic-title {
+/* desktop */
+@media only screen and (min-width: 1400px) {
+    .statistic-widget {
+        min-height: 170px;
+        max-width: 568px;
+        width: 100%;
+    }
 
-    font-style: normal;
-    font-weight: 700;
-    font-size: 25px;
+    .statistic-title {
+        font-family: "Red Hat Display", sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 25px;
+        line-height: 33px;
 
-    color: var(--ov-primary);
+        color: var(--ov-primary);
+    }
 
+    .statistic-subtitle {
+        font-family: "Red Hat Display", sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+
+        color: #687386;
+    }
+
+    .tvl-label {
+        font-family: "Red Hat Display", sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 26px;
+        color: #687386;
+        cursor: pointer;
+    }
+
+    .tvl-label-investors {
+        font-family: "Red Hat Display", sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 26px;
+        color: #687386;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .statistic-subtitle-last {
+        font-family: "Red Hat Display", sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        color: #687386;
+    }
+
+    .card-round {
+        border-radius: 30px!important;
+    }
+
+    .card {
+        background: var(--ov-white);
+        border: 1px solid var(--ov-primary);
+        border-bottom-width: 2px;
+        border-radius: 5px;
+        margin-bottom: 8px;
+    }
+
+    .card-tab {
+        background: var(--ov-white);
+        border: 0 solid var(--ov-primary);
+        border-bottom-width: 1px;
+
+        border-radius: 30px 30px 12px 12px;
+
+        padding-bottom: 10px;
+        padding-top: 10px;
+        height: 50px;
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+    }
+
+
+    .apy-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 5px;
+    }
+
+    .value-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+    }
+
+    .payout-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 12px;
+    }
+
+    .clock-icon-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .clock-container {
+        display: flex;
+        gap: 10px;
+    }
+
+    .arrow-icon-container {
+        display: flex;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    .lock-icon-container {
+        display: flex;
+    }
 }
 
-.statistic-subtitle {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 26px;
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 1300px),
+only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 1300px),
+only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 1300px),
+only screen and (        min-device-pixel-ratio: 2)      and (min-width: 1300px),
+only screen and (                min-resolution: 192dpi) and (min-width: 1300px),
+only screen and (                min-resolution: 2dppx)  and (min-width: 1300px) {
+    .statistic-widget {
+        min-height: 170px;
+        max-width: 568px;
+        width: 100%;
+    }
 
-    color: #687386;
+    .statistic-title {
+        font-family: "Red Hat Display", sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 25px;
+        line-height: 33px;
+
+        color: var(--ov-primary);
+    }
+
+    .statistic-subtitle {
+        font-family: "Red Hat Display", sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+
+        color: #687386;
+    }
+
+    .tvl-label {
+        font-family: "Red Hat Display", sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 26px;
+        color: #687386;
+        cursor: pointer;
+    }
+
+    .tvl-label-investors {
+        font-family: "Red Hat Display", sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 26px;
+        color: #687386;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .statistic-subtitle-last {
+        font-family: "Red Hat Display", sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        color: #687386;
+    }
+
+    .card-round {
+        border-radius: 30px!important;
+    }
+
+    .card {
+        background: var(--ov-white);
+        border: 1px solid var(--ov-primary);
+        border-bottom-width: 2px;
+        border-radius: 5px;
+        margin-bottom: 8px;
+    }
+
+    .card-tab {
+        background: var(--ov-white);
+        border: 0 solid var(--ov-primary);
+        border-bottom-width: 1px;
+
+        border-radius: 30px 30px 12px 12px;
+
+        padding-bottom: 10px;
+        padding-top: 10px;
+        height: 50px;
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+    }
+
+
+    .apy-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 5px;
+    }
+
+    .value-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+    }
+
+
+    .payout-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 12px;
+    }
+
+    .clock-icon-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .clock-container {
+        display: flex;
+        gap: 10px;
+    }
+
+    .arrow-icon-container {
+        display: flex;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    .lock-icon-container {
+        display: flex;
+    }
 }
+
+.tvl-text-container {
+    display: flex;
+    gap: 10px;
+}
+
+.widget-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
 </style>

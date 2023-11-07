@@ -21,7 +21,7 @@ export default {
 
 .fixed-position {
     width: 100%;
-    position: fixed;
+    position: sticky;
     z-index: 10;
 }
 </style>

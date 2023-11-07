@@ -1,17 +1,23 @@
 <template>
     <div class="main-container main-container-blue">
-        <ContentComponent></ContentComponent>
+        <MainBannerComponent></MainBannerComponent>
     </div>
+    <div class="main-container">
+        <AboutOvernightComponent></AboutOvernightComponent>
+    </div>
+
 </template>
 
 <script>
 
-import ContentComponent from "@/components/content/MainBannerComponent";
+import MainBannerComponent from "@/components/content/MainBannerComponent";
+import AboutOvernightComponent from "@/components/content/AboutOvernightComponent"
 
 export default {
     name: "ContentContainer",
     components: {
-        ContentComponent,
+        MainBannerComponent,
+        AboutOvernightComponent
     }
 }
 </script>

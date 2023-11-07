@@ -218,7 +218,6 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
     justify-content: center;
     align-items: center;
     gap: 60px;
-    margin-top: 52px;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
@@ -230,7 +229,6 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
     justify-content: start;
     align-items: start;
     overflow-x: hidden;
-    margin-top: 60px;
     padding-left: 20px;
     border-top: 1px solid black;
     border-bottom: 1px solid black;

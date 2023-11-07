@@ -87,42 +87,39 @@ export default {
     }
 
     .hero-title {
-        max-width: 180px;
+        max-width: 210px;
         display: flex;
     }
 
     .left-border-div-mobile {
-        height: 160px;
+        height: 140px;
         border-left: 2px solid #0F172A;
 
         margin-right: 20px;
-        margin-top: 50px;
+        margin-top: 30px;
     }
 
     .hero-labels {
         display: flex;
         flex-direction: column;
         gap: 25px;
-        margin-top: 50px;
-    }
-
-    .widget-container {
-        margin-top: 100px;
+        margin-top: 30px;
     }
 
     .widget-container-mobile {
-        margin-top: 5px;
+        margin-top: 10px;
     }
 
     .hero-blended {
+        z-index: 0;
         mix-blend-mode: multiply;
     }
 
     .hero-blended-mobile {
         height: 204px;
         position: relative;
-        top: 50px;
-        right: 120px;
+        top: 30px;
+        right: 170px;
     }
 
     .button-container {
@@ -132,16 +129,10 @@ export default {
 
 /* desktop */
 @media only screen and (min-width: 1024px) {
-
     .hero-text-container {
         display: flex;
         flex-direction: column;
         gap: 30px;
-    }
-
-    .hero-text-container-mobile {
-        display: flex;
-        flex-direction: column;
     }
 
     .hero-title {
@@ -157,14 +148,6 @@ export default {
         margin-top: 50px;
     }
 
-    .left-border-div-mobile {
-        height: 140px;
-        border-left: 2px solid #0F172A;
-
-        margin-right: 20px;
-        margin-top: 50px;
-    }
-
     .hero-labels {
         display: flex;
         flex-direction: column;
@@ -176,27 +159,8 @@ export default {
         margin-top: 100px;
     }
 
-    .widget-container-mobile {
-        margin-top: 5px;
-    }
-
     .hero-blended {
         mix-blend-mode: multiply;
-    }
-
-    .hero-blended-mobile {
-        height: 204px;
-        position: relative;
-        top: 50px;
-        right: 120px;
-    }
-
-    .button-container {
-        margin-top: 10px;
-    }
-
-    .button {
-        padding-top: 3px !important;
     }
 }
 
@@ -214,11 +178,6 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
         gap: 30px;
     }
 
-    .hero-text-container-mobile {
-        display: flex;
-        flex-direction: column;
-    }
-
     .hero-title {
         max-width: 944px;
         display: flex;
@@ -226,14 +185,6 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
 
     .left-border-div {
         height: 160px;
-        border-left: 2px solid #0F172A;
-
-        margin-right: 20px;
-        margin-top: 50px;
-    }
-
-    .left-border-div-mobile {
-        height: 140px;
         border-left: 2px solid #0F172A;
 
         margin-right: 20px;
@@ -251,27 +202,8 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
         margin-top: 100px;
     }
 
-    .widget-container-mobile {
-        margin-top: 5px;
-    }
-
     .hero-blended {
         mix-blend-mode: multiply;
-    }
-
-    .hero-blended-mobile {
-        height: 204px;
-        position: relative;
-        top: 50px;
-        right: 120px;
-    }
-
-    .button-container {
-        margin-top: 10px;
-    }
-
-    .button {
-        padding-top: 2px !important;
     }
 }
 .hero-container {
@@ -286,15 +218,21 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
     justify-content: center;
     align-items: center;
     gap: 60px;
+    margin-top: 52px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 .hero-container-mobile {
-    height: 400px;
+    height: 370px;
 
     display: flex;
     justify-content: start;
     align-items: start;
-    margin-top: -20px;
+    overflow-x: hidden;
+    margin-top: 60px;
+    padding-left: 20px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }
-
 </style>

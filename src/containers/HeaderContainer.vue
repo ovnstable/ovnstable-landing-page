@@ -1,6 +1,7 @@
 <template>
     <div>
-        <HeaderContent></HeaderContent>
+        <div class="header-container"></div>
+        <HeaderContent class="fixed-position"></HeaderContent>
     </div>
 </template>
 
@@ -18,4 +19,9 @@ export default {
 
 <style scoped>
 
+.fixed-position {
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+}
 </style>

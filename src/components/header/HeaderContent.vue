@@ -3,7 +3,7 @@
         <div class="header-container main-centered"  v-if="isDesktop">
             <div class="logo-container">
                 <img
-                    @click="openLinkSelf('https://overnight.fi/')"
+                    @click="openLinkSelf('https://landing.overnight.fi/')"
                     :src="require('/src/assets/overnight_logo.svg')"
                     alt="overnight logo"
                 />
@@ -55,7 +55,7 @@
         <div class="header-main-container-mobile" v-else>
             <div class="logo-container-mobile">
                 <img
-                    @click="openLinkSelf('https://overnight.fi/')"
+                    @click="openLinkSelf('https://landing.overnight.fi/')"
                     :src="require('/src/assets/overnight_logo.svg')"
                     alt="overnight logo"
                     class="overnight-logo"
@@ -155,7 +155,7 @@ export default {
         gap: 15px;
 
         margin-left: 20px;
-        height: 80px;
+        height: 60px;
 
         background-color: var(--ov-white);
         border-bottom-color: var(--ov-black);
@@ -200,8 +200,8 @@ export default {
     .dropdown-menu {
         width: 100px;
         position: absolute;
-        top: 32px;
-        right: 9px;
+        top: 22px;
+        right: 3px;
         z-index: 2 !important;
 
         border-radius: 0 0 5px 5px;
@@ -223,8 +223,14 @@ export default {
         cursor: pointer;
     }
 
+    ul li:nth-child(2) {
+        border-top: 0;
+    }
+
     ul li:last-child {
+        border-top: 0;
         border-radius: 0 0 5px 5px;
+        border-bottom: 2px solid black;
     }
 
     a {

@@ -38,7 +38,7 @@
                        </div>
                        <div class="tvl-text-container">
                            <div class="tvl-label-investors">
-                               TOTAL PAYMENT TO INVESTORS
+                               TOTAL PAYMENT TO HOLDERS
                            </div>
                        </div>
                    </div>
@@ -46,7 +46,7 @@
                    <div class="apy-container">
                        <div class="value-container" @click="openBestChainApy()">
                            <div class="statistic-title">
-                               {{ formatNumberToFixed(data.usdPlusProduct.value) }}
+                               {{ formatNumberToFixed(data.usdPlusProduct.value) + '%' }}
                            </div>
                            <div class="statistic-subtitle">
                                USD+ APY
@@ -55,7 +55,7 @@
 
                        <div class="value-container" @click="openLinkBlank('https://app.overnight.fi/stats/eth?tabName=arbitrum')">
                            <div class="statistic-title">
-                               {{ formatNumberToFixed(data.ethPlusProduct.value) }}
+                               {{ formatNumberToFixed(data.ethPlusProduct.value) + '%' }}
                            </div>
                            <div class="statistic-subtitle">
                                ETH+ APY
@@ -63,9 +63,6 @@
                        </div>
 
                        <div class="payout-container" >
-                           <div class="statistic-subtitle">
-                               LAST PAYOUT
-                           </div>
                            <div class="clock-container">
                                <div class="clock-icon-container">
                                    <img class="clock-icon" :src="require('@/assets/widget/sandclock.svg')" alt="sand clock icon">
@@ -74,11 +71,10 @@
                                    {{ timeFromPayout }}
                                </div>
                            </div>
-                           <div class="statistic-subtitle-last">
-                               HOURS AGO
+                           <div class="statistic-subtitle">
+                               SINCE LAST PAYOUT
                            </div>
                        </div>
-
                    </div>
                 </div>
             </div>
@@ -185,7 +181,7 @@ export default {
 /* mobile */
 @media only screen and (max-width:   1024px) {
     .statistic-widget {
-        width: 300px;
+        width: 90vw;
     }
 
     .statistic-title {
@@ -253,8 +249,6 @@ export default {
 
         border-radius: 15px 15px 4px 4px;
 
-        padding-bottom: 10px;
-        padding-top: 10px;
         height: 33px;
 
         display: flex;
@@ -262,33 +256,39 @@ export default {
         align-items: center;
 
         cursor: pointer;
+        padding-left: 5px;
+        margin-top: 5px;
     }
 
     .apy-container {
         display: flex;
         align-items: center;
         justify-content: space-around;
-        margin-top: 5px;
-        margin-bottom: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-top: 3px;
     }
 
     .value-container {
         display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 7px;
         cursor: pointer;
+        padding-left: 10px;
     }
 
     .payout-container {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        gap: 7px;
     }
 
     .clock-icon-container {
         display: flex;
         align-items: center;
+        margin-bottom: 1px;
     }
 
     .clock-icon {
@@ -408,8 +408,9 @@ export default {
     .apy-container {
         display: flex;
         align-items: center;
-        justify-content: space-around;
-        margin-top: 5px;
+        justify-content: space-between;
+        margin-top: 20px;
+        padding-left: 10px;
     }
 
     .value-container {
@@ -418,24 +419,26 @@ export default {
         align-items: center;
         gap: 5px;
         cursor: pointer;
+        padding-left: 50px;
     }
 
     .payout-container {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        margin-top: 12px;
+        gap: 5px;
+        padding-right: 20px;
     }
 
     .clock-icon-container {
         display: flex;
         align-items: center;
+        margin-bottom: 1px;
     }
 
     .clock-container {
         display: flex;
-        gap: 10px;
+        gap: 5px;
     }
 
     .arrow-icon-container {
@@ -559,17 +562,17 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-top: 12px;
     }
 
     .clock-icon-container {
         display: flex;
         align-items: center;
+        margin-bottom: 1px;
     }
 
     .clock-container {
         display: flex;
-        gap: 10px;
+        gap: 5px;
     }
 
     .arrow-icon-container {
@@ -592,6 +595,5 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
     display: flex;
     flex-direction: column;
 }
-
 
 </style>

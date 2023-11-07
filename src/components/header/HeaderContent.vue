@@ -30,7 +30,7 @@
                     Token
                 </label>
                 <label
-                    @click="openLinkBlank('')"
+                    @click="openLinkBlank('https://docs.overnight.fi/core-concept/faq')"
                     class="header-label text-styling"
                 >
                     FAQ
@@ -90,7 +90,7 @@
                 <div v-if="isMenuOpen" class="dropdown-menu">
                     <ul class="item-list">
                         <li class="menu-list-item" @click="openLinkBlank('https://docs.overnight.fi/governance/ovn-token/overnight-tokenomics')">Token</li>
-                        <li class="menu-list-item" @click="openLinkBlank('')">FAQ</li>
+                        <li class="menu-list-item" @click="openLinkBlank('https://docs.overnight.fi/core-concept/faq')">FAQ</li>
                         <li class="menu-list-item" @click="openLinkBlank('https://docs.overnight.fi/')">Docs</li>
                     </ul>
                 </div>

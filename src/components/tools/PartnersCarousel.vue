@@ -57,7 +57,7 @@ export default {
 
 <style scoped>
 /* mobile */
-@media only screen and (max-width:   1024px) {
+@media only screen and (max-width: 1024px) {
     .partners-container {
         display: flex;
         align-items: center;
@@ -78,15 +78,23 @@ export default {
         }
     }
 
-    .partners-label {
 
+    .partners-label {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 11px;
     }
 }
 
 /* desktop */
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1400px) {
     .partners-container {
-
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding-top: 20px;
+        padding-left: 60px;
+        padding-right: 80px;
     }
 
     .partners-label {
@@ -95,14 +103,18 @@ export default {
 }
 
 @media
-only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 1300px),
-only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 1300px),
-only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 1300px),
-only screen and (        min-device-pixel-ratio: 2)      and (min-width: 1300px),
-only screen and (                min-resolution: 192dpi) and (min-width: 1300px),
-only screen and (                min-resolution: 2dppx)  and (min-width: 1300px) {
+only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 1024px),
+only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 1024px),
+only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 1024px),
+only screen and (        min-device-pixel-ratio: 2)      and (min-width: 1024px),
+only screen and (                min-resolution: 192dpi) and (min-width: 1024px),
+only screen and (                min-resolution: 2dppx)  and (min-width: 1024px) {
     .partners-container {
-
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        padding-top: 20px;
+        gap: 10px;
     }
 
     .partners-label {
@@ -113,7 +125,7 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding-top: 20px;
+    padding-top: 10px;
     padding-left: 100px;
     padding-right: 100px;
 }

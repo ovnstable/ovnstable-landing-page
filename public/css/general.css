@@ -26,6 +26,7 @@ body {
 
 .main-container {
     background-color: var(--ov-bg);
+    overflow: hidden;
 }
 
 .header-main-container {

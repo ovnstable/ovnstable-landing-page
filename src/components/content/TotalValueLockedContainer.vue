@@ -4,27 +4,27 @@
             <span class="title">Total value locked</span>
             <span class="title value">{{totalValue}}</span>
         </div>
-        <div v-if="mekkaData" class="tvl-page overflow-hidden">
+        <div v-if="mekkaData" class="overflow-hidden">
             <div class="chart-container">
                 <div class="chart-chain-blocks" v-if="currentBlockSet === 0" >
-                    <div class="chart-block block-base">
-                        <img class="mr-2" :src="require('@/assets/network/base.svg')" alt="Base logo" style="height: 22px!important; width: 22px!important">
-                        <label class="chain-text">Base</label>
+                    <div class="chart-block">
+                        <img class="chain-logo" :src="require('@/assets/network/base.svg')" alt="Base logo">
+                        <label v-if="!isMobile" class="chain-text">Base</label>
                         <label class="chain-text">{{ '$' + utils.formatNumberToMln(this.totalBaseValue) + 'M' }}</label>
                     </div>
-                    <div class="chart-block block-op">
+                    <div class="chart-block">
                         <img class="chain-logo" :src="require('@/assets/network/optimism.svg')" alt="Optimism logo">
-                        <label class="chain-text">Optimism</label>
+                        <label v-if="!isMobile" class="chain-text">Optimism</label>
                         <label class="chain-text">{{ '$' + utils.formatNumberToMln(this.totalOptimismValue) + 'M' }}</label>
                     </div>
-                    <div class="chart-block block-arb">
+                    <div class="chart-block">
                         <img class="chain-logo" :src="require('@/assets/network/arbitrum.svg')" alt="Arbitrum logo">
-                        <label class="chain-text">Arbitrum</label>
+                        <label v-if="!isMobile" class="chain-text">Arbitrum</label>
                         <label class="chain-text">{{ '$' + utils.formatNumberToMln(this.totalArbitrumValue) + 'M' }}</label>
                     </div>
-                    <div class="chart-block block-bsc">
+                    <div class="chart-block">
                         <img class="chain-logo" :src="require('@/assets/network/binance.svg')" alt="Binance logo">
-                        <label class="chain-text">Binance</label>
+                        <label v-if="!isMobile" class="chain-text">Binance</label>
                         <label class="chain-text">{{ '$' + utils.formatNumberToMln(this.totalBscValue) + 'M' }}</label>
                     </div>
                     <div @click="toggleChartBlocks" class="icon-container">
@@ -35,19 +35,19 @@
                     <div @click="toggleChartBlocks" class="icon-container">
                         <img class="arrow-icon" :src="require('@/assets/widget/arrow_left.svg')" alt="Arrow right icon">
                     </div>
-                    <div class="chart-block block-zks">
-                        <img class="mr-2" :src="require('@/assets/network/zksync.svg')" alt="Zksync logo">
-                        <label class="chain-text">Zksync</label>
+                    <div class="chart-block">
+                        <img class="chain-logo" :src="require('@/assets/network/zksync.svg')" alt="Zksync logo">
+                        <label v-if="!isMobile" class="chain-text">Zksync</label>
                         <label class="chain-text">{{ '$' + utils.formatNumberToMln(this.totalZksyncValue) + 'M' }}</label>
                     </div>
-                    <div class="chart-block block-pol">
-                        <img class="mr-2" :src="require('@/assets/network/polygon.svg')" alt="Polygon logo">
-                        <label class="chain-text">Polygon</label>
+                    <div class="chart-block">
+                        <img class="chain-logo" :src="require('@/assets/network/polygon.svg')" alt="Polygon logo">
+                        <label v-if="!isMobile" class="chain-text">Polygon</label>
                         <label class="chain-text">{{ '$' + utils.formatNumberToMln(this.totalPolygonValue) + 'M' }}</label>
                     </div>
-                    <div class="chart-block block-linea">
-                        <img class="mr-2" :src="require('@/assets/network/linea.svg')" alt="Linea logo" style="height: 22px!important; width: 22px!important">
-                        <label class="chain-text">Linea</label>
+                    <div class="chart-block">
+                        <img class="chain-logo" :src="require('@/assets/network/linea.svg')" alt="Linea logo">
+                        <label v-if="!isMobile" class="chain-text">Linea</label>
                         <label class="chain-text">{{ '$' + utils.formatNumberToMln(this.totalLineaValue) + 'M' }}</label>
                     </div>
                 </div>
@@ -60,6 +60,7 @@
 <script>
 import {getChartSettings} from "@/components/tools/marimeko/model/getChartSettings";
 import utils from "@/utils/utils";
+import {mapState} from "vuex";
 
 export default {
     name: "TotalValueLockedContainer",
@@ -103,9 +104,7 @@ export default {
     }),
 
     computed: {
-        isMobile() {
-            return window.innerWidth <= 960;
-        },
+        ...mapState('device', ['deviceType', "deviceOrientation", 'isMobile', "isTablet", 'isDesktop']),
     },
 
     async mounted() {
@@ -463,78 +462,135 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.title-text {
-    font-style: normal;
-    font-size: 45px;
-    line-height: 80px;
-    font-family: 'Cormorant', sans-serif;
-    text-transform: uppercase;
-    color: #28A0F0;
-    font-weight: 500;
+/* mobile*/
+@media only screen and (max-width: 768px) {
+    .chart-container {
+        background-color: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+        border-radius: 30px;
+        border: 1px solid black;
+        border-bottom: 2px solid black;
+    }
+
+    .chart-chain-blocks {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        gap: 10px;
+        padding: 30px 20px 20px 20px;
+    }
+
+    .chart-block {
+        width: 65px;
+        height: 26px;
+        border: 1px solid black;
+        border-bottom: 2px solid black;
+        border-radius: 12px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .title {
+        font-size: 14px;
+        line-height: 19px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+
+    .main-chart-container {
+        margin-bottom: 40px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .chain-logo {
+        width: 12px;
+        height: 12px;
+    }
+
+    .chain-text {
+        font-family: "Red Hat Display", sans-serif;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 14px;
+    }
+
+    .chart {
+        display: flex;
+        min-width: 300px;
+        height: 300px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
 }
 
-.accent-text {
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 40px;
-    line-height: 80px;
-    background-color: #000;
-    text-transform: uppercase;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+/* desktop */
+@media only screen and (min-width: 769px) {
+    .chart-container {
+        background-color: #FFFFFF;
+        aspect-ratio: 2.6/1;
+        display: flex;
+        flex-direction: column;
+        border-radius: 30px;
+        border: 1px solid black;
+        border-bottom: 2px solid black;
+    }
 
-.chart-container {
-    background-color: #FFFFFF;
-    aspect-ratio: 2.6/1;
-    display: flex;
-    flex-direction: column;
-    border-radius: 30px;
-    border: 1px solid black;
-    border-bottom: 2px solid black;
-}
+    .chart-chain-blocks {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        gap: 20px;
+        padding: 30px 20px 20px 20px;
+    }
 
-.chart-chain-blocks {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    gap: 20px;
-    padding: 30px 20px 20px 20px;
-}
+    .chart-block {
+        width: 250px;
+        height: 32px;
+        border: 1px solid black;
+        border-bottom: 2px solid black;
+        border-radius: 12px;
 
-.chart-block {
-    width: 250px;
-    height: 32px;
-    border: 1px solid black;
-    border-bottom: 2px solid black;
-    border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
 
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
+    .main-chart-container {
+        margin-bottom: 100px;
+    }
 
-.chain-text {
-    font-family: "Red Hat Display", sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 21px;
-}
+    .chain-logo {
+        width: 28px;
+        height: 20px;
+    }
 
-.chain-logo {
-    width: 28px;
-    height: 20px;
-}
+    .chain-text {
+        font-family: "Red Hat Display", sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 21px;
+    }
 
-.chart {
-    display: flex;
-    width: 1150px;
-    height: 350px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding-left: 20px;
+    .chart {
+        display: flex;
+        width: 1150px;
+        height: 350px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding-left: 20px;
+    }
+
+    .title {
+        margin-bottom: 30px;
+        text-transform: uppercase;
+    }
 }
 
 .icon-container {
@@ -549,75 +605,10 @@ export default {
     width: 11.49px;
 }
 
-.container-row {
-    margin: 8% auto 3% auto;
-    width: 87%;
-}
-
 .chart-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.chain-images-wrap {
-    display: flex;
-    justify-content: space-around;
-}
-
-@media (max-width: 1400px) {
-    .chart-container {
-        aspect-ratio: 1.8/1;
-    }
-
-    .title-text {
-        font-size: 34px;
-    }
-
-    .accent-text {
-        font-size: 30px;
-    }
-}
-
-@media (max-width: 767px) {
-    .chart-chain-blocks {
-        display: flex;
-        flex-direction: row;
-        justify-content: start;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 5px;
-    }
-
-    .chart-block {
-        height: 30px;
-        width: 130px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .chart-container {
-        aspect-ratio: unset;
-        width: 100%;
-        height: 600px;
-        padding: 5px;
-    }
-
-    .chart-title {
-        flex-direction: column;
-    }
-
-    .container-row {
-        width: 100%;
-        margin-top: 0;
-    }
-}
-
-.title {
-    margin-bottom: 20px;
-    text-transform: uppercase;
 }
 
 .value {
@@ -628,36 +619,15 @@ export default {
     max-width: 1180px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 100px;
-}
-
-.feature-btn {
-    height: 40px !important;
-    font-style: normal !important;
-    font-weight: 400 !important;
-    font-size: 16px !important;
-    line-height: 18px !important;
 }
 
 .btn-row {
     margin-top: 2% !important;
     padding-bottom: 20px;
 }
-
-.feature-btn {
-    border: 1px solid #28A0F0;
-    border-radius: 0;
-    font-family: 'Roboto', sans-serif !important;
-    font-feature-settings: 'liga' off !important;
-    color: #28A0F0 !important;
-    text-transform: none !important;
-    letter-spacing: normal;
-}
-
 </style>
 
 <style>
-
 /* Скрыть логотип и его текст на графике */
 .anychart-credits-text, .anychart-credits-logo {
     display: none;
@@ -668,6 +638,5 @@ export default {
     margin-right: 20px;
     border-top: 1px solid #DEE1E5 !important;
 }
-
 </style>
 

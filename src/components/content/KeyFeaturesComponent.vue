@@ -23,7 +23,7 @@ export default {
     name: "KeyFeaturesComponent",
     data() {
         return {
-            activeTab: 0, // Default active tab index
+            activeTab: 0,
             features: [
                 { title: 'Full collateralization', content: ['100% collateralized with assets immediately convertible into USDC', '1:1 peg to USDC for USD+ for price stability', 'Profit (positive rebase) once collateral value grows above 100%, loss (negative rebase) in case collateral value below 100% '] },
                 { title: 'Rebase', content: ['Generate passive yield effortlessly by simply holding your token+ in your wallet', 'Profit payouts occur through daily rebasing, providing transparent balance tracking and profit/loss visibility.'] },
@@ -42,16 +42,27 @@ export default {
 </script>
 
 <style scoped>
-.key-features {
-    max-width: 1180px;
-    margin: auto;
-    font-family: 'Arial', sans-serif;
-    margin-bottom: 80px;
+/* mobile */
+@media only screen and (max-width: 768px) {
+    .title {
+        margin-top: 50px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
 }
 
-.title {
-    margin-bottom: 30px;
-    text-transform: uppercase;
+/* desktop */
+@media only screen and (min-width: 769px) {
+    .title {
+        text-transform: uppercase;
+        margin-right: 40px;
+        margin-bottom: 30px;
+    }
+}
+
+.key-features {
+    max-width: 1180px;
+    margin: 0 auto 80px auto;
 }
 
 .header-row {

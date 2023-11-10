@@ -1,10 +1,10 @@
 <template>
     <div class="svg-background-container">
+
     </div>
 </template>
 
 <script>
-
 export default {
     name: "OvernightRoadmapComponent",
 }
@@ -12,35 +12,31 @@ export default {
 
 
 <style scoped>
-/* extra small devices*/
-@media only screen and (max-width: 480px) {
-    .svg-background-container {
-        height: 100px; /* Adjust the height as necessary for very small screens */
-        /* The rest of your styles remain the same, unless you need to tweak them for very small screens */
-    }
-}
 /* mobile */
 @media only screen and (max-width: 768px) {
     .svg-background-container {
-        height: 200px; /* Adjust the height as necessary for smaller devices */
-        /* The rest of your styles remain the same, unless you need to tweak them for smaller screens */
+        height: 100%;
+        background-image: url('../../assets/roadmap-mobile.svg'); /* Use mobile-specific image */
+        /* Other background properties can remain the same */
+        background-size: 100% 100%; /* Stretch image to cover the container */
+        background-repeat: no-repeat;
     }
 }
 
 /* desktop */
 @media only screen and (min-width: 769px) {
     .svg-background-container {
-        height: 100%; /* Adjust the height as necessary for smaller devices */
-        /* The rest of your styles remain the same, unless you need to tweak them for smaller screens */
+        height: 100%;
+        background-image: url('../../assets/roadmap.svg'); /* Use desktop-specific image */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 }
 
 .svg-background-container {
     width: 100%;
-    background-image: url('../../assets/roadmap.svg');
-    background-size: cover; /* Cover the entire area */
-    background-position: center; /* Center the background image */
-    background-repeat: no-repeat; /* Do not repeat the image */
+    /* The background-image property is now set within the media queries, so it's removed from here */
 }
 
 </style>

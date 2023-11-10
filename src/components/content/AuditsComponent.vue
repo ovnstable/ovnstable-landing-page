@@ -124,6 +124,10 @@ export default {
         max-width: 1180px;
         margin: 0 auto 80px auto;
     }
+
+    .clear-icon {
+        margin-left: 5px;
+    }
 }
 
 .logo-container {

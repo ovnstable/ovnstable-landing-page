@@ -12,6 +12,7 @@
     </div>
     <div class="main-container">
         <AuditsComponent />
+        <BlogComponent />
     </div>
 </template>
 
@@ -23,6 +24,7 @@ import KeyFeaturesComponent from "@/components/content/KeyFeaturesComponent";
 import TotalValueLockedContainer from "@/components/content/TotalValueLockedContainer";
 import OvernightRoadmapComponent from "@/components/content/OvernightRoadmapComponent";
 import AuditsComponent from "@/components/content/AuditsComponent";
+import BlogComponent from "@/components/content/BlogComponent";
 
 export default {
     name: "ContentContainer",
@@ -33,22 +35,17 @@ export default {
         TotalValueLockedContainer,
         OvernightRoadmapComponent,
         AuditsComponent,
+        BlogComponent,
     }
 }
 </script>
 
 
 <style scoped>
-@media only screen and (max-width: 480px) {
-    .main-container-white {
-        height: 300px; /* Adjust the height as necessary for very small screens */
-        /* The rest of your styles remain the same, unless you need to tweak them for very small screens */
-    }
-}
 /* mobile */
 @media only screen and (max-width: 768px) {
     .main-container-white  {
-        height: 200px; /* Adjust the height as necessary for smaller devices */
+        height: 311px; /* Adjust the height as necessary for smaller devices */
         /* The rest of your styles remain the same, unless you need to tweak them for smaller screens */
         margin-bottom: 30px;
     }

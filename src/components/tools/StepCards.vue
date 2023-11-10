@@ -45,12 +45,12 @@ export default {
 
 <style scoped>
 /* mobile */
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 768px) {
 
 }
 
 /* desktop */
-@media only screen and (min-width: 1400px) {
+@media only screen and (min-width: 769px) {
     .cards-container {
         display: flex;
         flex-direction: column;
@@ -83,42 +83,4 @@ export default {
     }
 }
 
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 1024px),
-only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 1024px),
-only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 1024px),
-only screen and (        min-device-pixel-ratio: 2)      and (min-width: 1024px),
-only screen and (                min-resolution: 192dpi) and (min-width: 1024px),
-only screen and (                min-resolution: 2dppx)  and (min-width: 1024px) {
-    .cards-container {
-        display: flex;
-        flex-direction: column;
-        max-width: 260px;
-        text-align: center;
-    }
-
-    .step-card-box {
-        width: 253px;
-        height: 253px;
-        border: 1px solid #0F172A;
-        border-bottom: 2px solid #0F172A;
-        background-color: white;
-
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .main-sub-title {
-        text-transform: none;
-        margin-bottom: 10px;
-        margin-top: 20px;
-    }
-
-    .sub-title {
-        margin-top: 10px;
-        margin-bottom: 20px;
-    }
-}
 </style>

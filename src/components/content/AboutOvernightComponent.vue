@@ -3,7 +3,7 @@
        <div class="carousel">
             <PartnersCarousel />
        </div>
-       <div class="cards-container" v-if="isDesktop">
+       <div class="cards-container" v-if="isDesktop || isTablet">
            <div class="single-card">
                <StepCards
                    step-label="Step 1"
@@ -95,7 +95,7 @@ export default {
 
 <style scoped>
 /* mobile */
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 768px) {
     .single-card {
         position: relative;
         max-width: 500px;
@@ -109,17 +109,22 @@ export default {
         top: 0;
         right: -290px;
     }
+
+    .cards-container-mobile {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 /* desktop */
-@media only screen and (min-width: 1400px) {
+@media only screen and (min-width: 769px) {
     .cards-container {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
-        margin-left: 300px;
-        margin-right: 300px;
-        margin-bottom: 100px;
+        gap: 50px;
+        max-width: 1180px;
+        margin: 0 auto 70px auto;
     }
 
     .carousel {
@@ -127,32 +132,6 @@ export default {
         margin-bottom: 40px;
     }
 
-
-    .arrow-container {
-        margin-bottom: 30px;
-    }
-}
-
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 1024px),
-only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 1024px),
-only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 1024px),
-only screen and (        min-device-pixel-ratio: 2)      and (min-width: 1024px),
-only screen and (                min-resolution: 192dpi) and (min-width: 1024px),
-only screen and (                min-resolution: 2dppx)  and (min-width: 1024px) {
-    .cards-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        margin-left: 100px;
-        margin-right: 100px;
-        margin-bottom: 100px;
-    }
-
-    .carousel {
-        margin-top: 10px;
-        margin-bottom: 40px;
-    }
 
     .arrow-container {
         margin-bottom: 30px;

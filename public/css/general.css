@@ -53,6 +53,7 @@ body {
 
 .main-container-blue {
     background-color: var(--ov-bg-secondary);
+    max-width: 100%;
 }
 
 .main-title {

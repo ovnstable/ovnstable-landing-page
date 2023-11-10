@@ -80,11 +80,13 @@ export default {
 
     position: relative;
     border-radius: 20px 20px 0 0;
+    color: #848D9C;
 }
 
 .header.active {
     transform: translateY(-5px);
     border-radius: 30px 30px 0 0;
+    color: #0F172A;
 }
 
 .tabs {

@@ -628,7 +628,7 @@ export default {
     max-width: 1180px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 80px;
+    margin-bottom: 100px;
 }
 
 .feature-btn {

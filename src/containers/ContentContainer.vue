@@ -13,6 +13,7 @@
     <div class="main-container">
         <AuditsComponent />
         <BlogComponent />
+        <TeamComponent />
     </div>
 </template>
 
@@ -25,6 +26,7 @@ import TotalValueLockedContainer from "@/components/content/TotalValueLockedCont
 import OvernightRoadmapComponent from "@/components/content/OvernightRoadmapComponent";
 import AuditsComponent from "@/components/content/AuditsComponent";
 import BlogComponent from "@/components/content/BlogComponent";
+import TeamComponent from "@/components/content/TeamComponent";
 
 export default {
     name: "ContentContainer",
@@ -36,6 +38,7 @@ export default {
         OvernightRoadmapComponent,
         AuditsComponent,
         BlogComponent,
+        TeamComponent,
     }
 }
 </script>

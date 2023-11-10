@@ -107,10 +107,14 @@ export default {
         return text;
     },
 
-    formatNumberToMln(num,  count = 3) {
+    formatNumberToPercent(value, maxValue) {
+        return (value / maxValue * 100).toFixed(2);
+    },
+
+    formatNumberToMln(num,  count = 2) {
         let res = num / 1000000;
         if (res < 1) {
-            count = 3;
+            count = 2;
         }
 
         return (res).toFixed(count);

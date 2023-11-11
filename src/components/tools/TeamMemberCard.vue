@@ -109,6 +109,7 @@ export default {
         width: 220px;
         height: 231px;
         border: 1px solid black;
+        border-bottom: 3px solid black;
 
         background-color: #FFFFFF;
         border-radius: 5px;

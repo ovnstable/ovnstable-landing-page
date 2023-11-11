@@ -13,18 +13,18 @@
                 </div>
 
                 <div class="widget-container" v-else>
-                   <div v-if="!isClicked" class="card-tab"  @click="handleClick">
-                      <div class="statistic-title">
+                   <div v-if="!isClicked" class="card-tab">
+                      <div class="statistic-title" @click="handleClick">
                          {{ formattedTotalValueLocked }}
                       </div>
                       <div class="tvl-text-container">
                           <div class="lock-icon-container">
                               <img class="lock-icon" :src="require('@/assets/widget/lock.svg')" alt="lock icon">
                           </div>
-                          <div class="tvl-label">
+                          <div class="tvl-label"  @click="scrollToCharts">
                               TOTAL VALUE LOCKED
                           </div>
-                          <div class="arrow-icon-container">
+                          <div class="arrow-icon-container" @click="handleClick">
                               <img class="arrow-icon" :src="require('@/assets/widget/arrow_right.svg')" alt="arrow right icon">
                           </div>
                       </div>
@@ -171,6 +171,13 @@ export default {
         handleClick() {
             this.isClicked = !this.isClicked;
         },
+
+        scrollToCharts() {
+            const chartsSection = document.getElementById('tvl-charts');
+            if (chartsSection) {
+                chartsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
     },
 }
 </script>

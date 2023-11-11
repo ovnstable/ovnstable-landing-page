@@ -165,6 +165,10 @@ export default {
         padding-left: 20px;
         margin-bottom: 20px;
     }
+
+    .team-container {
+        margin: 0 auto 40px auto;
+    }
 }
 
 /* desktop */
@@ -181,11 +185,15 @@ export default {
         gap: 10px; /* Space between cards */
         width: 100%; /* Ensures the container takes full width */
     }
+
+    .team-container {
+        margin: 0 auto 80px auto;
+    }
 }
 
 .team-container {
     max-width: 1180px;
-    margin: 0 auto 90px auto;
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;

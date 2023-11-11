@@ -14,6 +14,7 @@
         <AuditsComponent />
         <BlogComponent />
         <TeamComponent />
+        <InvestorsComponent />
     </div>
 </template>
 
@@ -27,6 +28,7 @@ import OvernightRoadmapComponent from "@/components/content/OvernightRoadmapComp
 import AuditsComponent from "@/components/content/AuditsComponent";
 import BlogComponent from "@/components/content/BlogComponent";
 import TeamComponent from "@/components/content/TeamComponent";
+import InvestorsComponent from "@/components/content/InvestorsComponent";
 
 export default {
     name: "ContentContainer",
@@ -39,6 +41,7 @@ export default {
         AuditsComponent,
         BlogComponent,
         TeamComponent,
+        InvestorsComponent,
     }
 }
 </script>

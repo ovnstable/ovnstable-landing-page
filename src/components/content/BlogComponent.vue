@@ -117,6 +117,7 @@ export default {
     .blog-container {
         padding-right: 20px;
         padding-left: 20px;
+        margin: 0 auto 40px auto;
     }
 }
 
@@ -132,11 +133,14 @@ export default {
         align-items: center;
         margin-bottom: 30px;
     }
+
+    .blog-container {
+        margin: 0 auto 80px auto;
+    }
 }
 
 .blog-container {
     max-width: 1180px;
-    margin: 0 auto 80px auto;
 }
 
 .blog-cards-container {

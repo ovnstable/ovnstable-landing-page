@@ -1,5 +1,5 @@
 <template>
-    <div class="main-chart-container">
+    <div class="main-chart-container" id="tvl-charts">
         <div class="chart-title">
             <span class="title">Total value locked</span>
             <span class="title value">{{totalValue}}</span>

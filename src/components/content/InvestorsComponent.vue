@@ -26,7 +26,7 @@
     </div>
 
     <div v-if="isDesktop" class="scroll-top-container" @click="scrollToTop">
-        <img :src="require('@/assets/scroll-top-arrow.svg')" alt="Scroll back icon">
+        <img class="arrow-icon" :src="require('@/assets/scroll-top-arrow.png')" alt="Scroll back icon">
     </div>
 </template>
 
@@ -138,6 +138,11 @@ export default {
 
     .investors-container {
         margin: 0 auto 100px auto;
+    }
+
+    .arrow-icon {
+        height: 50px;
+        width: 50px;
     }
 }
 

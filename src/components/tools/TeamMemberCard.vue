@@ -1,7 +1,7 @@
 <template>
     <div class="team-member-card">
         <div class="profile">
-            <img :src="picture" alt="team member photo" />
+            <img class="photo" :src="picture" alt="team member photo" />
             <div class="title">
                 {{ name }}
             </div>
@@ -151,6 +151,10 @@ export default {
         line-height: 20px;
         color: #0F172A;
         text-transform: none;
+    }
+
+    .photo {
+        width: 127px;
     }
 }
 

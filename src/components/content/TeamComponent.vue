@@ -36,7 +36,7 @@ export default {
         teamMembers: [
             {
                 id: 1,
-                picture: require('@/assets/team/max_e.svg'),
+                picture: require('@/assets/team/max_e.png'),
                 name: 'Max E.',
                 role: 'Founder & CEO',
                 linkedin: 'https://www.linkedin.com/in/maxim-ermilov/',
@@ -46,7 +46,7 @@ export default {
             },
             {
                 id: 2,
-                picture: require('@/assets/team/yaro_p.svg'),
+                picture: require('@/assets/team/yaro_p.png'),
                 name: 'Yaro P.',
                 role: 'Co-Founder & Tech Lead',
                 linkedin: 'https://www.linkedin.com/in/yarik-pavlov/',
@@ -56,7 +56,7 @@ export default {
             },
             {
                 id: 3,
-                picture: require('@/assets/team/roman_g.svg'),
+                picture: require('@/assets/team/roman_g.png'),
                 name: 'Roman G.',
                 role: 'Frontend Developer',
                 linkedin: 'https://www.linkedin.com/in/roman-golovlyov-2753611b3/',
@@ -66,7 +66,7 @@ export default {
             },
             {
                 id: 4,
-                picture: require('@/assets/team/slava_m.svg'),
+                picture: require('@/assets/team/slava_m.png'),
                 name: 'Slava M.',
                 role: 'Marketing Lead',
                 linkedin: '',
@@ -76,7 +76,7 @@ export default {
             },
             {
                 id: 4,
-                picture: require('@/assets/team/polina_t.svg'),
+                picture: require('@/assets/team/undefined.png'),
                 name: 'Polina T.',
                 role: 'Head of Design',
                 linkedin: '',
@@ -86,7 +86,7 @@ export default {
             },
             {
                 id: 5,
-                picture: require('@/assets/team/nikita_s.svg'),
+                picture: require('@/assets/team/nikita_s.png'),
                 name: 'Nikita S.',
                 role: 'Blockchain Engineer',
                 linkedin: 'https://www.linkedin.com/in/nikita-slezkin-859123215/',
@@ -96,7 +96,7 @@ export default {
             },
             {
                 id: 6,
-                picture: require('@/assets/team/undefined.svg'),
+                picture: require('@/assets/team/undefined.png'),
                 name: 'Viktor P.',
                 role: 'Blockchain Engineer',
                 linkedin: 'https://www.linkedin.com/in/viktor-paramonov-7b64371a7/',
@@ -106,7 +106,7 @@ export default {
             },
             {
                 id: 7,
-                picture: require('@/assets/team/vasiliy_p.svg'),
+                picture: require('@/assets/team/vasiliy_p.png'),
                 name: 'Vasiliy P.',
                 role: 'QA Specialist',
                 linkedin: 'https://www.linkedin.com/in/vasiliy-pokrovskiy-2955a7229/',
@@ -116,7 +116,7 @@ export default {
             },
             {
                 id: 8,
-                picture: require('@/assets/team/undefined.svg'),
+                picture: require('@/assets/team/undefined.png'),
                 name: 'Join our team',
                 role: '',
                 contact: 'Contact us',
@@ -127,7 +127,7 @@ export default {
             },
             {
                 id: 9,
-                picture: require('@/assets/team/undefined.svg'),
+                picture: require('@/assets/team/undefined.png'),
                 name: 'Join our team',
                 role: '',
                 contact: 'Contact us',

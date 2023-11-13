@@ -14,7 +14,7 @@
                 Our protocols, USD+ and ETS have been audited by the world's leading blockchain security firms Ackee Blockchain in 2023 and Hacken.io in 2022 respectively. Ensuring the security of our protocols is our highest priority.
             </span>
         </div>
-        <div class="logo-container">
+        <div class="logo-container" @click="openLinkBlank('https://docs.overnight.fi/other/audits')">
             <img class="hacken" :src="require('@/assets/audits/hacken.svg')" alt="Hacken logo">
             <img class="ackee" :src="require('@/assets/audits/ackee.svg')" alt="Ackee logo">
         </div>
@@ -25,6 +25,12 @@
 
 export default {
     name: "AuditsComponent",
+
+    methods: {
+        openLinkBlank(url) {
+            window.open(url, '_blank').focus();
+        },
+    },
 }
 </script>
 
@@ -133,5 +139,6 @@ export default {
 .logo-container {
     display: flex;
     gap: 20px;
+    cursor: pointer;
 }
 </style>

@@ -4,14 +4,31 @@
             Key Features
         </div>
         <div class="header-row">
-            <div v-for="(feature, index) in features" :key="`header-${index}`" class="header" :class="{ active: activeTab === index }" @click="selectTab(index)">
+            <div
+                v-for="(feature, index) in features"
+                :key="`header-${index}`"
+                class="header"
+                :class="{ 'active': activeTab === index }"
+                @click="selectTab(index)"
+            >
                 {{ feature.title }}
             </div>
         </div>
         <div class="tabs">
-            <div v-for="(feature, index) in features" :key="`tab-${index}`" class="tab" :class="{ active: activeTab === index }">
-                <ul class="list-container" v-if="activeTab === index">
-                    <li class="list-item" v-for="(item, itemIndex) in feature.content" :key="`item-${index}-${itemIndex}`">{{ item }}</li>
+            <div
+                v-for="(feature, index) in features"
+                :key="`tab-content-${index}`"
+                class="tab-content"
+                :class="{ 'active': activeTab === index }"
+            >
+                <ul>
+                    <li
+                        class="list-item"
+                        v-for="(item, itemIndex) in feature.content"
+                        :key="`item-${index}-${itemIndex}`"
+                    >
+                        {{ item }}
+                    </li>
                 </ul>
             </div>
         </div>
@@ -42,94 +59,106 @@ export default {
 </script>
 
 <style scoped>
-/* mobile */
-@media only screen and (max-width: 768px) {
-    .title {
-        margin-top: 50px;
-        margin-bottom: 20px;
-        text-transform: uppercase;
-    }
-}
-
-/* desktop */
-@media only screen and (min-width: 769px) {
-    .title {
-        text-transform: uppercase;
-        margin-right: 40px;
-        margin-bottom: 30px;
-    }
-}
-
 .key-features {
     max-width: 1180px;
-    margin: 0 auto 80px auto;
+    margin: 0 auto 180px auto;
+    padding: 0 15px;
+    font-family: "Red Hat Display", sans-serif;
+    height: 250px;
+}
+
+.title {
+    text-align: left;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    padding-left: 15px;
 }
 
 .header-row {
     display: flex;
-    justify-content: center;
-    height: 64.88px;
+
+    border-radius: 20px 20px 0 0;
+    background-color:  var(--ov-bg);
 }
 
 .header {
-    width: 236px;
-    height: 64.88px;
-    background-color: white;
+    flex-grow: 1;
+    text-align: center;
+    padding: 10px 0;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid black;
+    background-color: #FFFFFF;
+    color: #848D9C;
+    border: 2px solid #D1D5DB;
     border-bottom: none;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 
     font-family: "Red Hat Display", sans-serif;
     font-weight: 700;
-    font-size: 15px;
-    line-height: 20px;
+    font-size: 16px;
     text-transform: uppercase;
+    line-height: 22px;
+}
 
-    position: relative;
-    border-radius: 20px 20px 0 0;
-    color: #848D9C;
+.header {
+    border-radius: 5px;
+}
+
+.header:first-child {
+    border-top-left-radius: 5px;
+}
+.header:last-child {
+    border-top-left-radius: 5px;
 }
 
 .header.active {
-    transform: translateY(-5px);
-    border-radius: 30px 30px 0 0;
     color: #0F172A;
+    border-color: #000000;
+    border-bottom: 2px solid #FFFFFF;
+    border-radius: 20px 20px 0 0;
+    z-index: 1;
+    margin-top: -10px;
+    padding-top: 20px;
+}
+
+.header:first-child.active {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.header:not(.active) {
+    border-bottom: 2px solid #FFFFFF;
+    margin-top: 0;
+    padding-top: 10px;
 }
 
 .tabs {
-    display: flex;
-    justify-content: center;
-    border-radius: 0 0 30px 30px;
-    margin-top: -10px;
+    border: 2px solid #000000;
+
+    background-color: #FFFFFF;
+    border-radius: 0 0 20px 20px;
+    position: relative;
+    z-index: 0;
+    height: 225px;
 }
 
-.tab {
-    width: 1180px;
-    height: 200.12px;
-    background-color: white;
+.tab-content {
     display: none;
-    border: 2px solid black;
-    border-radius: 0 0 30px 30px;
-    border-top: none;
+    padding: 10px 0 0 0;
+    background-color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "Red Hat Display", sans-serif;
 }
 
-.tab.active {
+.tab-content.active {
     display: block;
 }
 
 .list-item {
-    font-family: "Red Hat Display", sans-serif;
-    font-weight: 400;
     font-size: 16px;
     line-height: 30px;
-    width: 762px;
-}
-
-.list-container {
-    padding-top: 20px;
+    color: #0F172A;
+    width: 700px;
 }
 </style>

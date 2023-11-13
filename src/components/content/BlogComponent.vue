@@ -5,10 +5,10 @@
                 Follow Our Updates
             </div>
             <div v-if="!isMobile">
-                <button class="button">subscribe</button>
+                <button class="button" @click="openLinkBlank('https://overnight.fi/blog/')">subscribe</button>
             </div>
             <div v-else>
-                <button class="button-mobile">subscribe</button>
+                <button class="button-mobile" @click="openLinkBlank('https://overnight.fi/blog/')">subscribe</button>
             </div>
         </div>
         <div class="blog-cards-container">
@@ -57,6 +57,10 @@ export default {
     },
 
     methods: {
+        openLinkBlank(url) {
+            window.open(url, '_blank').focus();
+        },
+
         async getImgLink(id) {
 
             let result = null;

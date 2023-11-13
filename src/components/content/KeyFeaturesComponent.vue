@@ -3,41 +3,30 @@
         <div class="title">
             Key Features
         </div>
-        <div class="header-row">
-            <div
-                v-for="(feature, index) in features"
-                :key="`header-${index}`"
-                class="header"
-                :class="{ 'active': activeTab === index }"
-                @click="selectTab(index)"
-            >
-                {{ feature.title }}
-            </div>
-        </div>
-        <div class="tabs">
-            <div
-                v-for="(feature, index) in features"
-                :key="`tab-content-${index}`"
-                class="tab-content"
-                :class="{ 'active': activeTab === index }"
-            >
-                <ul>
-                    <li
-                        class="list-item"
-                        v-for="(item, itemIndex) in feature.content"
-                        :key="`item-${index}-${itemIndex}`"
-                    >
-                        {{ item }}
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <KeyFeaturesDesktop
+            v-if="isDesktop"
+            :features="features"
+        />
+        <KeyFeaturesMobile
+            v-else
+            :features="features"
+        />
     </div>
 </template>
 
 <script>
+import KeyFeaturesDesktop from "@/components/tools/KeyFeaturesDesktop";
+import KeyFeaturesMobile from "@/components/tools/KeyFeaturesMobile";
+import {mapState} from "vuex";
+
 export default {
     name: "KeyFeaturesComponent",
+
+    components: {
+        KeyFeaturesDesktop,
+        KeyFeaturesMobile
+    },
+
     data() {
         return {
             activeTab: 0,
@@ -50,6 +39,11 @@ export default {
             ]
         };
     },
+
+    computed: {
+        ...mapState('device', ['deviceType', "deviceOrientation", 'isMobile', "isTablet", 'isDesktop']),
+    },
+
     methods: {
         selectTab(index) {
             this.activeTab = index;
@@ -59,106 +53,39 @@ export default {
 </script>
 
 <style scoped>
-.key-features {
-    max-width: 1180px;
-    margin: 0 auto 180px auto;
-    padding: 0 15px;
-    font-family: "Red Hat Display", sans-serif;
-    height: 250px;
+/* Mobile styles */
+@media only screen and (max-width: 768px) {
+    .key-features {
+        max-width: 100%;
+        margin: 40px auto 150px auto;
+        padding: 0 20px;
+        font-family: "Red Hat Display", sans-serif;
+        height: 250px;
+    }
+
+    .title {
+        text-align: left;
+        text-transform: uppercase;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
 }
 
-.title {
-    text-align: left;
-    text-transform: uppercase;
-    margin-bottom: 30px;
-    padding-left: 15px;
-}
+/* desktop */
+@media only screen and (min-width: 769px) {
+    .key-features {
+        max-width: 1180px;
+        margin: 0 auto 180px auto;
+        padding: 0 15px;
+        font-family: "Red Hat Display", sans-serif;
+        height: 250px;
+    }
 
-.header-row {
-    display: flex;
-
-    border-radius: 20px 20px 0 0;
-    background-color:  var(--ov-bg);
-}
-
-.header {
-    flex-grow: 1;
-    text-align: center;
-    padding: 10px 0;
-    cursor: pointer;
-    background-color: #FFFFFF;
-    color: #848D9C;
-    border: 2px solid #D1D5DB;
-    border-bottom: none;
-    transition: all 0.3s ease;
-
-    font-family: "Red Hat Display", sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    text-transform: uppercase;
-    line-height: 22px;
-}
-
-.header {
-    border-radius: 5px;
-}
-
-.header:first-child {
-    border-top-left-radius: 5px;
-}
-.header:last-child {
-    border-top-left-radius: 5px;
-}
-
-.header.active {
-    color: #0F172A;
-    border-color: #000000;
-    border-bottom: 2px solid #FFFFFF;
-    border-radius: 20px 20px 0 0;
-    z-index: 1;
-    margin-top: -10px;
-    padding-top: 20px;
-}
-
-.header:first-child.active {
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-.header:not(.active) {
-    border-bottom: 2px solid #FFFFFF;
-    margin-top: 0;
-    padding-top: 10px;
-}
-
-.tabs {
-    border: 2px solid #000000;
-
-    background-color: #FFFFFF;
-    border-radius: 0 0 20px 20px;
-    position: relative;
-    z-index: 0;
-    height: 225px;
-}
-
-.tab-content {
-    display: none;
-    padding: 10px 0 0 0;
-    background-color: #FFFFFF;
-    font-size: 16px;
-    font-weight: 400;
-    font-family: "Red Hat Display", sans-serif;
-}
-
-.tab-content.active {
-    display: block;
-}
-
-.list-item {
-    font-size: 16px;
-    line-height: 30px;
-    color: #0F172A;
-    width: 700px;
+    .title {
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+        padding-left: 15px;
+    }
 }
 </style>

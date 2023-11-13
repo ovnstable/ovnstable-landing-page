@@ -53,10 +53,10 @@ export default {
     },
 
     async created() {
-        await fetch('https://overnight.fi/blog/wp-json/wp/v2/posts/?per_page=4', {})
+        await fetch('https://overnight.fi/blog/wp-json/wp/v2/posts/?per_page=10', {})
             .then(value => value.json())
             .then(async value => {
-                value.sort((a, b) => new Date(a.date) - new Date(b.date));
+                value.sort((a, b) => new Date(b.date) - new Date(a.date));
                 console.log("Blogposts fetching:", value)
                 for (const post of value) {
                     let blogPost = {

@@ -88,13 +88,24 @@ export default {
    }
 
     .post-bg-img {
-        border-radius: 30px 0 0 0;
         width: auto;
         height: 200px;
+    }
+
+    .post-bg-img:nth-of-type(1) {
+        border-radius: 30px 0 0 0;
+    }
+    .post-bg-img:nth-of-type(3) {
     }
 }
 
 .news-card-container {
+    background-color: #FFFFFF;
+    text-align: start;
+    border-right: 1px solid #0F172A;
+}
+
+.news-card-container:first-of-type {
     background-color: #FFFFFF;
     text-align: start;
     border-radius: 30px 0 0 30px;
@@ -104,8 +115,6 @@ export default {
     display: flex;
     height: auto;
 }
-
-
 
 .blog-title {
     font-family: "Red Hat Display", sans-serif;

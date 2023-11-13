@@ -19,6 +19,7 @@ module.exports = {
       singleline: 'never',
       multiline: 'always',
     }],
+    'no-plusplus': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-shadow': [2, { allow: ['state', 'getters'] }],

@@ -14,5 +14,10 @@ const Vue = createApp(App)
 
 Vue.component('FontAwesomeIcon', FontAwesomeIcon)
 
+document.addEventListener('mousedown', (e) => {
+    if (e.button === 1) {
+        e.preventDefault();
+    }
+}, false);
 
 Vue.mount('#app')

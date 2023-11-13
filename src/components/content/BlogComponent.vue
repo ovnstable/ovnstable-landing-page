@@ -5,14 +5,31 @@
                 Follow Our Updates
             </div>
             <div v-if="!isMobile">
-                <button class="button" @click="openLinkBlank('https://overnight.fi/blog/')">subscribe</button>
+                <button
+                    class="button"
+                    @click="openLinkBlank('https://overnight.fi/blog/')"
+                    @mouseup.middle="handleMiddleClick($event, 'https://overnight.fi/blog/')"
+                >
+                    subscribe
+                </button>
             </div>
             <div v-else>
-                <button class="button-mobile" @click="openLinkBlank('https://overnight.fi/blog/')">subscribe</button>
+                <button
+                    class="button-mobile"
+                    @click="openLinkBlank('https://overnight.fi/blog/')"
+                    @mouseup.middle="handleMiddleClick($event, 'https://overnight.fi/blog/')"
+                >
+                    subscribe
+                </button>
             </div>
         </div>
         <div class="blog-cards-container">
-            <NewsCard v-for="item in blogCards" :key="item.id" :post-data="item"/>
+            <NewsCard
+                v-for="item in blogCards"
+                :key="item.id"
+                :post-data="item"
+                @mouseup="handleMiddleClick($event, item.link)"
+            />
         </div>
     </div>
 </template>
@@ -59,6 +76,13 @@ export default {
     methods: {
         openLinkBlank(url) {
             window.open(url, '_blank').focus();
+        },
+
+        handleMiddleClick(e, url) {
+            if (e.button === 1) {
+                e.preventDefault();
+                window.open(url, '_blank').focus();
+            }
         },
 
         async getImgLink(id) {

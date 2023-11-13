@@ -1,57 +1,168 @@
 <template>
-    <div class="main-chart-container" id="tvl-charts">
+    <div
+        class="main-chart-container"
+        id="tvl-charts"
+    >
         <div class="chart-title">
-            <span class="title">Total value locked</span>
-            <span class="title value">{{totalValue}}</span>
+            <span class="title">
+                Total value locked
+            </span>
+            <span class="title value">
+                {{totalValue}}
+            </span>
         </div>
-        <div v-if="mekkaData" class="overflow-hidden">
+        <div
+            v-if="mekkaData"
+            class="overflow-hidden"
+        >
             <div class="chart-container">
-                <div class="chart-chain-blocks" v-if="currentBlockSet === 0" >
+                <div
+                    v-if="currentBlockSet === 0"
+                    class="chart-chain-blocks"
+                >
                     <div class="chart-block">
-                        <img class="chain-logo" :src="require('@/assets/network/base.svg')" alt="Base logo">
-                        <label v-if="!isMobile" class="chain-text">Base</label>
-                        <label class="chain-text">{{ '$' + utils.formatNumberToMln(this.totalBaseValue) + 'M' }}</label>
+                        <img
+                            class="chain-logo"
+                            :src="require('@/assets/network/base.svg')"
+                            alt="Base logo"
+                        >
+                        <label
+                            v-if="!isMobile"
+                            class="chain-text"
+                        >
+                            Base
+                        </label>
+                        <label class="chain-text">
+                            {{ '$' + utils.formatNumberToMln(this.totalBaseValue) + 'M' }}
+                        </label>
                     </div>
                     <div class="chart-block">
-                        <img class="chain-logo" :src="require('@/assets/network/optimism.svg')" alt="Optimism logo">
-                        <label v-if="!isMobile" class="chain-text">Optimism</label>
-                        <label class="chain-text">{{ '$' + utils.formatNumberToMln(this.totalOptimismValue) + 'M' }}</label>
+                        <img
+                            class="chain-logo"
+                            :src="require('@/assets/network/optimism.svg')"
+                            alt="Optimism logo"
+                        >
+                        <label
+                            v-if="!isMobile"
+                            class="chain-text"
+                        >
+                            Optimism
+                        </label>
+                        <label class="chain-text">
+                            {{ '$' + utils.formatNumberToMln(this.totalOptimismValue) + 'M' }}
+                        </label>
                     </div>
                     <div class="chart-block">
-                        <img class="chain-logo" :src="require('@/assets/network/arbitrum.svg')" alt="Arbitrum logo">
-                        <label v-if="!isMobile" class="chain-text">Arbitrum</label>
-                        <label class="chain-text">{{ '$' + utils.formatNumberToMln(this.totalArbitrumValue) + 'M' }}</label>
+                        <img
+                            class="chain-logo"
+                            :src="require('@/assets/network/arbitrum.svg')"
+                            alt="Arbitrum logo"
+                        >
+                        <label
+                            v-if="!isMobile"
+                            class="chain-text"
+                        >
+                            Arbitrum
+                        </label>
+                        <label class="chain-text">
+                            {{ '$' + utils.formatNumberToMln(this.totalArbitrumValue) + 'M' }}
+                        </label>
                     </div>
                     <div class="chart-block">
-                        <img class="chain-logo" :src="require('@/assets/network/binance.svg')" alt="Binance logo">
-                        <label v-if="!isMobile" class="chain-text">Binance</label>
-                        <label class="chain-text">{{ '$' + utils.formatNumberToMln(this.totalBscValue) + 'M' }}</label>
+                        <img
+                            class="chain-logo"
+                            :src="require('@/assets/network/binance.svg')"
+                            alt="Binance logo"
+                        >
+                        <label
+                            v-if="!isMobile"
+                            class="chain-text"
+                        >
+                            Binance
+                        </label>
+                        <label class="chain-text">
+                            {{ '$' + utils.formatNumberToMln(this.totalBscValue) + 'M' }}
+                        </label>
                     </div>
-                    <div @click="toggleChartBlocks" class="icon-container">
-                        <img class="arrow-icon" :src="require('@/assets/widget/arrow_right.svg')" alt="Arrow right icon">
+                    <div
+                        class="icon-container"
+                        @click="toggleChartBlocks"
+                    >
+                        <img
+                            class="arrow-icon"
+                            :src="require('@/assets/widget/arrow_right.svg')"
+                            alt="Arrow right icon"
+                        >
                     </div>
                 </div>
-                <div class="chart-chain-blocks" v-if="currentBlockSet === 1">
-                    <div @click="toggleChartBlocks" class="icon-container">
-                        <img class="arrow-icon" :src="require('@/assets/widget/arrow_left.svg')" alt="Arrow right icon">
+                <div
+                    v-if="currentBlockSet === 1"
+                    class="chart-chain-blocks"
+                >
+                    <div
+                        class="icon-container"
+                        @click="toggleChartBlocks"
+                    >
+                        <img
+                            class="arrow-icon"
+                            :src="require('@/assets/widget/arrow_left.svg')"
+                            alt="Arrow right icon"
+                        >
                     </div>
                     <div class="chart-block">
-                        <img class="chain-logo" :src="require('@/assets/network/zksync.svg')" alt="Zksync logo">
-                        <label v-if="!isMobile" class="chain-text">Zksync</label>
-                        <label class="chain-text">{{ '$' + utils.formatNumberToMln(this.totalZksyncValue) + 'M' }}</label>
+                        <img
+                            class="chain-logo"
+                            :src="require('@/assets/network/zksync.svg')"
+                            alt="Zksync logo"
+                        >
+                        <label
+                            v-if="!isMobile"
+                            class="chain-text"
+                        >
+                            Zksync
+                        </label>
+                        <label class="chain-text">
+                            {{ '$' + utils.formatNumberToMln(this.totalZksyncValue) + 'M' }}
+                        </label>
                     </div>
                     <div class="chart-block">
-                        <img class="chain-logo" :src="require('@/assets/network/polygon.svg')" alt="Polygon logo">
-                        <label v-if="!isMobile" class="chain-text">Polygon</label>
-                        <label class="chain-text">{{ '$' + utils.formatNumberToMln(this.totalPolygonValue) + 'M' }}</label>
+                        <img
+                            class="chain-logo"
+                            :src="require('@/assets/network/polygon.svg')"
+                            alt="Polygon logo"
+                        >
+                        <label
+                            v-if="!isMobile"
+                            class="chain-text"
+                        >
+                            Polygon
+                        </label>
+                        <label class="chain-text">
+                            {{ '$' + utils.formatNumberToMln(this.totalPolygonValue) + 'M' }}
+                        </label>
                     </div>
                     <div class="chart-block">
-                        <img class="chain-logo" :src="require('@/assets/network/linea.svg')" alt="Linea logo">
-                        <label v-if="!isMobile" class="chain-text">Linea</label>
-                        <label class="chain-text">{{ '$' + utils.formatNumberToMln(this.totalLineaValue) + 'M' }}</label>
+                        <img
+                            class="chain-logo"
+                            :src="require('@/assets/network/linea.svg')"
+                            alt="Linea logo"
+                        >
+                        <label
+                            v-if="!isMobile"
+                            class="chain-text"
+                        >
+                            Linea
+                        </label>
+                        <label class="chain-text">
+                            {{ '$' + utils.formatNumberToMln(this.totalLineaValue) + 'M' }}
+                        </label>
                     </div>
                 </div>
-                <div id="chart" class="chart"></div>
+                <div
+                    id="chart"
+                    class="chart"
+                >
+                </div>
             </div>
         </div>
     </div>
@@ -127,6 +238,13 @@ export default {
     methods: {
         toggleChartBlocks() {
             this.currentBlockSet = (this.currentBlockSet === 0) ? 1 : 0;
+        },
+
+        handleMiddleClick(e, url) {
+            if (e.button === 1) {
+                e.preventDefault();
+                window.open(url, '_blank').focus();
+            }
         },
 
         async loadProductTvlData() {

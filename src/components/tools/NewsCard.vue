@@ -1,7 +1,14 @@
 <template>
-    <div class="news-card-container" @click="openLink(postData.link)">
+    <div
+        class="news-card-container"
+        @click="openLink(postData.link)"
+    >
         <div class="image-container">
-            <img class="post-bg-img" :src="postData.imgLink" alt="Blogpost image">
+            <img
+                class="post-bg-img"
+                :src="postData.imgLink"
+                alt="Blogpost image"
+            >
         </div>
         <div class="blog-title">
             <label v-html="postData.title"></label>

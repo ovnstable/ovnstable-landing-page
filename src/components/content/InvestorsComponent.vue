@@ -4,29 +4,67 @@
             Our valued investors
         </div>
         <div class="companies-container">
-            <div class="investor-name" @click="openLinkBlank('https://twitter.com/sandeepnailwal')">
+            <div
+                class="investor-name"
+                @click="openLinkBlank('https://twitter.com/sandeepnailwal')"
+                @mouseup.middle="handleMiddleClick($event, 'https://twitter.com/sandeepnailwal')"
+            >
                 Sandeep Naiwal
             </div>
-            <div class="investor-name" @click="openLinkBlank('https://twitter.com/twobitidiot')">
+            <div
+                class="investor-name"
+                @click="openLinkBlank('https://twitter.com/twobitidiot')"
+                @mouseup.middle="handleMiddleClick($event, 'https://twitter.com/twobitidiot')"
+            >
                 Ryan Selkis
             </div>
-            <div class="investor-company hack" @click="openLinkBlank('https://hack.vc/')">
-                <img :src="require('@/assets/investors/hack-vc.svg')" alt="Hack VC logo">
+            <div
+                class="investor-company hack"
+                @click="openLinkBlank('https://hack.vc/')"
+                @mouseup.middle="handleMiddleClick($event, 'https://hack.vc/')"
+            >
+                <img
+                    :src="require('@/assets/investors/hack-vc.svg')"
+                    alt="Hack VC logo"
+                >
             </div>
-            <div class="investor-company labs" @click="openLinkBlank('https://www.fjlabs.com/')">
-                <img :src="require('@/assets/investors/fj-labs.svg')" alt="FJ Labs logo">
+            <div
+                class="investor-company labs"
+                @click="openLinkBlank('https://www.fjlabs.com/')"
+                @mouseup.middle="handleMiddleClick($event, 'https://www.fjlabs.com/')"
+            >
+                <img
+                    :src="require('@/assets/investors/fj-labs.svg')"
+                    alt="FJ Labs logo"
+                >
             </div>
-            <div class="investor-name" @click="openLinkBlank('https://twitter.com/tubergen')">
+            <div
+                class="investor-name"
+                @click="openLinkBlank('https://twitter.com/tubergen')"
+                @mouseup.middle="handleMiddleClick($event, 'https://twitter.com/tubergen')"
+            >
                 Brian Tubergen
             </div>
-            <div class="investor-name" @click="openLinkBlank('https://twitter.com/paulrholland')">
+            <div
+                class="investor-name"
+                @click="openLinkBlank('https://twitter.com/paulrholland')"
+                @mouseup.middle="handleMiddleClick($event, 'https://twitter.com/paulrholland')"
+            >
                 Paul Holland
             </div>
         </div>
     </div>
 
-    <div v-if="isDesktop" class="scroll-top-container" @click="scrollToTop">
-        <img class="arrow-icon" :src="require('@/assets/scroll-top-arrow.png')" alt="Scroll back icon">
+    <div
+        v-if="isDesktop"
+        class="scroll-top-container"
+        @click="scrollToTop"
+    >
+        <img
+            class="arrow-icon"
+            :src="require('@/assets/scroll-top-arrow.png')"
+            alt="Scroll back icon"
+        >
     </div>
 </template>
 
@@ -45,12 +83,19 @@ export default {
             window.open(url, '_blank').focus();
         },
 
+        handleMiddleClick(e, url) {
+            if (e.button === 1) {
+                e.preventDefault();
+                window.open(url, '_blank').focus();
+            }
+        },
+
         scrollToTop() {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
-        }
+        },
     }
 }
 </script>

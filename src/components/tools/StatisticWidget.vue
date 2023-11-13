@@ -12,26 +12,57 @@
                    </div>
                 </div>
 
-                <div class="widget-container" v-else>
-                   <div v-if="!isClicked" class="card-tab">
-                      <div class="statistic-title" @click="handleClick">
+                <div
+                    v-else
+                    class="widget-container"
+                >
+                   <div
+                       v-if="!isClicked"
+                       class="card-tab"
+                   >
+                      <div
+                          class="statistic-title"
+                          @click="handleClick"
+                      >
                          {{ formattedTotalValueLocked }}
                       </div>
                       <div class="tvl-text-container">
                           <div class="lock-icon-container">
-                              <img class="lock-icon" :src="require('@/assets/widget/lock.svg')" alt="lock icon">
+                              <img
+                                  class="lock-icon"
+                                  :src="require('@/assets/widget/lock.svg')"
+                                  alt="lock icon"
+                              >
                           </div>
-                          <div class="tvl-label"  @click="scrollToCharts">
+                          <div
+                              class="tvl-label"
+                              @click="scrollToCharts"
+                          >
                               TOTAL VALUE LOCKED
                           </div>
-                          <div class="arrow-icon-container" @click="handleClick">
-                              <img class="arrow-icon" :src="require('@/assets/widget/arrow_right.svg')" alt="arrow right icon">
+                          <div
+                              class="arrow-icon-container"
+                              @click="handleClick"
+                          >
+                              <img
+                                  class="arrow-icon"
+                                  :src="require('@/assets/widget/arrow_right.svg')"
+                                  alt="arrow right icon"
+                              >
                           </div>
                       </div>
                    </div>
-                   <div v-else class="card-tab"  @click="handleClick">
+                   <div
+                       v-else
+                       class="card-tab"
+                       @click="handleClick"
+                   >
                        <div class="arrow-icon-container">
-                           <img class="arrow-icon" :src="require('@/assets/widget/arrow_left.svg')" alt="arrow left icon">
+                           <img
+                               class="arrow-icon"
+                               :src="require('@/assets/widget/arrow_left.svg')"
+                               alt="arrow left icon"
+                           >
                        </div>
                        <div class="statistic-title">
                            {{ formattedTotalProfit }}
@@ -44,7 +75,11 @@
                    </div>
 
                    <div class="apy-container">
-                       <div class="value-container" @click="openBestChainApy()">
+                       <div
+                           class="value-container"
+                           @click="openBestChainApy()"
+                           @mouseup.middle="handleMiddleClick($event, 'https://app.overnight.fi/stats?tabName=' + (bestChainApy ? bestChainApy.toLowerCase() : '') + '&chart=month')"
+                       >
                            <div class="statistic-title">
                                {{ formatNumberToFixed(data.usdPlusProduct.value) + '%' }}
                            </div>
@@ -53,7 +88,11 @@
                            </div>
                        </div>
 
-                       <div class="value-container" @click="openLinkBlank('https://app.overnight.fi/stats/eth?tabName=arbitrum')">
+                       <div
+                           class="value-container"
+                           @click="openLinkBlank('https://app.overnight.fi/stats/eth?tabName=arbitrum')"
+                           @mouseup.middle="handleMiddleClick($event, 'https://app.overnight.fi/stats/eth?tabName=arbitrum')"
+                       >
                            <div class="statistic-title">
                                {{ formatNumberToFixed(data.ethPlusProduct.value) + '%' }}
                            </div>
@@ -65,7 +104,11 @@
                        <div class="payout-container" >
                            <div class="clock-container">
                                <div class="clock-icon-container">
-                                   <img class="clock-icon" :src="require('@/assets/widget/sandclock.svg')" alt="sand clock icon">
+                                   <img
+                                       class="clock-icon"
+                                       :src="require('@/assets/widget/sandclock.svg')"
+                                       alt="sand clock icon"
+                                   >
                                </div>
                                <div class="statistic-title">
                                    {{ timeFromPayout }}
@@ -170,6 +213,13 @@ export default {
 
         handleClick() {
             this.isClicked = !this.isClicked;
+        },
+
+        handleMiddleClick(e, url) {
+            if (e.button === 1) {
+                e.preventDefault();
+                window.open(url, '_blank').focus();
+            }
         },
 
         scrollToCharts() {

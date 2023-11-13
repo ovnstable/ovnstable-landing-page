@@ -16,9 +16,8 @@ export default {
 @media only screen and (max-width: 768px) {
     .svg-background-container {
         height: 100%;
-        background-image: url('../../assets/roadmap-mobile.svg'); /* Use mobile-specific image */
-        /* Other background properties can remain the same */
-        background-size: 100% 100%; /* Stretch image to cover the container */
+        background-image: url('../../assets/roadmap-mobile.svg');
+        background-size: 100% 100%;
         background-repeat: no-repeat;
     }
 }
@@ -27,7 +26,7 @@ export default {
 @media only screen and (min-width: 769px) {
     .svg-background-container {
         height: 100%;
-        background-image: url('../../assets/roadmap.svg'); /* Use desktop-specific image */
+        background-image: url('../../assets/roadmap.svg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -36,7 +35,6 @@ export default {
 
 .svg-background-container {
     width: 100%;
-    /* The background-image property is now set within the media queries, so it's removed from here */
 }
 
 </style>

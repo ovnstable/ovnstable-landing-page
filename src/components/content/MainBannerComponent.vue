@@ -1,12 +1,21 @@
 <template>
-    <div class="hero-container" v-if="isDesktop">
+    <div
+        v-if="isDesktop"
+        class="hero-container"
+    >
         <div class="hero-text-container">
             <div class="hero-title">
                 <div class="left-border-div">
                 </div>
                 <div class="hero-labels">
-                    <span class="main-title">OVERNIGHT FINANCE - <br> Your money shouldn’t sleep <br></span>
-                    <span class="main-sub-title">on-chain yield fully backed by <br> proprietary delta-neutral strategies</span>
+                    <span class="main-title">
+                        OVERNIGHT FINANCE - <br>
+                        Your money shouldn’t sleep <br>
+                    </span>
+                    <span class="main-sub-title">
+                        on-chain yield fully backed by <br>
+                        proprietary delta-neutral strategies
+                    </span>
                 </div>
             </div>
 
@@ -16,31 +25,48 @@
 
             <div class="button-container">
                 <button
-                    @click="openLinkBlank('https://app.overnight.fi/swap')"
                     class="button text-styling"
+                    @click="openLinkBlank('https://app.overnight.fi/swap')"
+                    @mouseup.middle="handleMiddleClick($event, 'https://app.overnight.fi/swap')"
                 >
                     Connect
                 </button>
             </div>
         </div>
         <div class="hero-image">
-            <img class="hero-blended" :src="require('@/assets/main/hero.svg')" alt="hero image">
+            <img
+                class="hero-blended"
+                :src="require('@/assets/main/hero.svg')"
+                alt="hero image"
+            >
         </div>
     </div>
-    <div class="hero-container-mobile" v-else>
+    <div
+        v-else
+        class="hero-container-mobile"
+    >
         <div class="hero-text-container-mobile">
             <div class="hero-title">
                 <div class="left-border-div-mobile">
                 </div>
                 <div class="hero-labels">
-                    <span class="main-title-mobile">OVERNIGHT FINANCE - <br> Your money <br> shouldn’t sleep <br></span>
-                    <span class="main-sub-title-mobile">on-chain yield fully <br> backed by  proprietary <br> delta-neutral strategies</span>
+                    <span class="main-title-mobile">
+                        OVERNIGHT FINANCE - <br>
+                        Your money <br>
+                        shouldn’t sleep <br>
+                    </span>
+                    <span class="main-sub-title-mobile">
+                        on-chain yield fully <br>
+                        backed by  proprietary <br>
+                        delta-neutral strategies
+                    </span>
                 </div>
             </div>
             <div class="button-container">
                 <button
-                    @click="openLinkBlank('https://app.overnight.fi/swap')"
                     class="button-mobile"
+                    @click="openLinkBlank('https://app.overnight.fi/swap')"
+                    @mouseup.middle="handleMiddleClick($event, 'https://app.overnight.fi/swap')"
                 >
                     Connect
                 </button>
@@ -52,7 +78,11 @@
 
         </div>
         <div class="hero-image">
-            <img class="hero-blended hero-blended-mobile" :src="require('@/assets/main/hero.svg')" alt="hero image">
+            <img
+                class="hero-blended hero-blended-mobile"
+                :src="require('@/assets/main/hero.svg')"
+                alt="hero image"
+            >
         </div>
     </div>
 </template>
@@ -73,6 +103,13 @@ export default {
     methods: {
         openLinkBlank(url) {
             window.open(url, '_blank').focus();
+        },
+
+        handleMiddleClick(e, url) {
+            if (e.button === 1) {
+                e.preventDefault();
+                window.open(url, '_blank').focus();
+            }
         },
     }
 }

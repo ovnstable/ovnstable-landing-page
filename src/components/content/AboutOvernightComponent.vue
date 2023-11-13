@@ -3,7 +3,10 @@
        <div class="carousel">
             <PartnersCarousel />
        </div>
-       <div class="cards-container" v-if="isDesktop || isTablet">
+       <div
+           v-if="isDesktop || isTablet"
+           class="cards-container"
+       >
            <div class="single-card">
                <StepCards
                    step-label="Step 1"
@@ -24,7 +27,10 @@
                />
            </div>
            <div class="arrow-container">
-               <img :src="require('@/assets/cards/arrow-right.svg')" alt="">
+               <img
+                   :src="require('@/assets/cards/arrow-right.svg')"
+                   alt="Arrow right icon"
+               >
            </div>
            <div class="single-card">
                <StepCards
@@ -36,7 +42,10 @@
            </div>
        </div>
 
-       <div class="cards-container-mobile" v-if="isMobile">
+       <div
+           v-if="isMobile"
+           class="cards-container-mobile"
+       >
            <div class="single-card">
                <StepCardsMobile
                    step-label="Step 1"
@@ -45,7 +54,11 @@
                    sub-title="Instantly mint any amount of Tokens+"
                />
                <div class="arrow-container-mobile">
-                   <img class="arrow-mobile" :src="require('@/assets/cards/arrow-bottom.svg')" alt="Arrow bottom">
+                   <img
+                       class="arrow-mobile"
+                       :src="require('@/assets/cards/arrow-bottom.svg')"
+                       alt="Arrow bottom"
+                   >
                </div>
            </div>
            <div class="single-card">
@@ -56,7 +69,11 @@
                    sub-title="Do nothing and receive daily rebase by holding Tokens+"
                />
                <div class="arrow-container-mobile">
-                   <img class="arrow-mobile" :src="require('@/assets/cards/arrow-bottom.svg')" alt="Arrow bottom">
+                   <img
+                       class="arrow-mobile"
+                       :src="require('@/assets/cards/arrow-bottom.svg')"
+                       alt="Arrow bottom"
+                   >
                </div>
            </div>
            <div class="single-card">

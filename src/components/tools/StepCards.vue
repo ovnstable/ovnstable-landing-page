@@ -4,7 +4,11 @@
     </div>
     <div class="cards-container">
         <div class="step-card-box">
-            <img class="image" :src="require('@/assets/cards/' + imageLink)" alt="About products image">
+            <img
+                class="image"
+                :src="require('@/assets/cards/' + imageLink)"
+                alt="About products image"
+            >
         </div>
         <div class="sub-title">
             {{legendTitle}}

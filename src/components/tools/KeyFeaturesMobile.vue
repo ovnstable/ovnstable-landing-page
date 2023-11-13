@@ -1,61 +1,61 @@
 <template>
-    <div>
-        <div class="header-row">
-            <div
-                v-for="(feature, index) in features"
-                :key="`header-${index}`"
-                class="header"
-                :class="{ 'active': activeTab === index }"
-                @click="selectTab(index)"
-            >
-                {{ feature.title }}
-            </div>
-        </div>
-        <div class="tabs">
-            <div
-                v-for="(feature, index) in features"
-                :key="`tab-content-${index}`"
-                class="tab-content"
-                :class="{ 'active': activeTab === index }"
-            >
-                <ul>
-                    <li
-                        class="list-item"
-                        v-for="(item, itemIndex) in feature.content"
-                        :key="`item-${index}-${itemIndex}`"
-                    >
-                        {{ item }}
-                    </li>
-                </ul>
-            </div>
-        </div>
+  <div>
+    <div class="header-row">
+      <div
+        v-for="(feature, index) in features"
+        :key="`header-${index}`"
+        class="header"
+        :class="{ 'active': activeTab === index }"
+        @click="selectTab(index)"
+      >
+        {{ feature.title }}
+      </div>
     </div>
+    <div class="tabs">
+      <div
+        v-for="(feature, index) in features"
+        :key="`tab-content-${index}`"
+        class="tab-content"
+        :class="{ 'active': activeTab === index }"
+      >
+        <ul>
+          <li
+            class="list-item"
+            v-for="(item, itemIndex) in feature.content"
+            :key="`item-${index}-${itemIndex}`"
+          >
+            {{ item }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 
 export default {
-    name: "KeyFeaturesDesktop",
+  name: 'KeyFeaturesDesktop',
 
-    props: {
-        features: {
-            type: Array,
-            required: true
-        }
+  props: {
+    features: {
+      type: Array,
+      required: true,
     },
+  },
 
-    data() {
-        return {
-            activeTab: 0
-        };
+  data() {
+    return {
+      activeTab: 0,
+    };
+  },
+
+  methods: {
+    selectTab(index) {
+      this.activeTab = index;
     },
-
-    methods: {
-        selectTab(index) {
-            this.activeTab = index;
-        }
-    }
-}
+  },
+};
 </script>
 
 <style scoped>

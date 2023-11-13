@@ -1,118 +1,118 @@
 <template>
-    <div
-        v-if="isDesktop"
-        class="hero-container"
-    >
-        <div class="hero-text-container">
-            <div class="hero-title">
-                <div class="left-border-div">
-                </div>
-                <div class="hero-labels">
-                    <span class="main-title">
-                        OVERNIGHT FINANCE - <br>
-                        Your money shouldn’t sleep <br>
-                    </span>
-                    <span class="main-sub-title">
-                        on-chain yield fully backed by <br>
-                        proprietary delta-neutral strategies
-                    </span>
-                </div>
-            </div>
-
-            <div class="widget-container">
-                <StatisticWidget></StatisticWidget>
-            </div>
-
-            <div class="button-container">
-                <button
-                    class="button text-styling"
-                    @click="openLinkBlank('https://app.overnight.fi/swap')"
-                    @mouseup.middle="handleMiddleClick($event, 'https://app.overnight.fi/swap')"
-                >
-                    Connect
-                </button>
-            </div>
+  <div
+    v-if="isDesktop"
+    class="hero-container"
+  >
+    <div class="hero-text-container">
+      <div class="hero-title">
+        <div class="left-border-div">
         </div>
-        <div class="hero-image">
-            <img
-                class="hero-blended"
-                :src="require('@/assets/main/hero.svg')"
-                alt="hero image"
-            >
+        <div class="hero-labels">
+          <span class="main-title">
+            OVERNIGHT FINANCE - <br>
+            Your money shouldn’t sleep <br>
+          </span>
+          <span class="main-sub-title">
+            on-chain yield fully backed by <br>
+            proprietary delta-neutral strategies
+          </span>
         </div>
+      </div>
+
+      <div class="widget-container">
+        <StatisticWidget></StatisticWidget>
+      </div>
+
+      <div class="button-container">
+        <button
+          class="button text-styling"
+          @click="openLinkBlank('https://app.overnight.fi/swap')"
+          @mouseup.middle="handleMiddleClick($event, 'https://app.overnight.fi/swap')"
+        >
+          Connect
+        </button>
+      </div>
     </div>
-    <div
-        v-else
-        class="hero-container-mobile"
-    >
-        <div class="hero-text-container-mobile">
-            <div class="hero-title">
-                <div class="left-border-div-mobile">
-                </div>
-                <div class="hero-labels">
-                    <span class="main-title-mobile">
-                        OVERNIGHT FINANCE - <br>
-                        Your money <br>
-                        shouldn’t sleep <br>
-                    </span>
-                    <span class="main-sub-title-mobile">
-                        on-chain yield fully <br>
-                        backed by  proprietary <br>
-                        delta-neutral strategies
-                    </span>
-                </div>
-            </div>
-            <div class="button-container">
-                <button
-                    class="button-mobile"
-                    @click="openLinkBlank('https://app.overnight.fi/swap')"
-                    @mouseup.middle="handleMiddleClick($event, 'https://app.overnight.fi/swap')"
-                >
-                    Connect
-                </button>
-            </div>
-
-            <div class="widget-container-mobile">
-                <StatisticWidget></StatisticWidget>
-            </div>
-
-        </div>
-        <div class="hero-image">
-            <img
-                class="hero-blended hero-blended-mobile"
-                :src="require('@/assets/main/hero.svg')"
-                alt="hero image"
-            >
-        </div>
+    <div class="hero-image">
+      <img
+        class="hero-blended"
+        :src="require('@/assets/main/hero.svg')"
+        alt="hero image"
+      >
     </div>
+  </div>
+  <div
+    v-else
+    class="hero-container-mobile"
+  >
+    <div class="hero-text-container-mobile">
+      <div class="hero-title">
+        <div class="left-border-div-mobile">
+        </div>
+        <div class="hero-labels">
+          <span class="main-title-mobile">
+            OVERNIGHT FINANCE - <br>
+            Your money <br>
+            shouldn’t sleep <br>
+          </span>
+          <span class="main-sub-title-mobile">
+            on-chain yield fully <br>
+            backed by  proprietary <br>
+            delta-neutral strategies
+          </span>
+        </div>
+      </div>
+      <div class="button-container">
+        <button
+          class="button-mobile"
+          @click="openLinkBlank('https://app.overnight.fi/swap')"
+          @mouseup.middle="handleMiddleClick($event, 'https://app.overnight.fi/swap')"
+        >
+          Connect
+        </button>
+      </div>
+
+      <div class="widget-container-mobile">
+        <StatisticWidget></StatisticWidget>
+      </div>
+
+    </div>
+    <div class="hero-image">
+      <img
+        class="hero-blended hero-blended-mobile"
+        :src="require('@/assets/main/hero.svg')"
+        alt="hero image"
+      >
+    </div>
+  </div>
 </template>
 
 <script>
-import StatisticWidget from "@/components/tools/StatisticWidget.vue";
-import {mapState} from "vuex";
+import StatisticWidget from '@/components/tools/StatisticWidget.vue';
+import { mapState } from 'vuex';
 
 export default {
-    name: "MainBannerComponent",
-    components: {
-        StatisticWidget
-    },
-    computed: {
-        ...mapState('device', ['deviceType', "deviceOrientation", 'isMobile', "isTablet", 'isDesktop']),
+  name: 'MainBannerComponent',
+  components: {
+    StatisticWidget,
+  },
+  computed: {
+    ...mapState('device', ['deviceType', 'deviceOrientation', 'isMobile', 'isTablet', 'isDesktop']),
+  },
+
+  methods: {
+    openLinkBlank(url) {
+      window.open(url, '_blank').focus();
     },
 
-    methods: {
-        openLinkBlank(url) {
-            window.open(url, '_blank').focus();
-        },
-
-        handleMiddleClick(e, url) {
-            if (e.button === 1) {
-                e.preventDefault();
-                window.open(url, '_blank').focus();
-            }
-        },
-    }
-}
+    handleMiddleClick(e, url) {
+      if (e.button === 1) {
+        e.preventDefault();
+        window.open(url, '_blank').focus();
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>

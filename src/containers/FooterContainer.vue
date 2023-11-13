@@ -1,19 +1,19 @@
 <template>
-    <div class="main-container-blue">
-        <FooterComponent></FooterComponent>
-    </div>
+  <div class="main-container-blue">
+    <FooterComponent></FooterComponent>
+  </div>
 </template>
 
 <script>
 
-import FooterComponent from "@/components/footer/FooterComponent.vue";
+import FooterComponent from '@/components/footer/FooterComponent.vue';
 
 export default {
-    name: "FooterContainer",
-    components: {
-        FooterComponent,
-    }
-}
+  name: 'FooterContainer',
+  components: {
+    FooterComponent,
+  },
+};
 </script>
 
 <style scoped>

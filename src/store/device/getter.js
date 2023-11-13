@@ -1,21 +1,21 @@
 export default {
-    deviceOrientation (state) {
-        return state.deviceOrientation;
-    },
+  deviceOrientation(state) {
+    return state.deviceOrientation;
+  },
 
-    deviceType (state) {
-        return state.deviceType;
-    },
+  deviceType(state) {
+    return state.deviceType;
+  },
 
-    isMobile (state) {
-        return state.isMobile;
-    },
+  isMobile(state) {
+    return state.isMobile;
+  },
 
-    isTablet (state) {
-        return state.isTablet;
-    },
+  isTablet(state) {
+    return state.isTablet;
+  },
 
-    isDesktop (state) {
-        return state.isDesktop;
-    }
-}
+  isDesktop(state) {
+    return state.isDesktop;
+  },
+};

@@ -1,237 +1,236 @@
 <template>
+  <div>
     <div>
-        <div>
-            <div class="card card-round statistic-widget">
-                <div v-if="loading || !data">
-                   <div class="center-flex padding-top-four">
-                       <FontAwesomeIcon
-                           :icon="['fas', 'spinner']"
-                           size="lg"
-                           spin
-                       ></FontAwesomeIcon>
-                   </div>
-                </div>
-
-                <div
-                    v-else
-                    class="widget-container"
-                >
-                   <div
-                       v-if="!isClicked"
-                       class="card-tab"
-                   >
-                      <div
-                          class="statistic-title"
-                          @click="handleClick"
-                      >
-                         {{ formattedTotalValueLocked }}
-                      </div>
-                      <div class="tvl-text-container">
-                          <div class="lock-icon-container">
-                              <img
-                                  class="lock-icon"
-                                  :src="require('@/assets/widget/lock.svg')"
-                                  alt="lock icon"
-                              >
-                          </div>
-                          <div
-                              class="tvl-label"
-                              @click="scrollToCharts"
-                          >
-                              TOTAL VALUE LOCKED
-                          </div>
-                          <div
-                              class="arrow-icon-container"
-                              @click="handleClick"
-                          >
-                              <img
-                                  class="arrow-icon"
-                                  :src="require('@/assets/widget/arrow_right.svg')"
-                                  alt="arrow right icon"
-                              >
-                          </div>
-                      </div>
-                   </div>
-                   <div
-                       v-else
-                       class="card-tab"
-                       @click="handleClick"
-                   >
-                       <div class="arrow-icon-container">
-                           <img
-                               class="arrow-icon"
-                               :src="require('@/assets/widget/arrow_left.svg')"
-                               alt="arrow left icon"
-                           >
-                       </div>
-                       <div class="statistic-title">
-                           {{ formattedTotalProfit }}
-                       </div>
-                       <div class="tvl-text-container">
-                           <div class="tvl-label-investors">
-                               TOTAL PAYMENT TO HOLDERS
-                           </div>
-                       </div>
-                   </div>
-
-                   <div class="apy-container">
-                       <div
-                           class="value-container"
-                           @click="openBestChainApy()"
-                           @mouseup.middle="handleMiddleClick($event, 'https://app.overnight.fi/stats?tabName=' + (bestChainApy ? bestChainApy.toLowerCase() : '') + '&chart=month')"
-                       >
-                           <div class="statistic-title">
-                               {{ formatNumberToFixed(data.usdPlusProduct.value) + '%' }}
-                           </div>
-                           <div class="statistic-subtitle">
-                               USD+ APY
-                           </div>
-                       </div>
-
-                       <div
-                           class="value-container"
-                           @click="openLinkBlank('https://app.overnight.fi/stats/eth?tabName=arbitrum')"
-                           @mouseup.middle="handleMiddleClick($event, 'https://app.overnight.fi/stats/eth?tabName=arbitrum')"
-                       >
-                           <div class="statistic-title">
-                               {{ formatNumberToFixed(data.ethPlusProduct.value) + '%' }}
-                           </div>
-                           <div class="statistic-subtitle">
-                               ETH+ APY
-                           </div>
-                       </div>
-
-                       <div class="payout-container" >
-                           <div class="clock-container">
-                               <div class="clock-icon-container">
-                                   <img
-                                       class="clock-icon"
-                                       :src="require('@/assets/widget/sandclock.svg')"
-                                       alt="sand clock icon"
-                                   >
-                               </div>
-                               <div class="statistic-title">
-                                   {{ timeFromPayout }}
-                               </div>
-                           </div>
-                           <div class="statistic-subtitle">
-                               SINCE LAST PAYOUT
-                           </div>
-                       </div>
-                   </div>
-                </div>
-            </div>
+      <div class="card card-round statistic-widget">
+        <div v-if="loading || !data">
+          <div class="center-flex padding-top-four">
+            <FontAwesomeIcon
+              :icon="['fas', 'spinner']"
+              size="lg"
+              spin
+            ></FontAwesomeIcon>
+          </div>
         </div>
+
+        <div
+          v-else
+          class="widget-container"
+        >
+          <div
+            v-if="!isClicked"
+            class="card-tab"
+          >
+            <div
+              class="statistic-title"
+              @click="handleClick"
+            >
+              {{ formattedTotalValueLocked }}
+            </div>
+            <div class="tvl-text-container">
+              <div class="lock-icon-container">
+                <img
+                  class="lock-icon"
+                  :src="require('@/assets/widget/lock.svg')"
+                  alt="lock icon"
+                >
+              </div>
+              <div
+                class="tvl-label"
+                @click="scrollToCharts"
+              >
+                TOTAL VALUE LOCKED
+              </div>
+              <div
+                class="arrow-icon-container"
+                @click="handleClick"
+              >
+                <img
+                  class="arrow-icon"
+                  :src="require('@/assets/widget/arrow_right.svg')"
+                  alt="arrow right icon"
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            v-else
+            class="card-tab"
+            @click="handleClick"
+          >
+            <div class="arrow-icon-container">
+              <img
+                class="arrow-icon"
+                :src="require('@/assets/widget/arrow_left.svg')"
+                alt="arrow left icon"
+              >
+            </div>
+            <div class="statistic-title">
+              {{ formattedTotalProfit }}
+            </div>
+            <div class="tvl-text-container">
+              <div class="tvl-label-investors">
+                TOTAL PAYMENT TO HOLDERS
+              </div>
+            </div>
+          </div>
+
+          <div class="apy-container">
+            <div
+              class="value-container"
+              @click="openBestChainApy()"
+              @mouseup.middle="handleMiddleClick($event, 'https://app.overnight.fi/stats?tabName=' + (bestChainApy ? bestChainApy.toLowerCase() : '') + '&chart=month')"
+            >
+              <div class="statistic-title">
+                {{ formatNumberToFixed(data.usdPlusProduct.value) + '%' }}
+              </div>
+              <div class="statistic-subtitle">
+                USD+ APY
+              </div>
+            </div>
+
+            <div
+              class="value-container"
+              @click="openLinkBlank('https://app.overnight.fi/stats/eth?tabName=arbitrum')"
+              @mouseup.middle="handleMiddleClick($event, 'https://app.overnight.fi/stats/eth?tabName=arbitrum')"
+            >
+              <div class="statistic-title">
+                {{ formatNumberToFixed(data.ethPlusProduct.value) + '%' }}
+              </div>
+              <div class="statistic-subtitle">
+                ETH+ APY
+              </div>
+            </div>
+
+            <div class="payout-container" >
+              <div class="clock-container">
+                <div class="clock-icon-container">
+                  <img
+                    class="clock-icon"
+                    :src="require('@/assets/widget/sandclock.svg')"
+                    alt="sand clock icon"
+                  >
+                </div>
+                <div class="statistic-title">
+                  {{ timeFromPayout }}
+                </div>
+              </div>
+              <div class="statistic-subtitle">
+                SINCE LAST PAYOUT
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
 </template>
 
 <script>
-import {statisticApiService} from "@/services/statistic-api-service";
-import utils from "@/utils/utils";
-import moment from "moment";
+import { statisticApiService } from '@/services/statistic-api-service';
+import utils from '@/utils/utils';
+import moment from 'moment';
 
 export default {
-    name: "statistic-widget",
-    data() {
-        return {
-            data: null,
-            loading: true,
-            isClicked: false,
-            bestChainApy: null,
-            ...utils,
-        }
+  name: 'statistic-widget',
+  data() {
+    return {
+      data: null,
+      loading: true,
+      isClicked: false,
+      bestChainApy: null,
+      ...utils,
+    };
+  },
+  mounted() {
+    this.getData();
+  },
+  computed: {
+    formattedTotalValueLocked() {
+      if (!this.data) {
+        return null;
+      }
+
+      return this.data.tvl.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD',
+      });
     },
-    mounted() {
-        this.getData();
+
+    formattedTotalProfit() {
+      if (!this.data) {
+        return null;
+      }
+
+      return this.data.totalProfit.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD',
+      });
     },
-    computed: {
-        formattedTotalValueLocked() {
-            if (!this.data) {
-                return null;
-            }
+    timeFromPayout() {
+      if (!this.data) {
+        return null;
+      }
 
-            return this.data.tvl.toLocaleString('en-US', {
-                style: 'currency',
-                currency: 'USD',
-            });
-        },
-
-        formattedTotalProfit() {
-            if (!this.data) {
-                return null;
-            }
-
-            return this.data.totalProfit.toLocaleString('en-US', {
-                style: 'currency',
-                currency: 'USD',
-            });
-        },
-        timeFromPayout() {
-            if (!this.data) {
-                return null;
-            }
-
-            let now = moment();
-            let hours = now.diff(moment(this.data.lastPayoutDate), 'hours');
-            let minutes = now.diff(moment(this.data.lastPayoutDate), 'minutes') - hours * 60;
-            hours = hours < 10 ? `0${hours}` : hours;
-            minutes = minutes < 10 ? `0${minutes}` : minutes;
-            return `${hours}:${minutes}`;
-        }
+      const now = moment();
+      let hours = now.diff(moment(this.data.lastPayoutDate), 'hours');
+      let minutes = now.diff(moment(this.data.lastPayoutDate), 'minutes') - hours * 60;
+      hours = hours < 10 ? `0${hours}` : hours;
+      minutes = minutes < 10 ? `0${minutes}` : minutes;
+      return `${hours}:${minutes}`;
     },
-    methods: {
-        getData() {
-            this.loading = true;
-            statisticApiService.getMainWidgetData()
-                .then(data => {
-                    this.data = data;
-                    console.log("DATA:", data)
+  },
+  methods: {
+    getData() {
+      this.loading = true;
+      statisticApiService.getMainWidgetData()
+        .then((data) => {
+          this.data = data;
+          console.log('DATA:', data);
 
-                    this.bestChainApy = data.usdPlusProduct.chain;
-                    console.log("BEst chain APY:", this.bestChainApy)
-                    this.loading = false;
-                }).catch(error => {
-                console.log(error);
-                this.loading = false;
-            })
-        },
-
-        openBestChainApy() {
-            if(this.bestChainApy) {
-                this.openLinkBlank('https://app.overnight.fi/stats?tabName=' + this.bestChainApy.toLowerCase() + "&chart=month");
-            }
-        },
-
-        openLinkBlank(url) {
-            window.open(url, '_blank').focus();
-        },
-
-        openLinkSelf(url) {
-            window.open(url, '_self').focus();
-        },
-
-        handleClick() {
-            this.isClicked = !this.isClicked;
-        },
-
-        handleMiddleClick(e, url) {
-            if (e.button === 1) {
-                e.preventDefault();
-                window.open(url, '_blank').focus();
-            }
-        },
-
-        scrollToCharts() {
-            const chartsSection = document.getElementById('tvl-charts');
-            if (chartsSection) {
-                chartsSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
+          this.bestChainApy = data.usdPlusProduct.chain;
+          console.log('BEst chain APY:', this.bestChainApy);
+          this.loading = false;
+        }).catch((error) => {
+          console.log(error);
+          this.loading = false;
+        });
     },
-}
+
+    openBestChainApy() {
+      if (this.bestChainApy) {
+        this.openLinkBlank(`https://app.overnight.fi/stats?tabName=${this.bestChainApy.toLowerCase()}&chart=month`);
+      }
+    },
+
+    openLinkBlank(url) {
+      window.open(url, '_blank').focus();
+    },
+
+    openLinkSelf(url) {
+      window.open(url, '_self').focus();
+    },
+
+    handleClick() {
+      this.isClicked = !this.isClicked;
+    },
+
+    handleMiddleClick(e, url) {
+      if (e.button === 1) {
+        e.preventDefault();
+        window.open(url, '_blank').focus();
+      }
+    },
+
+    scrollToCharts() {
+      const chartsSection = document.getElementById('tvl-charts');
+      if (chartsSection) {
+        chartsSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    },
+  },
+};
 </script>
-
 
 <style scoped>
 
@@ -461,7 +460,6 @@ export default {
         cursor: pointer;
     }
 
-
     .apy-container {
         display: flex;
         align-items: center;
@@ -597,7 +595,6 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
         cursor: pointer;
     }
 
-
     .apy-container {
         display: flex;
         align-items: center;
@@ -612,7 +609,6 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
         gap: 5px;
         cursor: pointer;
     }
-
 
     .payout-container {
         display: flex;

@@ -35,7 +35,7 @@
 
 <script>
 export default {
-  name: "KeyFeaturesDesktop",
+  name: 'KeyFeaturesDesktop',
 
   props: {
     features: {

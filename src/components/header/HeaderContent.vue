@@ -1,198 +1,198 @@
 <template>
-    <div class="header-main-container header-wrapper" >
-        <div
-            v-if="isDesktop"
-            class="header-container main-centered"
+  <div class="header-main-container header-wrapper" >
+    <div
+      v-if="isDesktop"
+      class="header-container main-centered"
+    >
+      <div class="logo-container">
+        <img
+          :src="require('/src/assets/overnight_logo.svg')"
+          alt="overnight logo"
+          @click="openLinkSelf('https://landing.overnight.fi/')"
+          @mouseup.middle="handleMiddleClick($event, 'https://landing.overnight.fi/')"
+        />
+      </div>
+      <div class="social-container">
+        <img
+          class="logos"
+          :src="require('/src/assets/socials/twitter.svg')"
+          alt="twitter logo"
+          @click="openLinkBlank('https://twitter.com/overnight_fi')"
+          @mouseup.middle="handleMiddleClick($event, 'https://twitter.com/overnight_fi')"
+        />
+        <img
+          class="logos"
+          :src="require('/src/assets/socials/discord.svg')"
+          alt="twitter logo"
+          @click="openLinkBlank('https://discord.com/invite/overnight-fi')"
+          @mouseup.middle="handleMiddleClick($event, 'https://discord.com/invite/overnight-fi')"
+        />
+      </div>
+      <div class="header-labels-container">
+        <label
+          class="header-label text-styling"
+          @click="openLinkBlank('https://docs.overnight.fi/governance/ovn-token/overnight-tokenomics')"
+          @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/governance/ovn-token/overnight-tokenomics')"
         >
-            <div class="logo-container">
-                <img
-                    :src="require('/src/assets/overnight_logo.svg')"
-                    alt="overnight logo"
-                    @click="openLinkSelf('https://landing.overnight.fi/')"
-                    @mouseup.middle="handleMiddleClick($event, 'https://landing.overnight.fi/')"
-                />
-            </div>
-            <div class="social-container">
-                <img
-                    class="logos"
-                    :src="require('/src/assets/socials/twitter.svg')"
-                    alt="twitter logo"
-                    @click="openLinkBlank('https://twitter.com/overnight_fi')"
-                    @mouseup.middle="handleMiddleClick($event, 'https://twitter.com/overnight_fi')"
-                />
-                <img
-                    class="logos"
-                    :src="require('/src/assets/socials/discord.svg')"
-                    alt="twitter logo"
-                    @click="openLinkBlank('https://discord.com/invite/overnight-fi')"
-                    @mouseup.middle="handleMiddleClick($event, 'https://discord.com/invite/overnight-fi')"
-                />
-            </div>
-            <div class="header-labels-container">
-                <label
-                    class="header-label text-styling"
-                    @click="openLinkBlank('https://docs.overnight.fi/governance/ovn-token/overnight-tokenomics')"
-                    @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/governance/ovn-token/overnight-tokenomics')"
-                >
-                    Token
-                </label>
-                <label
-                    class="header-label text-styling"
-                    @click="openLinkBlank('https://docs.overnight.fi/core-concept/faq')"
-                    @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/core-concept/faq')"
-                >
-                    FAQ
-                </label>
-                <label
-                    class="header-label text-styling"
-                    @click="openLinkBlank('https://docs.overnight.fi/')"
-                    @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/')"
-                >
-                    Docs
-                </label>
-            </div>
-            <div class="button-container">
-                <button
-                    class="button text-styling"
-                    @click="openLinkBlank('https://app.overnight.fi/swap')"
-                    @mouseup.middle="handleMiddleClick($event, 'https://app.overnight.fi/swap')"
-                >
-                    Launch Dapp
-                </button>
-            </div>
-        </div>
-
-        <div
-            v-else
-            class="header-main-container-mobile"
+          Token
+        </label>
+        <label
+          class="header-label text-styling"
+          @click="openLinkBlank('https://docs.overnight.fi/core-concept/faq')"
+          @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/core-concept/faq')"
         >
-            <div class="logo-container-mobile">
-                <img
-                    class="overnight-logo"
-                    :src="require('/src/assets/overnight_logo.svg')"
-                    alt="overnight logo"
-                    @click="openLinkSelf('https://landing.overnight.fi/')"
-                    @mouseup.middle="handleMiddleClick($event, 'https://landing.overnight.fi/')"
-                />
-            </div>
-            <div class="social-container">
-                <img
-                    class="logos"
-                    :src="require('/src/assets/socials/twitter.svg')"
-                    alt="twitter logo"
-                    @click="openLinkBlank('https://twitter.com/overnight_fi')"
-                    @mouseup.middle="handleMiddleClick($event, 'https://twitter.com/overnight_fi')"
-                />
-                <img
-                    class="logos"
-                    :src="require('/src/assets/socials/discord.svg')"
-                    alt="twitter logo"
-                    @click="openLinkBlank('https://discord.com/invite/overnight-fi')"
-                    @mouseup.middle="handleMiddleClick($event, 'https://discord.com/invite/overnight-fi')"
-                />
-            </div>
-            <div class="button-container">
-                <button
-                    class="button-mobile"
-                    @click="openLinkBlank('https://app.overnight.fi/swap')"
-                    @mouseup.middle="handleMiddleClick($event, 'https://app.overnight.fi/swap')"
-                >
-                    Launch Dapp
-                </button>
-            </div>
-            <div class="menu-container">
-                <div
-                    class="menu-image-container"
-                    @click="toggleMenu"
-                >
-                    <img
-                        :src="require('@/assets/main/menu.svg')"
-                        alt="menu icon"
-                    >
-                </div>
-                <div
-                    v-if="isMenuOpen"
-                    class="dropdown-menu"
-                >
-                    <ul class="item-list">
-                        <li
-                            class="menu-list-item"
-                            @click="openLinkBlank('https://docs.overnight.fi/governance/ovn-token/overnight-tokenomics')"
-                            @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/governance/ovn-token/overnight-tokenomics')"
-                        >
-                            Token
-                        </li>
-                        <li
-                            class="menu-list-item"
-                            @click="openLinkBlank('https://docs.overnight.fi/core-concept/faq')"
-                            @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/core-concept/faq')"
-                        >
-                            FAQ
-                        </li>
-                        <li
-                            class="menu-list-item"
-                            @click="openLinkBlank('https://docs.overnight.fi/')"
-                            @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/')"
-                        >
-                            Docs
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+          FAQ
+        </label>
+        <label
+          class="header-label text-styling"
+          @click="openLinkBlank('https://docs.overnight.fi/')"
+          @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/')"
+        >
+          Docs
+        </label>
+      </div>
+      <div class="button-container">
+        <button
+          class="button text-styling"
+          @click="openLinkBlank('https://app.overnight.fi/swap')"
+          @mouseup.middle="handleMiddleClick($event, 'https://app.overnight.fi/swap')"
+        >
+          Launch Dapp
+        </button>
+      </div>
     </div>
+
+    <div
+      v-else
+      class="header-main-container-mobile"
+    >
+      <div class="logo-container-mobile">
+        <img
+          class="overnight-logo"
+          :src="require('/src/assets/overnight_logo.svg')"
+          alt="overnight logo"
+          @click="openLinkSelf('https://landing.overnight.fi/')"
+          @mouseup.middle="handleMiddleClick($event, 'https://landing.overnight.fi/')"
+        />
+      </div>
+      <div class="social-container">
+        <img
+          class="logos"
+          :src="require('/src/assets/socials/twitter.svg')"
+          alt="twitter logo"
+          @click="openLinkBlank('https://twitter.com/overnight_fi')"
+          @mouseup.middle="handleMiddleClick($event, 'https://twitter.com/overnight_fi')"
+        />
+        <img
+          class="logos"
+          :src="require('/src/assets/socials/discord.svg')"
+          alt="twitter logo"
+          @click="openLinkBlank('https://discord.com/invite/overnight-fi')"
+          @mouseup.middle="handleMiddleClick($event, 'https://discord.com/invite/overnight-fi')"
+        />
+      </div>
+      <div class="button-container">
+        <button
+          class="button-mobile"
+          @click="openLinkBlank('https://app.overnight.fi/swap')"
+          @mouseup.middle="handleMiddleClick($event, 'https://app.overnight.fi/swap')"
+        >
+          Launch Dapp
+        </button>
+      </div>
+      <div class="menu-container">
+        <div
+          class="menu-image-container"
+          @click="toggleMenu"
+        >
+          <img
+            :src="require('@/assets/main/menu.svg')"
+            alt="menu icon"
+          >
+        </div>
+        <div
+          v-if="isMenuOpen"
+          class="dropdown-menu"
+        >
+          <ul class="item-list">
+            <li
+              class="menu-list-item"
+              @click="openLinkBlank('https://docs.overnight.fi/governance/ovn-token/overnight-tokenomics')"
+              @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/governance/ovn-token/overnight-tokenomics')"
+            >
+              Token
+            </li>
+            <li
+              class="menu-list-item"
+              @click="openLinkBlank('https://docs.overnight.fi/core-concept/faq')"
+              @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/core-concept/faq')"
+            >
+              FAQ
+            </li>
+            <li
+              class="menu-list-item"
+              @click="openLinkBlank('https://docs.overnight.fi/')"
+              @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/')"
+            >
+              Docs
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import {mapState} from "vuex";
+import { mapState } from 'vuex';
 
 export default {
-    name: "HeaderContent",
-    data() {
-        return {
-            isMenuOpen: false,
-        }
+  name: 'HeaderContent',
+  data() {
+    return {
+      isMenuOpen: false,
+    };
+  },
+
+  computed: {
+    ...mapState('device', ['deviceType', 'deviceOrientation', 'isMobile', 'isTablet', 'isDesktop']),
+  },
+
+  mounted() {
+    document.body.addEventListener('click', this.closeMenuOnClickOutside);
+  },
+
+  beforeUnmount() {
+    document.body.removeEventListener('click', this.closeMenuOnClickOutside);
+  },
+
+  methods: {
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
     },
 
-    computed: {
-        ...mapState('device', ['deviceType', "deviceOrientation", 'isMobile', "isTablet", 'isDesktop']),
+    openLinkBlank(url) {
+      window.open(url, '_blank').focus();
     },
 
-    mounted() {
-        document.body.addEventListener("click", this.closeMenuOnClickOutside);
+    openLinkSelf(url) {
+      window.open(url, '_self').focus();
     },
 
-    beforeUnmount() {
-        document.body.removeEventListener("click", this.closeMenuOnClickOutside);
+    closeMenuOnClickOutside(event) {
+      if (this.isMenuOpen && !this.$el.contains(event.target)) {
+        this.isMenuOpen = false;
+      }
     },
 
-    methods: {
-        toggleMenu() {
-            this.isMenuOpen = !this.isMenuOpen;
-        },
-
-        openLinkBlank(url) {
-            window.open(url, '_blank').focus();
-        },
-
-        openLinkSelf(url) {
-            window.open(url, '_self').focus();
-        },
-
-        closeMenuOnClickOutside(event) {
-            if (this.isMenuOpen && !this.$el.contains(event.target)) {
-                this.isMenuOpen = false;
-            }
-        },
-
-        handleMiddleClick(e, url) {
-            if (e.button === 1) {
-                e.preventDefault();
-                window.open(url, '_blank').focus();
-            }
-        },
-    }
-}
+    handleMiddleClick(e, url) {
+      if (e.button === 1) {
+        e.preventDefault();
+        window.open(url, '_blank').focus();
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -246,7 +246,6 @@ export default {
         margin-right: 20px;
         position: relative;
     }
-
 
     .dropdown-menu {
         width: 100px;

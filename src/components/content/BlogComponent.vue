@@ -1,130 +1,130 @@
 <template>
-    <div class="blog-container">
-        <div class="header-title-container">
-            <div class="title">
-                Follow Our Updates
-            </div>
-            <div v-if="!isMobile">
-                <button
-                    class="button"
-                    @click="openLinkBlank('https://overnight.fi/blog/')"
-                    @mouseup.middle="handleMiddleClick($event, 'https://overnight.fi/blog/')"
-                >
-                    subscribe
-                </button>
-            </div>
-            <div v-else>
-                <button
-                    class="button-mobile"
-                    @click="openLinkBlank('https://overnight.fi/blog/')"
-                    @mouseup.middle="handleMiddleClick($event, 'https://overnight.fi/blog/')"
-                >
-                    subscribe
-                </button>
-            </div>
-        </div>
-        <div class="blog-cards-container">
-            <NewsCard
-                v-for="item in blogCards"
-                :key="item.id"
-                :post-data="item"
-                @mouseup="handleMiddleClick($event, item.link)"
-            />
-        </div>
+  <div class="blog-container">
+    <div class="header-title-container">
+      <div class="title">
+        Follow Our Updates
+      </div>
+      <div v-if="!isMobile">
+        <button
+          class="button"
+          @click="openLinkBlank('https://overnight.fi/blog/')"
+          @mouseup.middle="handleMiddleClick($event, 'https://overnight.fi/blog/')"
+        >
+          subscribe
+        </button>
+      </div>
+      <div v-else>
+        <button
+          class="button-mobile"
+          @click="openLinkBlank('https://overnight.fi/blog/')"
+          @mouseup.middle="handleMiddleClick($event, 'https://overnight.fi/blog/')"
+        >
+          subscribe
+        </button>
+      </div>
     </div>
+    <div class="blog-cards-container">
+      <NewsCard
+        v-for="item in blogCards"
+        :key="item.id"
+        :post-data="item"
+        @mouseup="handleMiddleClick($event, item.link)"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
-import NewsCard from "@/components/tools/NewsCard";
-import {mapState} from "vuex";
+import NewsCard from '@/components/tools/NewsCard.vue';
+import { mapState } from 'vuex';
 
 export default {
-    name: "BlogComponent",
-    components: {
-        NewsCard,
+  name: 'BlogComponent',
+  components: {
+    NewsCard,
+  },
+
+  data: () => ({
+    blogCards: [],
+  }),
+
+  computed: {
+    ...mapState('device', ['deviceType', 'deviceOrientation', 'isMobile', 'isTablet', 'isDesktop']),
+  },
+
+  async created() {
+    await fetch('https://overnight.fi/blog/wp-json/wp/v2/posts/?per_page=4', {})
+      .then((value) => value.json())
+      .then(async (value) => {
+        value.sort((a, b) => new Date(a.date) - new Date(b.date));
+        console.log('Blogposts fetching:', value);
+        // eslint-disable-next-line no-restricted-syntax
+        for (const post of value) {
+          const blogPost = {
+            id: post.id,
+            date: post.date,
+            title: post.title.rendered,
+            link: post.link,
+          };
+          // eslint-disable-next-line no-await-in-loop
+          blogPost.imgLink = await this.getImgLink(blogPost.id);
+          this.blogCards.push(blogPost);
+        }
+      }).catch((reason) => {
+        console.log('Error get data: ', reason);
+      });
+  },
+
+  methods: {
+    openLinkBlank(url) {
+      window.open(url, '_blank').focus();
     },
 
-    data: () => ({
-        blogCards: [],
-    }),
-
-    computed: {
-        ...mapState('device', ['deviceType', "deviceOrientation", 'isMobile', "isTablet", 'isDesktop']),
+    handleMiddleClick(e, url) {
+      if (e.button === 1) {
+        e.preventDefault();
+        window.open(url, '_blank').focus();
+      }
     },
 
-    async created() {
-        await fetch('https://overnight.fi/blog/wp-json/wp/v2/posts/?per_page=4', {})
-            .then(value => value.json())
-            .then(async value => {
-                value.sort((a, b) => new Date(a.date) - new Date(b.date));
-                console.log("Blogposts fetching:", value)
-                for (const post of value) {
-                    let blogPost = {
-                        id: post.id,
-                        date: post.date,
-                        title: post.title.rendered,
-                        link: post.link
-                    };
-                    blogPost.imgLink = await this.getImgLink(blogPost.id);
-                    this.blogCards.push(blogPost);
-                }
-            }).catch(reason => {
-                console.log('Error get data: ', reason);
-            });
+    async getImgLink(id) {
+      let result = null;
+      let passedId = id;
+
+      await fetch(`https://overnight.fi/blog/wp-json/wp/v2/media?media_type=image&parent=${id}`, {})
+        .then((value) => value.json())
+        .then((value) => {
+          if (passedId === 783) {
+            result = value[3].source_url;
+          } else if (passedId === 805) {
+            passedId = 806;
+            result = this.getImgForPost(id);
+          } else {
+            result = value[0].source_url;
+          }
+        }).catch((reason) => {
+          console.log(`Error get data: ${reason}`);
+        });
+
+      return result;
     },
 
-    methods: {
-        openLinkBlank(url) {
-            window.open(url, '_blank').focus();
-        },
+    async getImgForPost(id) {
+      let result = null;
 
-        handleMiddleClick(e, url) {
-            if (e.button === 1) {
-                e.preventDefault();
-                window.open(url, '_blank').focus();
-            }
-        },
+      await fetch(`https://overnight.fi/blog/wp-json/wp/v2/media/${id}`, {})
+        .then((value) => value.json())
+        .then((value) => {
+          result = value.source_url;
+        }).catch((reason) => {
+          console.log(`Error get data: ${reason}`);
+        });
 
-        async getImgLink(id) {
-
-            let result = null;
-
-            await fetch('https://overnight.fi/blog/wp-json/wp/v2/media?media_type=image&parent=' + id, {})
-                .then(value => value.json())
-                .then(value => {
-                    if (id === 783) {
-                        result = value[3]['source_url'];
-                    } else if (id === 805) {
-                        id = 806;
-                        result = this.getImgForPost(id);
-                    } else {
-                        result = value[0]['source_url'];
-                    }
-
-                }).catch(reason => {
-                    console.log('Error get data: ' + reason);
-                });
-
-            return result;
-        },
-
-        async getImgForPost(id) {
-            let result = null;
-
-            await fetch('https://overnight.fi/blog/wp-json/wp/v2/media/' + id, {})
-                .then(value => value.json())
-                .then(value => {
-                    result = value.source_url;
-                }).catch(reason => {
-                    console.log('Error get data: ' + reason);
-                });
-
-            return result;
-        },
+      return result;
     },
-}
+  },
+};
 </script>
-
 
 <style scoped>
 /* mobile */

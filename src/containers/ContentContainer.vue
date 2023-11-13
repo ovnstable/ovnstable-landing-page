@@ -1,58 +1,58 @@
 <template>
+  <div>
     <div class="main-container main-container-blue">
-        <MainBannerComponent />
+      <MainBannerComponent />
     </div>
     <div class="main-container">
-        <AboutOvernightComponent />
-        <KeyFeaturesComponent />
-        <TotalValueLockedContainer />
+      <AboutOvernightComponent />
+      <KeyFeaturesComponent />
+      <TotalValueLockedContainer />
     </div>
     <div class="main-container main-container-white">
-        <OvernightRoadmapComponent />
+      <OvernightRoadmapComponent />
     </div>
     <div class="main-container">
-        <AuditsComponent />
-        <BlogComponent />
-        <TeamComponent />
-        <InvestorsComponent />
+      <AuditsComponent />
+      <BlogComponent />
+      <TeamComponent />
+      <InvestorsComponent />
     </div>
+  </div>
 </template>
 
 <script>
 
-import MainBannerComponent from "@/components/content/MainBannerComponent";
-import AboutOvernightComponent from "@/components/content/AboutOvernightComponent"
-import KeyFeaturesComponent from "@/components/content/KeyFeaturesComponent";
-import TotalValueLockedContainer from "@/components/content/TotalValueLockedContainer";
-import OvernightRoadmapComponent from "@/components/content/OvernightRoadmapComponent";
-import AuditsComponent from "@/components/content/AuditsComponent";
-import BlogComponent from "@/components/content/BlogComponent";
-import TeamComponent from "@/components/content/TeamComponent";
-import InvestorsComponent from "@/components/content/InvestorsComponent";
+import MainBannerComponent from '@/components/content/MainBannerComponent.vue';
+import AboutOvernightComponent from '@/components/content/AboutOvernightComponent.vue';
+import KeyFeaturesComponent from '@/components/content/KeyFeaturesComponent.vue';
+import TotalValueLockedContainer from '@/components/content/TotalValueLockedContainer.vue';
+import OvernightRoadmapComponent from '@/components/content/OvernightRoadmapComponent.vue';
+import AuditsComponent from '@/components/content/AuditsComponent.vue';
+import BlogComponent from '@/components/content/BlogComponent.vue';
+import TeamComponent from '@/components/content/TeamComponent.vue';
+import InvestorsComponent from '@/components/content/InvestorsComponent.vue';
 
 export default {
-    name: "ContentContainer",
-    components: {
-        MainBannerComponent,
-        AboutOvernightComponent,
-        KeyFeaturesComponent,
-        TotalValueLockedContainer,
-        OvernightRoadmapComponent,
-        AuditsComponent,
-        BlogComponent,
-        TeamComponent,
-        InvestorsComponent,
-    }
-}
+  name: 'ContentContainer',
+  components: {
+    MainBannerComponent,
+    AboutOvernightComponent,
+    KeyFeaturesComponent,
+    TotalValueLockedContainer,
+    OvernightRoadmapComponent,
+    AuditsComponent,
+    BlogComponent,
+    TeamComponent,
+    InvestorsComponent,
+  },
+};
 </script>
-
 
 <style scoped>
 /* mobile */
 @media only screen and (max-width: 768px) {
     .main-container-white  {
-        height: 311px; /* Adjust the height as necessary for smaller devices */
-        /* The rest of your styles remain the same, unless you need to tweak them for smaller screens */
+        height: 311px;
         margin-bottom: 30px;
     }
 }

@@ -1,64 +1,64 @@
 <template>
-    <div>
-        <div class="header-row">
-            <div
-                v-for="(feature, index) in features"
-                :key="`header-${index}`"
-                class="header"
-                :class="{ 'active': activeTab === index }"
-                @click="selectTab(index)"
-            >
-                {{ feature.title }}
-            </div>
-        </div>
-        <div class="tabs">
-            <div
-                v-for="(feature, index) in features"
-                :key="`tab-content-${index}`"
-                class="tab-content"
-                :class="{ 'active': activeTab === index }"
-            >
-                <ul>
-                    <li
-                        class="list-item"
-                        v-for="(item, itemIndex) in feature.content"
-                        :key="`item-${index}-${itemIndex}`"
-                    >
-                        {{ item }}
-                    </li>
-                </ul>
-            </div>
-        </div>
+  <div>
+    <div class="header-row">
+      <div
+        v-for="(feature, index) in features"
+        :key="`header-${index}`"
+        class="header"
+        :class="{ active: activeTab === index }"
+        @click="selectTab(index)"
+      >
+        <div v-if="activeTab === index" class="arrow-left" />
+        {{ feature.title }}
+      </div>
     </div>
+    <div class="tabs">
+      <div
+        v-for="(feature, index) in features"
+        :key="`tab-content-${index}`"
+        class="tab-content"
+        :class="{ active: activeTab === index }"
+      >
+        <ul>
+          <li
+            class="list-item"
+            v-for="(item, itemIndex) in feature.content"
+            :key="`item-${index}-${itemIndex}`"
+          >
+            {{ item }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-
 export default {
-    name: "KeyFeaturesDesktop",
+  name: "KeyFeaturesDesktop",
 
-    props: {
-        features: {
-            type: Array,
-            required: true
-        }
+  props: {
+    features: {
+      type: Array,
+      required: true,
     },
+  },
 
-    data() {
-        return {
-            activeTab: 0
-        };
+  data() {
+    return {
+      activeTab: 0,
+    };
+  },
+
+  methods: {
+    selectTab(index) {
+      this.activeTab = index;
     },
-
-    methods: {
-        selectTab(index) {
-            this.activeTab = index;
-        }
-    }
-}
+  },
+};
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .header-row {
     display: flex;
 
@@ -66,7 +66,34 @@ export default {
     background-color:  var(--ov-bg);
 }
 
+.arrow-left {
+  position: absolute;
+  right: -13px;
+  bottom: -12px;
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right:15px solid blue;
+  z-index: 1;
+  transform: rotate(-45deg);
+
+//   &::after {
+//     content: "";
+//     display: block;
+//     position: absolute;
+//     bottom: -10px;
+//     left: 5px;
+//     z-index: 2;
+//     background-color: black;
+//     width: 25px;
+//     height: 25px;
+//     border-radius: 50%;
+//   }
+}
+
 .header {
+    position: relative;
     flex-grow: 1;
     text-align: center;
     padding: 10px 0;
@@ -129,6 +156,7 @@ export default {
 }
 
 .tab-content {
+    position: relative;
     display: none;
     padding: 10px 0 0 0;
     background-color: #FFFFFF;

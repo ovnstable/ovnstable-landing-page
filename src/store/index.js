@@ -1,11 +1,11 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
 
-import device from "@/store/device";
+import device from '@/store/device';
 
 export default createStore({
-    modules: {
-        // user
-        device
-    },
-    // strict: debug
-})
+  modules: {
+    // user
+    device,
+  },
+  // strict: debug
+});

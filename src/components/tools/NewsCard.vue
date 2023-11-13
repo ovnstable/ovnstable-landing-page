@@ -1,58 +1,58 @@
 <template>
-    <div
-        class="news-card-container"
-        @click="openLink(postData.link)"
-    >
-        <div class="image-container">
-            <img
-                class="post-bg-img"
-                :src="postData.imgLink"
-                alt="Blogpost image"
-            >
-        </div>
-        <div class="blog-title">
-            <label v-html="postData.title"></label>
-        </div>
-        <div class="blog-date">
-            <label>{{ getDate(postData.date) }}</label>
-        </div>
+  <div
+    class="news-card-container"
+    @click="openLink(postData.link)"
+  >
+    <div class="image-container">
+      <img
+        class="post-bg-img"
+        :src="postData.imgLink"
+        alt="Blogpost image"
+      >
     </div>
+    <div class="blog-title">
+      <label v-html="postData.title"></label>
+    </div>
+    <div class="blog-date">
+      <label>{{ getDate(postData.date) }}</label>
+    </div>
+  </div>
 </template>
 
 <script>
 
 export default {
-    name: "NewsCard",
+  name: 'NewsCard',
 
-    props: {
+  props: {
 
-        postData: {
-            type: Object,
-            default: null,
-        },
+    postData: {
+      type: Object,
+      default: null,
+    },
+  },
+
+  computed: {
+  },
+
+  created() {
+  },
+
+  methods: {
+
+    openLink(url) {
+      window.open(url, '_blank').focus();
     },
 
-    computed: {
+    getDate(date) {
+      try {
+        return this.$moment.utc(date).format('DD MMMM YY');
+      } catch (e) {
+        return '';
+      }
     },
-
-    created() {
-    },
-
-    methods: {
-
-        openLink(url) {
-            window.open(url, '_blank').focus();
-        },
-
-        getDate(date) {
-            try {
-                return this.$moment.utc(date).format("DD MMMM YY");
-            } catch (e) {
-                return '';
-            }
-        },
-    }
-}
+  },
+};
 </script>
 
 <style scoped>

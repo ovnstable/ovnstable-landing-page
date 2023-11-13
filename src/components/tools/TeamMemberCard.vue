@@ -1,93 +1,93 @@
 <template>
-    <div class="team-member-card">
-        <div class="profile">
-            <img
-                class="photo"
-                :src="picture"
-                alt="team member photo"
-            />
-            <div class="title">
-                {{ name }}
-            </div>
-            <div class="sub-title">
-                {{ role }}
-            </div>
-            <div
-                v-if="contact"
-                class="contact"
-            >
-                <a
-                    class="sub-title"
-                    href=""
-                >
-                    contact us
-                </a>
-            </div>
-        </div>
-        <div class="social-links">
-            <a
-                v-if="linkedin"
-                :href="linkedin"
-                target="_blank"
-            >
-                <img
-                    class="gray-icon"
-                    :src="require('@/assets/socials/linkedIn_gray.svg')"
-                    alt="Linked in icon"
-                >
-            </a>
-            <a
-                v-if="twitter"
-                :href="twitter"
-                target="_blank"
-            >
-                <img
-                    class="gray-icon"
-                    :src="require('@/assets/socials/twitter_gray.svg')"
-                    alt="Twitter icon"
-                >
-            </a>
-            <a
-                v-if="telegram"
-                :href="telegram"
-                target="_blank"
-            >
-                <img
-                    class="gray-icon"
-                    :src="require('@/assets/socials/telegram_gray.svg')"
-                    alt="Telegram icon"
-                >
-            </a>
-            <a
-                v-if="github"
-                :href="github"
-                target="_blank"
-            >
-                <img
-                    class="gray-icon"
-                    :src="require('@/assets/socials/gihub_gray.svg')"
-                    alt="Github icon"
-                >
-            </a>
-        </div>
+  <div class="team-member-card">
+    <div class="profile">
+      <img
+        class="photo"
+        :src="picture"
+        alt="team member photo"
+      />
+      <div class="title">
+        {{ name }}
+      </div>
+      <div class="sub-title">
+        {{ role }}
+      </div>
+      <div
+        v-if="contact"
+        class="contact"
+      >
+        <a
+          class="sub-title"
+          href=""
+        >
+          contact us
+        </a>
+      </div>
     </div>
+    <div class="social-links">
+      <a
+        v-if="linkedin"
+        :href="linkedin"
+        target="_blank"
+      >
+        <img
+          class="gray-icon"
+          :src="require('@/assets/socials/linkedIn_gray.svg')"
+          alt="Linked in icon"
+        >
+      </a>
+      <a
+        v-if="twitter"
+        :href="twitter"
+        target="_blank"
+      >
+        <img
+          class="gray-icon"
+          :src="require('@/assets/socials/twitter_gray.svg')"
+          alt="Twitter icon"
+        >
+      </a>
+      <a
+        v-if="telegram"
+        :href="telegram"
+        target="_blank"
+      >
+        <img
+          class="gray-icon"
+          :src="require('@/assets/socials/telegram_gray.svg')"
+          alt="Telegram icon"
+        >
+      </a>
+      <a
+        v-if="github"
+        :href="github"
+        target="_blank"
+      >
+        <img
+          class="gray-icon"
+          :src="require('@/assets/socials/gihub_gray.svg')"
+          alt="Github icon"
+        >
+      </a>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: "TeamMemberCard",
-    props: {
-        picture: String,
-        name: String,
-        role: String,
-        contact: String,
-        linkedin: String,
-        discord: String,
-        twitter: String,
-        telegram: String,
-        github: String,
-    }
-}
+  name: 'TeamMemberCard',
+  props: {
+    picture: String,
+    name: String,
+    role: String,
+    contact: String,
+    linkedin: String,
+    discord: String,
+    twitter: String,
+    telegram: String,
+    github: String,
+  },
+};
 </script>
 
 <style scoped>
@@ -209,6 +209,5 @@ export default {
         width: 127px;
     }
 }
-
 
 </style>

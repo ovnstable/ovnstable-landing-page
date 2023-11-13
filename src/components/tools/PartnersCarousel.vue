@@ -1,58 +1,60 @@
 <template>
-    <div class="partners-container">
-        <div class="partners-label">
-            <label>OUR PARTNERS:</label>
-        </div>
-        <div class="partner-single-item">
-            <img :src="require('@/assets/partners/sushiswap_logo.svg')" alt="Sushiswap logo">
-        </div>
-        <div class="partner-single-item">
-            <img :src="require('@/assets/partners/uniswap_logo.svg')" alt="Uniswap logo">
-        </div>
-        <div class="partner-single-item">
-            <img :src="require('@/assets/partners/velodrome_logo.svg')" alt="Velodrome logo">
-        </div>
-        <div class="partner-single-item">
-            <img :src="require('@/assets/partners/balancer_logo.svg')" alt="Balancer logo">
-        </div>
-        <div class="partner-single-item">
-            <img :src="require('@/assets/partners/blockchain-acelerator_logo.svg')" alt="Blockchain Xcelerator logo">
-        </div>
-        <div class="partner-single-item">
-            <img :src="require('@/assets/partners/optimism_logo.svg')" alt="Optimism logo">
-        </div>
-        <div class="partner-single-item">
-            <img :src="require('@/assets/partners/1inch_logo.svg')" alt="1inch logo">
-        </div>
-        <div class="partner-single-item">
-            <img :src="require('@/assets/partners/linea_logo.svg')" alt="Linea logo">
-        </div>
-        <div class="partner-single-item">
-            <img :src="require('@/assets/partners/axelar_logo.svg')" alt="Axelar logo">
-        </div>
-        <div class="partner-single-item">
-            <img :src="require('@/assets/partners/odos-xyz_logo.svg')" alt="Odos.xyz logo">
-        </div>
-        <div class="partner-single-item">
-            <img :src="require('@/assets/partners/curve_logo.svg')" alt="Curve logo">
-        </div>
-        <div class="partner-single-item">
-            <img :src="require('@/assets/partners/hub71_logo.svg')" alt="Hub71 logo">
-        </div>
+  <div class="partners-container">
+    <div class="partners-label">
+      <label>OUR PARTNERS:</label>
     </div>
+    <div class="partner-single-item">
+      <img :src="require('@/assets/partners/sushiswap_logo.svg')" alt="Sushiswap logo">
+    </div>
+    <div class="partner-single-item">
+      <img :src="require('@/assets/partners/uniswap_logo.svg')" alt="Uniswap logo">
+    </div>
+    <div class="partner-single-item">
+      <img :src="require('@/assets/partners/velodrome_logo.svg')" alt="Velodrome logo">
+    </div>
+    <div class="partner-single-item">
+      <img :src="require('@/assets/partners/balancer_logo.svg')" alt="Balancer logo">
+    </div>
+    <div class="partner-single-item">
+      <img :src="require('@/assets/partners/blockchain-acelerator_logo.svg')"
+           alt="Blockchain Xcelerator logo"
+      >
+    </div>
+    <div class="partner-single-item">
+      <img :src="require('@/assets/partners/optimism_logo.svg')" alt="Optimism logo">
+    </div>
+    <div class="partner-single-item">
+      <img :src="require('@/assets/partners/1inch_logo.svg')" alt="1inch logo">
+    </div>
+    <div class="partner-single-item">
+      <img :src="require('@/assets/partners/linea_logo.svg')" alt="Linea logo">
+    </div>
+    <div class="partner-single-item">
+      <img :src="require('@/assets/partners/axelar_logo.svg')" alt="Axelar logo">
+    </div>
+    <div class="partner-single-item">
+      <img :src="require('@/assets/partners/odos-xyz_logo.svg')" alt="Odos.xyz logo">
+    </div>
+    <div class="partner-single-item">
+      <img :src="require('@/assets/partners/curve_logo.svg')" alt="Curve logo">
+    </div>
+    <div class="partner-single-item">
+      <img :src="require('@/assets/partners/hub71_logo.svg')" alt="Hub71 logo">
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: "PartnersCarousel",
-    components: {
+  name: 'PartnersCarousel',
+  components: {
 
-    },
+  },
 
-    data() {
+  data() {
 
-    },
-}
+  },
+};
 </script>
 
 <style scoped>
@@ -77,7 +79,6 @@ export default {
             transform: translateX(-100%);
         }
     }
-
 
     .partners-label {
         font-size: 12px;

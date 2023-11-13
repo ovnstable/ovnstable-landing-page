@@ -1,5 +1,5 @@
-import BN from "bn.js";
-
+/* eslint-disable no-underscore-dangle */
+import BN from 'bn.js';
 
 export function _fromE6(value) {
   return value / 10 ** 6;

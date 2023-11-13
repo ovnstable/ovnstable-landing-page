@@ -1,23 +1,23 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import store from './store'
+import { createApp } from 'vue';
 
 // Font Awesome
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-library.add(fas)
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import store from './store';
+import App from './App.vue';
 
+library.add(fas);
 
 const Vue = createApp(App)
-    .use(store);
+  .use(store);
 
-Vue.component('FontAwesomeIcon', FontAwesomeIcon)
+Vue.component('FontAwesomeIcon', FontAwesomeIcon);
 
 document.addEventListener('mousedown', (e) => {
-    if (e.button === 1) {
-        e.preventDefault();
-    }
+  if (e.button === 1) {
+    e.preventDefault();
+  }
 }, false);
 
-Vue.mount('#app')
+Vue.mount('#app');

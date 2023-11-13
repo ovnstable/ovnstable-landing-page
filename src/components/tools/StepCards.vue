@@ -1,50 +1,52 @@
 <template>
+  <div>
     <div class="main-sub-title">
-        {{ stepLabel }}
+      {{ stepLabel }}
     </div>
     <div class="cards-container">
-        <div class="step-card-box">
-            <img
-                class="image"
-                :src="require('@/assets/cards/' + imageLink)"
-                alt="About products image"
-            >
-        </div>
-        <div class="sub-title">
-            {{legendTitle}}
-        </div>
-        <div class="paragraph">
-            {{subTitle}}
-        </div>
+      <div class="step-card-box">
+        <img
+          class="image"
+          :src="require('@/assets/cards/' + imageLink)"
+          alt="About products image"
+        >
+      </div>
+      <div class="sub-title">
+        {{legendTitle}}
+      </div>
+      <div class="paragraph">
+        {{subTitle}}
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: "StepCards",
+  name: 'StepCards',
 
-    props: {
-        stepLabel: {
-            type: String,
-            default: '',
-        },
-
-        imageLink: {
-            type: String,
-            default: null,
-        },
-
-        legendTitle: {
-            type: String,
-            default: '',
-        },
-
-        subTitle: {
-            type: String,
-            default: '',
-        },
+  props: {
+    stepLabel: {
+      type: String,
+      default: '',
     },
-}
+
+    imageLink: {
+      type: String,
+      default: null,
+    },
+
+    legendTitle: {
+      type: String,
+      default: '',
+    },
+
+    subTitle: {
+      type: String,
+      default: '',
+    },
+  },
+};
 </script>
 
 <style scoped>

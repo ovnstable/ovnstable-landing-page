@@ -1,15 +1,14 @@
 <template>
-    <div class="svg-background-container">
+  <div class="svg-background-container">
 
-    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: "OvernightRoadmapComponent",
-}
+  name: 'OvernightRoadmapComponent',
+};
 </script>
-
 
 <style scoped>
 /* mobile */

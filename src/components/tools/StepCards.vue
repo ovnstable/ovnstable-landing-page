@@ -1,20 +1,22 @@
 <template>
-  <div class="main-sub-title">
-    {{ stepLabel }}
-  </div>
-  <div class="cards-container">
-    <div class="step-card-box">
-      <img
-        class="image"
-        :src="require('@/assets/cards/' + imageLink)"
-        alt="About products image"
-      >
+  <div>
+    <div class="main-sub-title">
+      {{ stepLabel }}
     </div>
-    <div class="sub-title">
-      {{legendTitle}}
-    </div>
-    <div class="paragraph">
-      {{subTitle}}
+    <div class="cards-container">
+      <div class="step-card-box">
+        <img
+          class="image"
+          :src="require('@/assets/cards/' + imageLink)"
+          alt="About products image"
+        >
+      </div>
+      <div class="sub-title">
+        {{legendTitle}}
+      </div>
+      <div class="paragraph">
+        {{subTitle}}
+      </div>
     </div>
   </div>
 </template>

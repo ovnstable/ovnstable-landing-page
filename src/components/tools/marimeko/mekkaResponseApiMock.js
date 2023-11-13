@@ -1,4 +1,4 @@
-export const mekkaResponseApiMock = [
+const mekkaResponseApiMock = [
   {
     chainName: 'Optimism',
     values: {
@@ -45,3 +45,5 @@ export const mekkaResponseApiMock = [
     },
   },
 ];
+
+export default mekkaResponseApiMock;

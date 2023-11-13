@@ -8,7 +8,8 @@
             Your money shouldn't sleep
           </div>
           <div class="sub-title">
-            Maximize Your Returns, Minimize Your Risks - Overnight's Delta-Neutral Yield Strategies for Stablecoins
+            Maximize Your Returns, Minimize Your Risks - Overnight's Delta-Neutral
+            Yield Strategies for Stablecoins
           </div>
         </div>
       </div>

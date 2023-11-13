@@ -255,7 +255,7 @@ export default {
         },
       };
 
-      return await fetch(`${process.env.VUE_APP_ROOT_API}/tvl/product/total`, fetchOptions)
+      return fetch(`${process.env.VUE_APP_ROOT_API}/tvl/product/total`, fetchOptions)
         .then((value) => value.json())
         .then((value) => {
           if (value && !value.error) {
@@ -269,13 +269,12 @@ export default {
     },
     getOrderedMekkaData(mekkaData) {
       const orderedMekkaData = [];
-      for (let i = 0; i < mekkaData.length; i++) {
+      for (let i = 0; i < mekkaData.length; i + 1) {
         const chainInfo = mekkaData[i];
         const newPosition = this.chainOrderMap[chainInfo.chainName];
         if (newPosition) {
           orderedMekkaData[newPosition - 1] = this.getOrderedAndFilledProductValues(chainInfo);
           console.log('Ordered and filled orderedMekkaData[newPosition - 1]', orderedMekkaData[newPosition - 1]);
-          continue;
         }
 
         console.error('Mekka data not found order position for chain: ', chainInfo);
@@ -285,29 +284,29 @@ export default {
     },
     getOrderedAndFilledProductValues(chainInfo) {
       const orderedProducts = [];
-      chainInfo = this.getFilledNullableProductValues(chainInfo);
-      for (let i = 0; i < chainInfo.values.length; i++) {
+      const chainInfoVar = this.getFilledNullableProductValues(chainInfo);
+      for (let i = 0; i < chainInfo.values.length; i + 1) {
         const product = chainInfo.values[i];
         const newPosition = this.chainOrderProductsMap[product.name];
         if (newPosition) {
           orderedProducts[newPosition - 1] = product;
-          continue;
         }
 
         console.error('Mekka product data not found order position for chain: ', product);
       }
 
-      chainInfo.values = orderedProducts;
-      return chainInfo;
+      chainInfoVar.values = orderedProducts;
+      return chainInfoVar;
     },
     getFilledNullableProductValues(chainInfo) {
       const productsWithoutValues = [];
       const productAvailableList = Object.keys(this.chainOrderProductsMap);
-      for (let i = 0; i < productAvailableList.length; i++) {
+      const chainInfoVar = chainInfo;
+      for (let i = 0; i < productAvailableList.length; i + 1) {
         const productName = productAvailableList[i];
         if (this.isProductExistInChainProducts(productName, chainInfo)) {
           // product exist
-          continue;
+          // continue;
         }
 
         productsWithoutValues.push({
@@ -316,7 +315,7 @@ export default {
         });
       }
 
-      chainInfo.values = [...chainInfo.values, ...productsWithoutValues];
+      chainInfoVar.values = [...chainInfo.values, ...productsWithoutValues];
 
       return chainInfo;
     },
@@ -341,10 +340,10 @@ export default {
       return sum;
     },
     async getWithFilledClientFoundsValue(mekkaData) {
-      for (let i = 0; i < mekkaData.length; i++) {
+      for (let i = 0; i < mekkaData.length; i + 1) {
         const mekkaItem = mekkaData[i];
 
-        for (let j = 0; j < mekkaItem.values.length; j++) {
+        for (let j = 0; j < mekkaItem.values.length; j + 1) {
           const value = mekkaItem.values[j];
 
           if (mekkaItem.chainName === 'Arbitrum' && value.name === 'USD+') {
@@ -355,7 +354,8 @@ export default {
           }
 
           /* if (mekkaItem.chainName === 'Arbitrum'  && value.name === 'ETS') {
-                      let valueFunds = await this.getArbitrumValueFundsFromCollateralAndStrategies();
+                      let valueFunds =
+                        await this.getArbitrumValueFundsFromCollateralAndStrategies();
                       console.log("+Value valueFunds: ", valueFunds)
                       value.value = valueFunds;
                       continue
@@ -368,7 +368,8 @@ export default {
                     }
 
                     console.log(mekkaItem.chainName.toLowerCase(), value.name.toLowerCase())
-                    let tokenCollaterals = await this.getCollateral(mekkaItem.chainName.toLowerCase(), value.name.toLowerCase());
+                    let tokenCollaterals =await this.getCollateral
+                    (mekkaItem.chainName.toLowerCase(), value.name.toLowerCase());
                     let foundValue = this.getFoundValueByTokenName(tokenCollaterals, subAddValue);
                     console.log(key + ': ', foundValue);
                     value.value = value.value + foundValue;
@@ -380,7 +381,7 @@ export default {
     },
 
     subFoundFromMekkaValue(networkValues, subToken, subValue) {
-      for (let i = 0; i < networkValues.length; i++) {
+      for (let i = 0; i < networkValues.length; i + 1) {
         const value = networkValues[i];
         console.log('SUB TOKEN:', networkValues, subToken, subValue);
         if (value.name === subToken) {
@@ -391,7 +392,7 @@ export default {
     },
 
     getTotalNetworkValue(mekkaData) {
-      for (let i = 0; i < mekkaData.length; i++) {
+      for (let i = 0; i < mekkaData.length; i + 1) {
         const mekkaItem = mekkaData[i];
         let sumOp = 0;
         let sumArb = 0;
@@ -400,42 +401,42 @@ export default {
         let sumPoly = 0;
 
         if (mekkaItem.chainName === 'Optimism') {
-          for (let j = 0; j < mekkaItem.values.length; j++) {
+          for (let j = 0; j < mekkaItem.values.length; j + 1) {
             sumOp += mekkaItem.values[j].value;
             this.totalOptimismValue = sumOp;
           }
           console.log('Optimism TVL: ', this.totalOptimismValue);
         }
         if (mekkaItem.chainName === 'Arbitrum') {
-          for (let k = 0; k < mekkaItem.values.length; k++) {
+          for (let k = 0; k < mekkaItem.values.length; k + 1) {
             sumArb += mekkaItem.values[k].value;
             this.totalArbitrumValue = sumArb;
           }
           console.log('Arbitrum TVL: ', this.totalArbitrumValue);
         }
         if (mekkaItem.chainName === 'BSC') {
-          for (let b = 0; b < mekkaItem.values.length; b++) {
+          for (let b = 0; b < mekkaItem.values.length; b + 1) {
             sumBsc += mekkaItem.values[b].value;
             this.totalBscValue = sumBsc;
           }
           console.log('Bsc TVL: ', this.totalBscValue);
         }
         if (mekkaItem.chainName === 'zkSync') {
-          for (let z = 0; z < mekkaItem.values.length; z++) {
+          for (let z = 0; z < mekkaItem.values.length; z + 1) {
             sumZk += mekkaItem.values[z].value;
             this.totalZksyncValue = sumZk;
           }
           console.log('ZkSync TVL: ', this.totalZksyncValue);
         }
         if (mekkaItem.chainName === 'Polygon') {
-          for (let p = 0; p < mekkaItem.values.length; p++) {
+          for (let p = 0; p < mekkaItem.values.length; p + 1) {
             sumPoly += mekkaItem.values[p].value;
             this.totalPolygonValue = sumPoly;
           }
           console.log('Polygon TVL: ', this.totalPolygonValue);
         }
         if (mekkaItem.chainName === 'Base') {
-          for (let h = 0; h < mekkaItem.values.length; h++) {
+          for (let h = 0; h < mekkaItem.values.length; h + 1) {
             sumPoly += mekkaItem.values[h].value;
             this.totalBaseValue = sumPoly;
           }
@@ -443,7 +444,7 @@ export default {
         }
 
         if (mekkaItem.chainName === 'Linea') {
-          for (let l = 0; l < mekkaItem.values.length; l++) {
+          for (let l = 0; l < mekkaItem.values.length; l + 1) {
             sumPoly += mekkaItem.values[l].value;
             this.totalLineaValue = sumPoly;
           }
@@ -453,7 +454,7 @@ export default {
     },
 
     getFoundValueByTokenName(collateralList, tokenName) {
-      for (let i = 0; i < collateralList.length; i++) {
+      for (let i = 0; i < collateralList.length; i + 1) {
         const collateralInfo = collateralList[i];
         if (collateralInfo.id && collateralInfo.id.tokenName === tokenName) {
           return collateralInfo.netAssetValue;

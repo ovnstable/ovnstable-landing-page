@@ -1,6 +1,6 @@
 import { mosaic, palettes } from 'anychart';
 // eslint-disable-next-line import/named
-import { tokenColors } from '@/components/tools/marimeko/tokenColors';
+import tokenColors from '@/components/tools/marimeko/tokenColors';
 import utils from '@/utils/utils';
 
 // eslint-disable-next-line import/prefer-default-export
@@ -134,6 +134,7 @@ export const getChartSettings = (
 
   chart.tooltip()
     .separator(false)
+    // eslint-disable-next-line radix
     .format((ctx) => `$${utils.formatNumberToMln(ctx.value)}m${maxTvl ? ` ~${utils.formatNumberToPercent(parseInt(ctx.value), maxTvl)}%` : ''}`)
     .titleFormat('{%seriesName} on {%x}')
     .background('#ffffff')

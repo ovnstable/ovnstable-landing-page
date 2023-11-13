@@ -127,7 +127,7 @@
 </template>
 
 <script>
-import { statisticApiService } from '@/services/statistic-api-service';
+import statisticApiService from '@/services/statistic-api-service';
 import utils from '@/utils/utils';
 import moment from 'moment';
 

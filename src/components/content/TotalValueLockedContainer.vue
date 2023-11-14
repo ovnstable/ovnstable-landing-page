@@ -309,16 +309,12 @@ export default {
       const productAvailableList = Object.keys(this.chainOrderProductsMap);
       for (let i = 0; i < productAvailableList.length; i++) {
         const productName = productAvailableList[i];
-        if (this.isProductExistInChainProducts(productName, chainInfo)) {
-          // product exist
-          // eslint-disable-next-line no-continue
-          continue;
+        if (!this.isProductExistInChainProducts(productName, chainInfo)) {
+          productsWithoutValues.push({
+            name: productName,
+            value: 0,
+          });
         }
-
-        productsWithoutValues.push({
-          name: productName,
-          value: 0,
-        });
       }
 
       // eslint-disable-next-line no-param-reassign

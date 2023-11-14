@@ -221,7 +221,8 @@ export default {
   async mounted() {
     this.mekkaData = await this.loadProductTvlData();
     this.mekkaData = await this.getWithFilledClientFoundsValue(this.mekkaData);
-    this.mekkaData = this.getOrderedMekkaData(this.mekkaData);
+    // console.log('Mekka Data1:', this.mekkaData);
+    // this.mekkaData = this.getOrderedMekkaData(this.mekkaData);
     console.log('Mekka Data:', this.mekkaData);
     this.getTotalNetworkValue(this.mekkaData);
 
@@ -339,6 +340,7 @@ export default {
       }
       return sum;
     },
+
     async getWithFilledClientFoundsValue(mekkaData) {
       for (let i = 0; i < mekkaData.length; i++) {
         const mekkaItem = mekkaData[i];
@@ -353,27 +355,26 @@ export default {
             console.log('+Value new value: ', mekkaData, value, value.value);
           }
 
-          /* if (mekkaItem.chainName === 'Arbitrum'  && value.name === 'ETS') {
-                      let valueFunds =
-                        await this.getArbitrumValueFundsFromCollateralAndStrategies();
-                      console.log("+Value valueFunds: ", valueFunds)
-                      value.value = valueFunds;
-                      continue
-                    }
+        /* if (mekkaItem.chainName === 'Arbitrum'  && value.name === 'ETS') {
+          let valueFunds = await this.getArbitrumValueFundsFromCollateralAndStrategies();
+          console.log("+Value valueFunds: ", valueFunds)
+          value.value = valueFunds;
+          continue
+        }
 
-                    let key = mekkaItem.chainName.toLowerCase() + '_' + value.name.toLowerCase();
-                    let subAddValue = this.clientCalculateFoundsSchema[key]
-                    if (!subAddValue) {
-                      continue;
-                    }
+        let key = mekkaItem.chainName.toLowerCase() + '_' + value.name.toLowerCase();
+        let subAddValue = this.clientCalculateFoundsSchema[key]
+        if (!subAddValue) {
+          continue;
+        }
 
-                    console.log(mekkaItem.chainName.toLowerCase(), value.name.toLowerCase())
-                    let tokenCollaterals =await this.getCollateral
-                    (mekkaItem.chainName.toLowerCase(), value.name.toLowerCase());
-                    let foundValue = this.getFoundValueByTokenName(tokenCollaterals, subAddValue);
-                    console.log(key + ': ', foundValue);
-                    value.value = value.value + foundValue;
-                    this.subFoundFromMekkaValue(mekkaItem.values, subAddValue, foundValue); */
+        console.log(mekkaItem.chainName.toLowerCase(), value.name.toLowerCase())
+        let tokenCollaterals = await
+        this.getCollateral(mekkaItem.chainName.toLowerCase(), value.name.toLowerCase());
+        let foundValue = this.getFoundValueByTokenName(tokenCollaterals, subAddValue);
+        console.log(key + ': ', foundValue);
+        value.value = value.value + foundValue;
+        this.subFoundFromMekkaValue(mekkaItem.values, subAddValue, foundValue); */
         }
       }
 

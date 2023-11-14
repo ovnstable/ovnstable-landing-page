@@ -1,8 +1,8 @@
 <template>
   <div>
-    <HeaderContainer></HeaderContainer>
-    <ContentContainer></ContentContainer>
-    <FooterContainer></FooterContainer>
+    <HeaderContainer />
+    <ContentContainer />
+    <FooterContainer />
   </div>
 </template>
 

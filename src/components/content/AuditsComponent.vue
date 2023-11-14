@@ -62,46 +62,6 @@ export default {
 </script>
 
 <style scoped>
-/* extra small devices*/
-@media only screen and (max-width: 480px) {
-    .title {
-        text-transform: uppercase;
-        margin-bottom: 10px;
-        font-size: 14px;
-    }
-
-    .paragraph-text {
-        font-family: "Red Hat Display", sans-serif;
-        font-weight: 400;
-        font-size: 10px;
-        line-height: 14px;
-        margin-bottom: 30px;
-    }
-
-    .audits-container {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
-    .clear-icon {
-        width: 14px;
-        margin-left: 5px;
-    }
-
-    .hacken {
-        width: 24px;
-    }
-
-    .ackee {
-        height: 14px;
-    }
-
-    .logo-container {
-        display: flex;
-        gap: 20px;
-        align-items: center;
-    }
-}
 /* mobile */
 @media only screen and (max-width: 768px) {
     .title {
@@ -121,19 +81,49 @@ export default {
     .audits-container {
         padding-left: 20px;
         padding-right: 20px;
+        max-width: 100%;
+        margin: 0 auto 40px auto;
+        position: relative;
     }
 
     .logo-container {
         display: flex;
+        flex-direction: row-reverse;
         gap: 20px;
         align-items: center;
+
+        position: absolute;
+        top: 0;
+        right: 20px;
     }
 
-    .audits-container {
-        max-width: 1180px;
-        margin: 0 auto 40px auto;
+    .hacken {
+        width: 30px;
     }
 
+    .ackee {
+        width: 100px;
+        margin-right: 10px;
+    }
+
+    .audits-image-container {
+        position: relative;
+        margin-bottom: 70px;
+    }
+
+    .audits-image {
+        position: absolute;
+        top: -40px;
+        right: -80px;
+        width: 220px;
+    }
+
+    .audits-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 /* desktop */
@@ -152,13 +142,17 @@ export default {
         max-width: 760px;
     }
 
-    .audits-container {
-        max-width: 1180px;
-        margin: 0 auto 80px auto;
-    }
-
     .clear-icon {
         margin-left: 5px;
+    }
+
+    .audits-image {
+        width: 350px;
+    }
+
+    .audits-wrapper {
+        display: flex;
+        justify-content: space-between;
     }
 }
 
@@ -166,5 +160,10 @@ export default {
     display: flex;
     gap: 20px;
     cursor: pointer;
+}
+
+.audits-wrapper {
+    max-width: 1180px;
+    margin: 0 auto 80px auto;
 }
 </style>

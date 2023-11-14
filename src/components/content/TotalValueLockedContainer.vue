@@ -168,6 +168,7 @@
   </div>
 </template>
 
+<!-- eslint-disable no-param-reassign -->
 <script>
 import { getChartSettings } from '@/components/tools/marimeko/model/getChartSettings';
 import utils from '@/utils/utils';
@@ -222,7 +223,7 @@ export default {
     this.mekkaData = await this.loadProductTvlData();
     this.mekkaData = await this.getWithFilledClientFoundsValue(this.mekkaData);
     // console.log('Mekka Data1:', this.mekkaData);
-    // this.mekkaData = this.getOrderedMekkaData(this.mekkaData);
+    this.mekkaData = this.getOrderedMekkaData(this.mekkaData);
     console.log('Mekka Data:', this.mekkaData);
     this.getTotalNetworkValue(this.mekkaData);
 
@@ -276,16 +277,20 @@ export default {
         if (newPosition) {
           orderedMekkaData[newPosition - 1] = this.getOrderedAndFilledProductValues(chainInfo);
           console.log('Ordered and filled orderedMekkaData[newPosition - 1]', orderedMekkaData[newPosition - 1]);
+          // eslint-disable-next-line no-continue
+          continue;
         }
 
         console.error('Mekka data not found order position for chain: ', chainInfo);
       }
 
+      console.log(orderedMekkaData, 'orderedMekkaData');
+
       return orderedMekkaData;
     },
     getOrderedAndFilledProductValues(chainInfo) {
       const orderedProducts = [];
-      const chainInfoVar = this.getFilledNullableProductValues(chainInfo);
+      chainInfo = this.getFilledNullableProductValues(chainInfo);
       for (let i = 0; i < chainInfo.values.length; i++) {
         const product = chainInfo.values[i];
         const newPosition = this.chainOrderProductsMap[product.name];
@@ -296,18 +301,18 @@ export default {
         console.error('Mekka product data not found order position for chain: ', product);
       }
 
-      chainInfoVar.values = orderedProducts;
-      return chainInfoVar;
+      chainInfo.values = orderedProducts;
+      return chainInfo;
     },
     getFilledNullableProductValues(chainInfo) {
       const productsWithoutValues = [];
       const productAvailableList = Object.keys(this.chainOrderProductsMap);
-      const chainInfoVar = chainInfo;
       for (let i = 0; i < productAvailableList.length; i++) {
         const productName = productAvailableList[i];
         if (this.isProductExistInChainProducts(productName, chainInfo)) {
           // product exist
-          // continue;
+          // eslint-disable-next-line no-continue
+          continue;
         }
 
         productsWithoutValues.push({
@@ -316,7 +321,8 @@ export default {
         });
       }
 
-      chainInfoVar.values = [...chainInfo.values, ...productsWithoutValues];
+      // eslint-disable-next-line no-param-reassign
+      chainInfo.values = [...chainInfo.values, ...productsWithoutValues];
 
       return chainInfo;
     },

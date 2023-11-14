@@ -23,7 +23,13 @@
         </button>
       </div>
     </div>
-    <div class="blog-cards-container">
+    <div
+      class="blog-cards-container"
+      @mousemove="onMouseMove"
+      @mouseenter="onMouseEnter"
+      @mouseleave="onMouseLeave"
+      :style="{ transform: `translateX(${currentX}px)` }"
+    >
       <NewsCard
         v-for="item in blogCards"
         :key="item.id"
@@ -46,33 +52,59 @@ export default {
 
   data: () => ({
     blogCards: [],
+    mouseX: 0,
+    currentX: 0,
+    isMouseOver: false,
   }),
 
   computed: {
     ...mapState('device', ['deviceType', 'deviceOrientation', 'isMobile', 'isTablet', 'isDesktop']),
+
+    componentStyle() {
+      return {
+        transform: `translateX(${this.currentX}px)`,
+      };
+    },
   },
 
   async created() {
-    await fetch('https://overnight.fi/blog/wp-json/wp/v2/posts/?per_page=4', {})
-      .then((value) => value.json())
-      .then(async (value) => {
-        value.sort((a, b) => new Date(a.date) - new Date(b.date));
-        console.log('Blogposts fetching:', value);
-        // eslint-disable-next-line no-restricted-syntax
-        for (const post of value) {
-          const blogPost = {
-            id: post.id,
-            date: post.date,
-            title: post.title.rendered,
-            link: post.link,
-          };
-          // eslint-disable-next-line no-await-in-loop
-          blogPost.imgLink = await this.getImgLink(blogPost.id);
-          this.blogCards.push(blogPost);
-        }
-      }).catch((reason) => {
-        console.log('Error get data: ', reason);
+    try {
+      const response = await fetch('https://overnight.fi/blog/wp-json/wp/v2/posts/?per_page=10');
+      const posts = await response.json();
+      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      const blogPostsPromises = posts.map(async (post) => {
+        const dateObj = new Date(post.date);
+        const formattedDate = `${dateObj.getFullYear()}/${dateObj.getMonth() + 1}/${dateObj.getDate()}`;
+
+        const imgLink = await this.getImgLink(post.id);
+
+        // Strip HTML tags
+        const plainTextContent = post.content.rendered.replace(/<[^>]*>?/gm, '');
+
+        // Extract the first sentence
+        const firstSentence = `${plainTextContent.split('. ')[0]}.`;
+
+        return {
+          id: post.id,
+          date: formattedDate,
+          title: post.title.rendered,
+          link: post.link,
+          content: firstSentence,
+          imgLink,
+        };
       });
+
+      this.blogCards = await Promise.all(blogPostsPromises);
+    } catch (reason) {
+      console.log('Error get data: ', reason);
+    }
+
+    window.addEventListener('mousemove', this.onMouseMove);
+  },
+
+  beforeDestroy() {
+    window.removeEventListener('mousemove', this.onMouseMove);
   },
 
   methods: {
@@ -94,11 +126,12 @@ export default {
       await fetch(`https://overnight.fi/blog/wp-json/wp/v2/media?media_type=image&parent=${id}`, {})
         .then((value) => value.json())
         .then((value) => {
+          console.log('Value:', value);
           if (passedId === 783) {
             result = value[3].source_url;
           } else if (passedId === 805) {
             passedId = 806;
-            result = this.getImgForPost(id);
+            result = this.getImgForPost(passedId);
           } else {
             result = value[0].source_url;
           }
@@ -121,6 +154,22 @@ export default {
         });
 
       return result;
+    },
+
+    onMouseMove(e) {
+      if (!this.isMouseOver) return;
+
+      const deltaX = e.clientX - this.mouseX;
+      this.mouseX = e.clientX;
+      this.currentX -= deltaX;
+    },
+
+    onMouseEnter() {
+      this.isMouseOver = true;
+    },
+
+    onMouseLeave() {
+      this.isMouseOver = false;
     },
   },
 };
@@ -173,7 +222,6 @@ export default {
 
 .blog-cards-container {
     display: flex;
-    border: 1px solid black;
     border-radius: 30px 0 0 30px;
 }
 </style>

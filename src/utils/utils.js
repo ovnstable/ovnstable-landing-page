@@ -100,7 +100,7 @@ export default {
   getRandomString(randomLength = 10) {
     let text = '';
 
-    for (let i = 0; i < randomLength; i + 1) {
+    for (let i = 0; i < randomLength; i += 1) {
       text
         += possibleTextForRandom.charAt(Math.floor(Math.random() * possibleTextForRandom.length));
     }

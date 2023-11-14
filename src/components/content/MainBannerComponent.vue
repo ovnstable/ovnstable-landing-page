@@ -36,7 +36,7 @@
     <div class="hero-image">
       <img
         class="hero-blended"
-        :src="require('@/assets/main/hero.svg')"
+        :src="require('@/assets/main/hero.png')"
         alt="hero image"
       >
     </div>
@@ -80,7 +80,7 @@
     <div class="hero-image">
       <img
         class="hero-blended hero-blended-mobile"
-        :src="require('@/assets/main/hero.svg')"
+        :src="require('@/assets/main/hero.png')"
         alt="hero image"
       >
     </div>
@@ -147,15 +147,10 @@ export default {
         margin-top: 10px;
     }
 
-    .hero-blended {
-        z-index: 0;
-        mix-blend-mode: multiply;
-    }
-
     .hero-blended-mobile {
         height: 204px;
         position: relative;
-        top: 30px;
+        top: 10px;
         right: 170px;
     }
 
@@ -197,7 +192,11 @@ export default {
     }
 
     .hero-blended {
-        mix-blend-mode: multiply;
+      width: 100%;
+      height: 584px;
+      position: relative;
+      right: 60px;
+      image-rendering: auto;
     }
 }
 
@@ -240,16 +239,18 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
     }
 
     .hero-blended {
-        mix-blend-mode: multiply;
+      position: relative;
+      right: 90px;
+      height: 564px;
     }
 }
 .hero-container {
     width: 100vw;
     height: 710px;
 
-    background-image: url('~@/assets/main/stars.svg'), url('~@/assets/main/circles.svg');
-    background-size: cover, cover;
-    background-position: left center, left center;
+    background-image: url('~@/assets/main/stars.svg');
+    background-size: cover;
+    background-position: left center;
 
     display: flex;
     justify-content: center;

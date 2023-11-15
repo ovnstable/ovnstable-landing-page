@@ -1,7 +1,12 @@
 <template>
   <div>
     <div>
-      <div class="card card-round statistic-widget">
+      <div
+        class="card card-round statistic-widget"
+        @mouseover="addShadow()"
+        @mouseout="removeShadow()"
+        ref="chartContainer"
+      >
         <div v-if="loading || !data">
           <div class="center-flex padding-top-four loader">
             <FontAwesomeIcon
@@ -197,6 +202,13 @@ export default {
         });
     },
 
+    addShadow() {
+      this.$refs.chartContainer.style.boxShadow = '15px 15px 25px rgba(0, 0, 0, 5)';
+    },
+    removeShadow() {
+      this.$refs.chartContainer.style.boxShadow = '';
+    },
+
     openBestChainApy() {
       if (this.bestChainApy) {
         this.openLinkBlank(`https://app.overnight.fi/stats?tabName=${this.bestChainApy.toLowerCase()}&chart=month`);
@@ -267,7 +279,6 @@ export default {
         color: #687386;
         cursor: pointer;
     }
-
     .tvl-label-investors {
         font-family: "Red Hat Display", sans-serif;
         font-weight: 400;

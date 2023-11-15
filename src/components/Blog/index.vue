@@ -2,26 +2,15 @@
   <div class="blog-container">
     <div class="header-title-container">
       <div class="title">Follow Our Updates</div>
-      <div v-if="!isMobile">
-        <button
-          class="button shadow"
-          @click="openLinkBlank('https://overnight.fi/blog/')"
-          @mouseup.middle="handleMiddleClick($event, 'https://overnight.fi/blog/')"
-        >
-          subscribe
-        </button>
-      </div>
-      <div v-else>
-        <button
-          class="button-mobile shadow"
-          @click="openLinkBlank('https://overnight.fi/blog/')"
-          @mouseup.middle="handleMiddleClick($event, 'https://overnight.fi/blog/')"
-        >
-          subscribe
-        </button>
+      <div>
+        <Button
+          class="button text-styling"
+          text="Subscribe"
+          @click="openLinkSelf('https://app.overnight.fi/blog')"
+        />
       </div>
     </div>
-    <div
+    <!-- <div
       class="blog-cards-container"
       @mousemove="onMouseMove"
       @mouseenter="onMouseEnter"
@@ -34,18 +23,41 @@
         :post-data="item"
         @mouseup="handleMiddleClick($event, item.link)"
       />
-    </div>
+    </div> -->
+    <swiper
+      :slides-per-view="3"
+      :space-between="0"
+    >
+      <swiper-slide
+        v-for="item in blogCards"
+        :key="item.id"
+        :post-data="item"
+      >
+        <NewsCard
+          :post-data="item"
+        />
+      </swiper-slide>
+    </swiper>
   </div>
 </template>
 
 <script>
 import NewsCard from '@/components/Blog/NewsCard.vue';
+import Button from '@/components/UI/Button/index.vue';
 import { mapState } from 'vuex';
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue';
+
+// Import Swiper styles
+import 'swiper/swiper.min.css';
 
 export default {
   name: 'Blog',
   components: {
     NewsCard,
+    Button,
+    Swiper,
+    SwiperSlide,
   },
 
   data: () => ({
@@ -174,7 +186,23 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss">
+.swiper-slide {
+  &:first-child {
+    border-radius: 30px 0 0 30px;
+
+    .news-card-container {
+      border-radius: 30px 0 0 30px;
+
+      .post-bg-img {
+        border-radius: 30px 0 0 0;
+      }
+    }
+  }
+}
+</style>
+
+<style lang="scss" scoped>
 /* mobile */
 @media only screen and (max-width: 768px) {
   .title {

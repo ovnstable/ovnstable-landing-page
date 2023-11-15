@@ -19,15 +19,15 @@
             alt="Footer Overnight Logo"
           />
         </div>
-        <div class="rights-container">Since 2022 © All Rights Reserved</div>
+        <div class="rights-container">Since 2021 © All Rights Reserved</div>
       </div>
     </div>
     <div class="second-column">
       <div class="heading-container">Find us</div>
-      <div
+      <a
         class="logo-container"
-        @click="openLinkBlank('https://twitter.com/overnight_fi')"
-        @mouseup.middle="handleMiddleClick($event, 'https://twitter.com/overnight_fi')"
+        href="https://twitter.com/overnight_fi"
+        target="_blank"
       >
         <img
           class="logo-icon"
@@ -35,13 +35,11 @@
           alt="Twitter White Logo"
         />
         <label class="logo-title"> Twitter </label>
-      </div>
-      <div
+      </a>
+      <a
         class="logo-container"
-        @click="openLinkBlank('https://discord.com/invite/overnight-fi')"
-        @mouseup.middle="
-          handleMiddleClick($event, 'https://discord.com/invite/overnight-fi')
-        "
+        href="https://discord.com/invite/overnight-fi"
+        target="_blank"
       >
         <img
           class="logo-icon"
@@ -49,11 +47,11 @@
           alt="Discord White Logo"
         />
         <label class="logo-title"> Discord </label>
-      </div>
-      <div
+      </a>
+      <a
         class="logo-container"
-        @click="openLinkBlank('https://t.me/overnight_fi')"
-        @mouseup.middle="handleMiddleClick($event, 'https://t.me/overnight_fi')"
+        href="https://t.me/overnight_fi"
+        target="_blank"
       >
         <img
           class="logo-icon"
@@ -61,13 +59,11 @@
           alt="Telegram White Logo"
         />
         <label class="logo-title"> Telegram </label>
-      </div>
-      <div
+      </a>
+      <a
         class="logo-container"
-        @click="openLinkBlank('https://zealy.io/c/overnight-fi/questboard')"
-        @mouseup.middle="
-          handleMiddleClick($event, 'https://zealy.io/c/overnight-fi/questboard')
-        "
+        href="https://zealy.io/c/overnight-fi/questboard"
+        target="_blank"
       >
         <img
           class="logo-icon"
@@ -75,11 +71,11 @@
           alt="Zealy White Logo"
         />
         <label class="logo-title"> Zealy </label>
-      </div>
-      <div
+      </a>
+      <a
         class="logo-container"
-        @click="openLinkBlank('https://github.com/ovnstable')"
-        @mouseup.middle="handleMiddleClick($event, 'https://github.com/ovnstable')"
+        href="https://github.com/ovnstable"
+        target="_blank"
       >
         <img
           class="logo-icon"
@@ -87,226 +83,177 @@
           alt="Github White Logo"
         />
         <label class="logo-title"> Github </label>
-      </div>
+      </a>
     </div>
     <div class="third-column">
-      <div
+      <a
         class="listings-container"
-        @click="openLinkBlank('https://defillama.com/protocol/overnight-finance')"
-        @mouseup.middle="
-          handleMiddleClick($event, 'https://defillama.com/protocol/overnight-finance')
-        "
+        href="https://defillama.com/protocol/overnight-finance"
+        target="_blank"
       >
         <label class="logo-title"> DefiLlama </label>
-      </div>
-      <div
+      </a>
+      <a
         class="listings-container"
-        @click="openLinkBlank('https://coinmarketcap.com/currencies/overnight/')"
-        @mouseup.middle="
-          handleMiddleClick($event, 'https://coinmarketcap.com/currencies/overnight/')
-        "
+        href="https://coinmarketcap.com/currencies/overnight/"
+        target="_blank"
       >
         <label class="logo-title"> Coinmarketcap </label>
-      </div>
-      <div
+      </a>
+      <a
         class="listings-container"
-        @click="openLinkBlank('https://app.1inch.io/#/1/simple/swap/ETH')"
-        @mouseup.middle="
-          handleMiddleClick($event, 'https://app.1inch.io/#/1/simple/swap/ETH')
-        "
+        href="https://app.1inch.io/#/1/simple/swap/ETH"
+        target="_blank"
       >
         <label class="logo-title"> 1inch </label>
-      </div>
-      <div
+      </a>
+      <a
         class="listings-container"
-        @click="openLinkBlank('https://www.coingecko.com/en/coins/overnight-finance')"
-        @mouseup.middle="
-          handleMiddleClick(
-            $event,
-            'https://www.coingecko.com/en/coins/overnight-finance'
-          )
-        "
+        href="https://www.coingecko.com/en/coins/overnight-finance"
+        target="_blank"
       >
         <label class="logo-title"> Coingecko </label>
-      </div>
-      <div
+      </a>
+      <a
         class="listings-container"
-        @click="openLinkBlank('https://debank.com/')"
-        @mouseup.middle="handleMiddleClick($event, 'https://debank.com/')"
+        href="https://debank.com/"
+        target="_blank"
       >
         <label class="logo-title"> Debank </label>
-      </div>
+      </a>
     </div>
     <div class="fourth-column">
       <div class="heading-container products">Products</div>
-      <div
+      <a
         class="products-container"
-        @click="openLinkBlank('https://app.overnight.fi/stats/eth?tabName=arbitrum')"
-        @mouseup.middle="
-          handleMiddleClick($event, 'https://app.overnight.fi/stats/eth?tabName=arbitrum')
-        "
+        href="https://app.overnight.fi/stats/eth?tabName=arbitrum"
+        target="_blank"
       >
         <label class="logo-title"> ETH+ </label>
-      </div>
-      <div
+      </a>
+      <a
         class="products-container"
-        @click="openLinkBlank('https://app.overnight.fi/stats?tabName=optimism')"
-        @mouseup.middle="
-          handleMiddleClick($event, 'https://app.overnight.fi/stats?tabName=optimism')
-        "
+        href="https://app.overnight.fi/stats?tabName=optimism"
+        target="_blank"
       >
         <label class="logo-title"> USD+ </label>
-      </div>
-      <div
+      </a>
+      <a
         class="products-container"
-        @click="openLinkBlank('https://app.overnight.fi/stats/usdt?tabName=bsc')"
-        @mouseup.middle="
-          handleMiddleClick($event, 'https://app.overnight.fi/stats/usdt?tabName=bsc')
-        "
+        href="https://app.overnight.fi/stats/usdt?tabName=bsc"
+        target="_blank"
       >
         <label class="logo-title"> USDT+ </label>
-      </div>
-      <div
+      </a>
+      <a
         class="products-container"
-        @click="openLinkBlank('https://app.overnight.fi/stats/dai?tabName=optimism')"
-        @mouseup.middle="
-          handleMiddleClick($event, 'https://app.overnight.fi/stats/dai?tabName=optimism')
-        "
+        href="https://app.overnight.fi/stats/dai?tabName=optimism"
+        target="_blank"
       >
         <label class="logo-title"> DAI+ </label>
-      </div>
-      <div
+      </a>
+      <a
         class="products-container insurance"
-        @click="openLinkBlank('https://app.overnight.fi/insurance')"
-        @mouseup.middle="handleMiddleClick($event, 'https://app.overnight.fi/insurance')"
+        href="https://app.overnight.fi/insurance"
+        target="_blank"
       >
         <label class="logo-title"> Insurance </label>
-      </div>
+      </a>
     </div>
     <div v-if="isDesktop" class="fifth-column">
       <div class="heading-container">Developers</div>
-      <div
+      <a
         class="developers-container"
-        @click="openLinkBlank('https://docs.overnight.fi/')"
-        @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/')"
+        href="https://docs.overnight.fi/"
+        target="_blank"
       >
         <label class="logo-title"> Documentation </label>
-      </div>
-      <div
+      </a>
+      <a
         class="developers-container"
-        @click="openLinkBlank('https://docs.overnight.fi/other/audits')"
-        @mouseup.middle="
-          handleMiddleClick($event, 'https://docs.overnight.fi/other/audits')
-        "
+        href="https://docs.overnight.fi/other/audits"
+        target="_blank"
       >
         <label class="logo-title"> Audits </label>
-      </div>
+      </a>
       <div class="heading-container support">Support center</div>
-      <div
+      <a
         class="developers-container"
-        @click="
-          openLinkBlank(
-            'https://discord.com/channels/933003627444969552/967813123149033542/967813482684760135'
-          )
-        "
-        @mouseup.middle="
-          handleMiddleClick(
-            $event,
-            'https://discord.com/channels/933003627444969552/967813123149033542/967813482684760135'
-          )
-        "
+        href="https://discord.com/channels/933003627444969552/967813123149033542/967813482684760135"
+        target="_blank"
       >
         <label class="logo-title"> Help center in Discord </label>
-      </div>
-      <div
+      </a>
+      <a
         class="developers-container"
-        @click="openLinkBlank('https://t.me/overnight_fi')"
-        @mouseup.middle="handleMiddleClick($event, 'https://t.me/overnight_fi')"
+        href="https://t.me/overnight_fi"
+        target="_blank"
       >
         <label class="logo-title"> Telegram Discussion </label>
-      </div>
-      <div
+      </a>
+      <a
         class="developers-container"
-        @click="openLinkBlank('https://docs.overnight.fi/other/terms-of-service')"
-        @mouseup.middle="
-          handleMiddleClick($event, 'https://docs.overnight.fi/other/terms-of-service')
-        "
+        href="https://docs.overnight.fi/other/terms-of-service"
+        target="_blank"
       >
         <label class="logo-title"> Terms of Service </label>
-      </div>
-      <div
+      </a>
+      <a
         class="developers-container"
-        @click="openLinkBlank('https://docs.overnight.fi/other/privacy-policy')"
-        @mouseup.middle="
-          handleMiddleClick($event, 'https://docs.overnight.fi/other/privacy-policy')
-        "
+        href="https://docs.overnight.fi/other/privacy-policy"
+        target="_blank"
       >
         <label class="logo-title"> Privacy Policy </label>
-      </div>
+      </a>
     </div>
     <div v-else>
       <div class="fifth-column-mobile">
         <div class="heading-container support">Support center</div>
-        <div
+        <a
           class="developers-container"
-          @click="
-            openLinkBlank(
-              'https://discord.com/channels/933003627444969552/967813123149033542/967813482684760135'
-            )
-          "
-          @mouseup.middle="
-            handleMiddleClick(
-              $event,
-              'https://discord.com/channels/933003627444969552/967813123149033542/967813482684760135'
-            )
-          "
+          href="https://discord.com/channels/933003627444969552/967813123149033542/967813482684760135"
+          target="_blank"
         >
           <label class="logo-title"> Help center in Discord </label>
-        </div>
-        <div
+        </a>
+        <a
           class="developers-container"
-          @click="openLinkBlank('https://t.me/overnight_fi')"
-          @mouseup.middle="handleMiddleClick($event, 'https://t.me/overnight_fi')"
+          href="https://t.me/overnight_fi"
+          target="_blank"
         >
           <label class="logo-title"> Telegram Discussion </label>
-        </div>
-        <div
+        </a>
+        <a
           class="developers-container"
-          @click="openLinkBlank('https://docs.overnight.fi/other/terms-of-service')"
-          @mouseup.middle="
-            handleMiddleClick($event, 'https://docs.overnight.fi/other/terms-of-service')
-          "
+          href="https://docs.overnight.fi/other/terms-of-service"
+          target="_blank"
         >
           <label class="logo-title"> Terms of Service </label>
-        </div>
-        <div
+        </a>
+        <a
           class="developers-container"
-          @click="openLinkBlank('https://docs.overnight.fi/other/privacy-policy')"
-          @mouseup.middle="
-            handleMiddleClick($event, 'https://docs.overnight.fi/other/privacy-policy')
-          "
+          href="https://docs.overnight.fi/other/privacy-policy"
+          target="_blank"
         >
           <label class="logo-title"> Privacy Policy </label>
-        </div>
+        </a>
       </div>
       <div class="sixth-column-mobile">
         <div class="heading-container developers">Developers</div>
-        <div
+        <a
+          href="https://docs.overnight.fi/"
+          target="_blank"
           class="developers-container"
-          @click="openLinkBlank('https://docs.overnight.fi/')"
-          @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/')"
         >
           <label class="logo-title"> Documentation </label>
-        </div>
-        <div
+        </a>
+        <a
           class="developers-container"
-          @click="openLinkBlank('https://docs.overnight.fi/other/audits')"
-          @mouseup.middle="
-            handleMiddleClick($event, 'https://docs.overnight.fi/other/audits')
-          "
+          href="https://docs.overnight.fi/other/audits"
+          target="_blank"
         >
           <label class="logo-title"> Audits </label>
-        </div>
+        </a>
       </div>
     </div>
   </div>
@@ -343,7 +290,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 /* mobile */
 @media only screen and (max-width: 768px) {
   .footer-container {
@@ -427,7 +374,6 @@ export default {
   }
 
   .logo-title {
-    font-family: "Red Hat Display", sans-serif;
     font-weight: 600;
     font-size: 10px;
     line-height: 12px;
@@ -552,7 +498,7 @@ export default {
     cursor: pointer;
     display: flex;
     gap: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
   }
 
   .logo-title {
@@ -575,11 +521,11 @@ export default {
   }
 
   .listings-container {
-    margin-bottom: 4px;
+    margin-bottom: 8px;
   }
 
   .products-container {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
   }
 
   .fourth-column {
@@ -595,7 +541,7 @@ export default {
   }
 
   .developers-container {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
   }
 
   .support {
@@ -608,6 +554,21 @@ export default {
     height: 356px;
     display: flex;
     gap: 50px;
+  }
+}
+
+a {
+  display: block;
+}
+
+.heading-container {
+  word-wrap: nowrap;
+}
+
+.logo-title {
+  transition: color .15s ease;
+  &:hover {
+    color: rgba(255, 255, 255, .8);
   }
 }
 </style>

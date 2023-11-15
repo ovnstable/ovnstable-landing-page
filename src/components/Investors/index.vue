@@ -3,50 +3,48 @@
     <div class="investors-container">
       <div class="title">Our valued investors</div>
       <div class="companies-container">
-        <div
-          class="investor-name shadow"
-          @click="openLinkBlank('https://twitter.com/sandeepnailwal')"
-          @mouseup.middle="
-            handleMiddleClick($event, 'https://twitter.com/sandeepnailwal')
-          "
+        <a
+          class="investor-name"
+          href="https://twitter.com/sandeepnailwal"
+          target="_blank"
         >
           Sandeep Naiwal
-        </div>
-        <div
-          class="investor-name shadow"
-          @click="openLinkBlank('https://twitter.com/twobitidiot')"
-          @mouseup.middle="handleMiddleClick($event, 'https://twitter.com/twobitidiot')"
+        </a>
+        <a
+          class="investor-name"
+          href="https://twitter.com/twobitidiot"
+          target="_blank"
         >
           Ryan Selkis
-        </div>
-        <div
-          class="investor-company hack shadow"
-          @click="openLinkBlank('https://hack.vc/')"
-          @mouseup.middle="handleMiddleClick($event, 'https://hack.vc/')"
+        </a>
+        <a
+          class="investor-company hack"
+          href="https://hack.vc/"
+          target="_blank"
         >
           <img :src="require('@/assets/investors/hack-vc.svg')" alt="Hack VC logo" />
-        </div>
-        <div
-          class="investor-company labs shadow"
-          @click="openLinkBlank('https://www.fjlabs.com/')"
-          @mouseup.middle="handleMiddleClick($event, 'https://www.fjlabs.com/')"
+        </a>
+        <a
+          class="investor-company labs"
+          href="https://www.fjlabs.com/"
+          target="_blank"
         >
           <img :src="require('@/assets/investors/fj-labs.svg')" alt="FJ Labs logo" />
-        </div>
-        <div
-          class="investor-name shadow"
-          @click="openLinkBlank('https://twitter.com/tubergen')"
-          @mouseup.middle="handleMiddleClick($event, 'https://twitter.com/tubergen')"
+        </a>
+        <a
+          class="investor-name"
+          href="https://twitter.com/tubergen"
+          target="_blank"
         >
           Brian Tubergen
-        </div>
-        <div
-          class="investor-name shadow"
-          @click="openLinkBlank('https://twitter.com/paulrholland')"
-          @mouseup.middle="handleMiddleClick($event, 'https://twitter.com/paulrholland')"
+        </a>
+        <a
+          class="investor-name"
+          href="https://twitter.com/paulrholland"
+          target="_blank"
         >
           Paul Holland
-        </div>
+        </a>
       </div>
     </div>
 
@@ -98,7 +96,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 /* Mobile styles */
 @media only screen and (max-width: 768px) {
   .title {
@@ -189,6 +187,15 @@ export default {
   }
 }
 
+.investor-name, .investor-company {
+  transition: text-shadow .3s ease, transform .2s ease;
+
+  &:hover {
+    text-shadow: 1px 1px 2px rgba(4, 151, 236, .75);
+    transform: scale(1.05);
+  }
+}
+
 .investors-container {
   max-width: 1180px;
 }
@@ -199,12 +206,20 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-
   cursor: pointer;
-}
+  transition: transform .2s ease, box-shadow .3s ease;
 
-.shadow:hover {
-  box-shadow: 10px 10px 15px rgba(0, 0, 0, 5);
-  border-radius: 4px;
+  img {
+    border-radius: 50%;
+    transition: box-shadow .3s ease;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+
+    img {
+      box-shadow: 0 0 3px 3px rgba(4, 151, 236, .4);
+    }
+  }
 }
 </style>

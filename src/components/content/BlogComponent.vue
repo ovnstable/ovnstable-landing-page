@@ -1,9 +1,7 @@
 <template>
   <div class="blog-container">
     <div class="header-title-container">
-      <div class="title">
-        Follow Our Updates
-      </div>
+      <div class="title">Follow Our Updates</div>
       <div v-if="!isMobile">
         <button
           class="button shadow"
@@ -58,7 +56,13 @@ export default {
   }),
 
   computed: {
-    ...mapState('device', ['deviceType', 'deviceOrientation', 'isMobile', 'isTablet', 'isDesktop']),
+    ...mapState('device', [
+      'deviceType',
+      'deviceOrientation',
+      'isMobile',
+      'isTablet',
+      'isDesktop',
+    ]),
 
     componentStyle() {
       return {
@@ -69,13 +73,17 @@ export default {
 
   async created() {
     try {
-      const response = await fetch('https://overnight.fi/blog/wp-json/wp/v2/posts/?per_page=10');
+      const response = await fetch(
+        'https://overnight.fi/blog/wp-json/wp/v2/posts/?per_page=10',
+      );
       const posts = await response.json();
       posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
       const blogPostsPromises = posts.map(async (post) => {
         const dateObj = new Date(post.date);
-        const formattedDate = `${dateObj.getFullYear()}/${dateObj.getMonth() + 1}/${dateObj.getDate()}`;
+        const formattedDate = `${dateObj.getFullYear()}/${
+          dateObj.getMonth() + 1
+        }/${dateObj.getDate()}`;
 
         const imgLink = await this.getImgLink(post.id);
 
@@ -123,7 +131,10 @@ export default {
       let result = null;
       let passedId = id;
 
-      await fetch(`https://overnight.fi/blog/wp-json/wp/v2/media?media_type=image&parent=${id}`, {})
+      await fetch(
+        `https://overnight.fi/blog/wp-json/wp/v2/media?media_type=image&parent=${id}`,
+        {},
+      )
         .then((value) => value.json())
         .then((value) => {
           console.log('Value:', value);
@@ -135,7 +146,8 @@ export default {
           } else {
             result = value[0].source_url;
           }
-        }).catch((reason) => {
+        })
+        .catch((reason) => {
           console.log(`Error get data: ${reason}`);
         });
 
@@ -149,7 +161,8 @@ export default {
         .then((value) => value.json())
         .then((value) => {
           result = value.source_url;
-        }).catch((reason) => {
+        })
+        .catch((reason) => {
           console.log(`Error get data: ${reason}`);
         });
 
@@ -178,51 +191,51 @@ export default {
 <style scoped>
 /* mobile */
 @media only screen and (max-width: 768px) {
-    .title {
-        font-size: 14px;
-        line-height: 18px;
-        text-transform: uppercase;
-    }
+  .title {
+    font-size: 14px;
+    line-height: 18px;
+    text-transform: uppercase;
+  }
 
-    .header-title-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 20px;
-    }
+  .header-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
 
-    .blog-container {
-        padding-right: 20px;
-        padding-left: 20px;
-        margin: 0 auto 40px auto;
-    }
+  .blog-container {
+    padding-right: 20px;
+    padding-left: 20px;
+    margin: 0 auto 40px auto;
+  }
 }
 
 /* desktop */
 @media only screen and (min-width: 769px) {
-    .title {
-        text-transform: uppercase;
-        margin-right: 40px;
-    }
+  .title {
+    text-transform: uppercase;
+    margin-right: 40px;
+  }
 
-    .header-title-container {
-        display: flex;
-        align-items: center;
-        margin-bottom: 30px;
-    }
+  .header-title-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+  }
 
-    .blog-container {
-        margin: 0 auto 80px auto;
-    }
+  .blog-container {
+    margin: 0 auto 80px auto;
+  }
 }
 
 .blog-container {
-    max-width: 1180px;
+  max-width: 1180px;
 }
 
 .blog-cards-container {
-    display: flex;
-    border-radius: 30px 0 0 30px;
+  display: flex;
+  border-radius: 30px 0 0 30px;
 }
 
 .shadow:hover {

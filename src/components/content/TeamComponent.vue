@@ -1,8 +1,6 @@
 <template>
   <div class="team-container">
-    <div class="title">
-      Our plus team
-    </div>
+    <div class="title">Our plus team</div>
     <div class="team-card-container">
       <TeamMemberCard
         v-for="member in teamMembers"
@@ -30,7 +28,6 @@ export default {
   name: 'TeamComponent',
   components: {
     TeamMemberCard,
-
   },
 
   data: () => ({
@@ -151,62 +148,66 @@ export default {
   }),
 
   computed: {
-    ...mapState('device', ['deviceType', 'deviceOrientation', 'isMobile', 'isTablet', 'isDesktop']),
+    ...mapState('device', [
+      'deviceType',
+      'deviceOrientation',
+      'isMobile',
+      'isTablet',
+      'isDesktop',
+    ]),
   },
-
 };
 </script>
 
 <style scoped>
 /* mobile */
 @media only screen and (max-width: 768px) {
-    .team-card-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-        width: 100%;
-    }
+  .team-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+  }
 
-    .title {
-        font-size: 14px;
-        line-height: 19px;
-        text-transform: uppercase;
-        padding-left: 20px;
-        margin-bottom: 20px;
-    }
+  .title {
+    font-size: 14px;
+    line-height: 19px;
+    text-transform: uppercase;
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
 
-    .team-container {
-        margin: 0 auto 40px auto;
-    }
+  .team-container {
+    margin: 0 auto 40px auto;
+  }
 }
 
 /* desktop */
 @media only screen and (min-width: 769px) {
-    .title {
-        text-transform: uppercase;
-        margin-bottom: 30px;
-    }
+  .title {
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
 
-    .team-card-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        gap: 10px;
-        width: 100%;
-    }
+  .team-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 100%;
+  }
 
-    .team-container {
-        margin: 0 auto 80px auto;
-    }
+  .team-container {
+    margin: 0 auto 80px auto;
+  }
 }
 
 .team-container {
-    max-width: 1180px;
+  max-width: 1180px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
-
 </style>

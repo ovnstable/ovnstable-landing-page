@@ -21,7 +21,6 @@
 </template>
 
 <script>
-
 import MainBannerComponent from '@/components/content/MainBannerComponent.vue';
 import AboutOvernightComponent from '@/components/content/AboutOvernightComponent.vue';
 import KeyFeaturesComponent from '@/components/content/KeyFeaturesComponent.vue';
@@ -51,23 +50,22 @@ export default {
 <style scoped>
 /* mobile */
 @media only screen and (max-width: 768px) {
-    .main-container-white  {
-        height: 311px;
-        margin-bottom: 30px;
-    }
+  .main-container-white {
+    height: 311px;
+    margin-bottom: 30px;
+  }
 }
 
 /* desktop */
 @media only screen and (min-width: 769px) {
-    .main-container-white {
-        background-color: #FFFFFF;
-        border-top: 1px solid #0F172A;
-        border-bottom: 1px solid #0F172A;
-        height: 620px;
+  .main-container-white {
+    background-color: #ffffff;
+    border-top: 1px solid #0f172a;
+    border-bottom: 1px solid #0f172a;
+    height: 620px;
 
-        max-width: 100%;
-        margin-bottom: 100px;
-    }
+    max-width: 100%;
+    margin-bottom: 100px;
+  }
 }
-
 </style>

@@ -1,39 +1,23 @@
 <template>
-  <div
-    class="main-chart-container"
-    id="tvl-charts"
-  >
+  <div class="main-chart-container" id="tvl-charts">
     <div class="chart-title">
-      <span class="title">
-        Total value locked
-      </span>
+      <span class="title"> Total value locked </span>
       <span class="title value">
-        {{totalValue}}
+        {{ totalValue }}
       </span>
     </div>
-    <div
-      v-if="mekkaData"
-      class="overflow-hidden"
-    >
+    <div v-if="mekkaData" class="overflow-hidden">
       <div class="chart-container">
-        <div
-          v-if="currentBlockSet === 0"
-          class="chart-chain-blocks"
-        >
+        <div v-if="currentBlockSet === 0" class="chart-chain-blocks">
           <div class="chart-block">
             <img
               class="chain-logo"
               :src="require('@/assets/network/base.svg')"
               alt="Base logo"
-            >
-            <label
-              v-if="!isMobile"
-              class="chain-text"
-            >
-              Base
-            </label>
+            />
+            <label v-if="!isMobile" class="chain-text"> Base </label>
             <label class="chain-text">
-              {{ '$' + utils.formatNumberToMln(this.totalBaseValue) + 'M' }}
+              {{ "$" + utils.formatNumberToMln(this.totalBaseValue) + "M" }}
             </label>
           </div>
           <div class="chart-block">
@@ -41,15 +25,10 @@
               class="chain-logo"
               :src="require('@/assets/network/optimism.svg')"
               alt="Optimism logo"
-            >
-            <label
-              v-if="!isMobile"
-              class="chain-text"
-            >
-              Optimism
-            </label>
+            />
+            <label v-if="!isMobile" class="chain-text"> Optimism </label>
             <label class="chain-text">
-              {{ '$' + utils.formatNumberToMln(this.totalOptimismValue) + 'M' }}
+              {{ "$" + utils.formatNumberToMln(this.totalOptimismValue) + "M" }}
             </label>
           </div>
           <div class="chart-block">
@@ -57,15 +36,10 @@
               class="chain-logo"
               :src="require('@/assets/network/arbitrum.svg')"
               alt="Arbitrum logo"
-            >
-            <label
-              v-if="!isMobile"
-              class="chain-text"
-            >
-              Arbitrum
-            </label>
+            />
+            <label v-if="!isMobile" class="chain-text"> Arbitrum </label>
             <label class="chain-text">
-              {{ '$' + utils.formatNumberToMln(this.totalArbitrumValue) + 'M' }}
+              {{ "$" + utils.formatNumberToMln(this.totalArbitrumValue) + "M" }}
             </label>
           </div>
           <div class="chart-block">
@@ -73,56 +47,37 @@
               class="chain-logo"
               :src="require('@/assets/network/binance.svg')"
               alt="Binance logo"
-            >
-            <label
-              v-if="!isMobile"
-              class="chain-text"
-            >
-              Binance
-            </label>
+            />
+            <label v-if="!isMobile" class="chain-text"> Binance </label>
             <label class="chain-text">
-              {{ '$' + utils.formatNumberToMln(this.totalBscValue) + 'M' }}
+              {{ "$" + utils.formatNumberToMln(this.totalBscValue) + "M" }}
             </label>
           </div>
-          <div
-            class="icon-container"
-            @click="toggleChartBlocks"
-          >
+          <div class="icon-container" @click="toggleChartBlocks">
             <img
               class="arrow-icon"
               :src="require('@/assets/widget/arrow_right.svg')"
               alt="Arrow right icon"
-            >
+            />
           </div>
         </div>
-        <div
-          v-if="currentBlockSet === 1"
-          class="chart-chain-blocks"
-        >
-          <div
-            class="icon-container"
-            @click="toggleChartBlocks"
-          >
+        <div v-if="currentBlockSet === 1" class="chart-chain-blocks">
+          <div class="icon-container" @click="toggleChartBlocks">
             <img
               class="arrow-icon"
               :src="require('@/assets/widget/arrow_left.svg')"
               alt="Arrow right icon"
-            >
+            />
           </div>
           <div class="chart-block">
             <img
               class="chain-logo"
               :src="require('@/assets/network/zksync.svg')"
               alt="Zksync logo"
-            >
-            <label
-              v-if="!isMobile"
-              class="chain-text"
-            >
-              Zksync
-            </label>
+            />
+            <label v-if="!isMobile" class="chain-text"> Zksync </label>
             <label class="chain-text">
-              {{ '$' + utils.formatNumberToMln(this.totalZksyncValue) + 'M' }}
+              {{ "$" + utils.formatNumberToMln(this.totalZksyncValue) + "M" }}
             </label>
           </div>
           <div class="chart-block">
@@ -130,15 +85,10 @@
               class="chain-logo"
               :src="require('@/assets/network/polygon.svg')"
               alt="Polygon logo"
-            >
-            <label
-              v-if="!isMobile"
-              class="chain-text"
-            >
-              Polygon
-            </label>
+            />
+            <label v-if="!isMobile" class="chain-text"> Polygon </label>
             <label class="chain-text">
-              {{ '$' + utils.formatNumberToMln(this.totalPolygonValue) + 'M' }}
+              {{ "$" + utils.formatNumberToMln(this.totalPolygonValue) + "M" }}
             </label>
           </div>
           <div class="chart-block">
@@ -146,23 +96,14 @@
               class="chain-logo"
               :src="require('@/assets/network/linea.svg')"
               alt="Linea logo"
-            >
-            <label
-              v-if="!isMobile"
-              class="chain-text"
-            >
-              Linea
-            </label>
+            />
+            <label v-if="!isMobile" class="chain-text"> Linea </label>
             <label class="chain-text">
-              {{ '$' + utils.formatNumberToMln(this.totalLineaValue) + 'M' }}
+              {{ "$" + utils.formatNumberToMln(this.totalLineaValue) + "M" }}
             </label>
           </div>
         </div>
-        <div
-          id="chart"
-          class="chart"
-        >
-        </div>
+        <div id="chart" class="chart"></div>
       </div>
     </div>
   </div>
@@ -171,19 +112,19 @@
 <!-- eslint-disable no-param-reassign -->
 <script>
 import { getChartSettings } from '@/components/tools/marimeko/model/getChartSettings';
-import utils from '@/utils/utils';
+import utils from '@/utils';
 import { mapState } from 'vuex';
 
 export default {
   name: 'TotalValueLockedContainer',
 
-  components: {
-  },
+  components: {},
 
   data: () => ({
     totalValue: null,
     mekkaData: null,
-    clientCalculateFoundsSchema: { // network_calculateValue: 'sub/add_value'
+    clientCalculateFoundsSchema: {
+      // network_calculateValue: 'sub/add_value'
       'optimism_dai+': 'USD+',
       'arbitrum_dai+': 'USD+',
       'bsc_usdt+': 'USD+',
@@ -216,7 +157,13 @@ export default {
   }),
 
   computed: {
-    ...mapState('device', ['deviceType', 'deviceOrientation', 'isMobile', 'isTablet', 'isDesktop']),
+    ...mapState('device', [
+      'deviceType',
+      'deviceOrientation',
+      'isMobile',
+      'isTablet',
+      'isDesktop',
+    ]),
   },
 
   async mounted() {
@@ -240,7 +187,7 @@ export default {
 
   methods: {
     toggleChartBlocks() {
-      this.currentBlockSet = (this.currentBlockSet === 0) ? 1 : 0;
+      this.currentBlockSet = this.currentBlockSet === 0 ? 1 : 0;
     },
 
     handleMiddleClick(e, url) {
@@ -264,7 +211,8 @@ export default {
             return value;
           }
           return null;
-        }).catch((reason) => {
+        })
+        .catch((reason) => {
           console.log(`Error get data: ${reason}`);
           return null;
         });
@@ -275,8 +223,13 @@ export default {
         const chainInfo = mekkaData[i];
         const newPosition = this.chainOrderMap[chainInfo.chainName];
         if (newPosition) {
-          orderedMekkaData[newPosition - 1] = this.getOrderedAndFilledProductValues(chainInfo);
-          console.log('Ordered and filled orderedMekkaData[newPosition - 1]', orderedMekkaData[newPosition - 1]);
+          orderedMekkaData[newPosition - 1] = this.getOrderedAndFilledProductValues(
+            chainInfo,
+          );
+          console.log(
+            'Ordered and filled orderedMekkaData[newPosition - 1]',
+            orderedMekkaData[newPosition - 1],
+          );
           // eslint-disable-next-line no-continue
           continue;
         }
@@ -323,7 +276,9 @@ export default {
       return chainInfo;
     },
     isProductExistInChainProducts(productName, chainInfo) {
-      return chainInfo.values.some((obj) => obj.name.toLowerCase() === productName.toLowerCase());
+      return chainInfo.values.some(
+        (obj) => obj.name.toLowerCase() === productName.toLowerCase(),
+      );
     },
     async getArbitrumValueFundsFromCollateralAndStrategies() {
       const collateral = await this.getCollateral('arbitrum', 'usd+');
@@ -357,7 +312,7 @@ export default {
             console.log('+Value new value: ', mekkaData, value, value.value);
           }
 
-        /* if (mekkaItem.chainName === 'Arbitrum'  && value.name === 'ETS') {
+          /* if (mekkaItem.chainName === 'Arbitrum'  && value.name === 'ETS') {
           let valueFunds = await this.getArbitrumValueFundsFromCollateralAndStrategies();
           console.log("+Value valueFunds: ", valueFunds)
           value.value = valueFunds;
@@ -476,14 +431,18 @@ export default {
         },
       };
 
-      return fetch(`${process.env.VUE_APP_WIDGET_ROOT_API_URL}/${networkName}/${tokenName}/dapp/collateral/total`, fetchOptions)
+      return fetch(
+        `${process.env.VUE_APP_WIDGET_ROOT_API_URL}/${networkName}/${tokenName}/dapp/collateral/total`,
+        fetchOptions,
+      )
         .then((value) => value.json())
         .then((value) => {
           if (value) {
             return value;
           }
           return null;
-        }).catch((reason) => {
+        })
+        .catch((reason) => {
           console.log(`Error get data: ${reason}`);
           return null;
         });
@@ -497,7 +456,10 @@ export default {
         },
       };
 
-      return fetch(`${process.env.VUE_APP_WIDGET_ROOT_API_URL}/${networkName}/${tokenName}/dapp/strategies`, fetchOptions)
+      return fetch(
+        `${process.env.VUE_APP_WIDGET_ROOT_API_URL}/${networkName}/${tokenName}/dapp/strategies`,
+        fetchOptions,
+      )
         .then((value) => value.json())
         .then((value) => {
           console.log('get strategies:', value);
@@ -505,7 +467,8 @@ export default {
             return value;
           }
           return null;
-        }).catch((reason) => {
+        })
+        .catch((reason) => {
           console.log(`Error get data: ${reason}`);
           return null;
         });
@@ -519,7 +482,7 @@ export default {
       }
 
       return {
-        formattedTvl: tvl ? (`$ ${this.utils.formatMoneyComma(tvl, 2)}`) : '-',
+        formattedTvl: tvl ? `$ ${this.utils.formatMoneyComma(tvl, 2)}` : '-',
         tvl,
       };
     },
@@ -544,25 +507,24 @@ export default {
             return value;
           }
           return null;
-        }).catch((reason) => {
+        })
+        .catch((reason) => {
           console.log(`Error get data: ${reason}`);
           return null;
         });
     },
 
     initChart(mekkaData, maxTvl) {
-      const chart = getChartSettings(
-        {
-          mekkaData,
-          maxTvl,
-          hasTooltip: this.isMobile,
-          hasBlockLabel: !this.isMobile,
-          legendPosition: this.isMobile ? 'center' : 'bottom',
-          legendAlignment: this.isMobile ? 'center' : 'left',
-          blocksPadding: this.isMobile ? 1 : 2,
-          legendMarginTop: 10,
-        },
-      );
+      const chart = getChartSettings({
+        mekkaData,
+        maxTvl,
+        hasTooltip: this.isMobile,
+        hasBlockLabel: !this.isMobile,
+        legendPosition: this.isMobile ? 'center' : 'bottom',
+        legendAlignment: this.isMobile ? 'center' : 'left',
+        blocksPadding: this.isMobile ? 1 : 2,
+        legendMarginTop: 10,
+      });
 
       chart.container('chart');
 
@@ -580,178 +542,179 @@ export default {
 <style scoped lang="scss">
 /* mobile*/
 @media only screen and (max-width: 768px) {
-    .chart-container {
-        background-color: #FFFFFF;
-        display: flex;
-        flex-direction: column;
-        border-radius: 30px;
-        border: 1px solid black;
-        border-bottom: 2px solid black;
-    }
+  .chart-container {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    border: 1px solid black;
+    border-bottom: 2px solid black;
+  }
 
-    .chart-chain-blocks {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        gap: 10px;
-        padding: 30px 20px 20px 20px;
-    }
+  .chart-chain-blocks {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 10px;
+    padding: 30px 20px 20px 20px;
+  }
 
-    .chart-block {
-        width: 65px;
-        height: 26px;
-        border: 1px solid black;
-        border-bottom: 2px solid black;
-        border-radius: 12px;
+  .chart-block {
+    width: 65px;
+    height: 26px;
+    border: 1px solid black;
+    border-bottom: 2px solid black;
+    border-radius: 12px;
 
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
 
-    .title {
-        font-size: 14px;
-        line-height: 19px;
-        margin-bottom: 20px;
-        text-transform: uppercase;
-    }
+  .title {
+    font-size: 14px;
+    line-height: 19px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
 
-    .main-chart-container {
-        margin-bottom: 40px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
+  .main-chart-container {
+    margin-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
-    .chain-logo {
-        width: 12px;
-        height: 12px;
-    }
+  .chain-logo {
+    width: 12px;
+    height: 12px;
+  }
 
-    .chain-text {
-        font-family: "Red Hat Display", sans-serif;
-        font-weight: 400;
-        font-size: 10px;
-        line-height: 14px;
-    }
+  .chain-text {
+    font-family: "Red Hat Display", sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+  }
 
-    .chart {
-        display: flex;
-        min-width: 300px;
-        height: 300px;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        padding: 10px;
-    }
+  .chart {
+    display: flex;
+    min-width: 300px;
+    height: 300px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
 }
 
 /* desktop */
 @media only screen and (min-width: 769px) {
-    .chart-container {
-        background-color: #FFFFFF;
-        aspect-ratio: 2.6/1;
-        display: flex;
-        flex-direction: column;
-        border-radius: 30px;
-        border: 1px solid black;
-        border-bottom: 2px solid black;
-    }
+  .chart-container {
+    background-color: #ffffff;
+    aspect-ratio: 2.6/1;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    border: 1px solid black;
+    border-bottom: 2px solid black;
+  }
 
-    .chart-chain-blocks {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        gap: 20px;
-        padding: 30px 20px 20px 20px;
-    }
+  .chart-chain-blocks {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 20px;
+    padding: 30px 20px 20px 20px;
+  }
 
-    .chart-block {
-        width: 250px;
-        height: 32px;
-        border: 1px solid black;
-        border-bottom: 2px solid black;
-        border-radius: 12px;
+  .chart-block {
+    width: 250px;
+    height: 32px;
+    border: 1px solid black;
+    border-bottom: 2px solid black;
+    border-radius: 12px;
 
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
 
-    .main-chart-container {
-        margin-bottom: 100px;
-    }
+  .main-chart-container {
+    margin-bottom: 100px;
+  }
 
-    .chain-logo {
-        width: 28px;
-        height: 20px;
-    }
+  .chain-logo {
+    width: 28px;
+    height: 20px;
+  }
 
-    .chain-text {
-        font-family: "Red Hat Display", sans-serif;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 21px;
-    }
+  .chain-text {
+    font-family: "Red Hat Display", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+  }
 
-    .chart {
-        display: flex;
-        width: 1150px;
-        height: 350px;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        padding-left: 20px;
-    }
+  .chart {
+    display: flex;
+    width: 1150px;
+    height: 350px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+  }
 
-    .title {
-        margin-bottom: 30px;
-        text-transform: uppercase;
-    }
+  .title {
+    margin-bottom: 30px;
+    text-transform: uppercase;
+  }
 }
 
 .icon-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .arrow-icon {
-    height: 20px;
-    width: 11.49px;
+  height: 20px;
+  width: 11.49px;
 }
 
 .chart-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .value {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .main-chart-container {
-    max-width: 1180px;
-    margin-left: auto;
-    margin-right: auto;
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .btn-row {
-    margin-top: 2% !important;
-    padding-bottom: 20px;
+  margin-top: 2% !important;
+  padding-bottom: 20px;
 }
 </style>
 
 <style>
 /* Скрыть логотип и его текст на графике */
-.anychart-credits-text, .anychart-credits-logo {
-    display: none;
+.anychart-credits-text,
+.anychart-credits-logo {
+  display: none;
 }
 
 .divider {
-    margin-left: 10px;
-    margin-right: 20px;
-    border-top: 1px solid #DEE1E5 !important;
+  margin-left: 10px;
+  margin-right: 20px;
+  border-top: 1px solid #dee1e5 !important;
 }
 </style>

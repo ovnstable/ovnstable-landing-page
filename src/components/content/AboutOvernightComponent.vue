@@ -3,10 +3,7 @@
     <div class="carousel">
       <PartnersCarousel />
     </div>
-    <div
-      v-if="isDesktop || isTablet"
-      class="cards-container"
-    >
+    <div v-if="isDesktop || isTablet" class="cards-container">
       <div class="single-card">
         <StepCards
           step-label="Step 1"
@@ -16,7 +13,7 @@
         />
       </div>
       <div class="arrow-container">
-        <img :src="require('@/assets/cards/arrow-right.svg')" alt="">
+        <img :src="require('@/assets/cards/arrow-right.svg')" alt="" />
       </div>
       <div class="single-card">
         <StepCards
@@ -27,10 +24,7 @@
         />
       </div>
       <div class="arrow-container">
-        <img
-          :src="require('@/assets/cards/arrow-right.svg')"
-          alt="Arrow right icon"
-        >
+        <img :src="require('@/assets/cards/arrow-right.svg')" alt="Arrow right icon" />
       </div>
       <div class="single-card">
         <StepCards
@@ -42,10 +36,7 @@
       </div>
     </div>
 
-    <div
-      v-if="isMobile"
-      class="cards-container-mobile"
-    >
+    <div v-if="isMobile" class="cards-container-mobile">
       <div class="single-card">
         <StepCardsMobile
           step-label="Step 1"
@@ -58,7 +49,7 @@
             class="arrow-mobile"
             :src="require('@/assets/cards/arrow-bottom.svg')"
             alt="Arrow bottom"
-          >
+          />
         </div>
       </div>
       <div class="single-card">
@@ -73,7 +64,7 @@
             class="arrow-mobile"
             :src="require('@/assets/cards/arrow-bottom.svg')"
             alt="Arrow bottom"
-          >
+          />
         </div>
       </div>
       <div class="single-card">
@@ -89,7 +80,6 @@
 </template>
 
 <script>
-
 import StepCards from '@/components/tools/StepCards.vue';
 import StepCardsMobile from '@/components/tools/StepCardsMobile.vue';
 import PartnersCarousel from '@/components/tools/PartnersCarousel.vue';
@@ -104,7 +94,13 @@ export default {
   },
 
   computed: {
-    ...mapState('device', ['deviceType', 'deviceOrientation', 'isMobile', 'isTablet', 'isDesktop']),
+    ...mapState('device', [
+      'deviceType',
+      'deviceOrientation',
+      'isMobile',
+      'isTablet',
+      'isDesktop',
+    ]),
   },
 };
 </script>
@@ -112,44 +108,44 @@ export default {
 <style scoped>
 /* mobile */
 @media only screen and (max-width: 768px) {
-    .single-card {
-        position: relative;
-        max-width: 500px;
-    }
-    .single-card:first-of-type {
-        padding-top: 20px;
-    }
+  .single-card {
+    position: relative;
+    max-width: 500px;
+  }
+  .single-card:first-of-type {
+    padding-top: 20px;
+  }
 
-    .arrow-container-mobile {
-        position: relative;
-        top: 0;
-        right: -290px;
-    }
+  .arrow-container-mobile {
+    position: relative;
+    top: 0;
+    right: -290px;
+  }
 
-    .cards-container-mobile {
-        display: flex;
-        flex-direction: column;
-    }
+  .cards-container-mobile {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 /* desktop */
 @media only screen and (min-width: 769px) {
-    .cards-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        gap: 50px;
-        max-width: 1180px;
-        margin: 0 auto 70px auto;
-    }
+  .cards-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 50px;
+    max-width: 1180px;
+    margin: 0 auto 70px auto;
+  }
 
-    .carousel {
-        margin-top: 10px;
-        margin-bottom: 40px;
-    }
+  .carousel {
+    margin-top: 10px;
+    margin-bottom: 40px;
+  }
 
-    .arrow-container {
-        margin-bottom: 30px;
-    }
+  .arrow-container {
+    margin-bottom: 30px;
+  }
 }
 </style>

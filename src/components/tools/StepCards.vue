@@ -9,13 +9,13 @@
           class="image"
           :src="require('@/assets/cards/' + imageLink)"
           alt="About products image"
-        >
+        />
       </div>
       <div class="sub-title">
-        {{legendTitle}}
+        {{ legendTitle }}
       </div>
       <div class="paragraph">
-        {{subTitle}}
+        {{ subTitle }}
       </div>
     </div>
   </div>
@@ -52,45 +52,43 @@ export default {
 <style scoped>
 /* mobile */
 @media only screen and (max-width: 768px) {
-
 }
 
 /* desktop */
 @media only screen and (min-width: 769px) {
-    .cards-container {
-        display: flex;
-        flex-direction: column;
-        max-width: 260px;
-        text-align: center;
-    }
+  .cards-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 260px;
+    text-align: center;
+  }
 
-    .step-card-box {
-        width: 253px;
-        height: 253px;
-        border: 1px solid #0F172A;
-        border-bottom: 2px solid #0F172A;
-        background-color: white;
+  .step-card-box {
+    width: 253px;
+    height: 253px;
+    border: 1px solid #0f172a;
+    border-bottom: 2px solid #0f172a;
+    background-color: white;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .main-sub-title {
-        text-transform: none;
-        margin-bottom: 10px;
-        margin-top: 20px;
-    }
+  .main-sub-title {
+    text-transform: none;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
 
-    .sub-title {
-        margin-top: 10px;
-        margin-bottom: 20px;
-        text-transform: none;
-    }
+  .sub-title {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-transform: none;
+  }
 
-    .image {
-        height: 208px;
-    }
+  .image {
+    height: 208px;
+  }
 }
-
 </style>

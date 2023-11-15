@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <div class="header-container"></div>
-    <HeaderContent class="fixed-position"></HeaderContent>
-  </div>
+  <HeaderContent class="fixed-position"></HeaderContent>
 </template>
 
 <script>

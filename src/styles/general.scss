@@ -159,3 +159,47 @@ body {
     line-height: 19.85px;
     font-size: 15px;
 }
+
+a {
+    text-decoration: none;
+  
+    &:hover {
+      text-decoration: none;
+    }
+}
+  
+.link {
+    color: #0F172A;
+    transition: color .1s ease, transform .2s ease;
+  
+    &:hover {
+      color: #68789c;
+      transform: translateX(-2px);
+    }
+}
+
+.button {
+    transition: opacity .3s ease;
+
+    &:hover {
+        opacity: .8;
+    }
+}
+
+.button-hover-blue {
+    animation: pulse 1s ease-in-out;
+    box-shadow: 0 0 0 12px transparent;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 #0497EC; }
+}
+
+.button-hover-white {
+    animation: pulse-white 1s ease-in-out;
+    box-shadow: 0 0 0 12px transparent;
+}
+
+@keyframes pulse-white {
+    0% { box-shadow: 0 0 0 0 #ffffff; }
+}

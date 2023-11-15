@@ -21,18 +21,18 @@
 </template>
 
 <script>
-import MainBannerComponent from '@/components/content/MainBannerComponent.vue';
-import AboutOvernightComponent from '@/components/content/AboutOvernightComponent.vue';
-import KeyFeaturesComponent from '@/components/content/KeyFeaturesComponent.vue';
-import TotalValueLockedContainer from '@/components/content/TotalValueLockedContainer.vue';
-import OvernightRoadmapComponent from '@/components/content/OvernightRoadmapComponent.vue';
-import AuditsComponent from '@/components/content/AuditsComponent.vue';
-import BlogComponent from '@/components/content/BlogComponent.vue';
-import TeamComponent from '@/components/content/TeamComponent.vue';
-import InvestorsComponent from '@/components/content/InvestorsComponent.vue';
+import MainBannerComponent from '@/components/MainBannerComponent/index.vue';
+import AboutOvernightComponent from '@/components/AboutOvernightComponent/index.vue';
+import KeyFeaturesComponent from '@/components/KeyFeaturesComponent/index.vue';
+import TotalValueLockedContainer from '@/components/TotalValueLockedContainer/index.vue';
+import OvernightRoadmapComponent from '@/components/OvernightRoadmapComponent/index.vue';
+import AuditsComponent from '@/components/AuditsComponent/index.vue';
+import BlogComponent from '@/components/BlogComponent/index.vue';
+import TeamComponent from '@/components/TeamComponent/index.vue';
+import InvestorsComponent from '@/components/InvestorsComponent/index.vue';
 
 export default {
-  name: 'ContentContainer',
+  name: 'Container',
   components: {
     MainBannerComponent,
     AboutOvernightComponent,

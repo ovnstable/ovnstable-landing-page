@@ -4,7 +4,7 @@
 
 <script>
 
-import HeaderContent from '@/components/header/HeaderContent.vue';
+import HeaderContent from '@/components/UI/Header/index.vue';
 
 export default {
   name: 'HeaderContainer',

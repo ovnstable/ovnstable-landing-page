@@ -107,12 +107,6 @@ export default {
     } catch (reason) {
       console.log('Error get data: ', reason);
     }
-
-    window.addEventListener('mousemove', this.onMouseMove);
-  },
-
-  beforeDestroy() {
-    window.removeEventListener('mousemove', this.onMouseMove);
   },
 
   methods: {
@@ -167,14 +161,6 @@ export default {
         });
 
       return result;
-    },
-
-    onMouseMove(e) {
-      if (!this.isMouseOver) return;
-
-      const deltaX = e.clientX - this.mouseX;
-      this.mouseX = e.clientX;
-      this.currentX -= deltaX;
     },
 
     onMouseEnter() {

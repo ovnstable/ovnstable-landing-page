@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import FooterComponent from '@/components/footer/FooterComponent.vue';
+import FooterComponent from '@/components/UI/Footer/index.vue';
 
 export default {
   name: 'FooterContainer',

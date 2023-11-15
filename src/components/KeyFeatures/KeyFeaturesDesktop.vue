@@ -120,9 +120,6 @@ export default {
   color: #848d9c;
   border: 2px solid #d1d5db;
   border-bottom: none;
-  transition: all 0.3s ease;
-
-  font-family: "Red Hat Display", sans-serif;
   font-weight: 700;
   font-size: 16px;
   text-transform: uppercase;
@@ -217,7 +214,7 @@ export default {
   text-decoration: none;
   border: 2px solid black;
   transition: padding .3s cubic-bezier(0.65, -0.48, 0.22, 2.13),
-    border-radius .3s ease, color .2s ease;
+    border-radius .2s ease, color .2s ease;
 
   /* Default colors */
   color: #848D9C;

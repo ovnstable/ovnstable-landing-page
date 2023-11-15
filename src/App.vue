@@ -24,4 +24,4 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" src="./styles/general.scss"></style>

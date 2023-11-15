@@ -1,0 +1,205 @@
+:root {
+    --ov-bg: #E3F2FD;
+    --ov-bg-secondary: #0497EC;
+
+    /* theme */
+    --ov-primary: #0F172A;
+    /*--ov-primary-hover: #0F172A;*/
+    --ov-light-primary: #687386;
+    --ov-placeholder: #d9d5d5;
+    --ov-secondary: #848D9C;
+    --ov-white: #ffffff;
+    --ov-black: #000000;
+
+    /* end theme */
+
+}
+
+body {
+    font-family: "Red Hat Display", serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: var(--ov-bg);
+    color: var(--ov-primary);
+}
+
+.main-container {
+    background-color: var(--ov-bg);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.header-main-container {
+    background-color: var(--ov-white);
+    border-bottom-color: var(--ov-black);
+
+    max-width: 100%;
+}
+
+.header-container {
+    background-color: var(--ov-white);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-centered {
+    max-width: 1180px;
+
+    padding: 10px 0 10px 0;
+}
+
+.main-container-blue {
+    background-color: var(--ov-bg-secondary);
+    max-width: 100%;
+}
+
+.main-title {
+    font-family: "Red Hat Display", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 40px;
+    text-transform: uppercase;
+}
+
+.main-title-mobile {
+    font-family: "Red Hat Display", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: uppercase;
+}
+
+.main-sub-title {
+    font-family: "Red Hat Display", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 29px;
+    text-transform: uppercase;
+}
+
+.main-sub-title-mobile {
+    font-family: "Red Hat Display", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 14px;
+    text-transform: uppercase;
+}
+
+.title {
+    font-family: "Red Hat Display", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 37px;
+}
+
+.sub-title {
+    font-family: "Red Hat Display", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 29px;
+    text-transform: uppercase;
+}
+
+.button {
+    height: 26px;
+    background: var(--ov-primary);
+    border-radius: 12px;
+    border: 1px solid var(--ov-primary);
+    color: var(--ov-white);
+    text-transform: uppercase;
+    font-weight: 700;
+    width: 154px;
+
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-mobile {
+    height: 22px;
+    width: 88px;
+
+    background: var(--ov-primary);
+    border-radius: 12px;
+    border: 1px solid var(--ov-primary);
+    color: var(--ov-white);
+
+    text-transform: uppercase;
+    font-weight: 700;
+
+    font-size: 8px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paragraph {
+    font-family: "Red Hat Display", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: var(--ov-black);
+}
+
+.text-styling {
+    font-family: "Red Hat Display", sans-serif;
+    font-weight: 600;
+    line-height: 19.85px;
+    font-size: 15px;
+}
+
+a {
+    text-decoration: none;
+  
+    &:hover {
+      text-decoration: none;
+    }
+}
+  
+.link {
+    color: #0F172A;
+    transition: color .1s ease, transform .2s ease;
+  
+    &:hover {
+      color: #68789c;
+      transform: translateX(-2px);
+    }
+}
+
+.button {
+    transition: opacity .3s ease;
+
+    &:hover {
+        opacity: .8;
+    }
+}
+
+.button-hover-blue {
+    animation: pulse 1s ease-in-out;
+    box-shadow: 0 0 0 12px transparent;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 #0497EC; }
+}
+
+.button-hover-white {
+    animation: pulse-white 1s ease-in-out;
+    box-shadow: 0 0 0 12px transparent;
+}
+
+@keyframes pulse-white {
+    0% { box-shadow: 0 0 0 0 #ffffff; }
+}

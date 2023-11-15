@@ -2,10 +2,7 @@
   <div>
     <div>
       <div
-        class="card card-round statistic-widget"
-        @mouseover="addShadow()"
-        @mouseout="removeShadow()"
-        ref="chartContainer"
+        class="card card-round statistic-widget card-shadow"
       >
         <div v-if="loading || !data">
           <div class="center-flex padding-top-four loader">
@@ -200,13 +197,6 @@ export default {
           console.log(error);
           this.loading = false;
         });
-    },
-
-    addShadow() {
-      this.$refs.chartContainer.style.boxShadow = '15px 15px 25px rgba(0, 0, 0, 5)';
-    },
-    removeShadow() {
-      this.$refs.chartContainer.style.boxShadow = '';
     },
 
     openBestChainApy() {
@@ -665,6 +655,10 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
 .widget-container {
     display: flex;
     flex-direction: column;
+}
+
+.card-shadow:hover{
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 10);
 }
 
 </style>

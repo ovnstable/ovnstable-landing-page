@@ -14,14 +14,14 @@
       </div>
       <div class="social-container">
         <img
-          class="logos"
+          class="logos label-shadow"
           :src="require('/src/assets/socials/twitter.svg')"
           alt="twitter logo"
           @click="openLinkBlank('https://twitter.com/overnight_fi')"
           @mouseup.middle="handleMiddleClick($event, 'https://twitter.com/overnight_fi')"
         />
         <img
-          class="logos"
+          class="logos label-shadow"
           :src="require('/src/assets/socials/discord.svg')"
           alt="twitter logo"
           @click="openLinkBlank('https://discord.com/invite/overnight-fi')"
@@ -30,27 +30,28 @@
       </div>
       <div class="header-labels-container">
         <label
-          class="header-label text-styling"
+          class="header-label text-styling label-shadow"
           @click="openLinkBlank('https://docs.overnight.fi/governance/ovn-token/overnight-tokenomics')"
           @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/governance/ovn-token/overnight-tokenomics')"
         >
           Token
         </label>
         <label
-          class="header-label text-styling"
+          class="header-label text-styling label-shadow"
           @click="openLinkBlank('https://docs.overnight.fi/core-concept/faq')"
           @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/core-concept/faq')"
         >
           FAQ
         </label>
         <label
-          class="header-label text-styling"
+          class="header-label text-styling label-shadow"
           @click="openLinkBlank('https://docs.overnight.fi/')"
           @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/')"
         >
           Docs
         </label>
       </div>
+
       <div class="button-container">
         <button
           class="button text-styling"
@@ -169,6 +170,12 @@ export default {
   methods: {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
+    },
+    addShadow() {
+      this.$refs.Link.style.boxShadow = '5px 5px 5px rgba(0, 0, 0, 5)';
+    },
+    removeShadow() {
+      this.$refs.Link.style.boxShadow = '';
     },
 
     openLinkBlank(url) {
@@ -348,6 +355,11 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
 
 .header-label {
     cursor: pointer;
+}
+
+.label-shadow:hover {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
 }
 
 .menu-container {

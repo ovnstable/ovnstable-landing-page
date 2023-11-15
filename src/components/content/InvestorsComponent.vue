@@ -6,21 +6,21 @@
       </div>
       <div class="companies-container">
         <div
-          class="investor-name"
+          class="investor-name shadow"
           @click="openLinkBlank('https://twitter.com/sandeepnailwal')"
           @mouseup.middle="handleMiddleClick($event, 'https://twitter.com/sandeepnailwal')"
         >
           Sandeep Naiwal
         </div>
         <div
-          class="investor-name"
+          class="investor-name shadow"
           @click="openLinkBlank('https://twitter.com/twobitidiot')"
           @mouseup.middle="handleMiddleClick($event, 'https://twitter.com/twobitidiot')"
         >
           Ryan Selkis
         </div>
         <div
-          class="investor-company hack"
+          class="investor-company hack shadow"
           @click="openLinkBlank('https://hack.vc/')"
           @mouseup.middle="handleMiddleClick($event, 'https://hack.vc/')"
         >
@@ -30,7 +30,7 @@
           >
         </div>
         <div
-          class="investor-company labs"
+          class="investor-company labs shadow"
           @click="openLinkBlank('https://www.fjlabs.com/')"
           @mouseup.middle="handleMiddleClick($event, 'https://www.fjlabs.com/')"
         >
@@ -40,14 +40,14 @@
           >
         </div>
         <div
-          class="investor-name"
+          class="investor-name shadow"
           @click="openLinkBlank('https://twitter.com/tubergen')"
           @mouseup.middle="handleMiddleClick($event, 'https://twitter.com/tubergen')"
         >
           Brian Tubergen
         </div>
         <div
-          class="investor-name"
+          class="investor-name shadow"
           @click="openLinkBlank('https://twitter.com/paulrholland')"
           @mouseup.middle="handleMiddleClick($event, 'https://twitter.com/paulrholland')"
         >
@@ -205,6 +205,11 @@ export default {
     justify-content: center;
 
     cursor: pointer;
+}
+
+.shadow:hover {
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 5);
+  border-radius: 4px;
 }
 
 </style>

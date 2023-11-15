@@ -6,7 +6,7 @@
       </div>
       <div v-if="!isMobile">
         <button
-          class="button"
+          class="button shadow"
           @click="openLinkBlank('https://overnight.fi/blog/')"
           @mouseup.middle="handleMiddleClick($event, 'https://overnight.fi/blog/')"
         >
@@ -15,7 +15,7 @@
       </div>
       <div v-else>
         <button
-          class="button-mobile"
+          class="button-mobile shadow"
           @click="openLinkBlank('https://overnight.fi/blog/')"
           @mouseup.middle="handleMiddleClick($event, 'https://overnight.fi/blog/')"
         >
@@ -223,5 +223,9 @@ export default {
 .blog-cards-container {
     display: flex;
     border-radius: 30px 0 0 30px;
+}
+
+.shadow:hover {
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 5);
 }
 </style>

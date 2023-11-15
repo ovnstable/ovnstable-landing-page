@@ -3,7 +3,7 @@
     <div>
       <div class="card card-round statistic-widget">
         <div v-if="loading || !data">
-          <div class="center-flex padding-top-four">
+          <div class="center-flex padding-top-four loader">
             <FontAwesomeIcon
               :icon="['fas', 'spinner']"
               size="lg"
@@ -374,6 +374,13 @@ export default {
     .lock-icon {
         width: 12px;
         height: 12px;
+    }
+
+    .loader {
+      position: absolute;
+      left: 200px;
+      top: 285px;
+      z-index: 2;
     }
 }
 

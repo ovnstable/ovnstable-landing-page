@@ -1,6 +1,13 @@
 <template>
   <div>
     <div class="header-row">
+      <div class="header-left-border">
+        <img
+          class="border-left-icon"
+          :src="require('@/assets/icons/border_left.svg')"
+          alt="Border left icon"
+        >
+      </div>
       <div
         v-for="(feature, index) in features"
         :key="`header-${index}`"
@@ -10,6 +17,12 @@
       >
         <div v-if="activeTab === index" class="arrow-left" />
         {{ feature.title }}
+      </div>
+      <div class="header-right-border">
+        <img
+          :src="require('@/assets/icons/border_right.svg')"
+          alt="Border right icon"
+        >
       </div>
     </div>
     <div class="tabs">
@@ -64,6 +77,19 @@ export default {
 
     border-radius: 20px 20px 0 0;
     background-color:  var(--ov-bg);
+    position: relative;
+}
+
+.header-left-border {
+    position: relative;
+    top: 25px;
+    left: 3px;
+}
+
+.header-right-border {
+    position: relative;
+    top: 25px;
+    left: -3px;
 }
 
 .arrow-left {

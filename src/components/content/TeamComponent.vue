@@ -60,13 +60,13 @@ export default {
       {
         id: 3,
         // eslint-disable-next-line global-require
-        picture: require('@/assets/team/roman_g.png'),
-        name: 'Roman G.',
-        role: 'Frontend Developer',
-        linkedin: 'https://www.linkedin.com/in/roman-golovlyov-2753611b3/',
-        twitter: 'https://twitter.com/RGolovlyov',
+        picture: require('@/assets/team/matvey_b.png'),
+        name: 'Matvey B.',
+        role: 'Frontend Lead',
+        linkedin: '',
+        twitter: '',
         telegram: '',
-        github: 'https://github.com/rrr-source',
+        github: 'https://github.com/matt5346',
       },
       {
         id: 4,

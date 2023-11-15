@@ -14,7 +14,10 @@
       <label v-html="postData.title"></label>
     </div>
     <div class="blog-date">
-      <label>{{ getDate(postData.date) }}</label>
+      <label>{{ postData.date }}</label>
+    </div>
+    <div class="content">
+      <label>{{ postData.content }}</label>
     </div>
   </div>
 </template>
@@ -42,14 +45,6 @@ export default {
 
     openLink(url) {
       window.open(url, '_blank').focus();
-    },
-
-    getDate(date) {
-      try {
-        return this.$moment.utc(date).format('DD MMMM YY');
-      } catch (e) {
-        return '';
-      }
     },
   },
 };
@@ -83,7 +78,7 @@ export default {
     }
 
    .blog-date {
-       font-size: 22px;
+       font-size: 16px;
        line-height: 30px;
    }
 
@@ -92,17 +87,18 @@ export default {
         height: 200px;
     }
 
-    .post-bg-img:nth-of-type(1) {
-        border-radius: 30px 0 0 0;
-    }
-    .post-bg-img:nth-of-type(3) {
+    .post-bg-img:first-child {
+      width: auto;
+      height: 200px;
+      border-radius: 30px 0 0 0;
     }
 }
 
 .news-card-container {
     background-color: #FFFFFF;
     text-align: start;
-    border-right: 1px solid #0F172A;
+    border: 1px solid #0F172A;
+    border-bottom: 2px solid #0F172A;
 }
 
 .news-card-container:first-of-type {

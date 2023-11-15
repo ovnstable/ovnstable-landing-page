@@ -1,42 +1,47 @@
 <template>
-  <div class="audits-container">
-    <div class="title">
-      Audits
-      <img
-        class="clear-icon"
-        :src="require('@/assets/icons/done.svg')"
-        alt="Clear icon"
+  <div class="audits-wrapper">
+    <div class="audits-container">
+      <div class="title">
+        Audits
+        <img
+          class="clear-icon"
+          :src="require('@/assets/icons/done.svg')"
+          alt="Clear icon"
+        >
+      </div>
+      <div class="paragraph-text">
+        <span class="paragraph-text">
+          We are committedto the highest quality of engineering and will use whatever
+          tools are needed to produce a product exceptional in performance and safety.
+          Every year we audit our products.
+        </span>
+        <br>
+        <br>
+        <span class="paragraph-text">
+          Our protocols, USD+ and ETS have been audited by the world's
+          leading blockchain security firms Ackee Blockchain in 2023 and Hacken.io in
+          2022 respectively.Ensuring the security of our protocols is our highest priority.
+        </span>
+      </div>
+      <div
+        class="logo-container"
+        @click="openLinkBlank('https://docs.overnight.fi/other/audits')"
+        @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/other/audits')"
       >
+        <img
+          class="hacken"
+          :src="require('@/assets/audits/hacken.svg')"
+          alt="Hacken logo"
+        >
+        <img
+          class="ackee"
+          :src="require('@/assets/audits/ackee.svg')"
+          alt="Ackee logo"
+        >
+      </div>
     </div>
-    <div class="paragraph-text">
-      <span class="paragraph-text">
-        We are committedto the highest quality of engineering and will use whatever
-        tools are needed to produce a product exceptional in performance and safety.
-        Every year we audit our products.
-      </span>
-      <br>
-      <br>
-      <span class="paragraph-text">
-        Our protocols, USD+ and ETS have been audited by the world's
-        leading blockchain security firms Ackee Blockchain in 2023 and Hacken.io in
-        2022 respectively.Ensuring the security of our protocols is our highest priority.
-      </span>
-    </div>
-    <div
-      class="logo-container"
-      @click="openLinkBlank('https://docs.overnight.fi/other/audits')"
-      @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/other/audits')"
-    >
-      <img
-        class="hacken"
-        :src="require('@/assets/audits/hacken.svg')"
-        alt="Hacken logo"
-      >
-      <img
-        class="ackee"
-        :src="require('@/assets/audits/ackee.svg')"
-        alt="Ackee logo"
-      >
+    <div class="audits-image-container">
+      <img class="audits-image" :src="require('@/assets/audits/audits.png')" alt="Audits image">
     </div>
   </div>
 </template>

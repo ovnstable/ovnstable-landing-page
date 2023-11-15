@@ -7,14 +7,12 @@
 </template>
 
 <script>
-// eslint-disable-next-line import/extensions
-import KeyFeaturesDesktop from '@/components/tools/KeyFeaturesDesktop';
-// eslint-disable-next-line import/extensions
-import KeyFeaturesMobile from '@/components/tools/KeyFeaturesMobile';
+import KeyFeaturesDesktop from '@/components/KeyFeatures/KeyFeaturesDesktop.vue';
+import KeyFeaturesMobile from '@/components/KeyFeatures/KeyFeaturesMobile.vue';
 import { mapState } from 'vuex';
 
 export default {
-  name: 'KeyFeaturesComponent',
+  name: 'KeyFeatures',
 
   components: {
     KeyFeaturesDesktop,

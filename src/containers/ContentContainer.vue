@@ -1,48 +1,48 @@
 <template>
   <div>
     <div class="main-container main-container-blue">
-      <MainBannerComponent />
+      <MainBanner />
     </div>
     <div class="main-container">
-      <AboutOvernightComponent />
-      <KeyFeaturesComponent />
+      <AboutOvernight />
+      <KeyFeatures />
       <TotalValueLockedContainer />
     </div>
     <div class="main-container main-container-white">
-      <OvernightRoadmapComponent />
+      <OvernightRoadmap />
     </div>
     <div class="main-container">
-      <AuditsComponent />
-      <BlogComponent />
-      <TeamComponent />
-      <InvestorsComponent />
+      <Audits />
+      <Blog />
+      <Team />
+      <Investors />
     </div>
   </div>
 </template>
 
 <script>
-import MainBannerComponent from '@/components/MainBannerComponent/index.vue';
-import AboutOvernightComponent from '@/components/AboutOvernightComponent/index.vue';
-import KeyFeaturesComponent from '@/components/KeyFeaturesComponent/index.vue';
+import MainBanner from '@/components/MainBanner/index.vue';
+import AboutOvernight from '@/components/About/index.vue';
+import KeyFeatures from '@/components/KeyFeatures/index.vue';
 import TotalValueLockedContainer from '@/components/TotalValueLockedContainer/index.vue';
-import OvernightRoadmapComponent from '@/components/OvernightRoadmapComponent/index.vue';
-import AuditsComponent from '@/components/AuditsComponent/index.vue';
-import BlogComponent from '@/components/BlogComponent/index.vue';
-import TeamComponent from '@/components/TeamComponent/index.vue';
-import InvestorsComponent from '@/components/InvestorsComponent/index.vue';
+import OvernightRoadmap from '@/components/Roadmap/index.vue';
+import Audits from '@/components/Audits/index.vue';
+import Blog from '@/components/Blog/index.vue';
+import Team from '@/components/Team/index.vue';
+import Investors from '@/components/Investors/index.vue';
 
 export default {
   name: 'Container',
   components: {
-    MainBannerComponent,
-    AboutOvernightComponent,
-    KeyFeaturesComponent,
+    MainBanner,
+    AboutOvernight,
+    KeyFeatures,
     TotalValueLockedContainer,
-    OvernightRoadmapComponent,
-    AuditsComponent,
-    BlogComponent,
-    TeamComponent,
-    InvestorsComponent,
+    OvernightRoadmap,
+    Audits,
+    Blog,
+    Team,
+    Investors,
   },
 };
 </script>

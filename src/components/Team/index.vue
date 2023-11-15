@@ -21,11 +21,10 @@
 
 <script>
 import { mapState } from 'vuex';
-// eslint-disable-next-line import/extensions
-import TeamMemberCard from '@/components/tools/TeamMemberCard';
+import TeamMemberCard from '@/components/Team/TeamMemberCard.vue';
 
 export default {
-  name: 'TeamComponent',
+  name: 'Team',
   components: {
     TeamMemberCard,
   },

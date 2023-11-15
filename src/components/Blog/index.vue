@@ -39,11 +39,11 @@
 </template>
 
 <script>
-import NewsCard from '@/components/tools/NewsCard.vue';
+import NewsCard from '@/components/Blog/NewsCard.vue';
 import { mapState } from 'vuex';
 
 export default {
-  name: 'BlogComponent',
+  name: 'Blog',
   components: {
     NewsCard,
   },

@@ -1,7 +1,7 @@
 import { mosaic, palettes } from 'anychart';
 // eslint-disable-next-line import/named
-import tokenColors from '@/components/tools/marimeko/tokenColors';
 import utils from '@/utils';
+import tokenColors from '@/utils/marimeko/tokenColors';
 
 // eslint-disable-next-line import/prefer-default-export
 export const getChartSettings = (

@@ -111,9 +111,9 @@
 
 <!-- eslint-disable no-param-reassign -->
 <script>
-import { getChartSettings } from '@/components/tools/marimeko/model/getChartSettings';
 import utils from '@/utils';
 import { mapState } from 'vuex';
+import { getChartSettings } from '@/utils/marimeko/model/getChartSettings';
 
 export default {
   name: 'TotalValueLockedContainer',

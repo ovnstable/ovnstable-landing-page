@@ -80,10 +80,10 @@
 </template>
 
 <script>
-import StepCards from '@/components/tools/StepCards.vue';
-import StepCardsMobile from '@/components/tools/StepCardsMobile.vue';
-import PartnersCarousel from '@/components/tools/PartnersCarousel.vue';
+import StepCards from '@/components/About/StepCards.vue';
 import { mapState } from 'vuex';
+import StepCardsMobile from '@/components/About/StepCardsMobile.vue';
+import PartnersCarousel from '@/components/About/PartnersCarousel.vue';
 
 export default {
   name: 'AboutOvernightComponent',

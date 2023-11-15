@@ -76,12 +76,12 @@
 </template>
 
 <script>
-import StatisticWidget from '@/components/tools/StatisticWidget.vue';
+import StatisticWidget from '@/components/MainBanner/StatisticWidget.vue';
 import Button from '@/components/UI/Button/index.vue';
 import { mapState } from 'vuex';
 
 export default {
-  name: 'MainBannerComponent',
+  name: 'MainBanner',
   components: {
     StatisticWidget,
     Button,

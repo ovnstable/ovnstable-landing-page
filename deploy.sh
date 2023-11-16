@@ -23,8 +23,8 @@ fi
 
 echo "$nameDapp"
 
-# rm -rf dist/
-# npm run $build
+rm -rf dist/
+npm run $build
 
 docker build . -t cr.yandex/crpg11k469bhc8lch9gm/overnight/landing-page:$tag --platform linux/amd64
 

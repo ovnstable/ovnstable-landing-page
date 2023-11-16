@@ -236,12 +236,6 @@ export default {
   .widget-container {
     margin-top: 100px;
   }
-
-  .hero-blended {
-    position: relative;
-    right: 90px;
-    height: 564px;
-  }
 }
 .hero-container {
   position: relative;

@@ -56,7 +56,7 @@ export default {
   }
 }
 
-/* desktop */
+/* desktop content */
 @media only screen and (min-width: 769px) {
   .main-container-white {
     background-color: #ffffff;

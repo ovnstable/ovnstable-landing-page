@@ -115,7 +115,10 @@ export default {
   transition: all .2s ease;
 
   img {
-    margin: 20px 0
+    margin: 20px auto;
+    width: 100%;
+    padding: 0 20px;
+    max-width: 350px;
   }
 }
 

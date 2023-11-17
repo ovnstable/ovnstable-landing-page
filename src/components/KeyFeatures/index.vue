@@ -27,16 +27,16 @@ export default {
         {
           title: 'Full collateralization',
           content: [
-            '100% collateralized with assets immediately convertible into USDC',
-            '1:1 peg to USDC for USD+ for price stability',
-            'Profit (positive rebase) once collateral value grows above 100%, loss (negative rebase) in case collateral value below 100% ',
+            '100% collateralized with assets immediately convertible into USDC.',
+            '1:1 peg to USDC for USD+ for price stability.',
+            'Profit (positive rebase) once collateral value grows above 100%, loss (negative rebase) in case collateral value below 100%.',
           ],
           img: require('@/assets/features/full_collat.svg'),
         },
         {
           title: 'Rebase',
           content: [
-            'Generate passive yield effortlessly by simply holding your token+ in your wallet',
+            'Generate passive yield effortlessly by simply holding your Token+ in your wallet.',
             'Profit payouts occur through daily rebasing, providing transparent balance tracking and profit/loss visibility.',
           ],
           img: require('@/assets/features/rebase.svg'),
@@ -44,8 +44,8 @@ export default {
         {
           title: 'Passive yield',
           content: [
-            'Using propietary delta-neutral and other low risk strategies to generate yield. Offer yield options tailored for varying risk appetites, 5-12% APY on token+ and up to 25%+ APY on the insurance products.',
-            'High quality protocols, enabling Overnight generates real yield (sustainable yield without rewards) like Aave and Uni V3, prioritized',
+            'Using proprietary delta-neutral and other low risk strategies to generate yield. Offer yield options tailored for varying risk appetites, 5-12% APY on Token+ and up to 25%+ APY on the insurance products.',
+            'High quality protocols enabling Overnight generates real yield (sustainable yield without rewards) like Aave and Uni V3, prioritized.',
             'Yield is not guaranteed, varies daily depending on collateral performance, can be negative.',
           ],
           img: require('@/assets/features/yield.svg'),
@@ -53,17 +53,17 @@ export default {
         {
           title: 'Usability',
           content: [
-            'The products are highly liquid with easy minting/redemption',
-            'Swap, a feature that streamlines the process of converting various assets into Overnight tokens with ease and efficiency',
-            'Zap In feature offers users a seamless method to invest in a variety of pools in the DeFi, simultaneously saving time and effort',
+            'The products are highly liquid with easy minting/redemption.',
+            "Swap, a feature that streamlines the process of converting various assets into Overnight's tokens with ease and efficiency.",
+            'Zap In feature offers users a seamless method to invest in a variety of pools in the DeFi simultaneously saving time and effort.',
           ],
           img: require('@/assets/features/usability.svg'),
         },
         {
           title: 'Insured',
           content: [
-            "Insurance serves to protect our rebase tokens (USD+, DAI+, USDT+, not the ETSes) by absorbing the first loss in case of negative rebase with the project's native OVN token",
-            'With insurance, the protocol can invest into riskier yet more profitable strategies, ultimately increasing long-term profit for users',
+            "Insurance serves to protect our rebase tokens (USD+, DAI+, USDT+, not the ETSes) by absorbing the first loss in case of negative rebase with the project's native OVN token.",
+            'With insurance, the protocol can invest into riskier yet more profitable strategies, ultimately increasing long-term profit for users.',
           ],
           img: require('@/assets/features/insured.svg'),
         },

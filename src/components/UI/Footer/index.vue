@@ -549,16 +549,17 @@ export default {
     justify-content: space-between;
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: row-reverse;
     gap: 0;
   }
 
   .fourth-column__inner:first-child {
-    width: 70%;
+    width: 30%;
   }
 
   .fourth-column__inner:last-child {
-    width: 30%;
+    width: 70%;
   }
 }
 

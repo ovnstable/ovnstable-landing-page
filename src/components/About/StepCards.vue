@@ -60,7 +60,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    max-width: 260px;
+    max-width: 220px;
     text-align: center;
   }
 
@@ -91,6 +91,8 @@ export default {
 
   .image {
     height: 100%;
+    width: 100%;
+    padding: 7px;
   }
 }
 </style>

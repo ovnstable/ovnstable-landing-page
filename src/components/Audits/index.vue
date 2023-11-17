@@ -84,8 +84,6 @@ export default {
   }
 
   .audits-container {
-    padding-left: 20px;
-    padding-right: 20px;
     max-width: 100%;
     margin: 0 auto 40px auto;
     position: relative;

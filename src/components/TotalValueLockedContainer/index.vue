@@ -496,8 +496,8 @@ export default {
         maxTvl,
         hasTooltip: this.isMobile,
         hasBlockLabel: !this.isMobile,
-        legendPosition: this.isMobile ? 'center' : 'bottom',
-        legendAlignment: this.isMobile ? 'center' : 'left',
+        legendPosition: this.isMobile ? 'bottom' : 'bottom',
+        legendAlignment: this.isMobile ? 'left' : 'center',
         blocksPadding: this.isMobile ? 1 : 2,
         legendMarginTop: 10,
       });
@@ -518,17 +518,12 @@ export default {
 <style scoped lang="scss">
 
 ::-webkit-scrollbar{
-    background: transparent;
     height: 3px;
 }
 ::-webkit-scrollbar-thumb{
     background: var(--ov-bg-secondary);
     border-radius: 50px;
 }
-
-::-webkit-resizer,
-::-webkit-scrollbar-button,
-::-webkit-scrollbar-corner { display: none; }
 
 .chart-container {
   overflow: auto;

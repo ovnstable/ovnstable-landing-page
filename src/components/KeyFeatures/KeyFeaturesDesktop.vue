@@ -7,7 +7,11 @@
           v-for="(feature, index) in features"
           :key="`header-${index}`"
         >
-          <span @click="selectTab(index)">{{ feature.title }}</span>
+          <span>
+            <div @click="selectTab(index)" class="ul__higher-block">
+              {{ feature.title }}
+            </div>
+          </span>
         </li>
       </ul>
     </div>
@@ -173,6 +177,12 @@ export default {
   height: 225px;
 }
 
+.ul__higher-block {
+  position: relative;
+  z-index: 10;
+  padding: 12px 0;
+}
+
 .tab-content {
   position: relative;
   display: none;
@@ -182,6 +192,15 @@ export default {
   font-size: 16px;
   font-weight: 400;
   font-family: "Red Hat Display", sans-serif;
+
+  ul {
+    width: 70%;
+  }
+
+  img {
+    width: 30%;
+    padding: 0 20px;
+  }
 }
 
 .tab-content.active {
@@ -214,12 +233,11 @@ export default {
   /* Make them block level
      and only as wide as they need */
   float: left;
-  padding: 12px 0;
   text-align: center;
   width: 100%;
   text-decoration: none;
   border: 2px solid black;
-  transition: padding .3s cubic-bezier(0.65, -0.48, 0.22, 2.13),
+  transition: padding .25s cubic-bezier(0, -0.48, 0.22, 2.73),
     border-radius .2s ease, color .2s ease;
 
   font-size: 14px;
@@ -246,7 +264,7 @@ export default {
   z-index: 3;
 
   span {
-    padding: 22px 0;
+    padding: 10px 0;
   }
 }
 .tabs .active span {

@@ -96,6 +96,7 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-width: 117px;
   }
 
   .sub-title {

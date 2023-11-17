@@ -77,7 +77,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/* Mobile styles */
+@media only screen and (max-width: 1024px) {
+  .companies-container {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .investor-name,
+  .investor-company {
+    width: 25%;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .title {
     text-transform: uppercase;
@@ -113,11 +126,15 @@ export default {
   }
 
   .labs {
-    height: 11px;
+    img {
+      height: 11px;
+    }
   }
 
   .hack {
-    height: 15px;
+    img {
+      height: 20px;
+    }
   }
 
   .investors-container {
@@ -201,20 +218,6 @@ export default {
     img {
       box-shadow: 0 0 0 1px rgba(4, 151, 236, 0.8);
     }
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  .companies-container {
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-
-  .investor-name,
-  .investor-company {
-    width: 25%;
-    margin-bottom: 20px;
-    text-align: center;
   }
 }
 </style>

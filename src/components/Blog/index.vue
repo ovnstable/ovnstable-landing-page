@@ -11,7 +11,7 @@
       </div> -->
     </div>
     <swiper
-      :slides-per-view="isDesktop ? 3 : isMobile ? 'auto' : 2"
+      slides-per-view="auto"
       :space-between="0"
     >
       <swiper-slide
@@ -173,6 +173,8 @@ export default {
   overflow: visible!important;
 }
 .swiper-slide {
+  max-width: 33%;
+  max-height: 471px;
   &:first-child {
     border-radius: 30px 0 0 30px;
 
@@ -183,6 +185,24 @@ export default {
         border-radius: 30px 0 0 0;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .swiper-slide {
+    max-width: 40%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .swiper-slide {
+    max-width: 50%;
+  }
+}
+
+@media only screen and (max-width: 567px) {
+  .swiper-slide {
+    max-width: 100%;
   }
 }
 </style>

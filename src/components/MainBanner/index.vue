@@ -116,6 +116,7 @@ export default {
 }
 
 .hero-container-mobile {
+  position: relative;
   height: 550px;
   display: flex;
   justify-content: start;
@@ -124,6 +125,7 @@ export default {
   padding-left: 20px;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
+  padding-bottom: 15px;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -134,7 +136,7 @@ export default {
   .hero-text-container-mobile {
     height: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-direction: column;
   }
 
@@ -161,18 +163,14 @@ export default {
   .widget-container-mobile {
     margin-top: 10px;
     margin-right: 20px;
-    max-width: 500px;
+    max-width: 450px;
   }
 
   .hero-blended-mobile {
-    width: 40vw;
+    width: 50vw;
     min-width: 200px;
     position: relative;
-    top: 120px;
-  }
-
-  .button-container {
-    margin-top: auto;
+    top: 0;
   }
 }
 
@@ -272,6 +270,14 @@ export default {
 }
 
 @media only screen and (max-width: 567px) {
+  .button-container {
+    margin-top: auto;
+  }
+
+  .hero-container-mobile {
+    height: 65vh;
+  }
+
   .hero-text-container-mobile {
     z-index: 2;
 
@@ -281,12 +287,15 @@ export default {
     }
   }
   .hero-image {
-    top: 100px;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 1;
 
     img {
       height: auto;
       width: 60vw;
+      min-width: 300px;
+      top: unset;
     }
   }
 }

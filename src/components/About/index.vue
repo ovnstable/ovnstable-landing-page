@@ -106,6 +106,10 @@ export default {
 </script>
 
 <style scoped>
+.cards-container {
+  padding: 0 20px;
+}
+
 /* mobile */
 @media only screen and (max-width: 768px) {
   .single-card {
@@ -125,6 +129,7 @@ export default {
   .cards-container-mobile {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -133,8 +138,7 @@ export default {
   .cards-container {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    gap: 50px;
+    justify-content: space-between;
     max-width: 1180px;
     margin: 0 auto 70px auto;
   }

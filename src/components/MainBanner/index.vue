@@ -28,11 +28,7 @@
         />
       </div>
     </div>
-    <img
-      class="hero-blended"
-      :src="require('@/assets/main/hero.png')"
-      alt="hero image"
-    />
+    <img class="hero-blended" :src="require('@/assets/main/hero.svg')" alt="hero image" />
   </div>
   <div v-else class="hero-container-mobile">
     <div class="hero-text-container-mobile">
@@ -52,13 +48,12 @@
         </div>
       </div>
       <div class="button-container">
-        <button
-          class="button-mobile"
-          @click="openLinkBlank('https://app.overnight.fi/swap')"
-          @mouseup.middle="handleMiddleClick($event, 'https://app.overnight.fi/swap')"
-        >
-          Connect
-        </button>
+        <Button
+          class="button text-styling"
+          buttonHover="green"
+          text="Connect"
+          @click="openLinkSelf('https://app.overnight.fi/swap')"
+        />
       </div>
 
       <div class="widget-container-mobile">
@@ -68,7 +63,7 @@
     <div class="hero-image">
       <img
         class="hero-blended hero-blended-mobile"
-        :src="require('@/assets/main/hero.png')"
+        :src="require('@/assets/main/hero.svg')"
         alt="hero image"
       />
     </div>
@@ -101,6 +96,10 @@ export default {
       window.open(url).focus();
     },
 
+    openLinkSelf(url) {
+      window.open(url, '_self').focus();
+    },
+
     handleMiddleClick(e, url) {
       if (e.button === 1) {
         e.preventDefault();
@@ -111,11 +110,33 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.hero-text-container-mobile {
+  width: 100%;
+}
+
+.hero-container-mobile {
+  height: 470px;
+
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  overflow-x: hidden;
+  padding-left: 20px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
 /* mobile */
 @media only screen and (max-width: 1024px) {
+  .hero-image {
+    position: absolute;
+    right: 0;
+  }
   .hero-text-container-mobile {
+    height: 100%;
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
   }
 
@@ -141,17 +162,19 @@ export default {
 
   .widget-container-mobile {
     margin-top: 10px;
+    margin-right: 20px;
+    max-width: 500px;
   }
 
   .hero-blended-mobile {
-    height: 204px;
+    width: 40vw;
+    min-width: 320px;
     position: relative;
     top: 10px;
-    right: 170px;
   }
 
   .button-container {
-    margin-top: 40px;
+    margin-top: auto;
   }
 }
 
@@ -190,7 +213,7 @@ export default {
 
   .hero-blended {
     position: absolute;
-    right: -40px;
+    right: -20px;
     max-height: 580px;
     width: 45vw;
     max-width: 600px;
@@ -254,15 +277,24 @@ export default {
   border-bottom: 1px solid black;
 }
 
-.hero-container-mobile {
-  height: 370px;
+@media only screen and (max-width: 567px) {
+  .hero-text-container-mobile {
+    z-index: 2;
 
-  display: flex;
-  justify-content: start;
-  align-items: start;
-  overflow-x: hidden;
-  padding-left: 20px;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+    .hero-title {
+      background-color: rgba(4, 151, 236, 0.3);
+      border-radius: 50px;
+    }
+  }
+  .hero-image {
+    right: -50px;
+    top: 100px;
+    z-index: 1;
+
+    img {
+      height: auto;
+      width: 60vw;
+    }
+  }
 }
 </style>

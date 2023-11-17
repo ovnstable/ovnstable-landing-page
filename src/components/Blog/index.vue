@@ -2,13 +2,13 @@
   <div class="blog-container">
     <div class="header-title-container">
       <div class="title">Follow Our Updates</div>
-      <div>
+      <!-- <div>
         <Button
           class="button text-styling"
           text="Subscribe"
           @click="openLinkSelf('https://app.overnight.fi/blog')"
         />
-      </div>
+      </div> -->
     </div>
     <swiper
       :slides-per-view="isDesktop ? 3 : isMobile ? 'auto' : 2"
@@ -29,7 +29,6 @@
 
 <script>
 import NewsCard from '@/components/Blog/NewsCard.vue';
-import Button from '@/components/UI/Button/index.vue';
 import { mapState } from 'vuex';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
@@ -40,7 +39,6 @@ export default {
   name: 'Blog',
   components: {
     NewsCard,
-    Button,
     Swiper,
     SwiperSlide,
   },

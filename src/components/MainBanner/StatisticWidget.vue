@@ -188,10 +188,6 @@ export default {
       window.open(url, '_blank').focus();
     },
 
-    openLinkSelf(url) {
-      window.open(url, '_self').focus();
-    },
-
     handleClick() {
       this.isClicked = !this.isClicked;
     },
@@ -219,8 +215,6 @@ export default {
   transition: transform .15s ease;
 
   &:hover {
-    transform: translateX(5px);
-
     .tvl-label {
       color: var(--ov-bg-secondary);
     }
@@ -229,12 +223,11 @@ export default {
 
 .statistic-title {
   cursor: pointer;
-  transition: transform .15s ease, color .2s ease;
+  transition: color .2s ease;
 }
 
 .card-tab .statistic-title {
   &:hover {
-      transform: translateX(-3px);
       color: var(--ov-bg-secondary);
   }
 }
@@ -245,7 +238,6 @@ export default {
   &:hover {
     .statistic-title {
       color: var(--ov-bg-secondary);
-      transform: translateY(-3px);
     }
   }
 }
@@ -259,8 +251,6 @@ export default {
 
   &:hover {
     .clock-container {
-      transform: translateY(-3px);
-
       .statistic-title {
         color: var(--ov-bg-secondary);
       }
@@ -269,14 +259,13 @@ export default {
 }
 
 .tvl-label {
-  margin-left: 8px;
+  margin: 0 8px;
   transition: color .2s ease;
 }
-
 /* mobile */
 @media only screen and (max-width: 1024px) {
   .statistic-widget {
-    width: 90vw;
+    width: 100%;
   }
 
   .statistic-title {
@@ -567,7 +556,6 @@ export default {
   }
 
   .statistic-subtitle {
-    font-family: "Red Hat Display", sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -576,7 +564,6 @@ export default {
   }
 
   .tvl-label {
-    font-family: "Red Hat Display", sans-serif;
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;
@@ -585,7 +572,6 @@ export default {
   }
 
   .tvl-label-investors {
-    font-family: "Red Hat Display", sans-serif;
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;
@@ -594,7 +580,6 @@ export default {
   }
 
   .statistic-subtitle-last {
-    font-family: "Red Hat Display", sans-serif;
     font-weight: 400;
     font-size: 12px;
     color: #687386;

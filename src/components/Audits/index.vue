@@ -77,7 +77,6 @@ export default {
   }
 
   .paragraph-text {
-    font-family: "Red Hat Display", sans-serif;
     font-weight: 400;
     font-size: 10px;
     line-height: 14px;
@@ -145,7 +144,7 @@ export default {
     font-size: 16px;
     line-height: 20px;
     margin-bottom: 30px;
-    max-width: 760px;
+    max-width: 80%;
   }
 
   .clear-icon {

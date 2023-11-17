@@ -58,14 +58,16 @@ export default {
 @media only screen and (min-width: 769px) {
   .cards-container {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     max-width: 260px;
     text-align: center;
   }
 
   .step-card-box {
-    width: 253px;
-    height: 253px;
+    width: 100%;
+    padding: 5px;
+    min-height: 253px;
     border: 1px solid #0f172a;
     border-bottom: 2px solid #0f172a;
     background-color: white;
@@ -88,7 +90,7 @@ export default {
   }
 
   .image {
-    height: 208px;
+    height: 100%;
   }
 }
 </style>

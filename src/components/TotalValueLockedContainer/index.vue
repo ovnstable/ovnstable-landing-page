@@ -609,7 +609,7 @@ export default {
 
   .chart {
     display: flex;
-    min-width: 400px;
+    min-width: 500px;
     height: 300px;
     flex-direction: row;
     align-items: center;

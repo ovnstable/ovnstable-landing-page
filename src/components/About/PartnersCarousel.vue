@@ -62,7 +62,7 @@ export default {
     align-items: center;
     justify-content: flex-start;
     white-space: nowrap;
-    animation: moveCarousel 10s linear infinite;
+    animation: moveCarousel 30s linear infinite;
     width: 100%;
 
     gap: 20px;
@@ -93,9 +93,6 @@ export default {
     padding-top: 20px;
     padding-left: 60px;
     padding-right: 80px;
-  }
-
-  .partners-label {
   }
 }
 

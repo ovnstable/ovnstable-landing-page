@@ -76,7 +76,7 @@ export default {
         github: '',
       },
       {
-        id: 4,
+        id: 5,
         // eslint-disable-next-line global-require
         picture: require('@/assets/team/polina.png'),
         name: 'Polina T.',
@@ -87,7 +87,7 @@ export default {
         github: '',
       },
       {
-        id: 5,
+        id: 6,
         // eslint-disable-next-line global-require
         picture: require('@/assets/team/nikita_s.png'),
         name: 'Nikita S.',
@@ -98,7 +98,7 @@ export default {
         github: '',
       },
       {
-        id: 6,
+        id: 7,
         // eslint-disable-next-line global-require
         picture: require('@/assets/team/viktor.png'),
         name: 'Viktor P.',
@@ -109,7 +109,7 @@ export default {
         github: 'https://github.com/valpaq',
       },
       {
-        id: 7,
+        id: 8,
         // eslint-disable-next-line global-require
         picture: require('@/assets/team/vasiliy_p.png'),
         name: 'Vasiliy P.',
@@ -120,7 +120,7 @@ export default {
         github: '',
       },
       {
-        id: 8,
+        id: 9,
         // eslint-disable-next-line global-require
         picture: require('@/assets/team/undefined.png'),
         name: 'Join our team',
@@ -132,7 +132,7 @@ export default {
         github: '',
       },
       {
-        id: 9,
+        id: 10,
         // eslint-disable-next-line global-require
         picture: require('@/assets/team/undefined.png'),
         name: 'Join our team',
@@ -150,15 +150,12 @@ export default {
     ...mapState('device', [
       'deviceType',
       'deviceOrientation',
-      'isMobile',
-      'isTablet',
-      'isDesktop',
     ]),
   },
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 /* mobile */
 @media only screen and (max-width: 768px) {
   .team-card-container {
@@ -235,6 +232,7 @@ export default {
   .team-card-container {
     display: grid;
     grid-template-columns: 2fr 2fr;
+
   }
 }
 

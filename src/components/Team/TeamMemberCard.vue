@@ -1,5 +1,5 @@
 <template>
-  <div class="team-member-card">
+  <div class="team-member-card" v-if="showMember">
     <div class="profile">
       <img class="photo" :src="picture" alt="team member photo" />
       <div class="title">
@@ -46,6 +46,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'TeamMemberCard',
   props: {
@@ -58,6 +60,20 @@ export default {
     twitter: String,
     telegram: String,
     github: String,
+  },
+
+  data: () => ({
+    showMember: true,
+  }),
+  computed: {
+    ...mapState('device', [
+      'isMobile',
+    ]),
+  },
+  watch: {
+    isMobile() {
+      if (this.isMobile && !this.role) this.showMember = false;
+    },
   },
 };
 </script>
@@ -182,4 +198,5 @@ export default {
 .social-links a:hover {
   transform: scale(1.15);
 }
+
 </style>

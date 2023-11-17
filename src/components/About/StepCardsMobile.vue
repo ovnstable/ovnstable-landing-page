@@ -59,7 +59,6 @@ export default {
     gap: 30px;
 
     padding-top: 5px;
-    margin-left: 10%;
   }
 
   .main-sub-title {
@@ -72,12 +71,15 @@ export default {
   }
 
   .step-card-box {
-    width: 100px;
-    height: 100px;
+    height: 100%;
+    width: 100%;
+    max-height: 150px;
+    max-width: 150px;
     border: 1px solid #0f172a;
     border-bottom: 2px solid #0f172a;
     border-radius: 5px;
     background-color: white;
+    padding: 15px;
 
     display: flex;
     align-items: center;
@@ -85,8 +87,8 @@ export default {
   }
 
   .image {
-    width: 62px;
-    height: 60px;
+    width: 100%;
+    height: 100%;
   }
 
   .titles {

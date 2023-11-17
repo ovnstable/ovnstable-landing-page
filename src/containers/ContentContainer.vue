@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="main-container main-container-blue">
+    <div class="main-container main-container-blue main-container-blue--header">
       <MainBanner />
     </div>
     <div class="main-container">

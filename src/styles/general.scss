@@ -57,6 +57,9 @@ body {
 
 .main-container-blue {
     background-color: var(--ov-bg-secondary);
+}
+
+.main-container-blue--header {
     max-width: 100%;
 
     background-image: url("~@/assets/main/stars.svg");

@@ -114,16 +114,19 @@ export default {
 @media only screen and (max-width: 768px) {
   .single-card {
     position: relative;
-    max-width: 500px;
+    width: fit-content;
+    padding: 0 20px;
+    margin-bottom: 30px;
   }
   .single-card:first-of-type {
     padding-top: 20px;
   }
 
   .arrow-container-mobile {
-    position: relative;
-    top: 0;
-    right: -290px;
+    position: absolute;
+    bottom: 0;
+    right: 70px;
+    text-align: center;
   }
 
   .cards-container-mobile {

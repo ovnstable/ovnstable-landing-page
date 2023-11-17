@@ -551,6 +551,11 @@ export default {
   border-bottom: 2px solid black;
   padding: 0 20px;
 }
+
+.chart-container-wrap {
+  margin: 0 20px;
+}
+
 .icon-container {
   margin-right: auto;
 }
@@ -592,8 +597,6 @@ export default {
 
   .main-chart-container {
     margin-bottom: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
   }
 
   .chain-logo {
@@ -692,6 +695,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 20px;
 }
 
 .value {

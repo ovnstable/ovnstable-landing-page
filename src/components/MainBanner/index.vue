@@ -57,7 +57,7 @@
       </div>
 
       <div class="widget-container-mobile">
-        <StatisticWidget></StatisticWidget>
+        <StatisticWidget />
       </div>
     </div>
     <div class="hero-image">
@@ -116,8 +116,7 @@ export default {
 }
 
 .hero-container-mobile {
-  height: 470px;
-
+  height: 550px;
   display: flex;
   justify-content: start;
   align-items: start;
@@ -127,7 +126,6 @@ export default {
   border-bottom: 1px solid black;
 }
 
-/* mobile */
 @media only screen and (max-width: 1024px) {
   .hero-image {
     position: absolute;
@@ -168,9 +166,9 @@ export default {
 
   .hero-blended-mobile {
     width: 40vw;
-    min-width: 320px;
+    min-width: 200px;
     position: relative;
-    top: 10px;
+    top: 120px;
   }
 
   .button-container {
@@ -283,7 +281,6 @@ export default {
     }
   }
   .hero-image {
-    right: -50px;
     top: 100px;
     z-index: 1;
 
@@ -292,5 +289,9 @@ export default {
       width: 60vw;
     }
   }
+}
+
+.hero-text-container {
+  padding-left: 20px;
 }
 </style>

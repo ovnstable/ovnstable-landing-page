@@ -5,10 +5,10 @@
         <li
           :class="{ active: activeTab === index }"
           v-for="(feature, index) in features"
-
           :key="`header-${index}`"
-          @click="selectTab(index)"
-        ><span>{{ feature.title }}</span></li>
+        >
+          <span @click="selectTab(index)">{{ feature.title }}</span>
+        </li>
       </ul>
     </div>
     <div class="tabs-body">
@@ -27,7 +27,7 @@
             {{ item }}
           </li>
         </ul>
-        <img :src="feature.img"/>
+        <img :src="feature.img" />
       </div>
     </div>
   </div>
@@ -192,8 +192,8 @@ export default {
   font-size: 16px;
   line-height: 30px;
   color: #0f172a;
-  width: 700px;
 }
+
 .tabs {
   width: 100%;
 

@@ -69,7 +69,7 @@ export default {
 }
 
 .photo {
-  width: calc(100% - 40px);
+  width: calc(100% - 30px);
   max-width: 150px;
 }
 

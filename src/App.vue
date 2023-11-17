@@ -17,8 +17,8 @@ export default {
   mixins: [deviceHelper],
   components: {
     ContentContainer,
-    FooterContainer,
     HeaderContainer,
+    FooterContainer,
   },
   computed: {},
 };

@@ -140,7 +140,7 @@ export default {
 
 @media only screen and (max-width: 567px) {
   .post-bg-img {
-    max-height: 240px;
+    max-height: 180px;
   }
 }
 .news-card-container:first-of-type {

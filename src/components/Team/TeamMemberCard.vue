@@ -63,46 +63,48 @@ export default {
 </script>
 
 <style scoped>
+.team-member-card {
+  padding: 8px;
+  box-shadow: 0px 1px 0px 0px #000;
+}
+
+.photo {
+  width: calc(100% - 40px);
+  max-width: 150px;
+}
+
 /* Mobile styles */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 577px) {
+  .team-card-container {
+    padding: 0 15px;
+  }
   .team-member-card {
-    width: 108px;
-    height: 108px;
     border: 1px solid black;
 
     background-color: #ffffff;
     border-radius: 5px;
-
     position: relative;
   }
 
   .profile {
     position: relative;
-    top: 5px;
-    left: 5px;
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .profile img {
-    width: 64px;
-    height: 64px;
-  }
-
   .title {
     font-size: 14px;
     line-height: 8px;
-    margin-top: 8px;
+    margin-top: 10px;
     font-weight: 600;
   }
 
   .sub-title {
-    font-size: 9px;
-    line-height: 8px;
+    font-size: 12px;
+    line-height: 10px;
     text-transform: none;
-    margin-top: 5px;
+    margin-top: 10px;
     font-weight: 400;
   }
 
@@ -112,12 +114,12 @@ export default {
 
     position: absolute;
     top: 5px;
-    right: 5px;
+    right: 8px;
   }
 
   .gray-icon {
-    width: 17px;
-    height: 17px;
+    width: 20px;
+    height: 20px;
   }
 
   .contact {
@@ -128,10 +130,8 @@ export default {
 }
 
 /* desktop */
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 577px) {
   .team-member-card {
-    width: 220px;
-    height: 231px;
     border: 1px solid black;
     border-bottom: 3px solid black;
 
@@ -143,9 +143,6 @@ export default {
 
   .profile {
     position: relative;
-    top: 20px;
-    left: 20px;
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -156,8 +153,8 @@ export default {
     flex-direction: column;
 
     position: absolute;
-    top: 20px;
-    right: 15px;
+    top: 8px;
+    right: 8px;
     gap: 10px;
   }
 
@@ -176,9 +173,13 @@ export default {
     color: #0f172a;
     text-transform: none;
   }
+}
 
-  .photo {
-    width: 127px;
-  }
+.social-links a {
+  transition: transform .2s ease;
+}
+
+.social-links a:hover {
+  transform: scale(1.15);
 }
 </style>

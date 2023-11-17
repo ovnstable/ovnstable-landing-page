@@ -1,36 +1,32 @@
 <template>
-  <div class="svg-background-container"></div>
+  <div class="roadmap">
+    <img
+      class="roadmap__img"
+      :src="require(isMobile ? '@/assets/roadmap-mobile.svg' : '@/assets/roadmap.svg')"
+    />
+  </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'OvernightRoadmapComponent',
+  computed: {
+    ...mapState('device', ['isMobile']),
+  },
 };
 </script>
 
 <style scoped>
-/* mobile */
-@media only screen and (max-width: 768px) {
-  .svg-background-container {
-    height: 100%;
-    background-image: url("../../assets/roadmap-mobile.svg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-  }
-}
-
-/* desktop */
-@media only screen and (min-width: 769px) {
-  .svg-background-container {
-    height: 100%;
-    background-image: url("../../assets/roadmap.svg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-}
-
-.svg-background-container {
+.roadmap {
   width: 100%;
+  height: 100%;
+  margin-bottom: 80px;
+}
+
+.roadmap__img {
+  width: 100%;
+  height: 100%;
 }
 </style>

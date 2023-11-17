@@ -22,6 +22,10 @@ body {
     overflow-x: hidden;
     background-color: var(--ov-bg);
     color: var(--ov-primary);
+
+    * {
+        box-sizing: border-box;
+    }
 }
 
 .main-container {

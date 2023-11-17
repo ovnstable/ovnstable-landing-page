@@ -10,22 +10,8 @@
         />
       </div>
     </div>
-    <!-- <div
-      class="blog-cards-container"
-      @mousemove="onMouseMove"
-      @mouseenter="onMouseEnter"
-      @mouseleave="onMouseLeave"
-      :style="{ transform: `translateX(${currentX}px)` }"
-    >
-      <NewsCard
-        v-for="item in blogCards"
-        :key="item.id"
-        :post-data="item"
-        @mouseup="handleMiddleClick($event, item.link)"
-      />
-    </div> -->
     <swiper
-      :slides-per-view="3"
+      :slides-per-view="isDesktop ? 3 : isMobile ? 'auto' : 2"
       :space-between="0"
     >
       <swiper-slide
@@ -45,7 +31,6 @@
 import NewsCard from '@/components/Blog/NewsCard.vue';
 import Button from '@/components/UI/Button/index.vue';
 import { mapState } from 'vuex';
-// Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
 // Import Swiper styles
@@ -143,7 +128,6 @@ export default {
       )
         .then((value) => value.json())
         .then((value) => {
-          console.log('Value:', value);
           if (passedId === 783) {
             result = value[3].source_url;
           } else if (passedId === 805) {
@@ -187,6 +171,9 @@ export default {
 </script>
 
 <style lang="scss">
+.swiper-container {
+  overflow: visible!important;
+}
 .swiper-slide {
   &:first-child {
     border-radius: 30px 0 0 30px;
@@ -203,6 +190,9 @@ export default {
 </style>
 
 <style lang="scss" scoped>
+.blog-container {
+  padding: 0 20px;
+}
 /* mobile */
 @media only screen and (max-width: 768px) {
   .title {

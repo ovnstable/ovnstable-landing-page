@@ -6,9 +6,10 @@
   </div>
 </template>
 
+<!-- eslint-disable global-require -->
 <script>
 import KeyFeaturesDesktop from '@/components/KeyFeatures/KeyFeaturesDesktop.vue';
-import KeyFeaturesMobile from '@/components/KeyFeatures/KeyFeaturesMobile.vue';
+import KeyFeaturesMobile from '@/components/KeyFeatures/mobile/index.vue';
 import { mapState } from 'vuex';
 
 export default {
@@ -30,6 +31,7 @@ export default {
             '1:1 peg to USDC for USD+ for price stability',
             'Profit (positive rebase) once collateral value grows above 100%, loss (negative rebase) in case collateral value below 100% ',
           ],
+          img: require('@/assets/features/full_collat.svg'),
         },
         {
           title: 'Rebase',
@@ -37,6 +39,7 @@ export default {
             'Generate passive yield effortlessly by simply holding your token+ in your wallet',
             'Profit payouts occur through daily rebasing, providing transparent balance tracking and profit/loss visibility.',
           ],
+          img: require('@/assets/features/rebase.svg'),
         },
         {
           title: 'Passive yield',
@@ -45,6 +48,7 @@ export default {
             'High quality protocols, enabling Overnight generates real yield (sustainable yield without rewards) like Aave and Uni V3, prioritized',
             'Yield is not guaranteed, varies daily depending on collateral performance, can be negative.',
           ],
+          img: require('@/assets/features/yield.svg'),
         },
         {
           title: 'Usability',
@@ -53,6 +57,7 @@ export default {
             'Swap, a feature that streamlines the process of converting various assets into Overnight tokens with ease and efficiency',
             'Zap In feature offers users a seamless method to invest in a variety of pools in the DeFi, simultaneously saving time and effort',
           ],
+          img: require('@/assets/features/usability.svg'),
         },
         {
           title: 'Insured',
@@ -60,6 +65,7 @@ export default {
             "Insurance serves to protect our rebase tokens (USD+, DAI+, USDT+, not the ETSes) by absorbing the first loss in case of negative rebase with the project's native OVN token",
             'With insurance, the protocol can invest into riskier yet more profitable strategies, ultimately increasing long-term profit for users',
           ],
+          img: require('@/assets/features/insured.svg'),
         },
       ],
     };
@@ -90,8 +96,6 @@ export default {
     max-width: 100%;
     margin: 40px auto 150px auto;
     padding: 0 20px;
-    font-family: "Red Hat Display", sans-serif;
-    height: 250px;
   }
 
   .title {
@@ -108,15 +112,12 @@ export default {
     max-width: 1180px;
     margin: 0 auto 180px auto;
     padding: 0 15px;
-    font-family: "Red Hat Display", sans-serif;
-    height: 250px;
   }
 
   .title {
     text-align: left;
     text-transform: uppercase;
     margin-bottom: 30px;
-    padding-left: 15px;
   }
 }
 </style>

@@ -6,6 +6,7 @@
       :isExpanded="features.length - 1 === key ? true : false"
       :content="data.content"
       :title="data.title"
+      :img="data.img"
     />
   </div>
 </template>

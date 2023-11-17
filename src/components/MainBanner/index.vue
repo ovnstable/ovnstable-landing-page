@@ -275,7 +275,8 @@ export default {
   }
 
   .hero-container-mobile {
-    height: 65vh;
+    height: 80vh;
+    max-height: 600px;
   }
 
   .hero-text-container-mobile {

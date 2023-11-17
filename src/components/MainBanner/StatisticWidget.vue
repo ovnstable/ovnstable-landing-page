@@ -260,6 +260,7 @@ export default {
 
 .tvl-label {
   margin: 0 8px;
+  text-wrap: nowrap;
   transition: color .2s ease;
 }
 /* mobile */
@@ -409,7 +410,7 @@ export default {
 @media only screen and (min-width: 1024px) {
   .statistic-widget {
     min-height: 170px;
-    max-width: 568px;
+    max-width: 590px;
     width: 100%;
   }
 

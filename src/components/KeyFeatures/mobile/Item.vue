@@ -14,6 +14,7 @@
           {{ item }}
         </li>
       </ul>
+      <img :src="img"/>
     </div>
   </div>
 </template>
@@ -24,6 +25,10 @@ export default {
 
   props: {
     title: {
+      type: String,
+      required: true,
+    },
+    img: {
       type: String,
       required: true,
     },
@@ -95,17 +100,23 @@ export default {
 }
 
 .tab__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
   border: 2px solid #000000;
   border-top: 0;
   background-color: #ffffff;
   border-radius: 0 0 20px 20px;
   padding-top: 20px;
-  position: relative;
   z-index: 0;
   height: 100%;
   padding-right: 20px;
   transition: all .2s ease;
+
+  img {
+    margin: 20px 0
+  }
 }
 
 .list-item {

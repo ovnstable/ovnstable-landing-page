@@ -67,7 +67,15 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
+.logo-container {
+  transition: transform .2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
 /* mobile */
 @media only screen and (max-width: 768px) {
   .title {

@@ -260,7 +260,7 @@ export default {
 
 .tvl-label {
   margin: 0 8px;
-  text-wrap: nowrap;
+  white-space: nowrap;
   transition: color .2s ease;
 }
 /* mobile */
@@ -425,7 +425,6 @@ export default {
   }
 
   .statistic-subtitle {
-    font-family: "Red Hat Display", sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -434,16 +433,15 @@ export default {
   }
 
   .tvl-label {
-    font-family: "Red Hat Display", sans-serif;
     font-weight: 400;
     font-size: 20px;
+    min-width: 215px;
     line-height: 26px;
     color: #687386;
     cursor: pointer;
   }
 
   .tvl-label-investors {
-    font-family: "Red Hat Display", sans-serif;
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;
@@ -452,7 +450,6 @@ export default {
   }
 
   .statistic-subtitle-last {
-    font-family: "Red Hat Display", sans-serif;
     font-weight: 400;
     font-size: 12px;
     color: #687386;
@@ -568,6 +565,7 @@ export default {
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;
+    min-width: 215px;
     color: #687386;
     cursor: pointer;
   }

@@ -21,7 +21,6 @@ export const getChartSettings = (
   for (let i = 0; i < valuesData.length; i++) {
     const valueData = valuesData[i];
     names.push(valueData.name);
-    console.log('Value Name: ', valueData.name);
   }
 
   const data = {
@@ -101,8 +100,6 @@ export const getChartSettings = (
   }
 
   chart.listen('pointClick', (e) => {
-    console.log(e.iterator);
-
     // for info
     // console.log(e.iterator.Ra.Br)
     const row = e.iterator.getIndex();

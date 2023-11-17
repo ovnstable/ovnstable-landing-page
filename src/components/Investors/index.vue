@@ -10,39 +10,19 @@
         >
           Sandeep Naiwal
         </a>
-        <a
-          class="investor-name"
-          href="https://twitter.com/twobitidiot"
-          target="_blank"
-        >
+        <a class="investor-name" href="https://twitter.com/twobitidiot" target="_blank">
           Ryan Selkis
         </a>
-        <a
-          class="investor-company hack"
-          href="https://hack.vc/"
-          target="_blank"
-        >
+        <a class="investor-company hack" href="https://hack.vc/" target="_blank">
           <img :src="require('@/assets/investors/hack-vc.svg')" alt="Hack VC logo" />
         </a>
-        <a
-          class="investor-company labs"
-          href="https://www.fjlabs.com/"
-          target="_blank"
-        >
+        <a class="investor-company labs" href="https://www.fjlabs.com/" target="_blank">
           <img :src="require('@/assets/investors/fj-labs.svg')" alt="FJ Labs logo" />
         </a>
-        <a
-          class="investor-name"
-          href="https://twitter.com/tubergen"
-          target="_blank"
-        >
+        <a class="investor-name" href="https://twitter.com/tubergen" target="_blank">
           Brian Tubergen
         </a>
-        <a
-          class="investor-name"
-          href="https://twitter.com/paulrholland"
-          target="_blank"
-        >
+        <a class="investor-name" href="https://twitter.com/paulrholland" target="_blank">
           Paul Holland
         </a>
       </div>
@@ -179,6 +159,7 @@ export default {
 
   .investors-container {
     margin: 0 auto 100px auto;
+    padding: 0 20px;
   }
 
   .arrow-icon {
@@ -187,11 +168,11 @@ export default {
   }
 }
 
-.investor-name, .investor-company {
-  transition: text-shadow .3s ease, transform .2s ease;
+.investor-name,
+.investor-company {
+  transition: transform 0.2s ease;
 
   &:hover {
-    text-shadow: 1px 1px 2px rgba(4, 151, 236, .75);
     transform: scale(1.05);
   }
 }
@@ -207,19 +188,33 @@ export default {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform .2s ease, box-shadow .3s ease;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 
   img {
     border-radius: 50%;
-    transition: box-shadow .3s ease;
+    transition: box-shadow 0.3s ease;
   }
 
   &:hover {
     transform: scale(1.05);
 
     img {
-      box-shadow: 0 0 3px 3px rgba(4, 151, 236, .4);
+      box-shadow: 0 0 0 1px rgba(4, 151, 236, 0.8);
     }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .companies-container {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .investor-name,
+  .investor-company {
+    width: 25%;
+    margin-bottom: 20px;
+    text-align: center;
   }
 }
 </style>

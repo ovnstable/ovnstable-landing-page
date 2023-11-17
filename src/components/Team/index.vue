@@ -47,7 +47,7 @@ export default {
         // eslint-disable-next-line global-require
         picture: require('@/assets/team/yaro_p.png'),
         name: 'Yaro P.',
-        role: 'Co-Founder & Tech Lead',
+        role: 'Co-Founder, Tech Lead',
         linkedin: 'https://www.linkedin.com/in/yarik-pavlov/',
         twitter: '',
         telegram: '',
@@ -78,7 +78,7 @@ export default {
       {
         id: 4,
         // eslint-disable-next-line global-require
-        picture: require('@/assets/team/undefined.png'),
+        picture: require('@/assets/team/polina.png'),
         name: 'Polina T.',
         role: 'Head of Design',
         linkedin: '',
@@ -100,7 +100,7 @@ export default {
       {
         id: 6,
         // eslint-disable-next-line global-require
-        picture: require('@/assets/team/undefined.png'),
+        picture: require('@/assets/team/viktor.png'),
         name: 'Viktor P.',
         role: 'Blockchain Engineer',
         linkedin: 'https://www.linkedin.com/in/viktor-paramonov-7b64371a7/',
@@ -173,12 +173,19 @@ export default {
     font-size: 14px;
     line-height: 19px;
     text-transform: uppercase;
-    padding-left: 20px;
     margin-bottom: 20px;
+  }
+
+  .team-card-container {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    gap: 10px;
+    width: 100%;
   }
 
   .team-container {
     margin: 0 auto 40px auto;
+    padding: 0 20px;
   }
 }
 
@@ -190,15 +197,44 @@ export default {
   }
 
   .team-card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
     gap: 10px;
     width: 100%;
   }
 
+  .team-card-container {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    gap: 10px;
+    width: 100%;
+  }
   .team-container {
     margin: 0 auto 80px auto;
+    padding: 0 20px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .team-card-container {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr;
+    gap: 10px;
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1240px) {
+  .team-card-container {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+    gap: 10px;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .team-card-container {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
   }
 }
 

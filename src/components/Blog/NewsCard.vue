@@ -35,33 +35,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/* mobile */
-@media only screen and (max-width: 768px) {
-  .blog-title {
-    font-size: 14px;
-    line-height: 14px;
-  }
-
-  .blog-date {
-    font-size: 12px;
-    line-height: 30px;
-  }
-
-  .post-bg-img {
-    height: 150px;
-  }
+.post-bg-img {
+  height: 200px;
 }
 
-/* desktop */
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 1024px) {
   .blog-title {
     font-size: 28px;
     line-height: 30px;
   }
 
-  .post-bg-img {
-    height: 200px;
-  }
 }
 
 .post-bg-img {
@@ -69,8 +52,10 @@ export default {
   object-fit: cover;
   transition: transform .2s ease;
 }
+
 .content {
   max-height: 3lh;
+  min-height: 62px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -120,6 +105,26 @@ export default {
   }
 }
 
+@media only screen and (max-width: 1024px) {
+  .blog-title {
+    font-size: 14px;
+  }
+
+  .blog-date {
+    font-size: 12px;
+  }
+
+  .new-card__content {
+    padding: 10px 20px;
+  }
+}
+
+@media only screen and (max-width: 567px) {
+  .post-bg-img {
+    height: 150px;
+    min-width: 200px;
+  }
+}
 .news-card-container:first-of-type {
   background-color: #ffffff;
   text-align: start;

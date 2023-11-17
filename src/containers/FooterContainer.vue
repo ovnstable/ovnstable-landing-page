@@ -20,7 +20,6 @@ export default {
 @media only screen and (max-width: 768px) {
   .main-container-blue {
     border-top: 2px solid black;
-    padding-top: 40px;
   }
 }
 
@@ -28,7 +27,6 @@ export default {
 @media only screen and (min-width: 769px) {
   .main-container-blue {
     border-top: 2px solid black;
-    padding-top: 100px;
   }
 }
 </style>

@@ -46,26 +46,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-/* mobile */
-@media only screen and (max-width: 768px) {
-  .main-container-white {
-    height: 311px;
-    margin-bottom: 30px;
-  }
-}
-
-/* desktop content */
-@media only screen and (min-width: 769px) {
-  .main-container-white {
-    background-color: #ffffff;
-    border-top: 1px solid #0f172a;
-    border-bottom: 1px solid #0f172a;
-    height: 620px;
-
-    max-width: 100%;
-    margin-bottom: 100px;
-  }
-}
-</style>

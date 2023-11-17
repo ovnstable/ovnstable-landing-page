@@ -27,6 +27,7 @@
             {{ item }}
           </li>
         </ul>
+        <img :src="feature.img"/>
       </div>
     </div>
   </div>
@@ -161,7 +162,7 @@ export default {
 }
 
 .tabs-body {
-  width: 100%;
+  width: calc(100% + 4px);
   border: 2px solid #000000;
   border-top: 0;
 
@@ -175,6 +176,7 @@ export default {
 .tab-content {
   position: relative;
   display: none;
+  justify-content: space-between;
   padding: 10px 0 0 0;
   background-color: #ffffff;
   font-size: 16px;
@@ -183,7 +185,7 @@ export default {
 }
 
 .tab-content.active {
-  display: block;
+  display: flex;
 }
 
 .list-item {
@@ -194,6 +196,10 @@ export default {
 }
 .tabs {
   width: 100%;
+
+  * {
+    box-sizing: content-box;
+  }
 }
 .tabs li {
   width: 20%;
@@ -216,6 +222,7 @@ export default {
   transition: padding .3s cubic-bezier(0.65, -0.48, 0.22, 2.13),
     border-radius .2s ease, color .2s ease;
 
+  font-size: 14px;
   /* Default colors */
   color: #848D9C;
   background: #fff;
@@ -288,7 +295,7 @@ export default {
   left: -10px;
 }
 .tabs li:after {
-  right: -15px;
+  right: -16px;
 }
 /* Circles */
 .tabs li span:after, .tabs li span:before {
@@ -328,7 +335,7 @@ export default {
     display: none;
   }
   & span:after {
-    right: -33px;
+    right: -34px;
     border: 0;
   }
 }
@@ -351,6 +358,12 @@ export default {
   left: -30px;
 }
 .tabs li span:after {
-  right: -33px;
+  right: -34px;
+}
+
+@media only screen and (min-width: 1240px) {
+  .tabs span {
+    font-size: 16px;
+  }
 }
 </style>

@@ -4,7 +4,7 @@
       <div class="card card-round statistic-widget card-shadow">
         <div v-if="loading || !data">
           <div class="center-flex padding-top-four loader">
-            <FontAwesomeIcon :icon="['fas', 'spinner']" size="lg" spin></FontAwesomeIcon>
+            LOADER
           </div>
         </div>
 
@@ -167,10 +167,7 @@ export default {
         .getMainWidgetData()
         .then((data) => {
           this.data = data;
-          console.log('DATA:', data);
-
           this.bestChainApy = data.usdPlusProduct.chain;
-          console.log('BEst chain APY:', this.bestChainApy);
           this.loading = false;
         })
         .catch((error) => {

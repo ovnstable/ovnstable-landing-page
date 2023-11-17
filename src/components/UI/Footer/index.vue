@@ -24,105 +24,109 @@
     </div>
     <div class="second-column">
       <div class="heading-container">Find us</div>
-      <a
-        class="logo-container"
-        href="https://twitter.com/overnight_fi"
-        target="_blank"
-      >
-        <img
-          class="logo-icon"
-          :src="require('@/assets/footer/twitter_white.svg')"
-          alt="Twitter White Logo"
-        />
-        <label class="logo-title"> Twitter </label>
-      </a>
-      <a
-        class="logo-container"
-        href="https://discord.com/invite/overnight-fi"
-        target="_blank"
-      >
-        <img
-          class="logo-icon"
-          :src="require('@/assets/footer/discord_white.svg')"
-          alt="Discord White Logo"
-        />
-        <label class="logo-title"> Discord </label>
-      </a>
-      <a
-        class="logo-container"
-        href="https://t.me/overnight_fi"
-        target="_blank"
-      >
-        <img
-          class="logo-icon"
-          :src="require('@/assets/footer/telegram_white.svg')"
-          alt="Telegram White Logo"
-        />
-        <label class="logo-title"> Telegram </label>
-      </a>
-      <a
-        class="logo-container"
-        href="https://zealy.io/c/overnight-fi/questboard"
-        target="_blank"
-      >
-        <img
-          class="logo-icon"
-          :src="require('@/assets/footer/zealy_white.svg')"
-          alt="Zealy White Logo"
-        />
-        <label class="logo-title"> Zealy </label>
-      </a>
-      <a
-        class="logo-container"
-        href="https://github.com/ovnstable"
-        target="_blank"
-      >
-        <img
-          class="logo-icon"
-          :src="require('@/assets/footer/github_white.svg')"
-          alt="Github White Logo"
-        />
-        <label class="logo-title"> Github </label>
-      </a>
+      <div class="second-column__inner-wrap">
+        <div class="second-column__inner">
+          <a
+            class="logo-container"
+            href="https://twitter.com/overnight_fi"
+            target="_blank"
+          >
+            <img
+              class="logo-icon"
+              :src="require('@/assets/footer/twitter_white.svg')"
+              alt="Twitter White Logo"
+            />
+            <label class="logo-title"> Twitter </label>
+          </a>
+          <a
+            class="logo-container"
+            href="https://discord.com/invite/overnight-fi"
+            target="_blank"
+          >
+            <img
+              class="logo-icon"
+              :src="require('@/assets/footer/discord_white.svg')"
+              alt="Discord White Logo"
+            />
+            <label class="logo-title"> Discord </label>
+          </a>
+          <a
+            class="logo-container"
+            href="https://t.me/overnight_fi"
+            target="_blank"
+          >
+            <img
+              class="logo-icon"
+              :src="require('@/assets/footer/telegram_white.svg')"
+              alt="Telegram White Logo"
+            />
+            <label class="logo-title"> Telegram </label>
+          </a>
+          <a
+            class="logo-container"
+            href="https://zealy.io/c/overnight-fi/questboard"
+            target="_blank"
+          >
+            <img
+              class="logo-icon"
+              :src="require('@/assets/footer/zealy_white.svg')"
+              alt="Zealy White Logo"
+            />
+            <label class="logo-title"> Zealy </label>
+          </a>
+          <a
+            class="logo-container"
+            href="https://github.com/ovnstable"
+            target="_blank"
+          >
+            <img
+              class="logo-icon"
+              :src="require('@/assets/footer/github_white.svg')"
+              alt="Github White Logo"
+            />
+            <label class="logo-title"> Github </label>
+          </a>
+        </div>
+        <div class="second-column__inner">
+          <a
+            class="listings-container"
+            href="https://defillama.com/protocol/overnight-finance"
+            target="_blank"
+          >
+            <label class="logo-title"> DefiLlama </label>
+          </a>
+          <a
+            class="listings-container"
+            href="https://coinmarketcap.com/currencies/overnight/"
+            target="_blank"
+          >
+            <label class="logo-title"> Coinmarketcap </label>
+          </a>
+          <a
+            class="listings-container"
+            href="https://app.1inch.io/#/1/simple/swap/ETH"
+            target="_blank"
+          >
+            <label class="logo-title"> 1inch </label>
+          </a>
+          <a
+            class="listings-container"
+            href="https://www.coingecko.com/en/coins/overnight-finance"
+            target="_blank"
+          >
+            <label class="logo-title"> Coingecko </label>
+          </a>
+          <a
+            class="listings-container"
+            href="https://debank.com/"
+            target="_blank"
+          >
+            <label class="logo-title"> Debank </label>
+          </a>
+        </div>
+      </div>
     </div>
     <div class="third-column">
-      <a
-        class="listings-container"
-        href="https://defillama.com/protocol/overnight-finance"
-        target="_blank"
-      >
-        <label class="logo-title"> DefiLlama </label>
-      </a>
-      <a
-        class="listings-container"
-        href="https://coinmarketcap.com/currencies/overnight/"
-        target="_blank"
-      >
-        <label class="logo-title"> Coinmarketcap </label>
-      </a>
-      <a
-        class="listings-container"
-        href="https://app.1inch.io/#/1/simple/swap/ETH"
-        target="_blank"
-      >
-        <label class="logo-title"> 1inch </label>
-      </a>
-      <a
-        class="listings-container"
-        href="https://www.coingecko.com/en/coins/overnight-finance"
-        target="_blank"
-      >
-        <label class="logo-title"> Coingecko </label>
-      </a>
-      <a
-        class="listings-container"
-        href="https://debank.com/"
-        target="_blank"
-      >
-        <label class="logo-title"> Debank </label>
-      </a>
-    </div>
-    <div class="fourth-column">
       <div class="heading-container products">Products</div>
       <a
         class="products-container"
@@ -160,54 +164,25 @@
         <label class="logo-title"> Insurance </label>
       </a>
     </div>
-    <div v-if="isDesktop" class="fifth-column">
-      <div class="heading-container">Developers</div>
-      <a
-        class="developers-container"
-        href="https://docs.overnight.fi/"
-        target="_blank"
-      >
-        <label class="logo-title"> Documentation </label>
-      </a>
-      <a
-        class="developers-container"
-        href="https://docs.overnight.fi/other/audits"
-        target="_blank"
-      >
-        <label class="logo-title"> Audits </label>
-      </a>
-      <div class="heading-container support">Support center</div>
-      <a
-        class="developers-container"
-        href="https://discord.com/channels/933003627444969552/967813123149033542/967813482684760135"
-        target="_blank"
-      >
-        <label class="logo-title"> Help center in Discord </label>
-      </a>
-      <a
-        class="developers-container"
-        href="https://t.me/overnight_fi"
-        target="_blank"
-      >
-        <label class="logo-title"> Telegram Discussion </label>
-      </a>
-      <a
-        class="developers-container"
-        href="https://docs.overnight.fi/other/terms-of-service"
-        target="_blank"
-      >
-        <label class="logo-title"> Terms of Service </label>
-      </a>
-      <a
-        class="developers-container"
-        href="https://docs.overnight.fi/other/privacy-policy"
-        target="_blank"
-      >
-        <label class="logo-title"> Privacy Policy </label>
-      </a>
-    </div>
-    <div v-else>
-      <div class="fifth-column-mobile">
+    <div class="fourth-column">
+      <div class="fourth-column__inner">
+        <div class="heading-container">Developers</div>
+        <a
+          class="developers-container"
+          href="https://docs.overnight.fi/"
+          target="_blank"
+        >
+          <label class="logo-title"> Documentation </label>
+        </a>
+        <a
+          class="developers-container"
+          href="https://docs.overnight.fi/other/audits"
+          target="_blank"
+        >
+          <label class="logo-title"> Audits </label>
+        </a>
+      </div>
+      <div class="fourth-column__inner">
         <div class="heading-container support">Support center</div>
         <a
           class="developers-container"
@@ -238,23 +213,17 @@
           <label class="logo-title"> Privacy Policy </label>
         </a>
       </div>
-      <div class="sixth-column-mobile">
-        <div class="heading-container developers">Developers</div>
-        <a
-          href="https://docs.overnight.fi/"
-          target="_blank"
-          class="developers-container"
-        >
-          <label class="logo-title"> Documentation </label>
-        </a>
-        <a
-          class="developers-container"
-          href="https://docs.overnight.fi/other/audits"
-          target="_blank"
-        >
-          <label class="logo-title"> Audits </label>
-        </a>
+    </div>
+
+    <div class="logo-rights-container mobile">
+      <div class="footer-logo-container">
+        <img
+          class="ovn-logo"
+          :src="require('@/assets/footer_logo.svg')"
+          alt="Footer Overnight Logo"
+        />
       </div>
+      <div class="rights-container">Since 2021 © All Rights Reserved</div>
     </div>
   </div>
 </template>
@@ -269,9 +238,6 @@ export default {
     ...mapState('device', [
       'deviceType',
       'deviceOrientation',
-      'isMobile',
-      'isTablet',
-      'isDesktop',
     ]),
   },
 
@@ -291,17 +257,63 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/* mobile */
-@media only screen and (max-width: 768px) {
-  .footer-container {
-    max-width: 1180px;
-    padding-left: 20px;
-    position: relative;
+.logo-container {
+  img {
+    width: 17px;
+    height: 17px;
   }
+}
+.footer-container {
+  justify-content: space-between;
+  padding: 80px 15px;
+}
 
+.second-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.second-column__inner-wrap {
+  display: flex;
+  gap: 30px;
+}
+
+.logo-rights-container.mobile {
+  display: none;
+}
+
+.heading-container {
+  text-wrap: nowrap;
+}
+
+@media only screen and (max-width: 1024px) {
   .first-column {
     display: flex;
-    flex-direction: column;
+    margin-bottom: 20px;
+    width: 50%;
+  }
+
+  .second-column {
+    width: 25%;
+  }
+
+  .third-column {
+    width: 25%;
+  }
+
+  .fourth-column {
+    display: flex;
+    gap: 100px;
+    width: 20%;
+    margin-top: 40px;
+  }
+
+  .fifth-column {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    width: 33%;
+    margin-top: 40px;
   }
 
   .quote-container {
@@ -317,20 +329,17 @@ export default {
   .titles-container {
     display: flex;
     flex-direction: column;
-    margin-bottom: 350px;
   }
 
   .title {
     width: 200px;
     text-transform: uppercase;
-    font-family: "Red Hat Display", sans-serif;
     font-size: 16px;
     line-height: 20px;
   }
 
   .sub-title {
     width: 200px;
-    font-family: "Red Hat Display", sans-serif;
     font-weight: 400;
     font-size: 10px;
     line-height: 18px;
@@ -342,7 +351,6 @@ export default {
   }
 
   .rights-container {
-    font-family: "Red Hat Display", sans-serif;
     font-weight: 600;
     font-size: 10px;
     line-height: 13px;
@@ -350,13 +358,12 @@ export default {
   }
 
   .heading-container {
-    font-family: "Red Hat Display", sans-serif;
     font-weight: 700;
     font-size: 14px;
     line-height: 15px;
     text-transform: uppercase;
 
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 
   .logo-container {
@@ -382,55 +389,19 @@ export default {
     cursor: pointer;
   }
 
-  .second-column {
-    position: absolute;
-    top: 145px;
-    left: 40px;
-  }
-
-  .third-column {
-    position: absolute;
-    top: 184px;
-    left: 155px;
-  }
-
   .listings-container {
     margin-bottom: 1px;
-  }
-
-  .products {
-    margin-bottom: 23px;
   }
 
   .products-container {
     margin-bottom: 1px;
   }
 
-  .fourth-column {
-    position: absolute;
-    top: 145px;
-    left: 270px;
-  }
-
   .footer-container {
+    display: flex;
+    justify-content: flex-start;
     max-width: 1180px;
-    height: 550px;
-  }
-
-  .fifth-column-mobile {
-    position: absolute;
-    top: 320px;
-    left: 40px;
-  }
-
-  .sixth-column-mobile {
-    position: absolute;
-    top: 320px;
-    left: 270px;
-  }
-
-  .support {
-    margin-bottom: 15px;
+    flex-wrap: wrap;
   }
 
   .developers {
@@ -439,7 +410,8 @@ export default {
 }
 
 /* desktop */
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 1024px) {
+
   .first-column {
     display: flex;
     flex-direction: column;
@@ -464,20 +436,17 @@ export default {
   .title {
     width: 268px;
     text-transform: uppercase;
-    font-family: "Red Hat Display", sans-serif;
     margin-bottom: 20px;
   }
 
   .sub-title {
     width: 300px;
-    font-family: "Red Hat Display", sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
   }
 
   .rights-container {
-    font-family: "Red Hat Display", sans-serif;
     font-weight: 600;
     font-size: 16px;
     line-height: 20px;
@@ -485,7 +454,6 @@ export default {
   }
 
   .heading-container {
-    font-family: "Red Hat Display", sans-serif;
     font-weight: 700;
     font-size: 20px;
     line-height: 15px;
@@ -502,7 +470,6 @@ export default {
   }
 
   .logo-title {
-    font-family: "Red Hat Display", sans-serif;
     font-weight: 600;
     font-size: 16px;
     line-height: 20px;
@@ -511,17 +478,8 @@ export default {
     cursor: pointer;
   }
 
-  .second-column {
-    margin-left: 40px;
-  }
-
-  .third-column {
-    margin-top: 44px;
-    margin-left: 40px;
-  }
-
   .listings-container {
-    margin-bottom: 8px;
+    margin-bottom: 7px;
   }
 
   .products-container {
@@ -551,18 +509,78 @@ export default {
   .footer-container {
     max-width: 1180px;
     margin: 0 auto;
-    height: 356px;
     display: flex;
-    gap: 50px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .logo-rights-container {
+    display: none;
+  }
+
+  .logo-rights-container.mobile {
+    display: block;
+    margin-top: 40px;
+    margin-right: auto;
+  }
+
+  .footer-container {
+    justify-content: center;
+  }
+
+  .first-column {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 40px;
+    width: 100%;
+  }
+
+  .second-column {
+    width: 70%;
+  }
+
+  .third-column {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fourth-column {
+    justify-content: space-between;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .fourth-column__inner:first-child {
+    width: 70%;
+  }
+
+  .fourth-column__inner:last-child {
+    width: 30%;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  .first-column {
+    justify-content: space-between;
+  }
+
+  .second-column {
+    align-items: flex-start;
+  }
+
+  .heading-container {
+    text-wrap: unset;
+  }
+  .second-column__inner-wrap {
+    gap: 10px;
   }
 }
 
 a {
   display: block;
-}
-
-.heading-container {
-  word-wrap: nowrap;
 }
 
 .logo-title {

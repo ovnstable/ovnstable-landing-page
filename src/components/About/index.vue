@@ -7,7 +7,7 @@
       <div class="single-card">
         <StepCards
           step-label="Step 1"
-          image-link="mint-tokens.png"
+          image-link="mint-tokens.svg"
           legend-title="MINT TOKENS+"
           sub-title="Instantly mint any amount of Tokens+"
         />
@@ -18,7 +18,7 @@
       <div class="single-card">
         <StepCards
           step-label="Step 2"
-          image-link="receive-yield.png"
+          image-link="receive-yield.svg"
           legend-title="RECEIVE YIELD"
           sub-title="Do nothing and receive daily rebase by holding Tokens+"
         />
@@ -29,7 +29,7 @@
       <div class="single-card">
         <StepCards
           step-label="Step 3"
-          image-link="use-in-defi.png"
+          image-link="use-in-defi.svg"
           legend-title="USE IN DeFI"
           sub-title="Use your Tokens+ in DeFI to maximize your yield"
         />
@@ -40,7 +40,7 @@
       <div class="single-card">
         <StepCardsMobile
           step-label="Step 1"
-          image-link="mint-tokens.png"
+          image-link="mint-tokens.svg"
           legend-title="MINT TOKENS+"
           sub-title="Instantly mint any amount of Tokens+"
         />
@@ -55,7 +55,7 @@
       <div class="single-card">
         <StepCardsMobile
           step-label="Step 2"
-          image-link="receive-yield.png"
+          image-link="receive-yield.svg"
           legend-title="RECEIVE YIELD"
           sub-title="Do nothing and receive daily rebase by holding Tokens+"
         />
@@ -70,7 +70,7 @@
       <div class="single-card">
         <StepCardsMobile
           step-label="Step 3"
-          image-link="use-in-defi.png"
+          image-link="use-in-defi.svg"
           legend-title="USE IN DeFI"
           sub-title="Use your Tokens+ in DeFI to maximize your yield"
         />

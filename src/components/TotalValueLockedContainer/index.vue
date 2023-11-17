@@ -6,7 +6,7 @@
         {{ totalValue }}
       </span>
     </div>
-    <div v-if="mekkaData" class="overflow-hidden">
+    <div class="chart-container-wrap" v-if="mekkaData">
       <div class="chart-container">
         <div v-if="currentBlockSet === 0" class="chart-chain-blocks">
           <div class="chart-block">
@@ -169,15 +169,12 @@ export default {
   async mounted() {
     this.mekkaData = await this.loadProductTvlData();
     this.mekkaData = await this.getWithFilledClientFoundsValue(this.mekkaData);
-    // console.log('Mekka Data1:', this.mekkaData);
     this.mekkaData = this.getOrderedMekkaData(this.mekkaData);
-    console.log('Mekka Data:', this.mekkaData);
     this.getTotalNetworkValue(this.mekkaData);
 
     const tvlData = await this.getTvl();
     this.totalValue = tvlData.formattedTvl;
     if (this.mekkaData) {
-      console.log('Mekka:', this.mekkaData);
       setTimeout(() => {
         // eslint-disable-next-line radix
         this.initChart(this.mekkaData, parseInt(tvlData.tvl));
@@ -226,18 +223,12 @@ export default {
           orderedMekkaData[newPosition - 1] = this.getOrderedAndFilledProductValues(
             chainInfo,
           );
-          console.log(
-            'Ordered and filled orderedMekkaData[newPosition - 1]',
-            orderedMekkaData[newPosition - 1],
-          );
           // eslint-disable-next-line no-continue
           continue;
         }
 
-        console.error('Mekka data not found order position for chain: ', chainInfo);
+        // console.error('Mekka data not found order position for chain: ', chainInfo);
       }
-
-      console.log(orderedMekkaData, 'orderedMekkaData');
 
       return orderedMekkaData;
     },
@@ -251,7 +242,7 @@ export default {
           orderedProducts[newPosition - 1] = product;
         }
 
-        console.error('Mekka product data not found order position for chain: ', product);
+        // console.error('Mekka product data not found order position for chain: ', product);
       }
 
       chainInfo.values = orderedProducts;
@@ -282,14 +273,9 @@ export default {
     },
     async getArbitrumValueFundsFromCollateralAndStrategies() {
       const collateral = await this.getCollateral('arbitrum', 'usd+');
-      console.log('collateral : ', collateral);
       const collateralSum = collateral.reduce((acc, curr) => acc + curr.netAssetValue, 0);
-      console.log('collateralSum sum: ', collateralSum);
-
       const strategies = await this.getStrategies('arbitrum', 'usd+');
-      console.log('Strategies : ', strategies);
       const strategiesSum = strategies.reduce((acc, curr) => acc + curr.netAssetValue, 0);
-      console.log('Strategies sum: ', strategiesSum);
 
       const sum = strategiesSum - collateralSum;
       if (sum <= 0) {
@@ -307,9 +293,7 @@ export default {
 
           if (mekkaItem.chainName === 'Arbitrum' && value.name === 'USD+') {
             // let valueFunds = await this.getArbitrumValueFundsFromCollateralAndStrategies();
-            console.log('+Value old value: ', mekkaData, value, value.value);
             value.value *= 1;
-            console.log('+Value new value: ', mekkaData, value, value.value);
           }
 
           /* if (mekkaItem.chainName === 'Arbitrum'  && value.name === 'ETS') {
@@ -341,7 +325,6 @@ export default {
     subFoundFromMekkaValue(networkValues, subToken, subValue) {
       for (let i = 0; i < networkValues.length; i++) {
         const value = networkValues[i];
-        console.log('SUB TOKEN:', networkValues, subToken, subValue);
         if (value.name === subToken) {
           value.value -= subValue;
           return;
@@ -363,42 +346,36 @@ export default {
             sumOp += mekkaItem.values[j].value;
             this.totalOptimismValue = sumOp;
           }
-          console.log('Optimism TVL: ', this.totalOptimismValue);
         }
         if (mekkaItem.chainName === 'Arbitrum') {
           for (let k = 0; k < mekkaItem.values.length; k++) {
             sumArb += mekkaItem.values[k].value;
             this.totalArbitrumValue = sumArb;
           }
-          console.log('Arbitrum TVL: ', this.totalArbitrumValue);
         }
         if (mekkaItem.chainName === 'BSC') {
           for (let b = 0; b < mekkaItem.values.length; b++) {
             sumBsc += mekkaItem.values[b].value;
             this.totalBscValue = sumBsc;
           }
-          console.log('Bsc TVL: ', this.totalBscValue);
         }
         if (mekkaItem.chainName === 'zkSync') {
           for (let z = 0; z < mekkaItem.values.length; z++) {
             sumZk += mekkaItem.values[z].value;
             this.totalZksyncValue = sumZk;
           }
-          console.log('ZkSync TVL: ', this.totalZksyncValue);
         }
         if (mekkaItem.chainName === 'Polygon') {
           for (let p = 0; p < mekkaItem.values.length; p++) {
             sumPoly += mekkaItem.values[p].value;
             this.totalPolygonValue = sumPoly;
           }
-          console.log('Polygon TVL: ', this.totalPolygonValue);
         }
         if (mekkaItem.chainName === 'Base') {
           for (let h = 0; h < mekkaItem.values.length; h++) {
             sumPoly += mekkaItem.values[h].value;
             this.totalBaseValue = sumPoly;
           }
-          console.log('Base TVL: ', this.totalBaseValue);
         }
 
         if (mekkaItem.chainName === 'Linea') {
@@ -406,7 +383,6 @@ export default {
             sumPoly += mekkaItem.values[l].value;
             this.totalLineaValue = sumPoly;
           }
-          console.log('Linea TVL: ', this.totalLineaValue);
         }
       }
     },
@@ -540,15 +516,50 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+::-webkit-scrollbar{
+    background: transparent;
+    height: 3px;
+}
+::-webkit-scrollbar-thumb{
+    background: var(--ov-bg-secondary);
+    border-radius: 50px;
+}
+
+::-webkit-resizer,
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-corner { display: none; }
+
+.chart-container {
+  overflow: auto;
+}
+
+.chart {
+  width: 800px;
+}
+
+.chart-chain-blocks {
+  position: sticky;
+  left: 0;
+  top: 0;
+}
+
+.chart-container-wrap {
+  background-color: #ffffff;
+  border-radius: 30px;
+  border: 1px solid black;
+  border-bottom: 2px solid black;
+  padding: 0 20px;
+}
+.icon-container {
+  margin-right: auto;
+}
+
 /* mobile*/
 @media only screen and (max-width: 768px) {
   .chart-container {
-    background-color: #ffffff;
     display: flex;
     flex-direction: column;
-    border-radius: 30px;
-    border: 1px solid black;
-    border-bottom: 2px solid black;
   }
 
   .chart-chain-blocks {
@@ -556,15 +567,16 @@ export default {
     flex-direction: row;
     justify-content: space-evenly;
     gap: 10px;
-    padding: 30px 20px 20px 20px;
+    padding: 30px 0 0 10px;
   }
 
   .chart-block {
-    width: 65px;
-    height: 26px;
+    width: 100%;
     border: 1px solid black;
     border-bottom: 2px solid black;
     border-radius: 12px;
+    font-size: 14px;
+    padding: 7px 0;
 
     display: flex;
     align-items: center;
@@ -590,33 +602,26 @@ export default {
   }
 
   .chain-text {
-    font-family: "Red Hat Display", sans-serif;
     font-weight: 400;
-    font-size: 10px;
+    font-size: 12px;
     line-height: 14px;
   }
 
   .chart {
     display: flex;
-    min-width: 300px;
+    min-width: 400px;
     height: 300px;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 10px;
   }
 }
 
 /* desktop */
 @media only screen and (min-width: 769px) {
   .chart-container {
-    background-color: #ffffff;
-    aspect-ratio: 2.6/1;
     display: flex;
     flex-direction: column;
-    border-radius: 30px;
-    border: 1px solid black;
-    border-bottom: 2px solid black;
   }
 
   .chart-chain-blocks {
@@ -624,15 +629,15 @@ export default {
     flex-direction: row;
     justify-content: space-evenly;
     gap: 20px;
-    padding: 30px 20px 20px 20px;
+    padding: 30px 20px 20px 30px;
   }
 
   .chart-block {
     width: 250px;
-    height: 32px;
     border: 1px solid black;
     border-bottom: 2px solid black;
     border-radius: 12px;
+    padding: 7px 0;
 
     display: flex;
     align-items: center;
@@ -657,7 +662,7 @@ export default {
 
   .chart {
     display: flex;
-    width: 1150px;
+    width: 100%;
     height: 350px;
     flex-direction: row;
     align-items: center;

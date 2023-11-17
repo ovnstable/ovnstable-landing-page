@@ -192,6 +192,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.social-container {
+  margin-left: auto;
+}
 /* mobile */
 @media only screen and (max-width: 1024px) {
   .header-main-container-mobile {
@@ -202,7 +205,7 @@ export default {
     align-items: center;
     gap: 15px;
 
-    margin-left: 20px;
+    margin-left: 10px;
     height: 60px;
 
     background-color: var(--ov-white);
@@ -304,7 +307,6 @@ export default {
   }
 
   .logo-container {
-    margin-right: 450px;
     cursor: pointer;
   }
 }

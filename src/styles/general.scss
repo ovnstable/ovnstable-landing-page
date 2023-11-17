@@ -42,6 +42,7 @@ body {
 }
 
 .header-container {
+    width: 100%;
     background-color: var(--ov-white);
 
     display: flex;
@@ -51,8 +52,7 @@ body {
 
 .main-centered {
     max-width: 1180px;
-
-    padding: 10px 0 10px 0;
+    padding: 10px 20px;
 }
 
 .main-container-blue {

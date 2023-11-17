@@ -104,7 +104,7 @@ export default {
   }
 
   .post-bg-img {
-    max-height: 170px;
+    max-height: 196px;
   }
 }
 

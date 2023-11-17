@@ -11,7 +11,7 @@
       </div>
       <div class="paragraph-text">
         <span class="paragraph-text">
-          We are committedto the highest quality of engineering and will use whatever
+          We are committed to the highest quality of engineering and will use whatever
           tools are needed to produce a product exceptional in performance and safety.
           Every year we audit our products.
         </span>

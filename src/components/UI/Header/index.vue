@@ -370,7 +370,7 @@ a {
   .logos {
     color: #0F172A;
     cursor: pointer;
-    transition: .15s opacity, color .2s ease;
+    transition: transform .2s ease, .15s opacity, color .2s ease;
   }
 
   &:hover {

@@ -268,6 +268,7 @@ export default {
 
 .hero-container-mobile {
   height: 60vh;
+  padding-bottom: 15px;
 
   display: flex;
   justify-content: start;

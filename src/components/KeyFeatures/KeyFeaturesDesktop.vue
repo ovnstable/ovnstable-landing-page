@@ -5,14 +5,10 @@
         <li
           :class="{ active: activeTab === index }"
           v-for="(feature, index) in features"
+
           :key="`header-${index}`"
-        >
-          <span>
-            <div @click="selectTab(index)" class="ul__higher-block">
-              {{ feature.title }}
-            </div>
-          </span>
-        </li>
+          @click="selectTab(index)"
+        ><span>{{ feature.title }}</span></li>
       </ul>
     </div>
     <div class="tabs-body">
@@ -31,7 +27,7 @@
             {{ item }}
           </li>
         </ul>
-        <img :src="feature.img" />
+        <img :src="feature.img" class="feature-image"/>
       </div>
     </div>
   </div>
@@ -84,6 +80,10 @@ export default {
   position: absolute;
   top: 25px;
   left: 3px;
+}
+
+.feature-image {
+  object-fit: contain;
 }
 
 .header-right-border {
@@ -169,7 +169,7 @@ export default {
   width: calc(100% + 4px);
   border: 2px solid #000000;
   border-top: 0;
-
+  overflow: hidden;
   background-color: #ffffff;
   border-radius: 0 0 20px 20px;
   position: relative;
@@ -177,14 +177,10 @@ export default {
   height: 225px;
 }
 
-.ul__higher-block {
-  position: relative;
-  z-index: 10;
-  padding: 12px 0;
-}
-
 .tab-content {
   position: relative;
+  align-items: center;
+  height: 100%;
   display: none;
   justify-content: space-between;
   padding: 10px 0 0 0;
@@ -193,13 +189,8 @@ export default {
   font-weight: 400;
   font-family: "Red Hat Display", sans-serif;
 
-  ul {
-    width: 70%;
-  }
-
   img {
-    width: 30%;
-    padding: 0 20px;
+    max-height: 80%;
   }
 }
 
@@ -211,8 +202,8 @@ export default {
   font-size: 16px;
   line-height: 30px;
   color: #0f172a;
+  width: 700px;
 }
-
 .tabs {
   width: 100%;
 
@@ -233,11 +224,12 @@ export default {
   /* Make them block level
      and only as wide as they need */
   float: left;
+  padding: 12px 0;
   text-align: center;
   width: 100%;
   text-decoration: none;
   border: 2px solid black;
-  transition: padding .25s cubic-bezier(0, -0.48, 0.22, 2.73),
+  transition: padding .3s cubic-bezier(0.65, -0.48, 0.22, 2.13),
     border-radius .2s ease, color .2s ease;
 
   font-size: 14px;
@@ -264,7 +256,7 @@ export default {
   z-index: 3;
 
   span {
-    padding: 10px 0;
+    padding: 22px 0;
   }
 }
 .tabs .active span {

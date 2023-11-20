@@ -3,9 +3,7 @@
     <div>
       <div class="card card-round statistic-widget card-shadow">
         <div v-if="loading || !data">
-          <div class="center-flex padding-top-four loader">
-            LOADER
-          </div>
+          <Preloader></Preloader>
         </div>
 
         <div v-else class="widget-container">
@@ -110,9 +108,13 @@
 import statisticApiService from '@/services/statistic-api-service';
 import moment from 'moment';
 import utils from '@/utils';
+import Preloader from '../UI/Preloader/index.vue';
 
 export default {
   name: 'statistic-widget',
+  components: {
+    Preloader,
+  },
   data() {
     return {
       data: null,
@@ -212,8 +214,6 @@ export default {
 <style lang="scss" scoped>
 
 .lock-icon-container, .total-locked {
-  transition: transform .15s ease;
-
   &:hover {
     .tvl-label {
       color: var(--ov-bg-secondary);
@@ -242,10 +242,6 @@ export default {
   }
 }
 
-.clock-container {
-  transition: transform .15s ease;
-}
-
 .payout-container {
   cursor: pointer;
 
@@ -260,13 +256,13 @@ export default {
 
 .tvl-label {
   margin: 0 8px;
-  white-space: nowrap;
   transition: color .2s ease;
 }
+
 /* mobile */
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 768px) {
   .statistic-widget {
-    width: 100%;
+    width: 90vw;
   }
 
   .statistic-title {
@@ -407,18 +403,17 @@ export default {
 }
 
 /* desktop */
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 768px) {
   .statistic-widget {
     min-height: 170px;
-    max-width: 590px;
+    max-width: 568px;
     width: 100%;
   }
 
   .statistic-title {
-    font-family: "Red Hat Display", sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 25px;
+    font-size: 20px;
     line-height: 33px;
 
     color: var(--ov-primary);
@@ -427,15 +422,14 @@ export default {
   .statistic-subtitle {
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
 
     color: #687386;
   }
 
   .tvl-label {
     font-weight: 400;
-    font-size: 20px;
-    min-width: 215px;
+    font-size: 16px;
     line-height: 26px;
     color: #687386;
     cursor: pointer;
@@ -443,7 +437,7 @@ export default {
 
   .tvl-label-investors {
     font-weight: 400;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 26px;
     color: #687386;
     margin-right: 10px;
@@ -531,12 +525,8 @@ export default {
   }
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 1300px),
-  only screen and (min--moz-device-pixel-ratio: 2) and (min-width: 1300px),
-  only screen and (-o-min-device-pixel-ratio: 2/1) and (min-width: 1300px),
-  only screen and (min-device-pixel-ratio: 2) and (min-width: 1300px),
-  only screen and (min-resolution: 192dpi) and (min-width: 1300px),
-  only screen and (min-resolution: 2dppx) and (min-width: 1300px) {
+@media only screen and (min-width: 1024px) {
+
   .statistic-widget {
     min-height: 170px;
     max-width: 568px;
@@ -544,7 +534,6 @@ export default {
   }
 
   .statistic-title {
-    font-family: "Red Hat Display", sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 25px;
@@ -565,7 +554,6 @@ export default {
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;
-    min-width: 215px;
     color: #687386;
     cursor: pointer;
   }
@@ -579,6 +567,59 @@ export default {
   }
 
   .statistic-subtitle-last {
+    font-weight: 400;
+    font-size: 12px;
+    color: #687386;
+  }
+
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 1300px),
+  only screen and (min--moz-device-pixel-ratio: 2) and (min-width: 1300px),
+  only screen and (-o-min-device-pixel-ratio: 2/1) and (min-width: 1300px),
+  only screen and (min-device-pixel-ratio: 2) and (min-width: 1300px),
+  only screen and (min-resolution: 192dpi) and (min-width: 1300px),
+  only screen and (min-resolution: 2dppx) and (min-width: 1300px) {
+  .statistic-widget {
+    min-height: 170px;
+    max-width: 568px;
+    width: 100%;
+  }
+
+  .statistic-title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 33px;
+
+    color: var(--ov-primary);
+  }
+
+  .statistic-subtitle {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #687386;
+  }
+
+  .tvl-label {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #687386;
+    cursor: pointer;
+  }
+
+  .tvl-label-investors {
+    font-family: "Red Hat Display", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #687386;
+    margin-right: 10px;
+  }
+
+  .statistic-subtitle-last {
+    font-family: "Red Hat Display", sans-serif;
     font-weight: 400;
     font-size: 12px;
     color: #687386;
@@ -666,4 +707,5 @@ export default {
   display: flex;
   flex-direction: column;
 }
+
 </style>

@@ -1,6 +1,13 @@
 <template>
-  <div class="tab">
-    <div @click="expanded = !expanded" class="tab__header">
+  <div
+    class="tab"
+    :class="{ active: expanded }"
+  >
+    <div
+      @click="changeTab"
+      class="tab__header"
+      :class="{ rounded: roundedHeader }"
+    >
       {{ title }}
     </div>
 
@@ -32,24 +39,31 @@ export default {
       type: String,
       required: true,
     },
+    index: {
+      type: Number,
+      required: true,
+    },
     content: {
       type: Array,
       required: true,
     },
-    isExpanded: {
-      type: Boolean,
-      required: false,
+    expandedTab: {
+      type: Number,
+      required: true,
     },
   },
 
-  data() {
-    return {
-      activeTab: 0,
-      expanded: this.isExpanded,
-    };
-  },
-
   computed: {
+    roundedHeader() {
+      return this.expandedTab < this.index;
+    },
+    expanded() {
+      return this.expandedTab === this.index;
+    },
+    // straight() {
+    //   return this.index === 4;
+    // },
+
     contentStyle() {
       return {
         'max-height': this.expanded ? '400px' : 0,
@@ -64,8 +78,8 @@ export default {
   },
 
   methods: {
-    selectTab(index) {
-      this.activeTab = index;
+    changeTab() {
+      this.$emit('changeTab', this.index);
     },
   },
 };
@@ -73,6 +87,9 @@ export default {
 
 <style lang="scss" scoped>
 .tab {
+  &.active {
+    margin-bottom: -15px;
+  }
   &:last-child {
     .tab__header {
       padding-bottom: 15px;
@@ -89,10 +106,24 @@ export default {
   text-align: center;
   border: 2px solid black;
   border-radius: 20px 20px 0 0;
-  padding-bottom: 25px;
+  padding-top: 15px;
+  padding-bottom: 35px;
   cursor: pointer;
-  margin-top: -35px;
+  margin-bottom: -42px;
   transition: color .2s ease;
+
+  &.rounded {
+    border-radius: 0 0 5px 5px;
+  }
+
+  // &.rounded.last {
+  //   border-radius: 0 0 5px 5px;
+  // }
+
+  .tab.active & {
+    border-bottom: 0;
+    margin-bottom: -35px;
+  }
 
   &:hover {
     color: var(--ov-bg-secondary);
@@ -102,23 +133,25 @@ export default {
 .tab__content {
   display: flex;
   flex-direction: column;
-  align-items: center;
   position: relative;
   border: 2px solid #000000;
   border-top: 0;
   background-color: #ffffff;
   border-radius: 0 0 20px 20px;
   padding-top: 20px;
+  position: relative;
   z-index: 0;
   height: 100%;
   padding-right: 20px;
-  transition: all .2s ease;
+  // transition: all .1s ease;
 
   img {
-    margin: 20px auto;
-    width: 100%;
-    padding: 0 20px;
-    max-width: 350px;
+    width: 50%;
+    min-width: 150px;
+    max-height: 200px;
+    height: 100%;
+    margin: 30px auto;
+    object-fit: contain;
   }
 }
 

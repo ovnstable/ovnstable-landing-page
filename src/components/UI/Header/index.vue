@@ -316,7 +316,7 @@ export default {
   }
 
   .logo-container {
-    margin-right: 450px;
+    margin-right: auto;
     cursor: pointer;
   }
 }
@@ -333,7 +333,7 @@ export default {
   }
 
   .logo-container {
-    margin-right: 450px;
+    margin-right: auto;
     cursor: pointer;
   }
 }

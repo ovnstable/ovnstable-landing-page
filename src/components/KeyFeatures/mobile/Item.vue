@@ -21,6 +21,7 @@
           {{ item }}
         </li>
       </ul>
+      <img :src="img"/>
     </div>
   </div>
 </template>
@@ -31,6 +32,10 @@ export default {
 
   props: {
     title: {
+      type: String,
+      required: true,
+    },
+    img: {
       type: String,
       required: true,
     },
@@ -125,6 +130,8 @@ export default {
 }
 
 .tab__content {
+  display: flex;
+  flex-direction: column;
   position: relative;
   border: 2px solid #000000;
   border-top: 0;
@@ -135,7 +142,16 @@ export default {
   z-index: 0;
   height: 100%;
   padding-right: 20px;
-  transition: all .5s ease;
+  // transition: all .1s ease;
+
+  img {
+    width: 50%;
+    min-width: 150px;
+    max-height: 200px;
+    height: 100%;
+    margin: 30px auto;
+    object-fit: contain;
+  }
 }
 
 .list-item {

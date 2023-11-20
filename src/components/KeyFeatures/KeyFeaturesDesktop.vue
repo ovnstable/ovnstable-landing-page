@@ -179,6 +179,8 @@ export default {
 
 .tab-content {
   position: relative;
+  align-items: center;
+  height: 100%;
   display: none;
   justify-content: space-between;
   padding: 10px 0 0 0;
@@ -186,6 +188,10 @@ export default {
   font-size: 16px;
   font-weight: 400;
   font-family: "Red Hat Display", sans-serif;
+
+  img {
+    max-height: 80%;
+  }
 }
 
 .tab-content.active {

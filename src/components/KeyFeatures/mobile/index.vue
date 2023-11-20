@@ -8,6 +8,7 @@
       :expandedTab="expandedTab"
       :content="data.content"
       :title="data.title"
+      :img="data.img"
     />
   </div>
 </template>

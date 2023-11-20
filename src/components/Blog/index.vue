@@ -2,13 +2,13 @@
   <div class="blog-container">
     <div class="header-title-container">
       <div class="title">Follow Our Updates</div>
-      <div>
+      <!-- <div>
         <Button
           class="button text-styling"
           text="Subscribe"
           @click="openLinkSelf('https://app.overnight.fi/blog')"
         />
-      </div>
+      </div> -->
     </div>
     <swiper
       :slides-per-view="isDesktop ? 3 : isMobile ? 'auto' : 2"
@@ -24,7 +24,9 @@
           :post-data="item"
         />
       </swiper-slide>
-      <swiper-slide class="custom-slider">
+      <swiper-slide
+        @click="openLinkSelf('https://app.overnight.fi/blog')" class="custom-slider"
+      >
         <a href="https://overnight.fi/blog/" target="_blank" class="custom-content-link">
           <div class="custom-content">
             <p class="show-updates">Show more updates</p>
@@ -38,7 +40,6 @@
 
 <script>
 import NewsCard from '@/components/Blog/NewsCard.vue';
-import Button from '@/components/UI/Button/index.vue';
 import { mapState } from 'vuex';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
@@ -49,7 +50,6 @@ export default {
   name: 'Blog',
   components: {
     NewsCard,
-    Button,
     Swiper,
     SwiperSlide,
   },
@@ -184,6 +184,7 @@ export default {
   overflow: visible!important;
 }
 .swiper-slide {
+  height: 100%;
   &:first-child {
     border-radius: 30px 0 0 30px;
 
@@ -195,6 +196,9 @@ export default {
       }
     }
   }
+}
+.swiper-container-autoheight, .swiper-container-autoheight .swiper-slide:last-child {
+  height: 100%;
 }
 </style>
 
@@ -258,7 +262,7 @@ export default {
   background: #0497EC;
   border-radius: 0px 30px 30px 0px;
   width: 325px;
-  height: 100%;
+
   .show-updates{
     color: #FFF;
     text-align: center;
@@ -268,18 +272,28 @@ export default {
     line-height: 30px;
     text-transform: uppercase;
   }
-  .updates-icon {
-    margin: auto;
-  }
+}
+.updates-icon {
+  transition: transform .2s ease;
+}
+.custom-content-link {
+  width: 100%;
+  height: 100%;
+  text-align: center;
 
-  .custom-content-link {
-    width: 100%;
-    height: 100%;
-    padding-top: 177px;
-    text-align: center;
+  &:hover {
+    .updates-icon {
+      transform: translateX(5px);
+    }
   }
 }
-
+.custom-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .shadow:hover {
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 5);
 }

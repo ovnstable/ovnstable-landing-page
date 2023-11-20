@@ -51,6 +51,9 @@ export default {
 .banner-wrap {
   position: relative;
   margin-top: 60px;
+  background-image: url("~@/assets/main/stars.svg");
+  background-size: cover;
+  background-position: left center;
 }
 @media only screen and (min-width: 1024px) {
   .banner-wrap {

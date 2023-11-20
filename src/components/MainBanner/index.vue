@@ -254,11 +254,6 @@ export default {
   height: 710px;
   margin: 0 auto;
   padding-left: 20px;
-
-  background-image: url("~@/assets/main/stars.svg");
-  background-size: cover;
-  background-position: left center;
-
   display: flex;
   justify-content: space-between;
   align-items: center;

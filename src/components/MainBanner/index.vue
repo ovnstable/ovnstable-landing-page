@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isDesktop" class="hero-container">
+  <div v-if="!isMobile" class="hero-container">
     <div class="hero-text-container">
       <div class="hero-title">
         <div class="left-border-div"></div>
@@ -91,8 +91,6 @@ export default {
       'deviceType',
       'deviceOrientation',
       'isMobile',
-      'isTablet',
-      'isDesktop',
     ]),
   },
 
@@ -113,10 +111,23 @@ export default {
 
 <style scoped>
 /* mobile */
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 768px) {
+  .hero-image {
+    position: absolute;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    min-width: 210px;
+    max-height: 48vh;
+    z-index: 0;
+  }
   .hero-text-container-mobile {
+    position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    z-index: 2;
   }
 
   .hero-title {
@@ -144,19 +155,19 @@ export default {
   }
 
   .hero-blended-mobile {
-    height: 204px;
+    display: block;
+    margin-left: auto;
+    height: 100%;
     position: relative;
-    top: 10px;
-    right: 115px;
   }
 
   .button-container {
-    margin-top: 40px;
+    margin-top: auto;
   }
 }
 
 /* desktop */
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 768px) {
   .hero-text-container {
     display: flex;
     flex-direction: column;
@@ -242,6 +253,7 @@ export default {
   max-width: 1180px;
   height: 710px;
   margin: 0 auto;
+  padding-left: 20px;
 
   background-image: url("~@/assets/main/stars.svg");
   background-size: cover;
@@ -255,7 +267,7 @@ export default {
 }
 
 .hero-container-mobile {
-  height: 370px;
+  height: 60vh;
 
   display: flex;
   justify-content: start;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="main-container main-container-blue">
+    <div class="banner-wrap main-container main-container-blue">
       <MainBanner />
     </div>
     <div class="main-container">
@@ -46,3 +46,15 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.banner-wrap {
+  position: relative;
+  margin-top: 60px;
+}
+@media only screen and (min-width: 1024px) {
+  .banner-wrap {
+    margin-top: 52px;
+  }
+}
+</style>

@@ -62,7 +62,7 @@ export default {
     align-items: center;
     justify-content: flex-start;
     white-space: nowrap;
-    animation: moveCarousel 10s linear infinite;
+    animation: moveCarousel 20s linear infinite;
     width: 100%;
 
     gap: 20px;
@@ -94,9 +94,6 @@ export default {
     padding-left: 60px;
     padding-right: 80px;
   }
-
-  .partners-label {
-  }
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 1024px),
@@ -111,9 +108,6 @@ export default {
     justify-content: space-evenly;
     padding-top: 20px;
     gap: 10px;
-  }
-
-  .partners-label {
   }
 }
 .partners-container {

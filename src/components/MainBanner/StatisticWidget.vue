@@ -271,12 +271,12 @@ export default {
 }
 
 .tvl-label {
-  margin-left: 8px;
+  margin: 0 8px;
   transition: color .2s ease;
 }
 
 /* mobile */
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 768px) {
   .statistic-widget {
     width: 90vw;
   }
@@ -419,7 +419,7 @@ export default {
 }
 
 /* desktop */
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 768px) {
   .statistic-widget {
     min-height: 170px;
     max-width: 568px;
@@ -427,44 +427,39 @@ export default {
   }
 
   .statistic-title {
-    font-family: "Red Hat Display", sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 25px;
+    font-size: 20px;
     line-height: 33px;
 
     color: var(--ov-primary);
   }
 
   .statistic-subtitle {
-    font-family: "Red Hat Display", sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
 
     color: #687386;
   }
 
   .tvl-label {
-    font-family: "Red Hat Display", sans-serif;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 26px;
     color: #687386;
     cursor: pointer;
   }
 
   .tvl-label-investors {
-    font-family: "Red Hat Display", sans-serif;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 26px;
     color: #687386;
     margin-right: 10px;
   }
 
   .statistic-subtitle-last {
-    font-family: "Red Hat Display", sans-serif;
     font-weight: 400;
     font-size: 12px;
     color: #687386;
@@ -546,6 +541,54 @@ export default {
   }
 }
 
+@media only screen and (min-width: 1024px) {
+
+  .statistic-widget {
+    min-height: 170px;
+    max-width: 568px;
+    width: 100%;
+  }
+
+  .statistic-title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 33px;
+
+    color: var(--ov-primary);
+  }
+
+  .statistic-subtitle {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+
+    color: #687386;
+  }
+
+  .tvl-label {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #687386;
+    cursor: pointer;
+  }
+
+  .tvl-label-investors {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #687386;
+    margin-right: 10px;
+  }
+
+  .statistic-subtitle-last {
+    font-weight: 400;
+    font-size: 12px;
+    color: #687386;
+  }
+
+}
 @media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 1300px),
   only screen and (min--moz-device-pixel-ratio: 2) and (min-width: 1300px),
   only screen and (-o-min-device-pixel-ratio: 2/1) and (min-width: 1300px),
@@ -559,7 +602,6 @@ export default {
   }
 
   .statistic-title {
-    font-family: "Red Hat Display", sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 25px;
@@ -569,16 +611,13 @@ export default {
   }
 
   .statistic-subtitle {
-    font-family: "Red Hat Display", sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-
     color: #687386;
   }
 
   .tvl-label {
-    font-family: "Red Hat Display", sans-serif;
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;

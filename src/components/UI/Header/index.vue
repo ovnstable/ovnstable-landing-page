@@ -246,8 +246,12 @@ export default {
   }
 
   .logos {
-    height: 12px;
+    height: 16px;
     cursor: pointer;
+
+    &:first-child {
+      margin-right: 10px;
+    }
   }
 
   .social-container {

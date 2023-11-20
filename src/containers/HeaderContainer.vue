@@ -18,7 +18,8 @@ export default {
 
 .fixed-position {
     width: 100%;
-    position: sticky;
+    position: fixed;
+    top: 0;
     z-index: 10;
 }
 </style>

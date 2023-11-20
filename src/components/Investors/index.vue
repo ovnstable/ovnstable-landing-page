@@ -117,7 +117,9 @@ export default {
   }
 
   .hack {
-    height: 15px;
+    img {
+      height: 24px;
+    }
   }
 
   .investors-container {

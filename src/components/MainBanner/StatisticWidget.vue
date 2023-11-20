@@ -108,7 +108,7 @@
 import statisticApiService from '@/services/statistic-api-service';
 import moment from 'moment';
 import utils from '@/utils';
-import Preloader from './Preloader.vue';
+import Preloader from '../UI/Header/Preloader.vue';
 
 export default {
   name: 'statistic-widget',

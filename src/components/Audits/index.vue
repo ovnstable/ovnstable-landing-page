@@ -67,15 +67,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-
-.logo-container {
-  transition: transform .2s ease;
-
-  &:hover {
-    transform: scale(1.1);
-  }
-}
+<style scoped>
 /* mobile */
 @media only screen and (max-width: 768px) {
   .title {
@@ -85,6 +77,7 @@ export default {
   }
 
   .paragraph-text {
+    font-family: "Red Hat Display", sans-serif;
     font-weight: 400;
     font-size: 10px;
     line-height: 14px;
@@ -92,6 +85,8 @@ export default {
   }
 
   .audits-container {
+    padding-left: 20px;
+    padding-right: 20px;
     max-width: 100%;
     margin: 0 auto 40px auto;
     position: relative;
@@ -150,7 +145,7 @@ export default {
     font-size: 16px;
     line-height: 20px;
     margin-bottom: 30px;
-    max-width: 80%;
+    max-width: 760px;
   }
 
   .clear-icon {

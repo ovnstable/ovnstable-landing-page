@@ -104,24 +104,10 @@
           </a>
           <a
             class="listings-container"
-            href="https://app.1inch.io/#/1/simple/swap/ETH"
-            target="_blank"
-          >
-            <label class="logo-title"> 1inch </label>
-          </a>
-          <a
-            class="listings-container"
             href="https://www.coingecko.com/en/coins/overnight-finance"
             target="_blank"
           >
             <label class="logo-title"> Coingecko </label>
-          </a>
-          <a
-            class="listings-container"
-            href="https://debank.com/"
-            target="_blank"
-          >
-            <label class="logo-title"> Debank </label>
           </a>
         </div>
       </div>
@@ -283,7 +269,7 @@ export default {
 }
 
 .heading-container {
-  white-space: nowrap;
+  text-wrap: nowrap;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -549,7 +535,7 @@ export default {
     justify-content: space-between;
     width: 100%;
     display: flex;
-    align-items: flex-start;
+    align-items: start;
     flex-direction: row-reverse;
     gap: 0;
   }

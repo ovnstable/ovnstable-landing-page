@@ -11,8 +11,9 @@
       </div> -->
     </div>
     <swiper
-      slides-per-view="auto"
+      :slides-per-view="isDesktop ? 3 : isMobile ? 'auto' : 2"
       :space-between="0"
+      :auto-height="true"
     >
       <swiper-slide
         v-for="item in blogCards"
@@ -22,6 +23,16 @@
         <NewsCard
           :post-data="item"
         />
+      </swiper-slide>
+      <swiper-slide
+        @click="openLinkSelf('https://app.overnight.fi/blog')" class="custom-slider"
+      >
+        <a href="https://overnight.fi/blog/" target="_blank" class="custom-content-link">
+          <div class="custom-content">
+            <p class="show-updates">Show more updates</p>
+            <img :src="require('@/assets/cards/arrow-right-white.svg')" class="updates-icon"/>
+          </div>
+        </a>
       </swiper-slide>
     </swiper>
   </div>
@@ -173,8 +184,7 @@ export default {
   overflow: visible!important;
 }
 .swiper-slide {
-  max-width: 33%;
-  max-height: 471px;
+  height: 100%;
   &:first-child {
     border-radius: 30px 0 0 30px;
 
@@ -187,23 +197,8 @@ export default {
     }
   }
 }
-
-@media only screen and (max-width: 1024px) {
-  .swiper-slide {
-    max-width: 40%;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .swiper-slide {
-    max-width: 50%;
-  }
-}
-
-@media only screen and (max-width: 567px) {
-  .swiper-slide {
-    max-width: 100%;
-  }
+.swiper-container-autoheight, .swiper-container-autoheight .swiper-slide:last-child {
+  height: 100%;
 }
 </style>
 
@@ -260,6 +255,45 @@ export default {
   border-radius: 30px 0 0 30px;
 }
 
+.custom-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0497EC;
+  border-radius: 0px 30px 30px 0px;
+  width: 325px;
+
+  .show-updates{
+    color: #FFF;
+    text-align: center;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px;
+    text-transform: uppercase;
+  }
+}
+.updates-icon {
+  transition: transform .2s ease;
+}
+.custom-content-link {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+
+  &:hover {
+    .updates-icon {
+      transform: translateX(5px);
+    }
+  }
+}
+.custom-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .shadow:hover {
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 5);
 }

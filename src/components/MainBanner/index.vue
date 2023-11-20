@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isDesktop" class="hero-container">
+  <div v-if="!isMobile" class="hero-container">
     <div class="hero-text-container">
       <div class="hero-title">
         <div class="left-border-div"></div>
@@ -28,7 +28,11 @@
         />
       </div>
     </div>
-    <img class="hero-blended" :src="require('@/assets/main/hero.svg')" alt="hero image" />
+    <img
+      class="hero-blended"
+      :src="require('@/assets/main/hero.png')"
+      alt="hero image"
+    />
   </div>
   <div v-else class="hero-container-mobile">
     <div class="hero-text-container-mobile">
@@ -48,22 +52,23 @@
         </div>
       </div>
       <div class="button-container">
-        <Button
-          class="button text-styling"
-          buttonHover="green"
-          text="Connect"
-          @click="openLinkSelf('https://app.overnight.fi/swap')"
-        />
+        <button
+          class="button-mobile"
+          @click="openLinkBlank('https://app.overnight.fi/swap')"
+          @mouseup.middle="handleMiddleClick($event, 'https://app.overnight.fi/swap')"
+        >
+          Connect
+        </button>
       </div>
 
       <div class="widget-container-mobile">
-        <StatisticWidget />
+        <StatisticWidget></StatisticWidget>
       </div>
     </div>
     <div class="hero-image">
       <img
         class="hero-blended hero-blended-mobile"
-        :src="require('@/assets/main/hero.svg')"
+        :src="require('@/assets/main/hero_mobile.png')"
         alt="hero image"
       />
     </div>
@@ -86,18 +91,12 @@ export default {
       'deviceType',
       'deviceOrientation',
       'isMobile',
-      'isTablet',
-      'isDesktop',
     ]),
   },
 
   methods: {
     openLinkBlank(url) {
       window.open(url).focus();
-    },
-
-    openLinkSelf(url) {
-      window.open(url, '_self').focus();
     },
 
     handleMiddleClick(e, url) {
@@ -110,34 +109,25 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.hero-text-container-mobile {
-  width: 100%;
-}
-
-.hero-container-mobile {
-  position: relative;
-  height: 550px;
-  display: flex;
-  justify-content: start;
-  align-items: start;
-  overflow-x: hidden;
-  padding-left: 20px;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  padding-bottom: 15px;
-}
-
-@media only screen and (max-width: 1024px) {
+<style scoped>
+/* mobile */
+@media only screen and (max-width: 768px) {
   .hero-image {
     position: absolute;
     right: 0;
+    width: 60%;
+    height: 100%;
+    min-width: 230px;
+    max-height: 48vh;
+    z-index: 0;
   }
   .hero-text-container-mobile {
-    height: 100%;
+    position: relative;
     display: flex;
-    justify-content: space-evenly;
     flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    z-index: 2;
   }
 
   .hero-title {
@@ -162,20 +152,22 @@ export default {
 
   .widget-container-mobile {
     margin-top: 10px;
-    margin-right: 20px;
-    max-width: 450px;
   }
 
   .hero-blended-mobile {
-    width: 50vw;
-    min-width: 200px;
+    display: block;
+    margin-left: auto;
+    height: 100%;
     position: relative;
-    top: 0;
+  }
+
+  .button-container {
+    margin-top: auto;
   }
 }
 
 /* desktop */
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 768px) {
   .hero-text-container {
     display: flex;
     flex-direction: column;
@@ -209,7 +201,7 @@ export default {
 
   .hero-blended {
     position: absolute;
-    right: -20px;
+    right: -40px;
     max-height: 580px;
     width: 45vw;
     max-width: 600px;
@@ -261,6 +253,11 @@ export default {
   max-width: 1180px;
   height: 710px;
   margin: 0 auto;
+  padding-left: 20px;
+
+  background-image: url("~@/assets/main/stars.svg");
+  background-size: cover;
+  background-position: left center;
 
   display: flex;
   justify-content: space-between;
@@ -269,39 +266,16 @@ export default {
   border-bottom: 1px solid black;
 }
 
-@media only screen and (max-width: 567px) {
-  .button-container {
-    margin-top: auto;
-  }
+.hero-container-mobile {
+  height: 60vh;
+  padding-bottom: 15px;
 
-  .hero-container-mobile {
-    height: 80vh;
-    max-height: 600px;
-  }
-
-  .hero-text-container-mobile {
-    z-index: 2;
-
-    .hero-title {
-      background-color: rgba(4, 151, 236, 0.3);
-      border-radius: 50px;
-    }
-  }
-  .hero-image {
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-
-    img {
-      height: auto;
-      width: 60vw;
-      min-width: 300px;
-      top: unset;
-    }
-  }
-}
-
-.hero-text-container {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  overflow-x: hidden;
   padding-left: 20px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 </style>

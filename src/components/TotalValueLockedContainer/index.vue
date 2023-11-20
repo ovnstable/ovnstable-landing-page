@@ -48,7 +48,7 @@
               :src="require('@/assets/network/binance.svg')"
               alt="Binance logo"
             />
-            <label v-if="!isMobile" class="chain-text"> Binance </label>
+            <label v-if="!isMobile" class="chain-text"> BSC </label>
             <label class="chain-text">
               {{ "$" + utils.formatNumberToMln(this.totalBscValue) + "M" }}
             </label>

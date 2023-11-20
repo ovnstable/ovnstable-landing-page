@@ -13,6 +13,7 @@
     <swiper
       :slides-per-view="isDesktop ? 3 : isMobile ? 'auto' : 2"
       :space-between="0"
+      :auto-height="true"
     >
       <swiper-slide
         v-for="item in blogCards"
@@ -22,6 +23,14 @@
         <NewsCard
           :post-data="item"
         />
+      </swiper-slide>
+      <swiper-slide class="custom-slider">
+        <a href="https://overnight.fi/blog/" target="_blank" class="custom-content-link">
+          <div class="custom-content">
+            <p class="show-updates">Show more updates</p>
+            <img :src="require('@/assets/cards/arrow-right-white.svg')" class="updates-icon"/>
+          </div>
+        </a>
       </swiper-slide>
     </swiper>
   </div>
@@ -240,6 +249,35 @@ export default {
 .blog-cards-container {
   display: flex;
   border-radius: 30px 0 0 30px;
+}
+
+.custom-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0497EC;
+  border-radius: 0px 30px 30px 0px;
+  width: 325px;
+  height: 100%;
+  .show-updates{
+    color: #FFF;
+    text-align: center;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px;
+    text-transform: uppercase;
+  }
+  .updates-icon {
+    margin: auto;
+  }
+
+  .custom-content-link {
+    width: 100%;
+    height: 100%;
+    padding-top: 177px;
+    text-align: center;
+  }
 }
 
 .shadow:hover {

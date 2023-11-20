@@ -2,8 +2,8 @@
   <div>
     <div>
       <div class="card card-round statistic-widget card-shadow">
-        <div v-if="loading || !data">
-          <Preloader></Preloader>
+        <div class="statistic-widget__loader" v-if="loading || !data">
+          <Preloader />
         </div>
 
         <div v-else class="widget-container">
@@ -212,7 +212,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.statistic-widget {
+  min-height: 100px;
+}
 
+.statistic-widget__loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+}
 .lock-icon-container, .total-locked {
   &:hover {
     .tvl-label {
@@ -392,13 +401,6 @@ export default {
   .lock-icon {
     width: 12px;
     height: 12px;
-  }
-
-  .loader {
-    position: absolute;
-    left: 200px;
-    top: 285px;
-    z-index: 2;
   }
 }
 

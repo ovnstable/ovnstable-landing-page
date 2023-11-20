@@ -31,7 +31,7 @@ export default {
             '1:1 peg to USDC for USD+ for price stability.',
             'Profit (positive rebase) once collateral value grows above 100%, loss (negative rebase) in case collateral value below 100%.',
           ],
-          img: require('@/assets/features/full_collat.svg'),
+          img: require('@/assets/features/full_collat.png'),
         },
         {
           title: 'Rebase',
@@ -39,7 +39,7 @@ export default {
             'Generate passive yield effortlessly by simply holding your Token+ in your wallet.',
             'Profit payouts occur through daily rebasing, providing transparent balance tracking and profit/loss visibility.',
           ],
-          img: require('@/assets/features/rebase.svg'),
+          img: require('@/assets/features/rebase.png'),
         },
         {
           title: 'Passive yield',
@@ -48,7 +48,7 @@ export default {
             'High quality protocols enabling Overnight generates real yield (sustainable yield without rewards) like Aave and Uni V3, prioritized.',
             'Yield is not guaranteed, varies daily depending on collateral performance, can be negative.',
           ],
-          img: require('@/assets/features/yield.svg'),
+          img: require('@/assets/features/yield.png'),
         },
         {
           title: 'Usability',
@@ -57,7 +57,7 @@ export default {
             "Swap, a feature that streamlines the process of converting various assets into Overnight's tokens with ease and efficiency.",
             'Zap In feature offers users a seamless method to invest in a variety of pools in the DeFi simultaneously saving time and effort.',
           ],
-          img: require('@/assets/features/usability.svg'),
+          img: require('@/assets/features/usability.png'),
         },
         {
           title: 'Insured',
@@ -65,7 +65,7 @@ export default {
             "Insurance serves to protect our rebase tokens (USD+, DAI+, USDT+, not the ETSes) by absorbing the first loss in case of negative rebase with the project's native OVN token.",
             'With insurance, the protocol can invest into riskier yet more profitable strategies, ultimately increasing long-term profit for users.',
           ],
-          img: require('@/assets/features/insured.svg'),
+          img: require('@/assets/features/insured.png'),
         },
       ],
     };

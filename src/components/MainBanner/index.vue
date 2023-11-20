@@ -68,7 +68,7 @@
     <div class="hero-image">
       <img
         class="hero-blended hero-blended-mobile"
-        :src="require('@/assets/main/hero.png')"
+        :src="require('@/assets/main/hero_mobile.png')"
         alt="hero image"
       />
     </div>

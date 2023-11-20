@@ -27,7 +27,7 @@
             {{ item }}
           </li>
         </ul>
-        <img :src="feature.img"/>
+        <img :src="feature.img" class="feature-image"/>
       </div>
     </div>
   </div>
@@ -80,6 +80,10 @@ export default {
   position: absolute;
   top: 25px;
   left: 3px;
+}
+
+.feature-image {
+  object-fit: contain;
 }
 
 .header-right-border {
@@ -165,7 +169,7 @@ export default {
   width: calc(100% + 4px);
   border: 2px solid #000000;
   border-top: 0;
-
+  overflow: hidden;
   background-color: #ffffff;
   border-radius: 0 0 20px 20px;
   position: relative;

@@ -36,10 +36,20 @@ export default {
 
 <style lang="scss" scoped>
 .post-bg-img {
+  height: 200px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .blog-title {
+    font-size: 28px;
+    line-height: 30px;
+  }
+
+}
+
+.post-bg-img {
   width: 100%;
-  max-height: 200px;
   object-fit: cover;
-  object-position: top;
   transition: transform .2s ease;
 }
 
@@ -64,7 +74,6 @@ export default {
   text-overflow: ellipsis;
   overflow: hidden;
   min-height: 60px;
-  margin-top: 0;
   transition: color .15s ease;
 }
 
@@ -85,7 +94,6 @@ export default {
   overflow: hidden;
   border: 1px solid rgb(15, 23, 41);
   border-bottom-width: 2px;
-  max-height: 463px;
 
   &:hover {
     .blog-title {
@@ -97,50 +105,24 @@ export default {
   }
 }
 
-@media only screen and (min-width: 1024px) {
-  .blog-title {
-    font-size: 28px;
-    line-height: 30px;
-  }
-
-  .post-bg-img {
-    max-height: 196px;
-  }
-}
-
 @media only screen and (max-width: 1024px) {
   .blog-title {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .blog-date {
-    font-size: 14px;
-  }
-
-  .content {
-    font-size: 14px;
-    min-height: 58px;
+    font-size: 12px;
   }
 
   .new-card__content {
     padding: 10px 20px;
   }
-
-  .post-bg-img {
-    max-height: 150px;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .post-bg-img {
-    height: auto;
-    max-height: 190px;
-  }
 }
 
 @media only screen and (max-width: 567px) {
   .post-bg-img {
-    max-height: 180px;
+    height: 150px;
+    min-width: 200px;
   }
 }
 .news-card-container:first-of-type {

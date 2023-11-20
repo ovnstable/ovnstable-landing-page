@@ -22,7 +22,7 @@ export default {
 .roadmap {
   width: 100%;
   height: 100%;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
 }
 
 .roadmap__img {

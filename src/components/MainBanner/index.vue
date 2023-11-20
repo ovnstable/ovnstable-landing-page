@@ -117,7 +117,7 @@ export default {
     right: 0;
     width: 60%;
     height: 100%;
-    min-width: 210px;
+    min-width: 230px;
     max-height: 48vh;
     z-index: 0;
   }

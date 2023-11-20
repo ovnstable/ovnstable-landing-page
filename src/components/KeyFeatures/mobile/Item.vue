@@ -1,6 +1,13 @@
 <template>
-  <div class="tab">
-    <div @click="expanded = !expanded" class="tab__header">
+  <div
+    class="tab"
+    :class="{ active: expanded }"
+  >
+    <div
+      @click="changeTab"
+      class="tab__header"
+      :class="{ rounded: roundedHeader }"
+    >
       {{ title }}
     </div>
 
@@ -27,24 +34,31 @@ export default {
       type: String,
       required: true,
     },
+    index: {
+      type: Number,
+      required: true,
+    },
     content: {
       type: Array,
       required: true,
     },
-    isExpanded: {
-      type: Boolean,
-      required: false,
+    expandedTab: {
+      type: Number,
+      required: true,
     },
   },
 
-  data() {
-    return {
-      activeTab: 0,
-      expanded: this.isExpanded,
-    };
-  },
-
   computed: {
+    roundedHeader() {
+      return this.expandedTab < this.index;
+    },
+    expanded() {
+      return this.expandedTab === this.index;
+    },
+    // straight() {
+    //   return this.index === 4;
+    // },
+
     contentStyle() {
       return {
         'max-height': this.expanded ? '400px' : 0,
@@ -59,8 +73,8 @@ export default {
   },
 
   methods: {
-    selectTab(index) {
-      this.activeTab = index;
+    changeTab() {
+      this.$emit('changeTab', this.index);
     },
   },
 };
@@ -68,6 +82,9 @@ export default {
 
 <style lang="scss" scoped>
 .tab {
+  &.active {
+    margin-bottom: -15px;
+  }
   &:last-child {
     .tab__header {
       padding-bottom: 15px;
@@ -84,10 +101,23 @@ export default {
   text-align: center;
   border: 2px solid black;
   border-radius: 20px 20px 0 0;
-  padding-bottom: 25px;
+  padding-top: 25px;
+  padding-bottom: 45px;
   cursor: pointer;
-  margin-top: -35px;
+  margin-bottom: -42px;
   transition: color .2s ease;
+
+  &.rounded {
+    border-radius: 0 0 5px 5px;
+  }
+
+  // &.rounded.last {
+  //   border-radius: 0 0 5px 5px;
+  // }
+
+  .tab.active & {
+    border-bottom: 0;
+  }
 
   &:hover {
     color: var(--ov-bg-secondary);
@@ -105,7 +135,7 @@ export default {
   z-index: 0;
   height: 100%;
   padding-right: 20px;
-  transition: all .2s ease;
+  transition: all .5s ease;
 }
 
 .list-item {

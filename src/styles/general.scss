@@ -170,11 +170,10 @@ a {
   
 .link {
     color: #0F172A;
-    transition: color .1s ease, transform .2s ease;
+    transition: color .1s ease,;
   
     &:hover {
       color: #68789c;
-      transform: translateX(-2px);
     }
 }
 

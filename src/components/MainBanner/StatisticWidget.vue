@@ -108,7 +108,7 @@
 import statisticApiService from '@/services/statistic-api-service';
 import moment from 'moment';
 import utils from '@/utils';
-import Preloader from '../UI/Header/Preloader.vue';
+import Preloader from '../UI/Preloader/index.vue';
 
 export default {
   name: 'statistic-widget',
@@ -190,10 +190,6 @@ export default {
       window.open(url, '_blank').focus();
     },
 
-    openLinkSelf(url) {
-      window.open(url, '_self').focus();
-    },
-
     handleClick() {
       this.isClicked = !this.isClicked;
     },
@@ -218,11 +214,7 @@ export default {
 <style lang="scss" scoped>
 
 .lock-icon-container, .total-locked {
-  transition: transform .15s ease;
-
   &:hover {
-    transform: translateX(5px);
-
     .tvl-label {
       color: var(--ov-bg-secondary);
     }
@@ -231,12 +223,11 @@ export default {
 
 .statistic-title {
   cursor: pointer;
-  transition: transform .15s ease, color .2s ease;
+  transition: color .2s ease;
 }
 
 .card-tab .statistic-title {
   &:hover {
-      transform: translateX(-3px);
       color: var(--ov-bg-secondary);
   }
 }
@@ -247,13 +238,8 @@ export default {
   &:hover {
     .statistic-title {
       color: var(--ov-bg-secondary);
-      transform: translateY(-3px);
     }
   }
-}
-
-.clock-container {
-  transition: transform .15s ease;
 }
 
 .payout-container {
@@ -261,8 +247,6 @@ export default {
 
   &:hover {
     .clock-container {
-      transform: translateY(-3px);
-
       .statistic-title {
         color: var(--ov-bg-secondary);
       }

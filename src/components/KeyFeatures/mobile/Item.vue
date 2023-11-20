@@ -106,8 +106,8 @@ export default {
   text-align: center;
   border: 2px solid black;
   border-radius: 20px 20px 0 0;
-  padding-top: 25px;
-  padding-bottom: 45px;
+  padding-top: 15px;
+  padding-bottom: 35px;
   cursor: pointer;
   margin-bottom: -42px;
   transition: color .2s ease;

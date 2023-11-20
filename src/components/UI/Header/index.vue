@@ -86,45 +86,51 @@
       <div class="button-container">
       </div>
       <div class="menu-container">
-        <div class="menu-image-container" @click="toggleMenu">
-          <img :src="require('@/assets/main/menu.svg')" alt="menu icon" />
+        <div
+          class="menu-image-container"
+          :class="{ open: isMenuOpen }"
+          @click="toggleMenu"
+        >
+          <img :src="isMenuOpen ? require('@/assets/icons/close.svg') : require('@/assets/main/menu.svg')" alt="menu icon" />
         </div>
-        <div v-if="isMenuOpen" class="dropdown-menu">
-          <ul class="item-list">
-            <li
-              class="menu-list-item"
-              @click="
-                openLinkBlank(
-                  'https://docs.overnight.fi/governance/ovn-token/overnight-tokenomics'
-                )
-              "
-              @mouseup.middle="
-                handleMiddleClick(
-                  $event,
-                  'https://docs.overnight.fi/governance/ovn-token/overnight-tokenomics'
-                )
-              "
-            >
-              Token
-            </li>
-            <li
-              class="menu-list-item"
-              @click="openLinkBlank('https://docs.overnight.fi/core-concept/faq')"
-              @mouseup.middle="
-                handleMiddleClick($event, 'https://docs.overnight.fi/core-concept/faq')
-              "
-            >
-              FAQ
-            </li>
-            <li
-              class="menu-list-item"
-              @click="openLinkBlank('https://docs.overnight.fi/')"
-              @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/')"
-            >
-              Docs
-            </li>
-          </ul>
-        </div>
+        <Transition>
+          <div v-if="isMenuOpen" class="dropdown-menu">
+            <ul class="item-list">
+              <li
+                class="menu-list-item"
+                @click="
+                  openLinkBlank(
+                    'https://docs.overnight.fi/governance/ovn-token/overnight-tokenomics'
+                  )
+                "
+                @mouseup.middle="
+                  handleMiddleClick(
+                    $event,
+                    'https://docs.overnight.fi/governance/ovn-token/overnight-tokenomics'
+                  )
+                "
+              >
+                Token
+              </li>
+              <li
+                class="menu-list-item"
+                @click="openLinkBlank('https://docs.overnight.fi/core-concept/faq')"
+                @mouseup.middle="
+                  handleMiddleClick($event, 'https://docs.overnight.fi/core-concept/faq')
+                "
+              >
+                FAQ
+              </li>
+              <li
+                class="menu-list-item"
+                @click="openLinkBlank('https://docs.overnight.fi/')"
+                @mouseup.middle="handleMiddleClick($event, 'https://docs.overnight.fi/')"
+              >
+                Docs
+              </li>
+            </ul>
+          </div>
+        </Transition>
       </div>
     </div>
   </div>
@@ -200,6 +206,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.v-enter-active,
+.v-leave-active {
+  transform: translateX(0);
+  transition: opacity 0.5s ease, transform .3s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
+}
+
 /* mobile */
 @media only screen and (max-width: 1024px) {
   .header-main-container-mobile {
@@ -244,7 +263,23 @@ export default {
 
   .menu-image-container {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+
+    &.open {
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
   }
 
   .menu-container {
@@ -253,11 +288,12 @@ export default {
   }
 
   .dropdown-menu {
-    width: 100px;
+    height: calc(100vh - 60px);
     position: absolute;
-    top: 22px;
-    right: 3px;
+    top: 45px;
+    right: -20px;
     z-index: 2 !important;
+    background-color: #fff;
 
     border-radius: 0 0 5px 5px;
     text-align: center;
@@ -265,27 +301,19 @@ export default {
 
   .menu-list-item {
     width: 100%;
-    border: 1px solid black;
-    padding: 5px 10px;
+    padding: 20px 50px;
     list-style-type: none;
     background-color: white;
-
-    font-family: "Red Hat Display", sans-serif;
-    font-size: 10px;
+    font-size: 14px;
     font-weight: 600;
     line-height: 14px;
     color: #0f172a;
     cursor: pointer;
-  }
+    transition: color .2s ease;
 
-  ul li:nth-child(2) {
-    border-top: 0;
-  }
-
-  ul li:last-child {
-    border-top: 0;
-    border-radius: 0 0 5px 5px;
-    border-bottom: 2px solid black;
+    &:hover {
+      color: var(--ov-bg-secondary);
+    }
   }
 
   a {
@@ -342,7 +370,7 @@ a {
   .logos {
     color: #0F172A;
     cursor: pointer;
-    transition: .15s opacity, .15s transform, color .2s ease;
+    transition: .15s opacity, color .2s ease;
   }
 
   &:hover {
@@ -370,5 +398,11 @@ a:hover .logos.discord {
 
 .menu-container {
   position: relative;
+}
+
+.item-list {
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 </style>

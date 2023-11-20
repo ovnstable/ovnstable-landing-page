@@ -95,6 +95,9 @@ export default {
   },
 
   methods: {
+    openLinkSelf(url) {
+      window.open(url, '_self').focus();
+    },
     openLinkBlank(url) {
       window.open(url).focus();
     },

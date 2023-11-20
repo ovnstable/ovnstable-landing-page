@@ -104,24 +104,10 @@
           </a>
           <a
             class="listings-container"
-            href="https://app.1inch.io/#/1/simple/swap/ETH"
-            target="_blank"
-          >
-            <label class="logo-title"> 1inch </label>
-          </a>
-          <a
-            class="listings-container"
             href="https://www.coingecko.com/en/coins/overnight-finance"
             target="_blank"
           >
             <label class="logo-title"> Coingecko </label>
-          </a>
-          <a
-            class="listings-container"
-            href="https://debank.com/"
-            target="_blank"
-          >
-            <label class="logo-title"> Debank </label>
           </a>
         </div>
       </div>

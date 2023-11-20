@@ -3,9 +3,7 @@
     <div>
       <div class="card card-round statistic-widget card-shadow">
         <div v-if="loading || !data">
-          <div class="center-flex padding-top-four loader">
-            LOADER
-          </div>
+          <Preloader></Preloader>
         </div>
 
         <div v-else class="widget-container">
@@ -110,9 +108,13 @@
 import statisticApiService from '@/services/statistic-api-service';
 import moment from 'moment';
 import utils from '@/utils';
+import Preloader from './Preloader.vue';
 
 export default {
   name: 'statistic-widget',
+  components: {
+    Preloader,
+  },
   data() {
     return {
       data: null,
@@ -682,4 +684,5 @@ export default {
   display: flex;
   flex-direction: column;
 }
+
 </style>

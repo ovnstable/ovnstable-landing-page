@@ -147,7 +147,7 @@ export default {
     height: 204px;
     position: relative;
     top: 10px;
-    right: 170px;
+    right: 115px;
   }
 
   .button-container {

@@ -106,7 +106,8 @@
 
 <script>
 import statisticApiService from '@/services/statistic-api-service';
-import moment from 'moment';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import dayjs from 'dayjs';
 import utils from '@/utils';
 import Preloader from '../UI/Preloader/index.vue';
 
@@ -153,9 +154,9 @@ export default {
       if (!this.data) {
         return null;
       }
-      const now = moment();
-      let hours = now.diff(moment(this.data.lastPayoutDate), 'hours');
-      let minutes = now.diff(moment(this.data.lastPayoutDate), 'minutes') - hours * 60;
+      const now = dayjs();
+      let hours = now.diff(dayjs(this.data.lastPayoutDate), 'hours');
+      let minutes = now.diff(dayjs(this.data.lastPayoutDate), 'minutes') - hours * 60;
       hours = hours < 10 ? `0${hours}` : hours;
       minutes = minutes < 10 ? `0${minutes}` : minutes;
       return `${hours}:${minutes}`;

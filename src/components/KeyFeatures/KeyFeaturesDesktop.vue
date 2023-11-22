@@ -8,7 +8,13 @@
 
           :key="`header-${index}`"
           @click="selectTab(index)"
-        ><span>{{ feature.title }}</span></li>
+        >
+          <span>
+            <div @click="selectTab(index)" class="ul__higher-block">
+              {{ feature.title }}
+            </div>
+          </span>
+        </li>
       </ul>
     </div>
     <div class="tabs-body">

@@ -2,13 +2,6 @@
   <div class="blog-container">
     <div class="header-title-container">
       <div class="title">Follow Our Updates</div>
-      <!-- <div>
-        <Button
-          class="button text-styling"
-          text="Subscribe"
-          @click="openLinkSelf('https://app.overnight.fi/blog')"
-        />
-      </div> -->
     </div>
     <swiper
       :slides-per-view="isDesktop ? 3 : isMobile ? 'auto' : 2"
@@ -25,7 +18,7 @@
         />
       </swiper-slide>
       <swiper-slide
-        @click="openLinkSelf('https://app.overnight.fi/blog')" class="custom-slider"
+        @click="openLinkSelf('https://overnight.fi/blog')" class="custom-slider"
       >
         <a href="https://overnight.fi/blog/" target="_blank" class="custom-content-link">
           <div class="custom-content">

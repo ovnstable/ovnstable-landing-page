@@ -6,8 +6,8 @@
         <img
           :src="require('/src/assets/overnight_logo.svg')"
           alt="overnight logo"
-          @click="openLinkSelf('https://landing.overnight.fi/')"
-          @mouseup.middle="handleMiddleClick($event, 'https://landing.overnight.fi/')"
+          @click="openLinkSelf('https://overnight.fi/')"
+          @mouseup.middle="handleMiddleClick($event, 'https://overnight.fi/')"
         />
       </div>
       <div class="social-container">
@@ -61,8 +61,8 @@
           class="overnight-logo"
           :src="require('/src/assets/overnight_logo.svg')"
           alt="overnight logo"
-          @click="openLinkSelf('https://landing.overnight.fi/')"
-          @mouseup.middle="handleMiddleClick($event, 'https://landing.overnight.fi/')"
+          @click="openLinkSelf('https://overnight.fi/')"
+          @mouseup.middle="handleMiddleClick($event, 'https://overnight.fi/')"
         />
       </div>
       <div class="social-container">

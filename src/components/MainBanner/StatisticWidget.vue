@@ -154,10 +154,8 @@ export default {
         return null;
       }
       const now = moment();
-      const lastPayoutDateUtc = moment.utc(this.data.lastPayoutDate);
-      const lastPayoutDateLocal = lastPayoutDateUtc.local();
-      let hours = now.diff(lastPayoutDateLocal, 'hours');
-      let minutes = now.diff(lastPayoutDateLocal, 'minutes') - hours * 60;
+      let hours = now.diff(moment(this.data.lastPayoutDate), 'hours');
+      let minutes = now.diff(moment(this.data.lastPayoutDate), 'minutes') - hours * 60;
       hours = hours < 10 ? `0${hours}` : hours;
       minutes = minutes < 10 ? `0${minutes}` : minutes;
       return `${hours}:${minutes}`;

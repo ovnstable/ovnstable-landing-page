@@ -1,8 +1,9 @@
 /* eslint-disable default-case */
 import BN from 'bn.js';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import dayjs from 'dayjs';
 
 const accounting = require('accounting-js');
-const moment = require('moment');
 
 const accountingConfig = {
   symbol: '',
@@ -188,7 +189,7 @@ export default {
   },
 
   formatDate(date, pattern) {
-    return moment(date, pattern, true);
+    return dayjs(date).format(pattern);
   },
 
   fromE18: (value) => new BN(value.toString()).divRound(new BN(10).pow(new BN(18))).toString(),

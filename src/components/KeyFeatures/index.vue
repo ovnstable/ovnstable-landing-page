@@ -94,7 +94,7 @@ export default {
 @media only screen and (max-width: 768px) {
   .key-features {
     max-width: 100%;
-    margin: 40px auto 40px auto;
+    margin: 40px auto 50px auto;
     padding: 0 20px;
   }
 
@@ -110,7 +110,7 @@ export default {
 @media only screen and (min-width: 769px) {
   .key-features {
     max-width: 1180px;
-    margin: 0 auto 180px auto;
+    margin: 0 auto 70px auto;
     padding: 0 15px;
   }
 

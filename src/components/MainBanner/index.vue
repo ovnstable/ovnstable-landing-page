@@ -52,13 +52,12 @@
         </div>
       </div>
       <div class="button-container">
-        <button
-          class="button-mobile"
-          @click="openLinkBlank('https://app.overnight.fi/swap')"
-          @mouseup.middle="handleMiddleClick($event, 'https://app.overnight.fi/swap')"
-        >
-          Connect
-        </button>
+        <Button
+          class="button text-styling"
+          buttonHover="green"
+          text="Connect"
+          @click="openLinkSelf('https://app.overnight.fi/swap')"
+        />
       </div>
 
       <div class="widget-container-mobile">

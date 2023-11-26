@@ -125,26 +125,6 @@ body {
     justify-content: center;
 }
 
-.button-mobile {
-    height: 22px;
-    width: 88px;
-
-    background: var(--ov-primary);
-    border-radius: 12px;
-    border: 1px solid var(--ov-primary);
-    color: var(--ov-white);
-
-    text-transform: uppercase;
-    font-weight: 700;
-
-    font-size: 8px;
-    cursor: pointer;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .paragraph {
     font-family: "Red Hat Display", sans-serif;
     font-weight: 400;
@@ -201,4 +181,10 @@ a {
 
 @keyframes pulse-white {
     0% { box-shadow: 0 0 0 0 #ffffff; }
+}
+
+@media only screen and (max-width: 640px) {
+  .button {
+    height: 30px;
+  }
 }

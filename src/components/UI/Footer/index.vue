@@ -89,21 +89,21 @@
         </div>
         <div class="second-column__inner">
           <a
-            class="listings-container"
+            class="logo-container"
             href="https://defillama.com/protocol/overnight-finance"
             target="_blank"
           >
             <label class="logo-title"> DefiLlama </label>
           </a>
           <a
-            class="listings-container"
+            class="logo-container"
             href="https://coinmarketcap.com/currencies/overnight/"
             target="_blank"
           >
             <label class="logo-title"> Coinmarketcap </label>
           </a>
           <a
-            class="listings-container"
+            class="logo-container"
             href="https://www.coingecko.com/en/coins/overnight-finance"
             target="_blank"
           >
@@ -359,6 +359,7 @@ export default {
     margin-bottom: 10px;
     align-items: center;
     justify-content: flex-start;
+    min-height: 17px;
   }
 
   .logo-icon {
@@ -373,10 +374,6 @@ export default {
 
     color: #ffffff;
     cursor: pointer;
-  }
-
-  .listings-container {
-    margin-bottom: 1px;
   }
 
   .products-container {
@@ -462,10 +459,6 @@ export default {
 
     color: #ffffff;
     cursor: pointer;
-  }
-
-  .listings-container {
-    margin-bottom: 7px;
   }
 
   .products-container {

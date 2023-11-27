@@ -9,7 +9,7 @@
         <div v-else class="widget-container">
           <div v-if="!isClicked" class="card-tab">
             <div class="statistic-title" @click="handleClick">
-              {{ formattedTotalValueLocked }}
+              {{  totalValue }}
             </div>
             <div class="tvl-text-container">
               <div class="lock-icon-container">
@@ -59,7 +59,7 @@
               "
             >
               <div class="statistic-title">
-                {{ formatNumberToFixed(data.usdPlusProduct.value) + "%" }}
+                {{ this.utils.formatNumberToFixed(data.usdPlusProduct.value) + "%" }}
               </div>
               <div class="statistic-subtitle">USD+ APY</div>
             </div>
@@ -77,7 +77,7 @@
               "
             >
               <div class="statistic-title">
-                {{ formatNumberToFixed(data.ethPlusProduct.value) + "%" }}
+                {{ this.utils.formatNumberToFixed(data.ethPlusProduct.value) + "%" }}
               </div>
               <div class="statistic-subtitle">ETH+ APY</div>
             </div>
@@ -122,11 +122,14 @@ export default {
       loading: true,
       isClicked: false,
       bestChainApy: null,
-      ...utils,
+      totalValue: null,
+      utils,
     };
   },
-  mounted() {
+  async mounted() {
     this.getData();
+    const tvlData = await this.getTvl();
+    this.totalValue = tvlData.formattedTvl;
   },
   computed: {
     formattedTotalValueLocked() {
@@ -175,6 +178,40 @@ export default {
         .catch((error) => {
           console.log(error);
           this.loading = false;
+        });
+    },
+
+    async getTvl() {
+      let tvl = 0.0;
+      const tvlData = await this.getTvLData();
+      if (tvlData) {
+        tvl = tvlData;
+      }
+      console.log(this.utils.formatMoneyComma(tvl, 2));
+      return {
+        formattedTvl: tvl ? `$${this.utils.formatMoneyComma(tvl, 2)}` : '-',
+        tvl,
+      };
+    },
+
+    async getTvLData() {
+      const fetchOptions = {
+        headers: {
+          'Access-Control-Allow-Origin': process.env.VUE_APP_ROOT_API,
+        },
+      };
+
+      return fetch(`${process.env.VUE_APP_ROOT_API}/tvl/total`, fetchOptions)
+        .then((value) => value.json())
+        .then((value) => {
+          if (value) {
+            return value;
+          }
+          return null;
+        })
+        .catch((reason) => {
+          console.log(`Error get data: ${reason}`);
+          return null;
         });
     },
 

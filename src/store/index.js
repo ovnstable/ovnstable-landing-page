@@ -1,11 +1,10 @@
 import { createStore } from 'vuex';
-
 import device from '@/store/device';
+import landingStore from './landingStore';
 
 export default createStore({
   modules: {
-    // user
+    landing: landingStore,
     device,
   },
-  // strict: debug
 });

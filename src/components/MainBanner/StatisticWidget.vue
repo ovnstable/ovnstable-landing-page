@@ -9,7 +9,7 @@
         <div v-else class="widget-container">
           <div v-if="!isClicked" class="card-tab">
             <div class="statistic-title" @click="handleClick">
-              {{ formattedTotalValueLocked }}
+              {{  totalValueTVL }}
             </div>
             <div class="tvl-text-container">
               <div class="lock-icon-container">
@@ -59,7 +59,7 @@
               "
             >
               <div class="statistic-title">
-                {{ formatNumberToFixed(data.usdPlusProduct.value) + "%" }}
+                {{ this.utils.formatNumberToFixed(data.usdPlusProduct.value) + "%" }}
               </div>
               <div class="statistic-subtitle">USD+ APY</div>
             </div>
@@ -77,7 +77,7 @@
               "
             >
               <div class="statistic-title">
-                {{ formatNumberToFixed(data.ethPlusProduct.value) + "%" }}
+                {{ this.utils.formatNumberToFixed(data.ethPlusProduct.value) + "%" }}
               </div>
               <div class="statistic-subtitle">ETH+ APY</div>
             </div>
@@ -122,13 +122,20 @@ export default {
       loading: true,
       isClicked: false,
       bestChainApy: null,
-      ...utils,
+      utils,
     };
   },
-  mounted() {
+  async mounted() {
     this.getData();
   },
   computed: {
+    totalValueTVL() {
+      const landingData = this.$store.state.landing;
+      if (landingData) {
+        return landingData.landingData.formattedTvl;
+      }
+      return null;
+    },
     formattedTotalValueLocked() {
       if (!this.data) {
         return null;

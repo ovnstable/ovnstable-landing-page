@@ -1,5 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import axios from 'axios';
+import utils from '@/utils';
 
 function cloneObject(src) {
   return { ...src };
@@ -92,6 +93,33 @@ class ApiService {
   postMultipart(url, formData) {
     const options = { headers: getHeaders('multipart/form-data') };
     return wrapPromise(axios.post(url, formData, options));
+  }
+
+  async getTvl() {
+    let tvl = 0.0;
+    const tvlData = await this.getTvLData();
+    if (tvlData) {
+      tvl = tvlData;
+    }
+    return {
+      formattedTvl: tvl ? `$${utils.formatMoneyComma(tvl, 2)}` : '-',
+      tvl,
+    };
+  }
+
+  async getTvLData() {
+    const fetchOptions = {
+      headers: {
+        'Access-Control-Allow-Origin': process.env.VUE_APP_ROOT_API,
+      },
+    };
+
+    const response = await this.get(`${process.env.VUE_APP_ROOT_API}/tvl/total`, fetchOptions);
+
+    if (response) {
+      return response;
+    }
+    return null;
   }
 }
 

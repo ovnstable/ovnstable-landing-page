@@ -171,13 +171,12 @@ export default {
     this.mekkaData = await this.getWithFilledClientFoundsValue(this.mekkaData);
     this.mekkaData = this.getOrderedMekkaData(this.mekkaData);
     this.getTotalNetworkValue(this.mekkaData);
-
-    const tvlData = await this.getTvl();
-    this.totalValue = tvlData.formattedTvl;
+    const landingDataTVL = this.$store.state.landing;
+    this.totalValue = `$ ${landingDataTVL.landingData.formattedTvl.slice(1)}`;
     if (this.mekkaData) {
       setTimeout(() => {
         // eslint-disable-next-line radix
-        this.initChart(this.mekkaData, parseInt(tvlData.tvl));
+        this.initChart(this.mekkaData, parseInt(landingDataTVL.landingData.tvl));
       }, 20);
     }
   },
@@ -439,46 +438,6 @@ export default {
         .then((value) => value.json())
         .then((value) => {
           console.log('get strategies:', value);
-          if (value) {
-            return value;
-          }
-          return null;
-        })
-        .catch((reason) => {
-          console.log(`Error get data: ${reason}`);
-          return null;
-        });
-    },
-
-    async getTvl() {
-      let tvl = 0.0;
-      const tvlData = await this.getTvLData();
-      if (tvlData) {
-        tvl = tvlData;
-      }
-
-      return {
-        formattedTvl: tvl ? `$ ${this.utils.formatMoneyComma(tvl, 2)}` : '-',
-        tvl,
-      };
-    },
-
-    openLink(url) {
-      if (url) {
-        window.open(url, '_blank').focus();
-      }
-    },
-
-    async getTvLData() {
-      const fetchOptions = {
-        headers: {
-          'Access-Control-Allow-Origin': process.env.VUE_APP_ROOT_API,
-        },
-      };
-
-      return fetch(`${process.env.VUE_APP_ROOT_API}/tvl/total`, fetchOptions)
-        .then((value) => value.json())
-        .then((value) => {
           if (value) {
             return value;
           }

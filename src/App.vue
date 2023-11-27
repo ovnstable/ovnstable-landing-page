@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeaderContainer />
-    <ContentContainer />
+    <ContentContainer/>
     <FooterContainer />
   </div>
 </template>
@@ -21,6 +21,9 @@ export default {
     FooterContainer,
   },
   computed: {},
+  async mounted() {
+    await this.$store.dispatch('landing/fetchAndSetTVL');
+  },
 };
 </script>
 

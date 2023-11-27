@@ -143,7 +143,7 @@
         <label class="logo-title"> DAI+ </label>
       </a>
       <a
-        class="products-container insurance"
+        class="products-container"
         href="https://app.overnight.fi/insurance"
         target="_blank"
       >

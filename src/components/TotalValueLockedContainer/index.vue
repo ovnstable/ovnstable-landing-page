@@ -112,7 +112,7 @@
 <!-- eslint-disable no-param-reassign -->
 <script>
 import utils from '@/utils';
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import { getChartSettings } from '@/utils/marimeko/model/getChartSettings';
 
 export default {
@@ -164,25 +164,34 @@ export default {
       'isTablet',
       'isDesktop',
     ]),
+    ...mapGetters('landing', [
+      'ethPriceGetter',
+    ]),
   },
 
-  async mounted() {
-    await this.$store.dispatch('landing/fetchAndSetEthPrice');
-    this.mekkaData = await this.loadProductTvlData();
-    this.mekkaData = await this.getWithFilledClientFoundsValue(this.mekkaData);
-    this.mekkaData = this.getOrderedMekkaData(this.mekkaData);
-    this.getTotalNetworkValue(this.mekkaData);
-    const landingDataTVL = this.$store.state.landing;
-    this.totalValue = `$ ${landingDataTVL.landingData.formattedTvl.slice(1)}`;
-    if (this.mekkaData) {
-      setTimeout(() => {
-        // eslint-disable-next-line radix
-        this.initChart(this.mekkaData, parseInt(landingDataTVL.landingData.tvl));
-      }, 20);
-    }
+  watch: {
+    ethPriceGetter() {
+      this.init();
+    },
   },
 
   methods: {
+    async init() {
+      this.mekkaData = await this.loadProductTvlData();
+      this.mekkaData = await this.getWithFilledClientFoundsValue(this.mekkaData);
+      this.mekkaData = this.getOrderedMekkaData(this.mekkaData);
+      this.getTotalNetworkValue(this.mekkaData);
+      const landingDataTVL = this.$store.state.landing;
+      this.totalValue = `$ ${landingDataTVL.landingData.formattedTvl.slice(1)}`;
+
+      if (this.mekkaData) {
+        setTimeout(() => {
+        // eslint-disable-next-line radix
+          this.initChart(this.mekkaData, parseInt(landingDataTVL.landingData.tvl));
+        }, 20);
+      }
+    },
+
     toggleChartBlocks() {
       this.currentBlockSet = this.currentBlockSet === 0 ? 1 : 0;
     },
@@ -195,9 +204,10 @@ export default {
     },
 
     async loadProductTvlData() {
+      console.log(this.ethPriceGetter, 'this.ethPriceGetter');
       const tokenName = 'ETH+';
       let tvl = null;
-      const price = this.$store.state.landing.ethPrice;
+      const price = this.ethPriceGetter;
       const fetchOptions = {
         headers: {
           'Access-Control-Allow-Origin': process.env.VUE_APP_ROOT_API,
@@ -227,6 +237,8 @@ export default {
           token.value = valueInUsd;
         }
       }
+
+      console.log(tvl, '--tvl');
 
       return tvl;
     },

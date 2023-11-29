@@ -167,6 +167,7 @@ export default {
   },
 
   async mounted() {
+    await this.$store.dispatch('landing/fetchAndSetEthPrice');
     this.mekkaData = await this.loadProductTvlData();
     this.mekkaData = await this.getWithFilledClientFoundsValue(this.mekkaData);
     this.mekkaData = this.getOrderedMekkaData(this.mekkaData);
@@ -196,7 +197,9 @@ export default {
     async loadProductTvlData() {
       const tokenName = 'ETH+';
       let tvl = null;
-
+      const price = this.$store.state.landing.ethPrice;
+      console.log('this is price from index');
+      console.log(this.$store.state.landing.ethPrice);
       const fetchOptions = {
         headers: {
           'Access-Control-Allow-Origin': process.env.VUE_APP_ROOT_API,
@@ -218,7 +221,7 @@ export default {
 
       console.log(tvl);
       const ethValue = this.findValueByTokenName(tokenName, tvl);
-      const valueInUsd = ethValue * this.$store.state.landing.ethPrice;
+      const valueInUsd = ethValue * price;
       console.log(ethValue);
       console.log(valueInUsd);
       const foundChain = tvl.find((chain) => chain.values && chain.values

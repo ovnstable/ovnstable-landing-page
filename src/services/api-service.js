@@ -128,7 +128,6 @@ class ApiService {
     try {
       const response = await fetch(apiUrl);
       const data = await response.json();
-      console.log(data);
       if (response.ok) {
         ethPrice = data.ethereum.usd;
       }

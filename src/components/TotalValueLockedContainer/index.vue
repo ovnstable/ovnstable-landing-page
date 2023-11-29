@@ -112,7 +112,7 @@
 <!-- eslint-disable no-param-reassign -->
 <script>
 import utils from '@/utils';
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import { getChartSettings } from '@/utils/marimeko/model/getChartSettings';
 
 export default {
@@ -164,24 +164,34 @@ export default {
       'isTablet',
       'isDesktop',
     ]),
+    ...mapGetters('landing', [
+      'ethPriceGetter',
+    ]),
   },
 
-  async mounted() {
-    this.mekkaData = await this.loadProductTvlData();
-    this.mekkaData = await this.getWithFilledClientFoundsValue(this.mekkaData);
-    this.mekkaData = this.getOrderedMekkaData(this.mekkaData);
-    this.getTotalNetworkValue(this.mekkaData);
-    const landingDataTVL = this.$store.state.landing;
-    this.totalValue = `$ ${landingDataTVL.landingData.formattedTvl.slice(1)}`;
-    if (this.mekkaData) {
-      setTimeout(() => {
-        // eslint-disable-next-line radix
-        this.initChart(this.mekkaData, parseInt(landingDataTVL.landingData.tvl));
-      }, 20);
-    }
+  watch: {
+    ethPriceGetter() {
+      this.init();
+    },
   },
 
   methods: {
+    async init() {
+      this.mekkaData = await this.loadProductTvlData();
+      this.mekkaData = await this.getWithFilledClientFoundsValue(this.mekkaData);
+      this.mekkaData = this.getOrderedMekkaData(this.mekkaData);
+      this.getTotalNetworkValue(this.mekkaData);
+      const landingDataTVL = this.$store.state.landing;
+      this.totalValue = `$ ${landingDataTVL.landingData.formattedTvl.slice(1)}`;
+
+      if (this.mekkaData) {
+        setTimeout(() => {
+        // eslint-disable-next-line radix
+          this.initChart(this.mekkaData, parseInt(landingDataTVL.landingData.tvl));
+        }, 20);
+      }
+    },
+
     toggleChartBlocks() {
       this.currentBlockSet = this.currentBlockSet === 0 ? 1 : 0;
     },
@@ -194,13 +204,17 @@ export default {
     },
 
     async loadProductTvlData() {
+      console.log(this.ethPriceGetter, 'this.ethPriceGetter');
+      const tokenName = 'ETH+';
+      let tvl = null;
+      const price = this.ethPriceGetter;
       const fetchOptions = {
         headers: {
           'Access-Control-Allow-Origin': process.env.VUE_APP_ROOT_API,
         },
       };
 
-      return fetch(`${process.env.VUE_APP_ROOT_API}/tvl/product/total`, fetchOptions)
+      tvl = await fetch(`${process.env.VUE_APP_ROOT_API}/tvl/product/total`, fetchOptions)
         .then((value) => value.json())
         .then((value) => {
           if (value && !value.error) {
@@ -212,7 +226,38 @@ export default {
           console.log(`Error get data: ${reason}`);
           return null;
         });
+
+      const ethValue = this.findValueByTokenName(tokenName, tvl);
+      const valueInUsd = ethValue * price;
+      const foundChain = tvl.find((chain) => chain.values && chain.values
+        .some((value) => value.name === tokenName));
+      if (foundChain) {
+        const token = foundChain.values.find((value) => value.name === tokenName);
+        if (token) {
+          token.value = valueInUsd;
+        }
+      }
+
+      console.log(tvl, '--tvl');
+
+      return tvl;
     },
+
+    findValueByTokenName(tokenName, tvl) {
+      for (let i = 0; i < tvl.length; i++) {
+        const chain = tvl[i];
+
+        if (chain && chain.values) {
+          const token = chain.values.find((value) => value.name === tokenName);
+
+          if (token) {
+            return token.value;
+          }
+        }
+      }
+      return null;
+    },
+
     getOrderedMekkaData(mekkaData) {
       const orderedMekkaData = [];
       for (let i = 0; i < mekkaData.length; i++) {

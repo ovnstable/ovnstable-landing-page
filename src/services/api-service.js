@@ -121,6 +121,22 @@ class ApiService {
     }
     return null;
   }
+
+  async getEthPrice() {
+    let ethPrice = null;
+    const apiUrl = 'https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=USD';
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      if (response.ok) {
+        ethPrice = data.ethereum.usd;
+      }
+    } catch (error) {
+      console.error('Error fetching ETH price:', error.message);
+      ethPrice = 0;
+    }
+    return ethPrice;
+  }
 }
 
 export const apiService = new ApiService();

@@ -22,6 +22,7 @@ export default {
   },
   computed: {},
   async mounted() {
+    await this.$store.dispatch('landing/fetchAndSetEthPrice');
     await this.$store.dispatch('landing/fetchAndSetTVL');
   },
 };

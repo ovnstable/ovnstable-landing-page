@@ -168,7 +168,6 @@ export default {
 
   async mounted() {
     this.mekkaData = await this.loadProductTvlData();
-    await this.convertEthValueToUsd('ETH+');
     this.mekkaData = await this.getWithFilledClientFoundsValue(this.mekkaData);
     this.mekkaData = this.getOrderedMekkaData(this.mekkaData);
     this.getTotalNetworkValue(this.mekkaData);
@@ -195,13 +194,16 @@ export default {
     },
 
     async loadProductTvlData() {
+      const tokenName = 'ETH+';
+      let tvl = null;
+
       const fetchOptions = {
         headers: {
           'Access-Control-Allow-Origin': process.env.VUE_APP_ROOT_API,
         },
       };
 
-      return fetch(`${process.env.VUE_APP_ROOT_API}/tvl/product/total`, fetchOptions)
+      tvl = await fetch(`${process.env.VUE_APP_ROOT_API}/tvl/product/total`, fetchOptions)
         .then((value) => value.json())
         .then((value) => {
           if (value && !value.error) {
@@ -213,39 +215,27 @@ export default {
           console.log(`Error get data: ${reason}`);
           return null;
         });
-    },
 
-    async convertEthValueToUsd(tokenName) {
-      const ethValue = this.findValueByTokenName(tokenName);
-      let ethPrice;
-      const apiUrl = 'https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=USD';
-      try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        if (response.ok) {
-          ethPrice = data.ethereum.usd;
-        }
-      } catch (error) {
-        console.error('Error fetching ETH price:', error.message);
-        ethPrice = 0;
-      }
-      const valueInUsd = ethValue * ethPrice;
-      for (let i = 0; i < this.mekkaData.length; i++) {
-        const chain = this.mekkaData[i];
-
-        if (chain && chain.values) {
-          const tokenIndex = chain.values.findIndex((value) => value.name === tokenName);
-
-          if (tokenIndex !== -1) {
-            chain.values[tokenIndex].value = valueInUsd;
-          }
+      console.log(tvl);
+      const ethValue = this.findValueByTokenName(tokenName, tvl);
+      const valueInUsd = ethValue * this.$store.state.landing.ethPrice;
+      console.log(ethValue);
+      console.log(valueInUsd);
+      const foundChain = tvl.find((chain) => chain.values && chain.values
+        .some((value) => value.name === tokenName));
+      if (foundChain) {
+        const token = foundChain.values.find((value) => value.name === tokenName);
+        if (token) {
+          token.value = valueInUsd;
         }
       }
+
+      return tvl;
     },
 
-    findValueByTokenName(tokenName) {
-      for (let i = 0; i < this.mekkaData.length; i++) {
-        const chain = this.mekkaData[i];
+    findValueByTokenName(tokenName, tvl) {
+      for (let i = 0; i < tvl.length; i++) {
+        const chain = tvl[i];
 
         if (chain && chain.values) {
           const token = chain.values.find((value) => value.name === tokenName);

@@ -130,12 +130,11 @@ export default {
   },
   computed: {
     totalValueTVL() {
-      return 0;
-      // const landingData = this.$store.state.landing;
-      // if (landingData) {
-      //   return landingData.landingData.formattedTvl;
-      // }
-      // return null;
+      const landingData = this.$store.state.landing;
+      if (landingData) {
+        return landingData.landingData.formattedTvl;
+      }
+      return null;
     },
     formattedTotalValueLocked() {
       if (!this.data) {

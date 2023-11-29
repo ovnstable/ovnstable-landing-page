@@ -168,6 +168,7 @@ export default {
 
   async mounted() {
     this.mekkaData = await this.loadProductTvlData();
+    await this.convertEthValueToUsd('ETH+');
     this.mekkaData = await this.getWithFilledClientFoundsValue(this.mekkaData);
     this.mekkaData = this.getOrderedMekkaData(this.mekkaData);
     this.getTotalNetworkValue(this.mekkaData);
@@ -213,6 +214,50 @@ export default {
           return null;
         });
     },
+
+    async convertEthValueToUsd(tokenName) {
+      const ethValue = this.findValueByTokenName(tokenName);
+      let ethPrice;
+      const apiUrl = 'https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=USD';
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        if (response.ok) {
+          ethPrice = data.ethereum.usd;
+        }
+      } catch (error) {
+        console.error('Error fetching ETH price:', error.message);
+        ethPrice = 0;
+      }
+      const valueInUsd = ethValue * ethPrice;
+      for (let i = 0; i < this.mekkaData.length; i++) {
+        const chain = this.mekkaData[i];
+
+        if (chain && chain.values) {
+          const tokenIndex = chain.values.findIndex((value) => value.name === tokenName);
+
+          if (tokenIndex !== -1) {
+            chain.values[tokenIndex].value = valueInUsd;
+          }
+        }
+      }
+    },
+
+    findValueByTokenName(tokenName) {
+      for (let i = 0; i < this.mekkaData.length; i++) {
+        const chain = this.mekkaData[i];
+
+        if (chain && chain.values) {
+          const token = chain.values.find((value) => value.name === tokenName);
+
+          if (token) {
+            return token.value;
+          }
+        }
+      }
+      return null;
+    },
+
     getOrderedMekkaData(mekkaData) {
       const orderedMekkaData = [];
       for (let i = 0; i < mekkaData.length; i++) {

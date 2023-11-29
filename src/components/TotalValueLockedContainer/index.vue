@@ -204,7 +204,6 @@ export default {
     },
 
     async loadProductTvlData() {
-      console.log(this.ethPriceGetter, 'this.ethPriceGetter');
       const tokenName = 'ETH+';
       let tvl = null;
       const price = this.ethPriceGetter;
@@ -237,8 +236,6 @@ export default {
           token.value = valueInUsd;
         }
       }
-
-      console.log(tvl, '--tvl');
 
       return tvl;
     },
@@ -482,7 +479,6 @@ export default {
       )
         .then((value) => value.json())
         .then((value) => {
-          console.log('get strategies:', value);
           if (value) {
             return value;
           }

@@ -24,7 +24,6 @@ export default {
     async fetchAndSetTVL({ commit }) {
       try {
         const tvl = await apiService.getTvl();
-        console.log(tvl, 'fetchAndSetTVL');
         commit('setLandingData', tvl);
       } catch (error) {
         console.error('Error fetching and setting landing data:', error);
@@ -33,7 +32,6 @@ export default {
     async fetchAndSetEthPrice({ commit }) {
       try {
         const ethPrice = await apiService.getEthPrice();
-        console.log(ethPrice, 'PRICE');
         commit('setEthPrice', ethPrice);
       } catch (error) {
         console.error('Error fetching and setting landing data:', error);

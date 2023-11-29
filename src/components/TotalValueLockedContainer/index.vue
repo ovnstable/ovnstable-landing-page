@@ -198,8 +198,6 @@ export default {
       const tokenName = 'ETH+';
       let tvl = null;
       const price = this.$store.state.landing.ethPrice;
-      console.log('this is price from index');
-      console.log(this.$store.state.landing.ethPrice);
       const fetchOptions = {
         headers: {
           'Access-Control-Allow-Origin': process.env.VUE_APP_ROOT_API,
@@ -219,11 +217,8 @@ export default {
           return null;
         });
 
-      console.log(tvl);
       const ethValue = this.findValueByTokenName(tokenName, tvl);
       const valueInUsd = ethValue * price;
-      console.log(ethValue);
-      console.log(valueInUsd);
       const foundChain = tvl.find((chain) => chain.values && chain.values
         .some((value) => value.name === tokenName));
       if (foundChain) {

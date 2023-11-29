@@ -27,7 +27,6 @@ export default {
     async fetchAndSetEthPrice({ commit }) {
       try {
         const ethPrice = await apiService.getEthPrice();
-        console.log(`eth price is ${ethPrice}`);
         commit('setEthPrice', ethPrice);
       } catch (error) {
         console.error('Error fetching and setting landing data:', error);

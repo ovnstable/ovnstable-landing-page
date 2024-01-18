@@ -227,7 +227,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100px;
+  min-height: 170px;
 }
 .lock-icon-container, .total-locked {
   &:hover {

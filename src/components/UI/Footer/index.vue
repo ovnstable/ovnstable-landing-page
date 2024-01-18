@@ -144,6 +144,13 @@
       </a>
       <a
         class="products-container"
+        href="https://app.overnight.fi/stats/usdc?tabName=base"
+        target="_blank"
+      >
+        <label class="logo-title"> USDC+ </label>
+      </a>
+      <a
+        class="products-container"
         href="https://app.overnight.fi/insurance"
         target="_blank"
       >

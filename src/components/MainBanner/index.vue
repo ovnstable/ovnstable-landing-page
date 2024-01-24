@@ -61,7 +61,7 @@
       </div>
 
       <div class="widget-container-mobile">
-        <StatisticWidget></StatisticWidget>
+        <StatisticWidget />
       </div>
     </div>
     <div class="hero-image">
@@ -199,6 +199,7 @@ export default {
 
   .widget-container {
     margin-top: 100px;
+    min-height: 176px;
   }
 
   .hero-blended {

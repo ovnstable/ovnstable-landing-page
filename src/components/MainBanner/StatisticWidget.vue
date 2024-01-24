@@ -227,7 +227,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 170px;
+  min-height: 176px;
 }
 .lock-icon-container, .total-locked {
   &:hover {
@@ -401,7 +401,7 @@ export default {
 /* desktop */
 @media only screen and (min-width: 768px) {
   .statistic-widget {
-    min-height: 170px;
+    min-height: 176px;
     max-width: 568px;
     width: 100%;
   }
@@ -524,7 +524,7 @@ export default {
 @media only screen and (min-width: 1024px) {
 
   .statistic-widget {
-    min-height: 170px;
+    min-height: 176px;
     max-width: 568px;
     width: 100%;
   }
@@ -569,14 +569,9 @@ export default {
   }
 
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 1300px),
-  only screen and (min--moz-device-pixel-ratio: 2) and (min-width: 1300px),
-  only screen and (-o-min-device-pixel-ratio: 2/1) and (min-width: 1300px),
-  only screen and (min-device-pixel-ratio: 2) and (min-width: 1300px),
-  only screen and (min-resolution: 192dpi) and (min-width: 1300px),
-  only screen and (min-resolution: 2dppx) and (min-width: 1300px) {
+@media (min-width: 1300px) {
   .statistic-widget {
-    min-height: 170px;
+    min-height: 176px;
     max-width: 568px;
     width: 100%;
   }

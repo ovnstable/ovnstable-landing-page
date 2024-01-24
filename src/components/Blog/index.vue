@@ -32,9 +32,9 @@
 </template>
 
 <script>
-import NewsCard from '@/components/Blog/NewsCard.vue';
 import { mapState } from 'vuex';
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import NewsCard from '@/components/Blog/NewsCard.vue';
 
 // Import Swiper styles
 import 'swiper/swiper.min.css';

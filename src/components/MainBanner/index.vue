@@ -199,7 +199,7 @@ export default {
 
   .widget-container {
     margin-top: 100px;
-    min-height: 176px;
+    min-height: 170px;
   }
 
   .hero-blended {

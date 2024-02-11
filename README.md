@@ -1,5 +1,9 @@
 # Overnight Landing Page
 
+## !Important things!
+
+To correct display of the currencies and the network, need to update the chainOrderMap and chainOrderProductsMap variables in the src/components/TotalValueLockedContainer/index.vue
+
 ## Project setup
 ```
 npm install
@@ -19,3 +23,4 @@ npm run build
 ```
 npm run lint
 ```
+

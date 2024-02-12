@@ -196,12 +196,10 @@ export default {
     gap: 25px;
     margin-top: 50px;
   }
-
   .widget-container {
     margin-top: 100px;
     min-height: 170px;
   }
-
   .hero-blended {
     position: absolute;
     right: -40px;

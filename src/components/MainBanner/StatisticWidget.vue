@@ -131,7 +131,7 @@ export default {
   computed: {
     totalValueTVL() {
       const landingData = this.$store.state.landing;
-      if (landingData) {
+      if (landingData && landingData.landingData) {
         return landingData.landingData.formattedTvl;
       }
       return null;

@@ -17,7 +17,7 @@
             />
             <label v-if="!isMobile" class="chain-text"> Base </label>
             <label class="chain-text">
-              {{ "$" + utils.formatNumberToMln(this.totalBaseValue) + "M" }}
+              {{ '$' + utils.formatNumberToMln(this.totalBaseValue) + 'M' }}
             </label>
           </div>
           <div class="chart-block">
@@ -28,7 +28,7 @@
             />
             <label v-if="!isMobile" class="chain-text"> Optimism </label>
             <label class="chain-text">
-              {{ "$" + utils.formatNumberToMln(this.totalOptimismValue) + "M" }}
+              {{ '$' + utils.formatNumberToMln(this.totalOptimismValue) + 'M' }}
             </label>
           </div>
           <div class="chart-block">
@@ -39,7 +39,7 @@
             />
             <label v-if="!isMobile" class="chain-text"> Arbitrum </label>
             <label class="chain-text">
-              {{ "$" + utils.formatNumberToMln(this.totalArbitrumValue) + "M" }}
+              {{ '$' + utils.formatNumberToMln(this.totalArbitrumValue) + 'M' }}
             </label>
           </div>
           <div class="chart-block">
@@ -50,7 +50,7 @@
             />
             <label v-if="!isMobile" class="chain-text"> Binance </label>
             <label class="chain-text">
-              {{ "$" + utils.formatNumberToMln(this.totalBscValue) + "M" }}
+              {{ '$' + utils.formatNumberToMln(this.totalBscValue) + 'M' }}
             </label>
           </div>
           <div class="icon-container" @click="toggleChartBlocks">
@@ -77,7 +77,7 @@
             />
             <label v-if="!isMobile" class="chain-text"> Zksync </label>
             <label class="chain-text">
-              {{ "$" + utils.formatNumberToMln(this.totalZksyncValue) + "M" }}
+              {{ '$' + utils.formatNumberToMln(this.totalZksyncValue) + 'M' }}
             </label>
           </div>
           <div class="chart-block">
@@ -88,7 +88,7 @@
             />
             <label v-if="!isMobile" class="chain-text"> Polygon </label>
             <label class="chain-text">
-              {{ "$" + utils.formatNumberToMln(this.totalPolygonValue) + "M" }}
+              {{ '$' + utils.formatNumberToMln(this.totalPolygonValue) + 'M' }}
             </label>
           </div>
           <div class="chart-block">
@@ -99,7 +99,7 @@
             />
             <label v-if="!isMobile" class="chain-text"> Linea </label>
             <label class="chain-text">
-              {{ "$" + utils.formatNumberToMln(this.totalLineaValue) + "M" }}
+              {{ '$' + utils.formatNumberToMln(this.totalLineaValue) + 'M' }}
             </label>
           </div>
         </div>
@@ -150,7 +150,8 @@ export default {
       'USD+': 1,
       'DAI+': 2,
       'USDT+': 3,
-      'ETH+': 4,
+      'USDC+': 4,
+      'ETH+': 5,
     },
     utils,
     currentBlockSet: 0,
@@ -164,9 +165,7 @@ export default {
       'isTablet',
       'isDesktop',
     ]),
-    ...mapGetters('landing', [
-      'ethPriceGetter',
-    ]),
+    ...mapGetters('landing', ['ethPriceGetter']),
   },
 
   watch: {
@@ -177,17 +176,22 @@ export default {
 
   methods: {
     async init() {
-      this.mekkaData = await this.loadProductTvlData();
-      this.mekkaData = await this.getWithFilledClientFoundsValue(this.mekkaData);
-      this.mekkaData = this.getOrderedMekkaData(this.mekkaData);
+      this.mekkaData = this.getOrderedMekkaData(
+        await this.getWithFilledClientFoundsValue(
+          await this.loadProductTvlData(),
+        ),
+      );
       this.getTotalNetworkValue(this.mekkaData);
       const landingDataTVL = this.$store.state.landing;
       this.totalValue = `$ ${landingDataTVL.landingData.formattedTvl.slice(1)}`;
 
       if (this.mekkaData) {
         setTimeout(() => {
-        // eslint-disable-next-line radix
-          this.initChart(this.mekkaData, parseInt(landingDataTVL.landingData.tvl));
+          // eslint-disable-next-line radix
+          this.initChart(
+            this.mekkaData,
+            parseInt(landingDataTVL.landingData.tvl, 10),
+          );
         }, 20);
       }
     },
@@ -213,7 +217,10 @@ export default {
         },
       };
 
-      tvl = await fetch(`${process.env.VUE_APP_ROOT_API}/tvl/product/total`, fetchOptions)
+      tvl = await fetch(
+        `${process.env.VUE_APP_ROOT_API}/tvl/product/total`,
+        fetchOptions,
+      )
         .then((value) => value.json())
         .then((value) => {
           if (value && !value.error) {
@@ -225,13 +232,15 @@ export default {
           console.log(`Error get data: ${reason}`);
           return null;
         });
-
       const ethValue = this.findValueByTokenName(tokenName, tvl);
       const valueInUsd = ethValue * price;
-      const foundChain = tvl.find((chain) => chain.values && chain.values
-        .some((value) => value.name === tokenName));
+      const foundChain = tvl.find(
+        (chain) => chain.values && chain.values.some((value) => value.name === tokenName),
+      );
       if (foundChain) {
-        const token = foundChain.values.find((value) => value.name === tokenName);
+        const token = foundChain.values.find(
+          (value) => value.name === tokenName,
+        );
         if (token) {
           token.value = valueInUsd;
         }
@@ -256,23 +265,15 @@ export default {
     },
 
     getOrderedMekkaData(mekkaData) {
-      const orderedMekkaData = [];
-      for (let i = 0; i < mekkaData.length; i++) {
-        const chainInfo = mekkaData[i];
+      return mekkaData.reduce((orderedMekkaData, chainInfo) => {
         const newPosition = this.chainOrderMap[chainInfo.chainName];
         if (newPosition) {
-          orderedMekkaData[newPosition - 1] = this.getOrderedAndFilledProductValues(
-            chainInfo,
-          );
-          // eslint-disable-next-line no-continue
-          continue;
+          orderedMekkaData[newPosition - 1] = this.getOrderedAndFilledProductValues(chainInfo);
         }
-
-        // console.error('Mekka data not found order position for chain: ', chainInfo);
-      }
-
-      return orderedMekkaData;
+        return orderedMekkaData;
+      }, []);
     },
+
     getOrderedAndFilledProductValues(chainInfo) {
       const orderedProducts = [];
       chainInfo = this.getFilledNullableProductValues(chainInfo);
@@ -314,9 +315,15 @@ export default {
     },
     async getArbitrumValueFundsFromCollateralAndStrategies() {
       const collateral = await this.getCollateral('arbitrum', 'usd+');
-      const collateralSum = collateral.reduce((acc, curr) => acc + curr.netAssetValue, 0);
+      const collateralSum = collateral.reduce(
+        (acc, curr) => acc + curr.netAssetValue,
+        0,
+      );
       const strategies = await this.getStrategies('arbitrum', 'usd+');
-      const strategiesSum = strategies.reduce((acc, curr) => acc + curr.netAssetValue, 0);
+      const strategiesSum = strategies.reduce(
+        (acc, curr) => acc + curr.netAssetValue,
+        0,
+      );
 
       const sum = strategiesSum - collateralSum;
       if (sum <= 0) {
@@ -326,41 +333,36 @@ export default {
     },
 
     async getWithFilledClientFoundsValue(mekkaData) {
-      for (let i = 0; i < mekkaData.length; i++) {
-        const mekkaItem = mekkaData[i];
-
-        for (let j = 0; j < mekkaItem.values.length; j++) {
-          const value = mekkaItem.values[j];
-
+      return mekkaData.map((mekkaItem) => {
+        const newValues = mekkaItem.values.map((value) => {
           if (mekkaItem.chainName === 'Arbitrum' && value.name === 'USD+') {
             // let valueFunds = await this.getArbitrumValueFundsFromCollateralAndStrategies();
             value.value *= 1;
           }
-
           /* if (mekkaItem.chainName === 'Arbitrum'  && value.name === 'ETS') {
-          let valueFunds = await this.getArbitrumValueFundsFromCollateralAndStrategies();
-          console.log("+Value valueFunds: ", valueFunds)
-          value.value = valueFunds;
-          continue
-        }
+let valueFunds = await this.getArbitrumValueFundsFromCollateralAndStrategies();
+console.log("+Value valueFunds: ", valueFunds)
+value.value = valueFunds;
+continue
+}
 
-        let key = mekkaItem.chainName.toLowerCase() + '_' + value.name.toLowerCase();
-        let subAddValue = this.clientCalculateFoundsSchema[key]
-        if (!subAddValue) {
-          continue;
-        }
+let key = mekkaItem.chainName.toLowerCase() + '_' + value.name.toLowerCase();
+let subAddValue = this.clientCalculateFoundsSchema[key]
+if (!subAddValue) {
+continue;
+}
 
-        console.log(mekkaItem.chainName.toLowerCase(), value.name.toLowerCase())
-        let tokenCollaterals = await
-        this.getCollateral(mekkaItem.chainName.toLowerCase(), value.name.toLowerCase());
-        let foundValue = this.getFoundValueByTokenName(tokenCollaterals, subAddValue);
-        console.log(key + ': ', foundValue);
-        value.value = value.value + foundValue;
-        this.subFoundFromMekkaValue(mekkaItem.values, subAddValue, foundValue); */
-        }
-      }
-
-      return mekkaData;
+console.log(mekkaItem.chainName.toLowerCase(), value.name.toLowerCase())
+let tokenCollaterals = await
+this.getCollateral(mekkaItem.chainName.toLowerCase(), value.name.toLowerCase());
+let foundValue = this.getFoundValueByTokenName(tokenCollaterals, subAddValue);
+console.log(key + ': ', foundValue);
+value.value = value.value + foundValue;
+this.subFoundFromMekkaValue(mekkaItem.values, subAddValue, foundValue); */
+          return value;
+        });
+        return { ...mekkaItem, values: newValues };
+      });
     },
 
     subFoundFromMekkaValue(networkValues, subToken, subValue) {
@@ -381,6 +383,7 @@ export default {
         let sumBsc = 0;
         let sumZk = 0;
         let sumPoly = 0;
+        let sumBase = 0;
 
         if (mekkaItem.chainName === 'Optimism') {
           for (let j = 0; j < mekkaItem.values.length; j++) {
@@ -414,8 +417,8 @@ export default {
         }
         if (mekkaItem.chainName === 'Base') {
           for (let h = 0; h < mekkaItem.values.length; h++) {
-            sumPoly += mekkaItem.values[h].value;
-            this.totalBaseValue = sumPoly;
+            sumBase += mekkaItem.values[h].value;
+            this.totalBaseValue = sumBase;
           }
         }
 
@@ -444,7 +447,8 @@ export default {
 
       const fetchOptions = {
         headers: {
-          'Access-Control-Allow-Origin': process.env.VUE_APP_WIDGET_ROOT_API_URL,
+          'Access-Control-Allow-Origin':
+            process.env.VUE_APP_WIDGET_ROOT_API_URL,
         },
       };
 
@@ -469,7 +473,8 @@ export default {
 
       const fetchOptions = {
         headers: {
-          'Access-Control-Allow-Origin': process.env.VUE_APP_WIDGET_ROOT_API_URL,
+          'Access-Control-Allow-Origin':
+            process.env.VUE_APP_WIDGET_ROOT_API_URL,
         },
       };
 
@@ -516,13 +521,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
-::-webkit-scrollbar{
-    height: 3px;
+::-webkit-scrollbar {
+  height: 3px;
 }
-::-webkit-scrollbar-thumb{
-    background: var(--ov-bg-secondary);
-    border-radius: 50px;
+
+::-webkit-scrollbar-thumb {
+  background: var(--ov-bg-secondary);
+  border-radius: 50px;
 }
 
 .chart-container {
@@ -652,7 +657,7 @@ export default {
   }
 
   .chain-text {
-    font-family: "Red Hat Display", sans-serif;
+    font-family: 'Red Hat Display', sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 21px;

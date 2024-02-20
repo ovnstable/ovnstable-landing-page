@@ -86,6 +86,18 @@
             />
             <label class="logo-title"> Github </label>
           </a>
+          <a
+            class="logo-container"
+            href="https://www.youtube.com/channel/UCuPsmMZTOCaTNZWUXWZr12A/about"
+            target="_blank"
+          >
+            <img
+              class="logo-icon"
+              :src="require('@/assets/footer/youtubFooter.svg')"
+              alt="Youtube logo"
+            />
+            <label class="logo-title"> Youtube </label>
+          </a>
         </div>
         <div class="second-column__inner">
           <a

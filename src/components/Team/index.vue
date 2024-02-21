@@ -100,12 +100,12 @@ export default {
       {
         id: 6,
         // eslint-disable-next-line global-require
-        picture: require('@/assets/team/slava_m.png'),
-        name: 'Slava M.',
+        picture: require('@/assets/team/maria_m.png'),
+        name: 'Maria M.',
         role: 'Marketing Lead',
-        linkedin: '',
-        twitter: 'https://twitter.com/eric_phoen1x',
-        telegram: '',
+        linkedin: 'https://www.linkedin.com/in/maria-moiseyenko-193b69a2',
+        twitter: '',
+        telegram: 'https://t.me/Chilli_Moses',
         github: '',
       },
       {

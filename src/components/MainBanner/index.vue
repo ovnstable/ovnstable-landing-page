@@ -24,7 +24,7 @@
           class="button text-styling"
           buttonHover="green"
           text="Connect"
-          @click="openLinkSelf('https://app.overnight.fi/swap')"
+          @click="openLinkSelf('https://app.overnight.fi/')"
         />
       </div>
     </div>
@@ -56,7 +56,7 @@
           class="button text-styling"
           buttonHover="green"
           text="Connect"
-          @click="openLinkSelf('https://app.overnight.fi/swap')"
+          @click="openLinkSelf('https://app.overnight.fi/')"
         />
       </div>
 

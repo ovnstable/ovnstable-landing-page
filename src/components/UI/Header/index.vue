@@ -55,7 +55,7 @@
         <Button
           class="button text-styling"
           text="Launch Dapp"
-          @click="openLinkSelf('https://app.overnight.fi/swap')"
+          @click="openLinkSelf('https://app.overnight.fi/')"
         />
       </div>
     </div>

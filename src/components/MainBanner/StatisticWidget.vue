@@ -52,9 +52,7 @@
               @mouseup.middle="
                 handleMiddleClick(
                   $event,
-                  'https://app.overnight.fi/stats?tabName=' +
-                    (bestChainApy ? bestChainApy.toLowerCase() : '') +
-                    '&chart=month'
+                  'https://app.overnight.fi/market/usd'
                 )
               "
             >
@@ -67,12 +65,12 @@
             <div
               class="value-container"
               @click="
-                openLinkBlank('https://app.overnight.fi/stats/eth?tabName=arbitrum')
+                openLinkBlank('https://app.overnight.fi/market/eth')
               "
               @mouseup.middle="
                 handleMiddleClick(
                   $event,
-                  'https://app.overnight.fi/stats/eth?tabName=arbitrum'
+                  'https://app.overnight.fi/market/eth'
                 )
               "
             >
@@ -188,7 +186,7 @@ export default {
     openBestChainApy() {
       if (this.bestChainApy) {
         this.openLinkBlank(
-          `https://app.overnight.fi/stats?tabName=${this.bestChainApy.toLowerCase()}&chart=month`,
+          'https://app.overnight.fi/market/usd',
         );
       }
     },

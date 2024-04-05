@@ -87,6 +87,7 @@ export default {
 .photo {
   width: calc(100% - 40px);
   max-width: 150px;
+  border-radius: 20px;
 }
 
 /* Mobile styles */

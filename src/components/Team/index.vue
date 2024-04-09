@@ -76,7 +76,7 @@ export default {
         github: '',
       },
       {
-        id: 4,
+        id: 5,
         // eslint-disable-next-line global-require
         picture: require('@/assets/team/ilia_s.png'),
         name: 'Ilia S.',
@@ -87,7 +87,7 @@ export default {
         github: 'https://github.com/bgrusnak',
       },
       {
-        id: 5,
+        id: 6,
         // eslint-disable-next-line global-require
         picture: require('@/assets/team/matvey_b.png'),
         name: 'Matvey B.',
@@ -98,7 +98,7 @@ export default {
         github: 'https://github.com/matt5346',
       },
       {
-        id: 6,
+        id: 7,
         // eslint-disable-next-line global-require
         picture: require('@/assets/team/maria_m.png'),
         name: 'Maria M.',
@@ -109,7 +109,7 @@ export default {
         github: '',
       },
       {
-        id: 7,
+        id: 8,
         // eslint-disable-next-line global-require
         picture: require('@/assets/team/polina.png'),
         name: 'Polina T.',
@@ -120,7 +120,18 @@ export default {
         github: '',
       },
       {
-        id: 8,
+        id: 9,
+        // eslint-disable-next-line global-require
+        picture: require('@/assets/team/leonid.png'),
+        name: 'Leonid Z.',
+        role: 'Fullstack engineer',
+        linkedin: '',
+        twitter: '',
+        telegram: '',
+        github: 'https://github.com/chpotl',
+      },
+      {
+        id: 10,
         // eslint-disable-next-line global-require
         picture: require('@/assets/team/undefined.png'),
         name: 'Join our team',
@@ -132,7 +143,7 @@ export default {
         github: '',
       },
       {
-        id: 9,
+        id: 11,
         // eslint-disable-next-line global-require
         picture: require('@/assets/team/undefined.png'),
         name: 'Join our team',

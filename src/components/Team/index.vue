@@ -142,6 +142,18 @@ export default {
         telegram: '',
         github: '',
       },
+      // {
+      //   id: 10,
+      //   // eslint-disable-next-line global-require
+      //   picture: require('@/assets/team/undefined.png'),
+      //   name: 'Join our team',
+      //   role: '',
+      //   contact: 'Contact us',
+      //   linkedin: '',
+      //   twitter: '',
+      //   telegram: '',
+      //   github: '',
+      // },
     ],
   }),
 

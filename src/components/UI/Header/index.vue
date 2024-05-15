@@ -33,7 +33,7 @@
           href="https://docs.overnight.fi/governance/ovn-token/overnight-tokenomics"
           target="_blank"
         >
-          Token
+          Tokenomics
         </a>
         <a
           class="header-label link text-styling"
@@ -115,7 +115,7 @@
                   )
                 "
               >
-                Token
+                Tokenomics
               </li>
               <li
                 class="menu-list-item"

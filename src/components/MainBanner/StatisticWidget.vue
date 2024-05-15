@@ -239,6 +239,14 @@ export default {
   transition: color .2s ease;
 }
 
+.card-tab {
+  padding: 20px 0;
+}
+
+.apy-container {
+  margin-top: 15px
+}
+
 .card-tab .statistic-title {
   &:hover {
       color: var(--ov-bg-secondary);
@@ -325,9 +333,6 @@ export default {
     border-bottom-width: 1px;
 
     border-radius: 15px 15px 4px 4px;
-
-    height: 33px;
-
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -339,8 +344,6 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-top: 10px;
-    margin-bottom: 10px;
     padding-top: 3px;
   }
 
@@ -462,10 +465,6 @@ export default {
 
     border-radius: 30px 30px 12px 12px;
 
-    padding-bottom: 10px;
-    padding-top: 10px;
-    height: 50px;
-
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -476,7 +475,6 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 20px;
     padding-left: 10px;
   }
 
@@ -633,10 +631,6 @@ export default {
 
     border-radius: 30px 30px 12px 12px;
 
-    padding-bottom: 10px;
-    padding-top: 10px;
-    height: 50px;
-
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -647,7 +641,6 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-top: 5px;
   }
 
   .value-container {

@@ -54,6 +54,7 @@ export default {
   background-image: url("~@/assets/main/stars.svg");
   background-size: cover;
   background-position: left center;
+  border-bottom: 1px solid black;
 }
 @media only screen and (min-width: 1024px) {
   .banner-wrap {

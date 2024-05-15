@@ -27,14 +27,14 @@ echo "$nameDapp"
 rm -rf dist/
 npm run $build
 
-docker build . -t cr.yandex/crp6lhbprjft0c8fhg61/overnight/landing-page:$tag --platform linux/amd64
+docker build . -t cr.yandex/crped2fhe7j567o0vtsb/overnight/landing-page:$tag --platform linux/amd64
 
 docker login \
          --username oauth \
          --password $token \
         cr.yandex
 
-docker push  cr.yandex/crp6lhbprjft0c8fhg61/overnight/landing-page:$tag
+docker push  cr.yandex/crped2fhe7j567o0vtsb/overnight/landing-page:$tag
 
 
 ssh $url docker login \
@@ -42,7 +42,7 @@ ssh $url docker login \
          --password $token \
         cr.yandex
 
-ssh $url docker pull cr.yandex/crp6lhbprjft0c8fhg61/overnight/landing-page:$tag
+ssh $url docker pull cr.yandex/crped2fhe7j567o0vtsb/overnight/landing-page:$tag
 ssh $url docker-compose -f $dockerComposePath up -d --no-deps $nameDapp
 
 

@@ -249,6 +249,9 @@ export default {
 
 /* mobile */
 @media only screen and (max-width: 1024px) {
+  .header-main-container {
+    height: 63px;
+  }
   .header-main-container-mobile {
     position: relative;
     width: 100vw;
@@ -271,15 +274,18 @@ export default {
 
   .logo-container-mobile {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .logos {
     height: 16px;
     cursor: pointer;
 
-    &:first-child {
-      margin-right: 10px;
-    }
+    // &:first-child {
+    //   margin-right: 10px;
+    // }
   }
 
   .social-container {
@@ -356,6 +362,9 @@ export default {
   .logo-container {
     margin-right: 250px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -378,6 +387,9 @@ export default {
   .logo-container {
     margin-right: auto;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 

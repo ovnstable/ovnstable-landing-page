@@ -98,6 +98,18 @@
             />
             <label class="logo-title"> Youtube </label>
           </a>
+          <a
+            class="logo-container"
+            href="https://overnightdefi.medium.com/"
+            target="_blank"
+          >
+            <img
+              class="logo-icon"
+              :src="require('@/assets/footer/medium_white.svg')"
+              alt="Medium logo"
+            />
+            <label class="logo-title"> Medium </label>
+          </a>
         </div>
         <div class="second-column__inner">
           <a

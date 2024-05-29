@@ -1,5 +1,5 @@
 <template>
-  <div class="blog-container">
+  <div class="blog-container" v-if="blogCards.length > 0">
     <div class="header-title-container">
       <div class="title">Follow Our Updates</div>
     </div>
@@ -18,9 +18,9 @@
         />
       </swiper-slide>
       <swiper-slide
-        @click="openLinkSelf('https://overnight.fi/blog')" class="custom-slider"
+        @click="openLinkSelf('https://overnightdefi.medium.com/')" class="custom-slider"
       >
-        <a href="https://overnight.fi/blog/" target="_blank" class="custom-content-link">
+        <a href="https://overnightdefi.medium.com/" target="_blank" class="custom-content-link">
           <div class="custom-content">
             <p class="show-updates">Show more updates</p>
             <img :src="require('@/assets/cards/arrow-right-white.svg')" class="updates-icon"/>
@@ -71,38 +71,37 @@ export default {
   },
 
   async created() {
+    const mediumUsername = 'overnightdefi';
+    const RSSUrl = `https://medium.com/feed/@${mediumUsername}`;
+    const RSSConverterURL = `https://api.rss2json.com/v1/api.json?rss_url=${RSSUrl}`;
+
+    const formatDate = (dateStr) => {
+      const date = new Date(dateStr);
+      const month = date.getMonth();
+      const year = date.getFullYear();
+      return `Month ${month}, ${year}`;
+    };
+
     try {
-      const response = await fetch(
-        'https://overnight.fi/blog/wp-json/wp/v2/posts/?per_page=10',
-      );
+      const response = await fetch(RSSConverterURL);
       const posts = await response.json();
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-      const blogPostsPromises = posts.map(async (post) => {
-        const dateObj = new Date(post.date);
-        const formattedDate = `${dateObj.getFullYear()}/${
-          dateObj.getMonth() + 1
-        }/${dateObj.getDate()}`;
+      this.blogCards = posts.items.map((post) => {
+        const postId = new URL(post.guid).pathname;
+        const postDescHTML = new DOMParser().parseFromString(post.description, 'text/html');
 
-        const imgLink = await this.getImgLink(post.id);
-
-        // Strip HTML tags
-        const plainTextContent = post.content.rendered.replace(/<[^>]*>?/gm, '');
-
-        // Extract the first sentence
-        const firstSentence = `${plainTextContent.split('. ')[0]}.`;
+        const imgLink = postDescHTML.getElementsByTagName('img')[0].src;
+        const description = Array.from(postDescHTML.getElementsByTagName('p')).find((p) => p.innerText.length > 100).innerText;
 
         return {
-          id: post.id,
-          date: formattedDate,
-          title: post.title.rendered,
+          id: postId,
+          date: formatDate(post.pubDate),
+          title: post.title,
           link: post.link,
-          content: firstSentence,
+          content: description,
           imgLink,
         };
       });
-
-      this.blogCards = await Promise.all(blogPostsPromises);
     } catch (reason) {
       console.log('Error get data: ', reason);
     }
@@ -122,47 +121,6 @@ export default {
         e.preventDefault();
         window.open(url, '_blank').focus();
       }
-    },
-
-    async getImgLink(id) {
-      let result = null;
-      let passedId = id;
-
-      await fetch(
-        `https://overnight.fi/blog/wp-json/wp/v2/media?media_type=image&parent=${id}`,
-        {},
-      )
-        .then((value) => value.json())
-        .then((value) => {
-          if (passedId === 783) {
-            result = value[3].source_url;
-          } else if (passedId === 805) {
-            passedId = 806;
-            result = this.getImgForPost(passedId);
-          } else {
-            result = value[0].source_url;
-          }
-        })
-        .catch((reason) => {
-          console.log(`Error get data: ${reason}`);
-        });
-
-      return result;
-    },
-
-    async getImgForPost(id) {
-      let result = null;
-
-      await fetch(`https://overnight.fi/blog/wp-json/wp/v2/media/${id}`, {})
-        .then((value) => value.json())
-        .then((value) => {
-          result = value.source_url;
-        })
-        .catch((reason) => {
-          console.log(`Error get data: ${reason}`);
-        });
-
-      return result;
     },
 
     onMouseEnter() {

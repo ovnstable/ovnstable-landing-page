@@ -63,7 +63,7 @@ export default {
         if (this.mekkaData) this.initChart(this.mekkaData, parseInt(landingDataTVL?.landingData?.tvl, 10));
       };
 
-      setTimeout(() => initChart(), 20);
+      setTimeout(() => initChart(), 100);
     },
 
     toggleChartBlocks() {
@@ -133,7 +133,6 @@ export default {
       });
 
       const scaledData = Object.keys(this.totalByChain).map((chainName) => [chainName, ...scaledValMap[chainName]]);
-      console.log(scaledData);
 
       return {
         originalData: formattedData,

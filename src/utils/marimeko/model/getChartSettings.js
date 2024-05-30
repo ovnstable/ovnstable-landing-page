@@ -1,4 +1,4 @@
-import { mosaic, palettes } from 'anychart';
+import { mekko, palettes } from 'anychart';
 // eslint-disable-next-line import/named
 import utils from '@/utils';
 import tokenColors from '@/utils/marimeko/tokenColors';
@@ -15,29 +15,19 @@ export const getChartSettings = (
     legendMarginTop = 20,
   },
 ) => {
-  const names = [];
-  const valuesData = mekkaData[0].values;
-  // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < valuesData.length; i++) {
-    const valueData = valuesData[i];
-    names.push(valueData.name);
-  }
+  const { originalData, scaledData } = mekkaData;
+
+  const names = Object.keys(originalData);
+
+  console.log(mekkaData);
 
   const data = {
     header: ['Name', ...names],
-    rows: mekkaData.map((item) => {
-      const values = [];
-      // eslint-disable-next-line no-plusplus
-      for (let i = 0; i < item.values.length; i++) {
-        values.push(item.values[i].value);
-      }
-
-      return [item.chainName, ...values];
-    }),
+    rows: scaledData,
     utils,
   };
 
-  const chart = mosaic();
+  const chart = mekko();
 
   const palette = palettes.distinctColors();
 
@@ -49,38 +39,51 @@ export const getChartSettings = (
   ]);
 
   chart.palette(palette);
-  chart.legend().enabled(true).position(legendPosition);
-  chart.legend().enabled(true).align(legendAlignment);
-  chart.legend().enabled(true).margin(legendMarginTop);
+  const legend = chart.legend();
+  legend.enabled(true);
+  legend.position(legendPosition);
+  legend.align(legendAlignment);
+  legend.margin(legendMarginTop);
 
   chart.data(data);
+
   chart.interactivity().selectionMode(false);
 
   chart.pointsPadding(blocksPadding);
 
-  chart.xAxis().labels().fontColor('#29323E');
+  const xLabels = chart.xAxis().labels();
+  xLabels.fontColor('#29323E');
+  xLabels.rotation(-45);
+
   chart.yAxis().labels().enabled(false);
+
+  const getOriginalValue = (ctx) => originalData[ctx.x][ctx.seriesName];
+  const formatTooltip = (ctx) => {
+    const val = getOriginalValue(ctx);
+    return `$${utils.formatNumberToMln(val)}m${maxTvl ? ` ~${utils.formatNumberToPercent(parseInt(val, 10), maxTvl)}%` : ''}`;
+  };
 
   if (hasBlockLabel) {
     chart.labels()
       .format((ctx) => {
-        if (ctx.value < 500000) {
-          return '';
-        }
+        const origVal = getOriginalValue(ctx);
+        // if (origVal < 500000) {
+        //   return '';
+        // }
 
         if (ctx.seriesName === 'USD+') {
-          // eslint-disable-next-line radix
-          if (utils.formatNumberToPercent(parseInt(ctx.value), maxTvl) < 2) {
-            return '';
-          }
+          // // eslint-disable-next-line radix
+          // if (utils.formatNumberToPercent(parseInt(origVal), maxTvl) < 2) {
+          //   return '';
+          // }
 
           // eslint-disable-next-line radix
-          if (utils.formatNumberToPercent(parseInt(ctx.value), maxTvl) < 5) {
-            return `$${utils.formatNumberToMln(ctx.value)}m`;
+          if (utils.formatNumberToPercent(parseInt(origVal), maxTvl) < 5) {
+            return `$${utils.formatNumberToMln(origVal)}m`;
           }
         }
 
-        return `$${utils.formatNumberToMln(ctx.value)}m ${ctx.seriesName}`;
+        return `$${utils.formatNumberToMln(origVal)}m ${ctx.seriesName}`;
       })
       .fontColor('#FFFFFF')
       .fontSize(12)
@@ -88,11 +91,12 @@ export const getChartSettings = (
   } else {
     chart.labels()
       .format((ctx) => {
-        if (ctx.value < 500000) {
+        const origVal = getOriginalValue(ctx);
+        if (origVal < 500000) {
           return '';
         }
 
-        return `$${utils.formatNumberToMln(ctx.value)}m`;
+        return `$${utils.formatNumberToMln(origVal)}m`;
       })
       .fontColor('#FFFFFF')
       .fontSize(10)
@@ -106,6 +110,7 @@ export const getChartSettings = (
     const { chainName } = mekkaData[row];
 
     const type = e.iterator.Ra.Br;
+
     if (type === 'USD+') {
       window.open(`https://app.overnight.fi/collateral?tabName=${chainName.toLowerCase()}`, '_self');
       return;
@@ -132,7 +137,7 @@ export const getChartSettings = (
   chart.tooltip()
     .separator(false)
     // eslint-disable-next-line radix
-    .format((ctx) => `$${utils.formatNumberToMln(ctx.value)}m${maxTvl ? ` ~${utils.formatNumberToPercent(parseInt(ctx.value), maxTvl)}%` : ''}`)
+    .format((ctx) => formatTooltip(ctx))
     .titleFormat('{%seriesName} on {%x}')
     .background('#ffffff')
     .fontColor('#29323E')

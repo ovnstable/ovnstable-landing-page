@@ -89,6 +89,15 @@ export default {
 .tab {
   &.active {
     margin-bottom: -15px;
+    .tab__header {
+    border-bottom: none;
+    z-index: 2;
+    }
+    & + .tab {
+      .tab__header{
+        padding-top: 25px;
+      }
+    }
   }
   &:last-child {
     .tab__header {
@@ -96,6 +105,7 @@ export default {
     }
   }
 }
+
 .tab__header {
   position: relative;
   display: flex;
@@ -105,6 +115,7 @@ export default {
   padding: 5px 10px;
   text-align: center;
   border: 2px solid black;
+  z-index: 0;
   border-radius: 20px 20px 0 0;
   padding-top: 15px;
   padding-bottom: 35px;
@@ -113,7 +124,7 @@ export default {
   transition: color .2s ease;
 
   &.rounded {
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 20px 20px;
   }
 
   // &.rounded.last {

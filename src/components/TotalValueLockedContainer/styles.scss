@@ -1,0 +1,200 @@
+::-webkit-scrollbar {
+    height: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--ov-bg-secondary);
+    border-radius: 50px;
+  }
+  
+  .chart-container {
+    overflow: auto;
+  }
+  
+  .chart {
+    width: 800px;
+  }
+  
+  .chart-chain-blocks {
+    position: sticky;
+    left: 0;
+    top: 0;
+  }
+  
+  .chart-container-wrap {
+    background-color: #ffffff;
+    border-radius: 30px;
+    border: 1px solid black;
+    border-bottom: 2px solid black;
+    padding: 10px 20px;
+    margin: 0 20px;
+  }
+  
+  .icon-container {
+    margin-right: auto;
+  }
+  
+  /* mobile*/
+  @media only screen and (max-width: 768px) {
+  
+    .chart-container-wrap {
+    padding: 10px 7px;
+    }
+  
+    .chart-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      overflow: hidden;
+    }
+  
+    .chart-chain-blocks {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      gap: 5px;
+      padding: 30px 0 0 15px;
+      flex-wrap: wrap;
+    }
+  
+    .chart-block {
+      max-width: min-content;
+      border: 1px solid black;
+      border-bottom: 2px solid black;
+      border-radius: 12px;
+      font-size: 12px;
+      padding: 10px 15px;
+  
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 5px;
+    }
+  
+    .title {
+      font-size: 12px;
+      line-height: 19px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+  
+    .main-chart-container {
+      margin-bottom: 40px;
+    }
+  
+    .chain-logo {
+      width: 12px;
+      height: 12px;
+  
+    }
+  
+    .chain-text {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+    }
+  
+    .chart {
+      display: flex;
+      width: auto;
+      // min-width: 500px;
+      height: 300px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  
+  /* desktop */
+  @media only screen and (min-width: 769px) {
+    .chart-container {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .chart-chain-blocks {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      gap: 10px;
+      padding: 15px 10px 20px 10px;
+    }
+  
+    .chart-block {
+      width: auto;
+      border: 1px solid black;
+      border-bottom: 2px solid black;
+      border-radius: 12px;
+      padding: 15px 10px;
+      gap: 5px;
+  
+      display: flex;
+      align-items: center;
+      justify-content: left;
+    }
+  
+    .main-chart-container {
+      margin-bottom: 100px;
+    }
+  
+    .chain-logo {
+      width: 20px;
+      height: 15px;
+    }
+  
+    .chain-text {
+      font-family: 'Red Hat Display', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 21px;
+    }
+  
+    .chart {
+      display: flex;
+      width: 100%;
+      height: 350px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      padding-left: 20px;
+    }
+  
+    .title {
+      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+  }
+  
+  .icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .arrow-icon {
+    height: 20px;
+    width: 11.49px;
+  }
+  
+  .chart-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .value {
+    font-weight: 600;
+  }
+  
+  .main-chart-container {
+    max-width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .btn-row {
+    margin-top: 2% !important;
+    padding-bottom: 20px;
+  }

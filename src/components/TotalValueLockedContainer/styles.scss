@@ -52,23 +52,25 @@
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
-      gap: 5px;
-      padding: 30px 0 0 15px;
+      row-gap: 5px;
+      padding: 15px 0 0 0;
       flex-wrap: wrap;
+      column-gap: 5px;
     }
   
     .chart-block {
+      min-width: min-content;
       max-width: min-content;
       border: 1px solid black;
       border-bottom: 2px solid black;
       border-radius: 12px;
       font-size: 12px;
-      padding: 10px 15px;
+      padding: 5px 5px;
   
       display: flex;
       align-items: center;
       justify-content: space-around;
-      gap: 5px;
+      flex-wrap: wrap;
     }
   
     .title {
@@ -85,7 +87,7 @@
     .chain-logo {
       width: 12px;
       height: 12px;
-  
+      margin: 2px;
     }
   
     .chain-text {
@@ -118,6 +120,7 @@
       justify-content: space-evenly;
       gap: 10px;
       padding: 15px 10px 20px 10px;
+      flex-wrap: wrap;
     }
   
     .chart-block {
@@ -126,11 +129,13 @@
       border-bottom: 2px solid black;
       border-radius: 12px;
       padding: 15px 10px;
+      row-gap: 3px;
       gap: 5px;
   
       display: flex;
       align-items: center;
-      justify-content: left;
+      justify-content: space-around;
+      min-width: 15%;
     }
   
     .main-chart-container {

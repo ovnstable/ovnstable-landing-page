@@ -17,9 +17,9 @@ export const getChartSettings = (
 ) => {
   const { originalData, scaledData } = mekkaData;
 
-  const names = Object.keys(originalData);
+  const names = Object.keys(originalData[Object.keys(originalData)[0]]);
 
-  console.log(mekkaData);
+  console.log(originalData);
 
   const data = {
     header: ['Name', ...names],
@@ -103,36 +103,35 @@ export const getChartSettings = (
       .fontFamily('Red Hat Display');
   }
 
-  chart.listen('pointClick', (e) => {
-    // for info
-    // console.log(e.iterator.Ra.Br)
-    const row = e.iterator.getIndex();
-    const { chainName } = mekkaData[row];
+  // chart.listen('pointClick', (e) => {
+  //   // for info
+  //   // console.log(e.iterator.Ra.Br)
+  //   const { chainName } = e.target.Cr;
 
-    const type = e.iterator.Ra.Br;
+  //   const type = e.iterator.Ra.Br;
 
-    if (type === 'USD+') {
-      window.open(`https://app.overnight.fi/collateral?tabName=${chainName.toLowerCase()}`, '_self');
-      return;
-    }
+  //   if (type === 'USD+') {
+  //     window.open(`https://app.overnight.fi/collateral?tabName=${chainName.toLowerCase()}`, '_self');
+  //     return;
+  //   }
 
-    if (type === 'USDT+') {
-      window.open(`https://app.overnight.fi/collateral/usdt?tabName=${chainName.toLowerCase()}`, '_self');
-      return;
-    }
+  //   if (type === 'USDT+') {
+  //     window.open(`https://app.overnight.fi/collateral/usdt?tabName=${chainName.toLowerCase()}`, '_self');
+  //     return;
+  //   }
 
-    if (type === 'DAI+') {
-      window.open(`https://app.overnight.fi/collateral/dai?tabName=${chainName.toLowerCase()}`, '_self');
-      return;
-    }
+  //   if (type === 'DAI+') {
+  //     window.open(`https://app.overnight.fi/collateral/dai?tabName=${chainName.toLowerCase()}`, '_self');
+  //     return;
+  //   }
 
-    if (type === 'ETH+') {
-      window.open(`https://app.overnight.fi/collateral/eth?tabName=${chainName.toLowerCase()}`, '_self');
-      return;
-    }
+  //   if (type === 'ETH+') {
+  //     window.open(`https://app.overnight.fi/collateral/eth?tabName=${chainName.toLowerCase()}`, '_self');
+  //     return;
+  //   }
 
-    console.error('Type chart not found for open link, type:', type);
-  });
+  //   console.error('Type chart not found for open link, type:', type);
+  // });
 
   chart.tooltip()
     .separator(false)

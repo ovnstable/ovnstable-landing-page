@@ -63,75 +63,22 @@ export const getChartSettings = (
     return `$${utils.formatNumberToMln(val)}m${maxTvl ? ` ~${utils.formatNumberToPercent(parseInt(val, 10), maxTvl)}%` : ''}`;
   };
 
-  if (hasBlockLabel) {
-    chart.labels()
-      .format((ctx) => {
-        const origVal = getOriginalValue(ctx);
-        // if (origVal < 500000) {
-        //   return '';
-        // }
+  chart.labels()
+    .format((ctx) => {
+      const origVal = getOriginalValue(ctx);
+      const minShowVal = hasBlockLabel ? 1000000 : 3000000;
 
-        if (ctx.seriesName === 'USD+') {
-          // // eslint-disable-next-line radix
-          // if (utils.formatNumberToPercent(parseInt(origVal), maxTvl) < 2) {
-          //   return '';
-          // }
+      if (origVal < minShowVal) {
+        return '';
+      }
 
-          // eslint-disable-next-line radix
-          if (utils.formatNumberToPercent(parseInt(origVal), maxTvl) < 5) {
-            return `$${utils.formatNumberToMln(origVal)}m`;
-          }
-        }
+      const priceInMil = `$${utils.formatNumberToMln(origVal)}m`;
 
-        return `$${utils.formatNumberToMln(origVal)}m ${ctx.seriesName}`;
-      })
-      .fontColor('#FFFFFF')
-      .fontSize(12)
-      .fontFamily('Red Hat Display');
-  } else {
-    chart.labels()
-      .format((ctx) => {
-        const origVal = getOriginalValue(ctx);
-        if (origVal < 500000) {
-          return '';
-        }
-
-        return `$${utils.formatNumberToMln(origVal)}m`;
-      })
-      .fontColor('#FFFFFF')
-      .fontSize(10)
-      .fontFamily('Red Hat Display');
-  }
-
-  // chart.listen('pointClick', (e) => {
-  //   // for info
-  //   // console.log(e.iterator.Ra.Br)
-  //   const { chainName } = e.target.Cr;
-
-  //   const type = e.iterator.Ra.Br;
-
-  //   if (type === 'USD+') {
-  //     window.open(`https://app.overnight.fi/collateral?tabName=${chainName.toLowerCase()}`, '_self');
-  //     return;
-  //   }
-
-  //   if (type === 'USDT+') {
-  //     window.open(`https://app.overnight.fi/collateral/usdt?tabName=${chainName.toLowerCase()}`, '_self');
-  //     return;
-  //   }
-
-  //   if (type === 'DAI+') {
-  //     window.open(`https://app.overnight.fi/collateral/dai?tabName=${chainName.toLowerCase()}`, '_self');
-  //     return;
-  //   }
-
-  //   if (type === 'ETH+') {
-  //     window.open(`https://app.overnight.fi/collateral/eth?tabName=${chainName.toLowerCase()}`, '_self');
-  //     return;
-  //   }
-
-  //   console.error('Type chart not found for open link, type:', type);
-  // });
+      return hasBlockLabel ? `${priceInMil} ${ctx.seriesName}` : priceInMil;
+    })
+    .fontColor('#FFFFFF')
+    .fontSize(hasBlockLabel ? 12 : 10)
+    .fontFamily('Red Hat Display');
 
   chart.tooltip()
     .separator(false)

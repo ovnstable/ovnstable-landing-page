@@ -103,11 +103,13 @@ export default {
       const ETHTokenName = 'ETH+';
       const ETHPrice = this.ethPriceGetter;
 
-      const customScale = (value) => parseInt(Math.log10(1 + value), 10); // Log transformation
+      // const customScale = (value) => parseInt(Math.log10(1 + value), 10); // Log transformation
 
       const tvl = await this.fetchData(`${process.env.VUE_APP_ROOT_API}/tvl/product/total`);
 
       const formattedData = { ...this.totalByChain };
+
+      // Data formatted for chart plugin
       const scaledValMap = {};
 
       const getTokenUSDValue = (token) => {
@@ -126,8 +128,7 @@ export default {
               formattedData[item.chainName][token.name] = tokenUSDValue.toFixed(0);
             }
           });
-          const scaledValues = Object.values(formattedData[item.chainName])
-            .map((value) => customScale(value));
+          const scaledValues = Object.values(formattedData[item.chainName]);
           scaledValMap[item.chainName] = scaledValues;
         }
       });

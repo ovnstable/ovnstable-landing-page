@@ -244,7 +244,7 @@ export default {
 }
 
 .apy-container {
-  margin-top: 15px
+  margin: 15px 0;
 }
 
 .card-tab .statistic-title {

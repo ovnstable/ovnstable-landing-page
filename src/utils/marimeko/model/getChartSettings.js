@@ -1,4 +1,4 @@
-import { mosaic, palettes } from 'anychart';
+import { mekko, palettes } from 'anychart';
 // eslint-disable-next-line import/named
 import utils from '@/utils';
 import tokenColors from '@/utils/marimeko/tokenColors';
@@ -15,29 +15,19 @@ export const getChartSettings = (
     legendMarginTop = 20,
   },
 ) => {
-  const names = [];
-  const valuesData = mekkaData[0].values;
-  // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < valuesData.length; i++) {
-    const valueData = valuesData[i];
-    names.push(valueData.name);
-  }
+  const { originalData, scaledData } = mekkaData;
+
+  const names = Object.keys(originalData[Object.keys(originalData)[0]]);
+
+  console.log(originalData);
 
   const data = {
     header: ['Name', ...names],
-    rows: mekkaData.map((item) => {
-      const values = [];
-      // eslint-disable-next-line no-plusplus
-      for (let i = 0; i < item.values.length; i++) {
-        values.push(item.values[i].value);
-      }
-
-      return [item.chainName, ...values];
-    }),
+    rows: scaledData,
     utils,
   };
 
-  const chart = mosaic();
+  const chart = mekko();
 
   const palette = palettes.distinctColors();
 
@@ -49,90 +39,51 @@ export const getChartSettings = (
   ]);
 
   chart.palette(palette);
-  chart.legend().enabled(true).position(legendPosition);
-  chart.legend().enabled(true).align(legendAlignment);
-  chart.legend().enabled(true).margin(legendMarginTop);
+  const legend = chart.legend();
+  legend.enabled(true);
+  legend.position(legendPosition);
+  legend.align(legendAlignment);
+  legend.margin(legendMarginTop);
 
   chart.data(data);
+
   chart.interactivity().selectionMode(false);
 
   chart.pointsPadding(blocksPadding);
 
-  chart.xAxis().labels().fontColor('#29323E');
+  const xLabels = chart.xAxis().labels();
+  xLabels.fontColor('#29323E');
+  xLabels.rotation(-45);
+
   chart.yAxis().labels().enabled(false);
 
-  if (hasBlockLabel) {
-    chart.labels()
-      .format((ctx) => {
-        if (ctx.value < 500000) {
-          return '';
-        }
+  const getOriginalValue = (ctx) => originalData[ctx.x][ctx.seriesName];
+  const formatTooltip = (ctx) => {
+    const val = getOriginalValue(ctx);
+    return `$${utils.formatNumberToMln(val)}m${maxTvl ? ` ~${utils.formatNumberToPercent(parseInt(val, 10), maxTvl)}%` : ''}`;
+  };
 
-        if (ctx.seriesName === 'USD+') {
-          // eslint-disable-next-line radix
-          if (utils.formatNumberToPercent(parseInt(ctx.value), maxTvl) < 2) {
-            return '';
-          }
+  chart.labels()
+    .format((ctx) => {
+      const origVal = getOriginalValue(ctx);
+      const minShowVal = hasBlockLabel ? 1000000 : 3000000;
 
-          // eslint-disable-next-line radix
-          if (utils.formatNumberToPercent(parseInt(ctx.value), maxTvl) < 5) {
-            return `$${utils.formatNumberToMln(ctx.value)}m`;
-          }
-        }
+      if (origVal < minShowVal) {
+        return '';
+      }
 
-        return `$${utils.formatNumberToMln(ctx.value)}m ${ctx.seriesName}`;
-      })
-      .fontColor('#FFFFFF')
-      .fontSize(12)
-      .fontFamily('Red Hat Display');
-  } else {
-    chart.labels()
-      .format((ctx) => {
-        if (ctx.value < 500000) {
-          return '';
-        }
+      const priceInMil = `$${utils.formatNumberToMln(origVal)}m`;
 
-        return `$${utils.formatNumberToMln(ctx.value)}m`;
-      })
-      .fontColor('#FFFFFF')
-      .fontSize(10)
-      .fontFamily('Red Hat Display');
-  }
-
-  chart.listen('pointClick', (e) => {
-    // for info
-    // console.log(e.iterator.Ra.Br)
-    const row = e.iterator.getIndex();
-    const { chainName } = mekkaData[row];
-
-    const type = e.iterator.Ra.Br;
-    if (type === 'USD+') {
-      window.open(`https://app.overnight.fi/collateral?tabName=${chainName.toLowerCase()}`, '_self');
-      return;
-    }
-
-    if (type === 'USDT+') {
-      window.open(`https://app.overnight.fi/collateral/usdt?tabName=${chainName.toLowerCase()}`, '_self');
-      return;
-    }
-
-    if (type === 'DAI+') {
-      window.open(`https://app.overnight.fi/collateral/dai?tabName=${chainName.toLowerCase()}`, '_self');
-      return;
-    }
-
-    if (type === 'ETH+') {
-      window.open(`https://app.overnight.fi/collateral/eth?tabName=${chainName.toLowerCase()}`, '_self');
-      return;
-    }
-
-    console.error('Type chart not found for open link, type:', type);
-  });
+      return hasBlockLabel ? `${priceInMil} ${ctx.seriesName}` : priceInMil;
+    })
+    .fontColor('#FFFFFF')
+    .fontSize(hasBlockLabel ? 12 : 10)
+    .fontFamily('Red Hat Display');
 
   chart.tooltip()
     .separator(false)
     // eslint-disable-next-line radix
-    .format((ctx) => `$${utils.formatNumberToMln(ctx.value)}m${maxTvl ? ` ~${utils.formatNumberToPercent(parseInt(ctx.value), maxTvl)}%` : ''}`)
+    .format((ctx) => formatTooltip(ctx))
     .titleFormat('{%seriesName} on {%x}')
     .background('#ffffff')
     .fontColor('#29323E')

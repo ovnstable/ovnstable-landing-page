@@ -84,7 +84,7 @@ export default {
         linkedin: '',
         twitter: '',
         telegram: '',
-        github: '',
+        github: 'https://github.com/montyp0x',
       },
       {
         id: 6,

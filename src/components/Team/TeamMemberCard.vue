@@ -85,7 +85,7 @@ export default {
 }
 
 .photo {
-  width: calc(100% - 40px);
+  width: calc(100% - 50px);
   max-width: 150px;
   border-radius: 20px;
 }
@@ -99,7 +99,7 @@ export default {
     border: 1px solid black;
 
     background-color: #ffffff;
-    border-radius: 5px;
+    border-radius: 30px;
     position: relative;
   }
 
@@ -108,6 +108,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    padding: 5px;
   }
 
   .title {
@@ -130,8 +131,8 @@ export default {
     flex-direction: column;
 
     position: absolute;
-    top: 5px;
-    right: 8px;
+    top: 15px;
+    right: 15px;
   }
 
   .gray-icon {
@@ -153,16 +154,16 @@ export default {
     border-bottom: 3px solid black;
 
     background-color: #ffffff;
-    border-radius: 5px;
+    border-radius: 30px;
 
     position: relative;
   }
 
   .profile {
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    padding: 10px;
   }
 
   .social-links {
@@ -170,8 +171,8 @@ export default {
     flex-direction: column;
 
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: 20px;
+    right: 20px;
     gap: 10px;
   }
 

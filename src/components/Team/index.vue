@@ -56,8 +56,19 @@ export default {
       {
         id: 3,
         // eslint-disable-next-line global-require
+        picture: require('@/assets/team/alex_a.png'),
+        name: 'Alex A.',
+        role: 'Project Manager',
+        linkedin: 'https://www.linkedin.com/in/aleks-andr/',
+        twitter: '',
+        telegram: '',
+        github: '',
+      },
+      {
+        id: 4,
+        // eslint-disable-next-line global-require
         picture: require('@/assets/team/viktor.png'),
-        name: 'Viktor P.',
+        name: 'Viktor',
         role: 'Blockchain Engineer',
         linkedin: 'https://www.linkedin.com/in/viktor-paramonov-7b64371a7/',
         twitter: '',
@@ -65,32 +76,21 @@ export default {
         github: 'https://github.com/valpaq',
       },
       {
-        id: 4,
+        id: 5,
         // eslint-disable-next-line global-require
-        picture: require('@/assets/team/vasiliy_p.png'),
-        name: 'Vasiliy P.',
-        role: 'QA Specialist',
-        linkedin: 'https://www.linkedin.com/in/vasiliy-pokrovskiy-2955a7229/',
+        picture: require('@/assets/team/ramil_a.png'),
+        name: 'Ramil A.',
+        role: 'Blockchain Engineer',
+        linkedin: '',
         twitter: '',
         telegram: '',
         github: '',
       },
       {
-        id: 5,
-        // eslint-disable-next-line global-require
-        picture: require('@/assets/team/ilia_s.png'),
-        name: 'Ilia S.',
-        role: 'Fullstack engineer',
-        linkedin: '',
-        twitter: '',
-        telegram: '',
-        github: 'https://github.com/bgrusnak',
-      },
-      {
         id: 6,
         // eslint-disable-next-line global-require
         picture: require('@/assets/team/matvey_b.png'),
-        name: 'Matvey B.',
+        name: 'Matvey',
         role: 'Frontend Lead',
         linkedin: '',
         twitter: '',
@@ -99,6 +99,17 @@ export default {
       },
       {
         id: 7,
+        // eslint-disable-next-line global-require
+        picture: require('@/assets/team/leonid.png'),
+        name: 'Leo',
+        role: 'Fullstack engineer',
+        linkedin: '',
+        twitter: '',
+        telegram: '',
+        github: 'https://github.com/chpotl',
+      },
+      {
+        id: 8,
         // eslint-disable-next-line global-require
         picture: require('@/assets/team/maria_m.png'),
         name: 'Maria M.',
@@ -109,7 +120,7 @@ export default {
         github: '',
       },
       {
-        id: 8,
+        id: 9,
         // eslint-disable-next-line global-require
         picture: require('@/assets/team/polina.png'),
         name: 'Polina T.',
@@ -120,18 +131,18 @@ export default {
         github: '',
       },
       {
-        id: 9,
+        id: 10,
         // eslint-disable-next-line global-require
-        picture: require('@/assets/team/leonid.png'),
-        name: 'Leonid Z.',
-        role: 'Fullstack engineer',
-        linkedin: '',
+        picture: require('@/assets/team/konstantin_r.png'),
+        name: 'Konstantin R.',
+        role: 'Backend developer',
+        linkedin: 'https://www.linkedin.com/in/rbkn',
         twitter: '',
         telegram: '',
-        github: 'https://github.com/chpotl',
+        github: 'https://github.com/rbkn99',
       },
       {
-        id: 10,
+        id: 11,
         // eslint-disable-next-line global-require
         picture: require('@/assets/team/undefined.png'),
         name: 'Join our team',
